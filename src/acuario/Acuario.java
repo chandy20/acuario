@@ -17,6 +17,18 @@ public class Acuario {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        Tactil tactil = new Tactil();
+        tactil.setVisible(true);
+//        g.communicator.connect();
+//        if (g.communicator.getConnected() == true) {
+//            if (g.communicator.initIOStream() == true) {
+//                g.communicator.initListener();
+//                g.cboxPorts.setVisible(false);
+//                g.txtCodigo.requestFocus();
+//                g.communicator.getcounter();
+//                g.communicator.temporizador();
+//            }
+//        }
     }
     
 }
