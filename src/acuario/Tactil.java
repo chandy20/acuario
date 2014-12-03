@@ -12,6 +12,7 @@ package acuario;
 //import java.io.*;
 //import java.net.*;
 import java.sql.Connection;
+import javax.swing.ImageIcon;
 
 public class Tactil extends javax.swing.JFrame {
 
@@ -19,9 +20,19 @@ public class Tactil extends javax.swing.JFrame {
      * Creates new form Tactil
      */
     
+    ImageIcon Imagenes[] = new ImageIcon[3];
+    String nombres[] = new String[3];
+    int contador = 0;
+    
     public Tactil() {
         initComponents();
         createObjects();
+        for (int i = 0; i < 3; i++) {
+            Imagenes[i] = new ImageIcon(getClass().getResource("/images/peces/fish" + i + ".png"));
+            nombres[i] = "PEZ No. " + (i + 1);
+        }
+        visor.setIcon(Imagenes[0]);
+        nombre.setText(nombres[0]);
         Connection connection = Conexion.getConnection();
         if (connection != null) {
             System.out.print(connection);
@@ -29,8 +40,6 @@ public class Tactil extends javax.swing.JFrame {
     }
 
     private void createObjects() {
-        jTable1.setOpaque(false);
-//        ((DefaultTableCellRenderer)jTable1.getDefaultRenderer(Object.class)).setOpaque(false);
         Ficha ficha = new Ficha();
         ficha.setVisible(true);
     }
@@ -79,16 +88,17 @@ public class Tactil extends javax.swing.JFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        jLabel2 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        titulo = new javax.swing.JLabel();
+        anterior = new javax.swing.JLabel();
+        next = new javax.swing.JLabel();
+        visor = new javax.swing.JLabel();
+        nombre = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Acuario Mundo Aventura");
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(1366, 768));
 
         jLayeredPane1.setBackground(new java.awt.Color(255, 255, 255));
         jLayeredPane1.setAlignmentX(0.0F);
@@ -96,34 +106,61 @@ public class Tactil extends javax.swing.JFrame {
         jLayeredPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLayeredPane1.setPreferredSize(new java.awt.Dimension(1366, 768));
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mundoII.png"))); // NOI18N
-        jLabel2.setAlignmentY(0.0F);
-        jLayeredPane1.add(jLabel2);
-        jLabel2.setBounds(518, 0, 330, 170);
+        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mundoII.png"))); // NOI18N
+        titulo.setAlignmentY(0.0F);
+        jLayeredPane1.add(titulo);
+        titulo.setBounds(518, 25, 330, 170);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-
+        anterior.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        anterior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/prev.png"))); // NOI18N
+        anterior.setAlignmentY(0.0F);
+        anterior.setMaximumSize(new java.awt.Dimension(128, 128));
+        anterior.setMinimumSize(new java.awt.Dimension(128, 128));
+        anterior.setPreferredSize(new java.awt.Dimension(128, 128));
+        anterior.setRequestFocusEnabled(false);
+        anterior.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                anteriorMouseClicked(evt);
             }
-        ));
-        jTable1.setAlignmentX(0.0F);
-        jTable1.setAlignmentY(0.0F);
-        jTable1.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        jTable1.setOpaque(false);
-        jTable1.setShowHorizontalLines(false);
-        jTable1.setShowVerticalLines(false);
-        jScrollPane1.setViewportView(jTable1);
+        });
+        jLayeredPane1.add(anterior);
+        anterior.setBounds(100, 356, 130, 130);
 
-        jLayeredPane1.add(jScrollPane1);
-        jScrollPane1.setBounds(10, 200, 1350, 560);
+        next.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/next.png"))); // NOI18N
+        next.setAlignmentY(0.0F);
+        next.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nextMouseClicked(evt);
+            }
+        });
+        jLayeredPane1.add(next);
+        next.setBounds(1150, 356, 130, 130);
+
+        visor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        visor.setAlignmentY(0.0F);
+        visor.setMaximumSize(new java.awt.Dimension(720, 300));
+        visor.setMinimumSize(new java.awt.Dimension(720, 300));
+        visor.setPreferredSize(new java.awt.Dimension(720, 300));
+        jLayeredPane1.add(visor);
+        visor.setBounds(330, 245, 720, 300);
+
+        nombre.setBackground(new java.awt.Color(255, 255, 255));
+        nombre.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
+        nombre.setForeground(new java.awt.Color(255, 255, 255));
+        nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
+        nombre.setAlignmentY(0.0F);
+        nombre.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        nombre.setMaximumSize(new java.awt.Dimension(720, 50));
+        nombre.setMinimumSize(new java.awt.Dimension(720, 50));
+        nombre.setPreferredSize(new java.awt.Dimension(720, 50));
+        jLayeredPane1.add(nombre);
+        nombre.setBounds(330, 550, 720, 50);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario.jpg"))); // NOI18N
-        fondo.setPreferredSize(new java.awt.Dimension(1366, 768));
         jLayeredPane1.add(fondo);
         fondo.setBounds(0, 0, 1366, 768);
 
@@ -140,6 +177,24 @@ public class Tactil extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void nextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextMouseClicked
+        // TODO add your handling code here:
+        if (contador == 2)
+            contador = -1;
+        contador++;
+        visor.setIcon(Imagenes[contador]);
+        nombre.setText(nombres[contador]);
+    }//GEN-LAST:event_nextMouseClicked
+
+    private void anteriorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_anteriorMouseClicked
+        // TODO add your handling code here:
+        if (contador == 0)
+            contador = 3;
+        contador--;
+        visor.setIcon(Imagenes[contador]);
+        nombre.setText(nombres[contador]);
+    }//GEN-LAST:event_anteriorMouseClicked
 
     /**
      * @param args the command line arguments
@@ -173,11 +228,13 @@ public class Tactil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel anterior;
     private javax.swing.JLabel fondo;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel next;
+    private javax.swing.JLabel nombre;
+    private javax.swing.JLabel titulo;
+    private javax.swing.JLabel visor;
     // End of variables declaration//GEN-END:variables
 
 }
