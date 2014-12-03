@@ -11,25 +11,43 @@ package acuario;
  */
 //import java.io.*;
 //import java.net.*;
+import DAO.AcuarioDAO;
+import java.awt.Cursor;
+import java.awt.Rectangle;
 import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import javax.swing.JList;
 
 public class Tactil extends javax.swing.JFrame {
 
     /**
      * Creates new form Tactil
      */
-    
+    AcuarioDAO aDAO = new AcuarioDAO();
+    ArrayList<String> id = new ArrayList<String>();
+    ArrayList<String> name = new ArrayList<String>();
     ImageIcon Imagenes[] = new ImageIcon[3];
     String nombres[] = new String[3];
     int contador = 0;
-    
-    public Tactil() {
+
+    public Tactil() throws SQLException {
         initComponents();
         createObjects();
-        for (int i = 0; i < 3; i++) {
-            Imagenes[i] = new ImageIcon(getClass().getResource("/images/peces/fish" + i + ".png"));
-            nombres[i] = "PEZ No. " + (i + 1);
+        id = id();
+        name = name();
+        int i = 0;
+        for (String s : id) {
+            Imagenes[i] = new ImageIcon(getClass().getResource("/images/peces/fish" + Integer.parseInt(s)+ ".png"));
+            i++;
+        }
+        int j = 0;
+        for (String s : name) {
+            nombres[j] = s;
+            j++;
         }
         visor.setIcon(Imagenes[0]);
         nombre.setText(nombres[0]);
@@ -37,6 +55,16 @@ public class Tactil extends javax.swing.JFrame {
         if (connection != null) {
             System.out.print(connection);
         }
+    }
+
+    public ArrayList id() throws SQLException {
+        id = aDAO.listarPeces();
+        return id;
+    }
+
+    public ArrayList name() throws SQLException {
+        name = aDAO.listarNombrePeces();
+        return name;
     }
 
     private void createObjects() {
@@ -77,7 +105,6 @@ public class Tactil extends javax.swing.JFrame {
 //            } // try
 //        } // while
 //    }
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -88,6 +115,9 @@ public class Tactil extends javax.swing.JFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        caracteristicas = new javax.swing.JLabel();
+        general = new javax.swing.JLabel();
+        habitat = new javax.swing.JLabel();
         titulo = new javax.swing.JLabel();
         anterior = new javax.swing.JLabel();
         next = new javax.swing.JLabel();
@@ -106,6 +136,24 @@ public class Tactil extends javax.swing.JFrame {
         jLayeredPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLayeredPane1.setPreferredSize(new java.awt.Dimension(1366, 768));
 
+        caracteristicas.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        caracteristicas.setForeground(new java.awt.Color(255, 255, 255));
+        caracteristicas.setText("CARACTERÍSTICAS");
+        jLayeredPane1.add(caracteristicas);
+        caracteristicas.setBounds(500, 690, 230, 29);
+
+        general.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        general.setForeground(new java.awt.Color(255, 255, 255));
+        general.setText("GENERAL");
+        jLayeredPane1.add(general);
+        general.setBounds(70, 690, 130, 29);
+
+        habitat.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        habitat.setForeground(new java.awt.Color(255, 255, 255));
+        habitat.setText("HABITAT Y ALIMENTACIÓN");
+        jLayeredPane1.add(habitat);
+        habitat.setBounds(940, 690, 340, 29);
+
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mundoII.png"))); // NOI18N
         titulo.setAlignmentY(0.0F);
@@ -115,9 +163,6 @@ public class Tactil extends javax.swing.JFrame {
         anterior.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         anterior.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/prev.png"))); // NOI18N
         anterior.setAlignmentY(0.0F);
-        anterior.setMaximumSize(new java.awt.Dimension(128, 128));
-        anterior.setMinimumSize(new java.awt.Dimension(128, 128));
-        anterior.setPreferredSize(new java.awt.Dimension(128, 128));
         anterior.setRequestFocusEnabled(false);
         anterior.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -130,6 +175,11 @@ public class Tactil extends javax.swing.JFrame {
         next.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/next.png"))); // NOI18N
         next.setAlignmentY(0.0F);
+        next.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                nextMouseMoved(evt);
+            }
+        });
         next.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 nextMouseClicked(evt);
@@ -153,16 +203,14 @@ public class Tactil extends javax.swing.JFrame {
         nombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
         nombre.setAlignmentY(0.0F);
         nombre.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        nombre.setMaximumSize(new java.awt.Dimension(720, 50));
-        nombre.setMinimumSize(new java.awt.Dimension(720, 50));
-        nombre.setPreferredSize(new java.awt.Dimension(720, 50));
         jLayeredPane1.add(nombre);
         nombre.setBounds(330, 550, 720, 50);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario.jpg"))); // NOI18N
+        fondo.setText("general");
         jLayeredPane1.add(fondo);
-        fondo.setBounds(0, 0, 1366, 768);
+        fondo.setBounds(0, 0, 1406, 768);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -179,9 +227,15 @@ public class Tactil extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void nextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextMouseClicked
-        // TODO add your handling code here:
-        if (contador == 2)
+        try {
+            // TODO add your handling code here:
+            id = aDAO.listarPeces();
+        } catch (SQLException ex) {
+            Logger.getLogger(Tactil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (contador == id.size()-1) {
             contador = -1;
+        }
         contador++;
         visor.setIcon(Imagenes[contador]);
         nombre.setText(nombres[contador]);
@@ -189,12 +243,23 @@ public class Tactil extends javax.swing.JFrame {
 
     private void anteriorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_anteriorMouseClicked
         // TODO add your handling code here:
-        if (contador == 0)
-            contador = 3;
+        try {
+            // TODO add your handling code here:
+            id = aDAO.listarPeces();
+        } catch (SQLException ex) {
+            Logger.getLogger(Tactil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (contador == 0) {
+            contador = id.size();
+        }
         contador--;
         visor.setIcon(Imagenes[contador]);
         nombre.setText(nombres[contador]);
     }//GEN-LAST:event_anteriorMouseClicked
+
+    private void nextMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextMouseMoved
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nextMouseMoved
 
     /**
      * @param args the command line arguments
@@ -222,14 +287,21 @@ public class Tactil extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new Tactil().setVisible(true);
+                try {
+                    new Tactil().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(Tactil.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel anterior;
+    private javax.swing.JLabel caracteristicas;
     private javax.swing.JLabel fondo;
+    private javax.swing.JLabel general;
+    private javax.swing.JLabel habitat;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel next;
     private javax.swing.JLabel nombre;
