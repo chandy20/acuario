@@ -286,7 +286,7 @@ public class Tactil extends javax.swing.JFrame {
             String texto = "<html><body><div align = 'center'><table><tr><td align='center' style ='font-size:30 px;'><b>NOMBRE</b></td></tr><tr><td align='center' style ='font-size:20 px;'>" + nombre.getText() + "</td></tr>"
                     + "<tr><td align='center' style ='font-size:30 px;'><b>NOMBRE COMÚN</b></td></tr><tr><td align='center' style ='font-size:20 px;'>" + nComun + "</td></tr>"
                     + "<tr><td align='center' style ='font-size:30 px;'><b>NOMBRE CIENTIFICO</b></td></tr><tr><td align='center' style ='font-size:20 px;'>" + nCient + "</td></tr>"
-                    + "<tr><td align='center' style ='font-size:30 px;'><b>ORDEN</b></td></tr><tr><td align='center' style ='font-size:20 px;'>El pez "+nombre.getText()+" pertenece al orden de los" + orden + "</td></tr>"
+                    + "<tr><td align='center' style ='font-size:30 px;'><b>ORDEN</b></td></tr><tr><td align='center' style ='font-size:20 px;'>Este pez pertenece al orden de los" + orden + "</td></tr>"
                     + "<tr><td align='center' style ='font-size:30 px;'><b>FAMILIA</b></td></tr><tr><td align='center' style ='font-size:20 px;'> es de la familia de los " + familia + "</td></tr>"
                     + "<tr><td align='center' style ='font-size:30 px;'><b>SUBFAMILIA</b></td></tr><tr><td align='center' style ='font-size:20 px;'>cuya subfamilia son los " + subfam + "</td></tr>"
                     + "</table></div></body></html>";
