@@ -21,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JList;
+import objetos.PezVO;
 
 public class Tactil extends javax.swing.JFrame {
 
@@ -30,6 +31,7 @@ public class Tactil extends javax.swing.JFrame {
     AcuarioDAO aDAO = new AcuarioDAO();
     ArrayList<String> id = new ArrayList<String>();
     ArrayList<String> name = new ArrayList<String>();
+    Ficha ficha = new Ficha();
     ImageIcon Imagenes[] = new ImageIcon[3];
     String nombres[] = new String[3];
     int contador = 0;
@@ -41,7 +43,7 @@ public class Tactil extends javax.swing.JFrame {
         name = name();
         int i = 0;
         for (String s : id) {
-            Imagenes[i] = new ImageIcon(getClass().getResource("/images/peces/fish" + Integer.parseInt(s)+ ".png"));
+            Imagenes[i] = new ImageIcon(getClass().getResource("/images/peces/fish" + Integer.parseInt(s) + ".png"));
             i++;
         }
         int j = 0;
@@ -68,7 +70,6 @@ public class Tactil extends javax.swing.JFrame {
     }
 
     private void createObjects() {
-        Ficha ficha = new Ficha();
         ficha.setVisible(true);
     }
 
@@ -145,6 +146,11 @@ public class Tactil extends javax.swing.JFrame {
         general.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         general.setForeground(new java.awt.Color(255, 255, 255));
         general.setText("GENERAL");
+        general.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                generalMouseClicked(evt);
+            }
+        });
         jLayeredPane1.add(general);
         general.setBounds(70, 690, 130, 29);
 
@@ -233,7 +239,7 @@ public class Tactil extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Tactil.class.getName()).log(Level.SEVERE, null, ex);
         }
-        if (contador == id.size()-1) {
+        if (contador == id.size() - 1) {
             contador = -1;
         }
         contador++;
@@ -260,6 +266,35 @@ public class Tactil extends javax.swing.JFrame {
     private void nextMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextMouseMoved
         // TODO add your handling code here:
     }//GEN-LAST:event_nextMouseMoved
+
+    private void generalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generalMouseClicked
+        // TODO add your handling code here:
+        ArrayList<PezVO> general = new ArrayList<PezVO>();
+        try {
+            general = aDAO.getDatosGenerales(nombre.getText());
+            String nComun = "", nCient = "", orden = "", familia = "", subfam = "";
+            for (PezVO pezVO : general) {
+                nComun = pezVO.getPez_nombComun();
+                nCient = pezVO.getPez_nombCientifico();
+                // los siguientes no son las variables que deberian ser ya que son foraneas cada una de ellas y no estan concebidas dentro del objeto
+                // por tal razon uso convenietemente tres variables del objeto con tipo el mismo tipo de dato que las descripciones en las tablas 
+                // foraneas.
+                orden = pezVO.getPez_coloracion();
+                familia = pezVO.getPez_alimentacion();
+                subfam = pezVO.getPez_biotopo();
+            }
+            String texto = "<html><body><div align = 'center'><table><tr><td align='center' style ='font-size:30 px;'><b>NOMBRE</b></td></tr><tr><td align='center' style ='font-size:20 px;'>" + nombre.getText() + "</td></tr>"
+                    + "<tr><td align='center' style ='font-size:30 px;'><b>NOMBRE COMÚN</b></td></tr><tr><td align='center' style ='font-size:20 px;'>" + nComun + "</td></tr>"
+                    + "<tr><td align='center' style ='font-size:30 px;'><b>NOMBRE CIENTIFICO</b></td></tr><tr><td align='center' style ='font-size:20 px;'>" + nCient + "</td></tr>"
+                    + "<tr><td align='center' style ='font-size:30 px;'><b>ORDEN</b></td></tr><tr><td align='center' style ='font-size:20 px;'>El pez "+nombre.getText()+" pertenece al orden de los" + orden + "</td></tr>"
+                    + "<tr><td align='center' style ='font-size:30 px;'><b>FAMILIA</b></td></tr><tr><td align='center' style ='font-size:20 px;'> es de la familia de los " + familia + "</td></tr>"
+                    + "<tr><td align='center' style ='font-size:30 px;'><b>SUBFAMILIA</b></td></tr><tr><td align='center' style ='font-size:20 px;'>cuya subfamilia son los " + subfam + "</td></tr>"
+                    + "</table></div></body></html>";
+            ficha.informacion.setText(texto);
+        } catch (SQLException ex) {
+            Logger.getLogger(Tactil.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_generalMouseClicked
 
     /**
      * @param args the command line arguments
