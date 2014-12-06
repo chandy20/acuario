@@ -12,15 +12,12 @@ package acuario;
 //import java.io.*;
 //import java.net.*;
 import DAO.AcuarioDAO;
-import java.awt.Cursor;
-import java.awt.Rectangle;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JList;
 
 public class Tactil extends javax.swing.JFrame {
 
@@ -193,6 +190,11 @@ public class Tactil extends javax.swing.JFrame {
         visor.setMaximumSize(new java.awt.Dimension(720, 300));
         visor.setMinimumSize(new java.awt.Dimension(720, 300));
         visor.setPreferredSize(new java.awt.Dimension(720, 300));
+        visor.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                visorMouseClicked(evt);
+            }
+        });
         jLayeredPane1.add(visor);
         visor.setBounds(330, 245, 720, 300);
 
@@ -260,6 +262,10 @@ public class Tactil extends javax.swing.JFrame {
     private void nextMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextMouseMoved
         // TODO add your handling code here:
     }//GEN-LAST:event_nextMouseMoved
+
+    private void visorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visorMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_visorMouseClicked
 
     /**
      * @param args the command line arguments
