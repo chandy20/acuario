@@ -23,6 +23,7 @@ public class Acuario {
     public static void main(String[] args) throws SQLException {
         // TODO code application logic here
         Tactil tactil = new Tactil();
+        tactil.setLocation(0,0);
         tactil.setVisible(true);
 //        g.communicator.connect();
 //        if (g.communicator.getConnected() == true) {

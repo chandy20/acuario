@@ -10,7 +10,7 @@ package acuario;
  *
  * @author JAK LIZCANO
  */
-public class seleccion extends javax.swing.JPanel {
+public class seleccion extends javax.swing.JFrame {
 
     /**
      * Creates new form seleccion
@@ -28,19 +28,152 @@ public class seleccion extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        cerrar = new javax.swing.JLabel();
+        pez = new javax.swing.JLabel();
+        caracteristicas = new javax.swing.JLabel();
+        general = new javax.swing.JLabel();
+        habitat = new javax.swing.JLabel();
+        fondo = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(1366, 768));
+        setUndecorated(true);
+        setOpacity(0.0F);
+        setPreferredSize(new java.awt.Dimension(1366, 768));
+        getContentPane().setLayout(null);
+
+        cerrar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        cerrar.setAlignmentY(0.0F);
+        cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cerrarMouseClicked(evt);
+            }
+        });
+        getContentPane().add(cerrar);
+        cerrar.setBounds(1302, 0, 64, 64);
+
+        pez.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        pez.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/peces/fish0.png"))); // NOI18N
+        pez.setAlignmentY(0.0F);
+        pez.setMaximumSize(new java.awt.Dimension(720, 300));
+        pez.setMinimumSize(new java.awt.Dimension(720, 300));
+        pez.setPreferredSize(new java.awt.Dimension(720, 300));
+        getContentPane().add(pez);
+        pez.setBounds(323, 100, 720, 300);
+
+        caracteristicas.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        caracteristicas.setForeground(new java.awt.Color(255, 255, 255));
+        caracteristicas.setText("CARACTERÍSTICAS");
+        getContentPane().add(caracteristicas);
+        caracteristicas.setBounds(500, 690, 230, 29);
+
+        general.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        general.setForeground(new java.awt.Color(255, 255, 255));
+        general.setText("GENERAL");
+        general.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                generalMouseClicked(evt);
+            }
+        });
+        getContentPane().add(general);
+        general.setBounds(70, 690, 130, 29);
+
+        habitat.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        habitat.setForeground(new java.awt.Color(255, 255, 255));
+        habitat.setText("HABITAT Y ALIMENTACIÓN");
+        getContentPane().add(habitat);
+        habitat.setBounds(940, 690, 340, 29);
+
+        fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fseleccion.jpg"))); // NOI18N
+        fondo.setAlignmentY(0.0F);
+        fondo.setMaximumSize(new java.awt.Dimension(1366, 768));
+        fondo.setMinimumSize(new java.awt.Dimension(1366, 768));
+        fondo.setOpaque(true);
+        fondo.setPreferredSize(new java.awt.Dimension(1366, 768));
+        getContentPane().add(fondo);
+        fondo.setBounds(0, 0, 1366, 768);
+
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseClicked
+        // TODO add your handling code here:
+        explode ex = new explode(this);
+        ex.stop();
+    }//GEN-LAST:event_cerrarMouseClicked
+
+    private void generalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_generalMouseClicked
+        // TODO add your handling code here:
+//        ArrayList<PezVO> general = new ArrayList<PezVO>();
+//        try {
+//            general = aDAO.getDatosGenerales(nombre.getText());
+//            String nComun = "", nCient = "", orden = "", familia = "", subfam = "";
+//            for (PezVO pezVO : general) {
+//                nComun = pezVO.getPez_nombComun();
+//                nCient = pezVO.getPez_nombCientifico();
+//                // los siguientes no son las variables que deberian ser ya que son foraneas cada una de ellas y no estan concebidas dentro del objeto
+//                // por tal razon uso convenietemente tres variables del objeto con tipo el mismo tipo de dato que las descripciones en las tablas
+//                // foraneas.
+//                orden = pezVO.getPez_coloracion();
+//                familia = pezVO.getPez_alimentacion();
+//                subfam = pezVO.getPez_biotopo();
+//            }
+//            String texto = "<html><body><div align = 'center'><table><tr><td align='center' style ='font-size:30 px;'><b>NOMBRE</b></td></tr><tr><td align='center' style ='font-size:20 px;'>" + nombre.getText() + "</td></tr>"
+//            + "<tr><td align='center' style ='font-size:30 px;'><b>NOMBRE COMÚN</b></td></tr><tr><td align='center' style ='font-size:20 px;'>" + nComun + "</td></tr>"
+//            + "<tr><td align='center' style ='font-size:30 px;'><b>NOMBRE CIENTIFICO</b></td></tr><tr><td align='center' style ='font-size:20 px;'>" + nCient + "</td></tr>"
+//            + "<tr><td align='center' style ='font-size:30 px;'><b>ORDEN</b></td></tr><tr><td align='center' style ='font-size:20 px;'>Este pez pertenece al orden de los" + orden + "</td></tr>"
+//            + "<tr><td align='center' style ='font-size:30 px;'><b>FAMILIA</b></td></tr><tr><td align='center' style ='font-size:20 px;'> es de la familia de los " + familia + "</td></tr>"
+//            + "<tr><td align='center' style ='font-size:30 px;'><b>SUBFAMILIA</b></td></tr><tr><td align='center' style ='font-size:20 px;'>cuya subfamilia son los " + subfam + "</td></tr>"
+//            + "</table></div></body></html>";
+//            ficha.informacion.setText(texto);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Tactil.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+    }//GEN-LAST:event_generalMouseClicked
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(seleccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(seleccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(seleccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(seleccion.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new seleccion().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel caracteristicas;
+    private javax.swing.JLabel cerrar;
+    private javax.swing.JLabel fondo;
+    private javax.swing.JLabel general;
+    private javax.swing.JLabel habitat;
+    private javax.swing.JLabel pez;
     // End of variables declaration//GEN-END:variables
 }
