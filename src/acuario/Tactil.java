@@ -188,6 +188,11 @@ public class Tactil extends javax.swing.JFrame {
         nombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
         nombre.setAlignmentY(0.0F);
         nombre.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        nombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nombreMouseClicked(evt);
+            }
+        });
         jLayeredPane1.add(nombre);
         nombre.setBounds(330, 660, 720, 50);
 
@@ -293,6 +298,11 @@ public class Tactil extends javax.swing.JFrame {
         ex.play();
         selec.setAlwaysOnTop(true);
     }//GEN-LAST:event_visorMouseClicked
+
+    private void nombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreMouseClicked
+        // TODO add your handling code here:
+        visorMouseClicked(evt);
+    }//GEN-LAST:event_nombreMouseClicked
 
     /**
      * @param args the command line arguments

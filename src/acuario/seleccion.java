@@ -33,10 +33,17 @@ public class seleccion extends javax.swing.JFrame {
         caracteristicas = new javax.swing.JLabel();
         general = new javax.swing.JLabel();
         habitat = new javax.swing.JLabel();
+        general1 = new javax.swing.JLabel();
+        caracteristicas1 = new javax.swing.JLabel();
+        habitat1 = new javax.swing.JLabel();
+        general2 = new javax.swing.JLabel();
+        caracteristicas2 = new javax.swing.JLabel();
+        habitat2 = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1366, 768));
+        setMinimumSize(new java.awt.Dimension(1366, 768));
         setUndecorated(true);
         setOpacity(0.0F);
         setPreferredSize(new java.awt.Dimension(1366, 768));
@@ -51,7 +58,7 @@ public class seleccion extends javax.swing.JFrame {
             }
         });
         getContentPane().add(cerrar);
-        cerrar.setBounds(1302, 0, 64, 64);
+        cerrar.setBounds(1290, 10, 64, 64);
 
         pez.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         pez.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/peces/fish0.png"))); // NOI18N
@@ -66,7 +73,7 @@ public class seleccion extends javax.swing.JFrame {
         caracteristicas.setForeground(new java.awt.Color(255, 255, 255));
         caracteristicas.setText("CARACTERÍSTICAS");
         getContentPane().add(caracteristicas);
-        caracteristicas.setBounds(500, 690, 230, 29);
+        caracteristicas.setBounds(350, 560, 240, 29);
 
         general.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         general.setForeground(new java.awt.Color(255, 255, 255));
@@ -77,21 +84,65 @@ public class seleccion extends javax.swing.JFrame {
             }
         });
         getContentPane().add(general);
-        general.setBounds(70, 690, 130, 29);
+        general.setBounds(160, 560, 130, 29);
 
         habitat.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
         habitat.setForeground(new java.awt.Color(255, 255, 255));
         habitat.setText("HABITAT Y ALIMENTACIÓN");
         getContentPane().add(habitat);
-        habitat.setBounds(940, 690, 340, 29);
+        habitat.setBounds(640, 570, 340, 29);
+
+        general1.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        general1.setForeground(new java.awt.Color(255, 255, 255));
+        general1.setText("GENERAL");
+        general1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                general1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(general1);
+        general1.setBounds(150, 630, 130, 29);
+
+        caracteristicas1.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        caracteristicas1.setForeground(new java.awt.Color(255, 255, 255));
+        caracteristicas1.setText("CARACTERÍSTICAS");
+        getContentPane().add(caracteristicas1);
+        caracteristicas1.setBounds(350, 630, 240, 29);
+
+        habitat1.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        habitat1.setForeground(new java.awt.Color(255, 255, 255));
+        habitat1.setText("HABITAT Y ALIMENTACIÓN");
+        getContentPane().add(habitat1);
+        habitat1.setBounds(630, 630, 340, 29);
+
+        general2.setFont(new java.awt.Font("Tahoma", 3, 36)); // NOI18N
+        general2.setForeground(new java.awt.Color(255, 255, 255));
+        general2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        general2.setText("NOMBRES Y CLASIFICACION");
+        general2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                general2MouseClicked(evt);
+            }
+        });
+        getContentPane().add(general2);
+        general2.setBounds(30, 440, 560, 30);
+
+        caracteristicas2.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        caracteristicas2.setForeground(new java.awt.Color(255, 255, 255));
+        caracteristicas2.setText("CARACTERÍSTICAS");
+        getContentPane().add(caracteristicas2);
+        caracteristicas2.setBounds(350, 500, 240, 29);
+
+        habitat2.setFont(new java.awt.Font("Tahoma", 3, 24)); // NOI18N
+        habitat2.setForeground(new java.awt.Color(255, 255, 255));
+        habitat2.setText("HABITAT Y ALIMENTACIÓN");
+        getContentPane().add(habitat2);
+        habitat2.setBounds(630, 500, 340, 29);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fseleccion.jpg"))); // NOI18N
         fondo.setAlignmentY(0.0F);
-        fondo.setMaximumSize(new java.awt.Dimension(1366, 768));
-        fondo.setMinimumSize(new java.awt.Dimension(1366, 768));
         fondo.setOpaque(true);
-        fondo.setPreferredSize(new java.awt.Dimension(1366, 768));
         getContentPane().add(fondo);
         fondo.setBounds(0, 0, 1366, 768);
 
@@ -133,6 +184,14 @@ public class seleccion extends javax.swing.JFrame {
 //        }
     }//GEN-LAST:event_generalMouseClicked
 
+    private void general1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_general1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_general1MouseClicked
+
+    private void general2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_general2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_general2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -170,10 +229,16 @@ public class seleccion extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel caracteristicas;
+    private javax.swing.JLabel caracteristicas1;
+    private javax.swing.JLabel caracteristicas2;
     private javax.swing.JLabel cerrar;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel general;
+    private javax.swing.JLabel general1;
+    private javax.swing.JLabel general2;
     private javax.swing.JLabel habitat;
+    private javax.swing.JLabel habitat1;
+    private javax.swing.JLabel habitat2;
     private javax.swing.JLabel pez;
     // End of variables declaration//GEN-END:variables
 }
