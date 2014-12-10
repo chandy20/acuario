@@ -3,14 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package acuario;
+package principal;
 
 /**
  *
  * @author Enovasoft
  */
-//import java.io.*;
-//import java.net.*;
+
 import DAO.AcuarioDAO;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -18,7 +17,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import objetos.PezVO;
 
 public class Tactil extends javax.swing.JFrame {
 
@@ -28,15 +26,12 @@ public class Tactil extends javax.swing.JFrame {
     AcuarioDAO aDAO = new AcuarioDAO();
     ArrayList<String> id = new ArrayList<String>();
     ArrayList<String> name = new ArrayList<String>();
-    Ficha ficha = new Ficha();
     ImageIcon Imagenes[] = new ImageIcon[3];
     String nombres[] = new String[3];
     int contador = 0;
-    seleccion selec = new seleccion();
 
     public Tactil() throws SQLException {
         initComponents();
-        createObjects();
         id = id();
         name = name();
         for (int i = 0; i < 3; i++) {
@@ -71,43 +66,10 @@ public class Tactil extends javax.swing.JFrame {
         return name;
     }
 
-    private void createObjects() {
-        ficha.setVisible(true);
-    }
-
-    //    public void Escuchar() {
-//        try {
-//            serverAddr = new ServerSocket(2500);
-//        } catch (Exception e) {
-//            System.err.println("Error creando socket");
-//        }
-//        while (true) {
-//            try {
-//                sc = serverAddr.accept(); // esperando conexión
-//                InputStream istream = sc.getInputStream();
-//                ObjectInput in = new ObjectInputStream(istream);
-//                int Estado = (int) in.readObject();
-//                Thread.sleep(2000);
-//                DataOutputStream ostream = new DataOutputStream(sc.getOutputStream());
-//                if (Estado != -1) {
-//                    communicator.bloqueaDesbloquea(Estado);
-//                    if (estado == 0) {
-//                        estado = 1;
-//                        jLabel1.setText("Torniquete desbloqueado");
-//                    } else {
-//                        estado = 0;
-//                        jLabel1.setText("Torniquete bloqueado");
-//                    }
-//                }
-//                ostream.writeInt(estado);
-//                ostream.flush();
-//                sc.close();
-//            } catch (Exception e) {
-//                System.err.println("excepcion " + e.toString());
-//                e.printStackTrace();
-//            } // try
-//        } // while
+//    private void createObjects() {
+//        
 //    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -124,14 +86,11 @@ public class Tactil extends javax.swing.JFrame {
         visor = new javax.swing.JLabel();
         nombre = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
-        contenedor = new javax.swing.JPanel();
-        fondoc = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Acuario Mundo Aventura");
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
-        setUndecorated(true);
 
         jLayeredPane1.setBackground(new java.awt.Color(255, 255, 255));
         jLayeredPane1.setAlignmentX(0.0F);
@@ -206,44 +165,6 @@ public class Tactil extends javax.swing.JFrame {
         jLayeredPane1.add(fondo);
         fondo.setBounds(0, 0, 1366, 768);
 
-        contenedor.setBackground(new java.awt.Color(0, 0, 0));
-        contenedor.setAlignmentX(0.0F);
-        contenedor.setAlignmentY(0.0F);
-        contenedor.setMinimumSize(new java.awt.Dimension(1366, 768));
-        contenedor.setPreferredSize(new java.awt.Dimension(1366, 768));
-
-        fondoc.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fondoc.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario.jpg"))); // NOI18N
-        fondoc.setText("general");
-        fondoc.setAlignmentY(0.0F);
-        fondoc.setMaximumSize(new java.awt.Dimension(1366, 768));
-        fondoc.setMinimumSize(new java.awt.Dimension(1366, 768));
-        fondoc.setPreferredSize(new java.awt.Dimension(1366, 768));
-
-        javax.swing.GroupLayout contenedorLayout = new javax.swing.GroupLayout(contenedor);
-        contenedor.setLayout(contenedorLayout);
-        contenedorLayout.setHorizontalGroup(
-            contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1366, Short.MAX_VALUE)
-            .addGroup(contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(contenedorLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(fondoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        contenedorLayout.setVerticalGroup(
-            contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 768, Short.MAX_VALUE)
-            .addGroup(contenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(contenedorLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(fondoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        jLayeredPane1.add(contenedor);
-        contenedor.setBounds(0, 0, 1366, 768);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -293,10 +214,11 @@ public class Tactil extends javax.swing.JFrame {
 
     private void visorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visorMouseClicked
         // TODO add your handling code here:
-        selec.setLocation(-5,0);
-        explode ex = new explode( selec );
+        Seleccion seleccion = new Seleccion();
+        seleccion.setLocation(-5,0);
+        Explode ex = new Explode( seleccion, null );
         ex.play();
-        selec.setAlwaysOnTop(true);
+        seleccion.emergente();
     }//GEN-LAST:event_visorMouseClicked
 
     private void nombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreMouseClicked
@@ -340,9 +262,7 @@ public class Tactil extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel contenedor;
     private javax.swing.JLabel fondo;
-    private javax.swing.JLabel fondoc;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel next;
     private javax.swing.JLabel nombre;
@@ -350,5 +270,4 @@ public class Tactil extends javax.swing.JFrame {
     private javax.swing.JLabel titulo;
     private javax.swing.JLabel visor;
     // End of variables declaration//GEN-END:variables
-
 }

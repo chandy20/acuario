@@ -5,7 +5,7 @@
  */
 package DAO;
 
-import acuario.Conexion;
+import principal.Conexion;
 import java.sql.*;
 import java.util.ArrayList;
 import objetos.*;
