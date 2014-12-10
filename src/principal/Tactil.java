@@ -29,6 +29,7 @@ public class Tactil extends javax.swing.JFrame {
     ImageIcon Imagenes[] = new ImageIcon[3];
     String nombres[] = new String[3];
     int contador = 0;
+    Seleccion seleccion = new Seleccion();
 
     public Tactil() throws SQLException {
         initComponents();
@@ -89,8 +90,9 @@ public class Tactil extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Acuario Mundo Aventura");
-        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
+        setFocusableWindowState(false);
+        setUndecorated(true);
 
         jLayeredPane1.setBackground(new java.awt.Color(255, 255, 255));
         jLayeredPane1.setAlignmentX(0.0F);
@@ -214,9 +216,9 @@ public class Tactil extends javax.swing.JFrame {
 
     private void visorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_visorMouseClicked
         // TODO add your handling code here:
-        Seleccion seleccion = new Seleccion();
+        seleccion.setVisible(true);
         seleccion.setLocation(-5,0);
-        Explode ex = new Explode( seleccion, null );
+        Explode ex = new Explode( seleccion );
         ex.play();
         seleccion.emergente();
     }//GEN-LAST:event_visorMouseClicked
@@ -225,41 +227,6 @@ public class Tactil extends javax.swing.JFrame {
         // TODO add your handling code here:
         visorMouseClicked(evt);
     }//GEN-LAST:event_nombreMouseClicked
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    new Tactil().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(Tactil.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel fondo;
