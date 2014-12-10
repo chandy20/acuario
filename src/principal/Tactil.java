@@ -90,6 +90,7 @@ public class Tactil extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Acuario Mundo Aventura");
+        setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
         setFocusableWindowState(false);
         setUndecorated(true);
