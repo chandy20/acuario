@@ -81,6 +81,7 @@ public class Tactil extends javax.swing.JFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        primera = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
         prev = new javax.swing.JLabel();
         next = new javax.swing.JLabel();
@@ -92,6 +93,7 @@ public class Tactil extends javax.swing.JFrame {
         setTitle("Acuario Mundo Aventura");
         setAlwaysOnTop(true);
         setBackground(new java.awt.Color(255, 255, 255));
+        setFocusable(false);
         setFocusableWindowState(false);
         setUndecorated(true);
 
@@ -101,11 +103,16 @@ public class Tactil extends javax.swing.JFrame {
         jLayeredPane1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLayeredPane1.setPreferredSize(new java.awt.Dimension(1366, 768));
 
+        primera.setAlignmentX(0.0F);
+        primera.setAlignmentY(0.0F);
+        primera.setMaximumSize(new java.awt.Dimension(1366, 768));
+        primera.setMinimumSize(new java.awt.Dimension(1366, 768));
+        primera.setOpaque(false);
+        primera.setPreferredSize(new java.awt.Dimension(1366, 768));
+
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         titulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mundoII.png"))); // NOI18N
         titulo.setAlignmentY(0.0F);
-        jLayeredPane1.add(titulo);
-        titulo.setBounds(518, 25, 330, 170);
 
         prev.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         prev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/prev.png"))); // NOI18N
@@ -116,8 +123,6 @@ public class Tactil extends javax.swing.JFrame {
                 prevMouseClicked(evt);
             }
         });
-        jLayeredPane1.add(prev);
-        prev.setBounds(100, 456, 130, 130);
 
         next.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/next.png"))); // NOI18N
@@ -127,8 +132,6 @@ public class Tactil extends javax.swing.JFrame {
                 nextMouseClicked(evt);
             }
         });
-        jLayeredPane1.add(next);
-        next.setBounds(1150, 456, 130, 130);
 
         visor.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         visor.setAlignmentY(0.0F);
@@ -140,8 +143,6 @@ public class Tactil extends javax.swing.JFrame {
                 visorMouseClicked(evt);
             }
         });
-        jLayeredPane1.add(visor);
-        visor.setBounds(330, 345, 720, 300);
 
         nombre.setBackground(new java.awt.Color(255, 255, 255));
         nombre.setFont(new java.awt.Font("Tahoma", 3, 48)); // NOI18N
@@ -155,8 +156,6 @@ public class Tactil extends javax.swing.JFrame {
                 nombreMouseClicked(evt);
             }
         });
-        jLayeredPane1.add(nombre);
-        nombre.setBounds(330, 660, 720, 50);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario.jpg"))); // NOI18N
@@ -165,18 +164,68 @@ public class Tactil extends javax.swing.JFrame {
         fondo.setMaximumSize(new java.awt.Dimension(1366, 768));
         fondo.setMinimumSize(new java.awt.Dimension(1366, 768));
         fondo.setPreferredSize(new java.awt.Dimension(1366, 768));
-        jLayeredPane1.add(fondo);
-        fondo.setBounds(0, 0, 1366, 768);
+
+        javax.swing.GroupLayout primeraLayout = new javax.swing.GroupLayout(primera);
+        primera.setLayout(primeraLayout);
+        primeraLayout.setHorizontalGroup(
+            primeraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 1366, Short.MAX_VALUE)
+            .addGroup(primeraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(primeraLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(primeraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(primeraLayout.createSequentialGroup()
+                            .addGap(518, 518, 518)
+                            .addComponent(titulo))
+                        .addGroup(primeraLayout.createSequentialGroup()
+                            .addGap(100, 100, 100)
+                            .addComponent(prev, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(920, 920, 920)
+                            .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(primeraLayout.createSequentialGroup()
+                            .addGap(330, 330, 330)
+                            .addComponent(nombre))
+                        .addGroup(primeraLayout.createSequentialGroup()
+                            .addGap(330, 330, 330)
+                            .addComponent(visor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+        primeraLayout.setVerticalGroup(
+            primeraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 768, Short.MAX_VALUE)
+            .addGroup(primeraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(primeraLayout.createSequentialGroup()
+                    .addGap(0, 0, Short.MAX_VALUE)
+                    .addGroup(primeraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(primeraLayout.createSequentialGroup()
+                            .addGap(25, 25, 25)
+                            .addComponent(titulo, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGap(261, 261, 261)
+                            .addGroup(primeraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(prev, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(next, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(74, 74, 74)
+                            .addComponent(nombre))
+                        .addGroup(primeraLayout.createSequentialGroup()
+                            .addGap(345, 345, 345)
+                            .addComponent(visor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(fondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
+
+        jLayeredPane1.add(primera);
+        primera.setBounds(0, 0, 1366, 768);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1366, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 768, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -235,6 +284,7 @@ public class Tactil extends javax.swing.JFrame {
     private javax.swing.JLabel next;
     private javax.swing.JLabel nombre;
     private javax.swing.JLabel prev;
+    private javax.swing.JPanel primera;
     private javax.swing.JLabel titulo;
     private javax.swing.JLabel visor;
     // End of variables declaration//GEN-END:variables
