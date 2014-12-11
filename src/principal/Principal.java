@@ -19,9 +19,9 @@ public class Principal {
      */
     public static void main(String[] args) throws SQLException {
         // TODO code application logic here
-        Tactil tactil = new Tactil();
-//        tactil.setLocationRelativeTo(null);
-        tactil.setVisible(true);
+        Inicio inicio = new Inicio();
+        inicio.setLocationRelativeTo(null);
+        inicio.setVisible(true);
     }
 
 }
