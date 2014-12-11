@@ -35,6 +35,7 @@ public class Inicio extends javax.swing.JFrame {
         next = new javax.swing.JLabel();
         slider = new javax.swing.JLabel();
         nombre = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -99,6 +100,14 @@ public class Inicio extends javax.swing.JFrame {
         tactil.add(nombre);
         nombre.setBounds(333, 625, 700, 50);
 
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario.jpg"))); // NOI18N
+        jLabel1.setMaximumSize(new java.awt.Dimension(1366, 768));
+        jLabel1.setMinimumSize(new java.awt.Dimension(1366, 768));
+        jLabel1.setPreferredSize(new java.awt.Dimension(1366, 768));
+        tactil.add(jLabel1);
+        jLabel1.setBounds(0, 0, 1366, 768);
+
         jLayeredPane1.add(tactil);
         tactil.setBounds(0, 0, 1366, 768);
 
@@ -156,6 +165,7 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel next;
     private javax.swing.JLabel nombre;
