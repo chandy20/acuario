@@ -29,8 +29,12 @@ public class Inicio extends javax.swing.JFrame {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        jLabel1 = new javax.swing.JLabel();
-        fondo = new javax.swing.JLabel();
+        tactil = new javax.swing.JPanel();
+        titulo = new javax.swing.JLabel();
+        prev = new javax.swing.JLabel();
+        next = new javax.swing.JLabel();
+        slider = new javax.swing.JLabel();
+        nombre = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -44,33 +48,72 @@ public class Inicio extends javax.swing.JFrame {
         jLayeredPane1.setMaximumSize(new java.awt.Dimension(1366, 768));
         jLayeredPane1.setMinimumSize(new java.awt.Dimension(1366, 768));
 
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mundoII.png"))); // NOI18N
-        jLabel1.setAlignmentY(0.0F);
-        jLayeredPane1.add(jLabel1);
-        jLabel1.setBounds(517, 25, 330, 180);
+        tactil.setAlignmentX(0.0F);
+        tactil.setAlignmentY(0.0F);
+        tactil.setMaximumSize(new java.awt.Dimension(1366, 768));
+        tactil.setMinimumSize(new java.awt.Dimension(1366, 768));
+        tactil.setLayout(null);
 
-        fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario.jpg"))); // NOI18N
-        fondo.setAlignmentY(0.0F);
-        fondo.setMaximumSize(new java.awt.Dimension(1366, 768));
-        fondo.setMinimumSize(new java.awt.Dimension(1366, 768));
-        fondo.setPreferredSize(new java.awt.Dimension(1366, 768));
-        jLayeredPane1.add(fondo);
-        fondo.setBounds(0, 0, 1366, 768);
+        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mundoII.png"))); // NOI18N
+        titulo.setAlignmentY(0.0F);
+        titulo.setMaximumSize(new java.awt.Dimension(330, 200));
+        titulo.setMinimumSize(new java.awt.Dimension(330, 200));
+        titulo.setPreferredSize(new java.awt.Dimension(330, 200));
+        tactil.add(titulo);
+        titulo.setBounds(518, 25, 300, 200);
+
+        prev.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        prev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/prev.png"))); // NOI18N
+        prev.setAlignmentY(0.0F);
+        prev.setMaximumSize(new java.awt.Dimension(130, 130));
+        prev.setMinimumSize(new java.awt.Dimension(130, 130));
+        prev.setPreferredSize(new java.awt.Dimension(130, 130));
+        tactil.add(prev);
+        prev.setBounds(100, 382, 130, 130);
+
+        next.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/next.png"))); // NOI18N
+        next.setAlignmentY(0.0F);
+        next.setMaximumSize(new java.awt.Dimension(130, 130));
+        next.setMinimumSize(new java.awt.Dimension(130, 130));
+        next.setPreferredSize(new java.awt.Dimension(130, 130));
+        tactil.add(next);
+        next.setBounds(1136, 382, 130, 130);
+
+        slider.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        slider.setAlignmentY(0.0F);
+        slider.setMaximumSize(new java.awt.Dimension(700, 300));
+        slider.setMinimumSize(new java.awt.Dimension(700, 300));
+        slider.setPreferredSize(new java.awt.Dimension(700, 300));
+        tactil.add(slider);
+        slider.setBounds(333, 297, 700, 300);
+
+        nombre.setBackground(new java.awt.Color(0, 0, 0));
+        nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        nombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
+        nombre.setAlignmentY(0.0F);
+        nombre.setMaximumSize(new java.awt.Dimension(700, 50));
+        nombre.setMinimumSize(new java.awt.Dimension(700, 50));
+        nombre.setPreferredSize(new java.awt.Dimension(700, 50));
+        tactil.add(nombre);
+        nombre.setBounds(333, 625, 700, 50);
+
+        jLayeredPane1.add(tactil);
+        tactil.setBounds(0, 0, 1366, 768);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1366, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 768, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -113,8 +156,12 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel fondo;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JLabel next;
+    private javax.swing.JLabel nombre;
+    private javax.swing.JLabel prev;
+    private javax.swing.JLabel slider;
+    private javax.swing.JPanel tactil;
+    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }
