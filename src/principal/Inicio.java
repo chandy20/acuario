@@ -37,21 +37,16 @@ public class Inicio extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1366, 768));
         setMinimumSize(new java.awt.Dimension(1366, 768));
         setUndecorated(true);
-        setResizable(false);
 
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLayeredPane1.setAlignmentX(0.0F);
         jLayeredPane1.setAlignmentY(0.0F);
         jLayeredPane1.setMaximumSize(new java.awt.Dimension(1366, 768));
         jLayeredPane1.setMinimumSize(new java.awt.Dimension(1366, 768));
-        jLayeredPane1.setPreferredSize(new java.awt.Dimension(1366, 768));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mundoII.png"))); // NOI18N
         jLabel1.setAlignmentY(0.0F);
-        jLabel1.setMaximumSize(new java.awt.Dimension(330, 255));
-        jLabel1.setMinimumSize(new java.awt.Dimension(330, 255));
-        jLabel1.setPreferredSize(new java.awt.Dimension(330, 255));
         jLayeredPane1.add(jLabel1);
         jLabel1.setBounds(517, 25, 330, 180);
 
