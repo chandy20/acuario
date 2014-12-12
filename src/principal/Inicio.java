@@ -48,6 +48,9 @@ public class Inicio extends javax.swing.JFrame {
         ficha.setPreferredSize(null);
         java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
         devices[ 1 ].setFullScreenWindow(ficha);
+        ficha.setContentPane(ficha.visor);
+        ficha.foto.setIcon(Imagenes[0]);
+        ficha.tittle.setText(names[contador]);
     }
 
     /**
@@ -160,6 +163,11 @@ public class Inicio extends javax.swing.JFrame {
         nombre.setMaximumSize(new java.awt.Dimension(700, 50));
         nombre.setMinimumSize(new java.awt.Dimension(700, 50));
         nombre.setPreferredSize(new java.awt.Dimension(700, 50));
+        nombre.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nombreMouseClicked(evt);
+            }
+        });
         tactil.add(nombre);
         nombre.setBounds(333, 625, 700, 50);
 
@@ -172,11 +180,6 @@ public class Inicio extends javax.swing.JFrame {
         trasero.setMaximumSize(new java.awt.Dimension(700, 50));
         trasero.setMinimumSize(new java.awt.Dimension(700, 50));
         trasero.setPreferredSize(new java.awt.Dimension(700, 50));
-        trasero.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                traseroMouseClicked(evt);
-            }
-        });
         tactil.add(trasero);
         trasero.setBounds(333, 625, 700, 50);
 
@@ -449,19 +452,16 @@ public class Inicio extends javax.swing.JFrame {
         this.setContentPane( seleccion );
     }//GEN-LAST:event_sliderMouseClicked
 
-    private void traseroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_traseroMouseClicked
-        // TODO add your handling code here:
-        sliderMouseClicked( evt );
-    }//GEN-LAST:event_traseroMouseClicked
-
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        ficha.setContentPane(ficha.datos);
+        ficha.setContentPane(ficha.visor);
+        ficha.foto.setIcon(Imagenes[contador]);
         this.setContentPane(tactil);
     }//GEN-LAST:event_closeMouseClicked
 
     private void nombresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombresMouseClicked
         // TODO add your handling code here:
+        ficha.setContentPane(ficha.datos);
         try {
             ficha.cargaImagenes(ids[contador]);
             ficha.cargaNombre(ids[contador]);
@@ -478,6 +478,8 @@ public class Inicio extends javax.swing.JFrame {
         }
         slider.setIcon(Imagenes[contador]);
         nombre.setText(names[contador]);
+        ficha.foto.setIcon(Imagenes[contador]);
+        ficha.tittle.setText(names[contador]);
     }//GEN-LAST:event_prevMouseClicked
 
     private void nextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextMouseClicked
@@ -659,6 +661,11 @@ public class Inicio extends javax.swing.JFrame {
         }
         control = false;
     }//GEN-LAST:event_comportamientoMouseClicked
+
+    private void nombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreMouseClicked
+        // TODO add your handling code here:
+        sliderMouseClicked( evt );
+    }//GEN-LAST:event_nombreMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel acuario;
