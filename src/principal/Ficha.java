@@ -147,21 +147,16 @@ public class Ficha extends javax.swing.JDialog {
     }
 
     public void cargaImagenes(int pez_id) throws SQLException {
-
         ArrayList<String> peces = aDAO.getImagesFromFish(pez_id);
-        scheduler = Executors.newSingleThreadScheduledExecutor();
-        scheduler.scheduleAtFixedRate(
-                new Runnable() {
-                    int x = 0;
-
-                    public void run() {
-                        slider.setIcon(new ImageIcon(peces.get(x)));
-                        x++;
-                        if (x == peces.size() - 1) {
-                            x = 0;
+        for (String ruta : peces) {
+            scheduler = Executors.newSingleThreadScheduledExecutor();
+            scheduler.scheduleAtFixedRate(
+                    new Runnable() {
+                        public void run() {
+                            slider.setIcon(new ImageIcon(ruta));
                         }
-                    }
-                }, 100, velocidad, TimeUnit.MILLISECONDS);
+                    }, 100, velocidad, TimeUnit.MILLISECONDS);
+        }
 
     }
 

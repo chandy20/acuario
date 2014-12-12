@@ -465,6 +465,7 @@ public class Inicio extends javax.swing.JFrame {
             ficha.cargaImagenes(ids[contador]);
             ficha.cargaNombre(ids[contador]);
             ficha.getNombres(ids[contador]);
+            ficha.cargaImagenes(ids[contador]);
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
