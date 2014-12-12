@@ -42,7 +42,7 @@ public class Ficha extends javax.swing.JDialog {
         for (PezVO pezVO : lista) {
             String biotopo = pezVO.getPez_biotopo();
 //            String datos = "<html><body><table><tr><h1><b><td align= 'center'>BIÓTOPO</td></b></h1></tr><tr><h2><td align= 'center'>"+biotopo+"</td></h2></tr></table></body></html>";
-            String datos = "<html><body><div align = 'center'><h1><b><p><font size = '40'>BIÓTOPO</font></p></b></h1><br><h2><font size = '30'>"+biotopo+"</font></h2></div></body></html>";
+            String datos = "<html><body><div align = 'center'><b><p><font size = '40'>BIÓTOPO</font></p></b><br><font size = '30'>"+biotopo+"</font></div></body></html>";
             this.info.setText(datos);
         }
     }
@@ -84,6 +84,7 @@ public class Ficha extends javax.swing.JDialog {
         back = new javax.swing.JLabel();
         slider = new javax.swing.JLabel();
         info = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
         visor = new javax.swing.JPanel();
         tittle = new javax.swing.JLabel();
@@ -134,6 +135,15 @@ public class Ficha extends javax.swing.JDialog {
         info.setPreferredSize(new java.awt.Dimension(1535, 505));
         datos.add(info);
         info.setBounds(192, 550, 1535, 505);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/backinfo.png"))); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLabel1.setMaximumSize(new java.awt.Dimension(1536, 505));
+        jLabel1.setMinimumSize(new java.awt.Dimension(1536, 505));
+        jLabel1.setPreferredSize(new java.awt.Dimension(1536, 505));
+        datos.add(jLabel1);
+        jLabel1.setBounds(192, 550, 1536, 505);
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario2.jpg"))); // NOI18N
         fondo.setText("jLabel1");
@@ -260,6 +270,7 @@ public class Ficha extends javax.swing.JDialog {
     private javax.swing.JLabel fondo1;
     public javax.swing.JLabel foto;
     private javax.swing.JLabel info;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     public javax.swing.JLabel slider;
     public javax.swing.JLabel tittle;
