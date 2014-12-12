@@ -514,6 +514,7 @@ public class Inicio extends javax.swing.JFrame {
             try {
             ficha.cargaImagenes(ids[contador]);
             ficha.cargaNombre(ids[contador]);
+            ficha.getDistribucion(ids[contador]);
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -527,6 +528,7 @@ public class Inicio extends javax.swing.JFrame {
             try {
             ficha.cargaImagenes(ids[contador]);
             ficha.cargaNombre(ids[contador]);
+            ficha.getForma(ids[contador]);
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }

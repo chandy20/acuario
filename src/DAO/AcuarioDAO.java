@@ -108,6 +108,9 @@ public class AcuarioDAO {
                 case 10:
                     sql = "SELECT pez_comportamiento FROM pez WHERE pez_id = " + pez_id;
                     break;
+                case 11:
+                    sql = "SELECT pez_forma FROM pez WHERE pez_id = " + pez_id;
+                    break;
 
                 default:
                     throw new AssertionError();
@@ -160,6 +163,10 @@ public class AcuarioDAO {
                         break;
                     case 10:
                         pVO.setPez_comportamiento(res.getString("pez_comportamiento"));
+                        general.add(pVO);
+                        break;
+                    case 11:
+                        pVO.setPez_forma(res.getString("pez_forma"));
                         general.add(pVO);
                         break;
                     default:
