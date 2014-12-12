@@ -12,6 +12,8 @@ package principal;
 
 import DAO.AcuarioDAO;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import objetos.PezVO;
 
 public class Principal {
 
@@ -21,10 +23,10 @@ public class Principal {
     public static void main(String[] args) throws SQLException {
         // TODO code application logic here
         AcuarioDAO aDAO = new AcuarioDAO();
-        ArrayList<String> peces = aDAO.getImagePrincipalFromFish();
-        Inicio inicio = new Inicio();
-        inicio.setLocationRelativeTo(null);
-        inicio.setVisible(true);
+        ArrayList<PezVO> peces = aDAO.getImagePrincipalFromFish();
+        Inicio inicio = new Inicio( peces );
+        inicio.setLocationRelativeTo( null );
+        inicio.setVisible( true );
     }
 
 }

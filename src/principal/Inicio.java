@@ -8,8 +8,11 @@ package principal;
 
 import java.awt.GraphicsEnvironment;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import objetos.PezVO;
 
 /**
  *
@@ -22,9 +25,25 @@ public class Inicio extends javax.swing.JFrame {
      */
     
     Ficha ficha = null;
+    ImageIcon Imagenes[] = null;
+    String names[] = null;
+    int ids[] = null;
+    int contador = 0;
     
-    public Inicio() {
+    public Inicio(ArrayList<PezVO> peces) {
         initComponents();
+        Imagenes = new ImageIcon[peces.size()];
+        names = new String[peces.size()];
+        ids = new int[peces.size()];
+        int i = 0;
+        for (PezVO pezVO : peces) {
+            Imagenes[i] = new ImageIcon(pezVO.getPez_nombComun());
+            names[i] = pezVO.getPez_nombre();
+            ids[i] = pezVO.getPez_id();
+            i++;
+        }
+        nombre.setText(names[0]);
+        slider.setIcon(Imagenes[0]);
     }
 
     /**
@@ -43,11 +62,13 @@ public class Inicio extends javax.swing.JFrame {
         next = new javax.swing.JLabel();
         slider = new javax.swing.JLabel();
         nombre = new javax.swing.JLabel();
+        trasero = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
         seleccion = new javax.swing.JPanel();
+        close = new javax.swing.JLabel();
         seleccionado = new javax.swing.JLabel();
         tittle = new javax.swing.JLabel();
-        close = new javax.swing.JLabel();
+        espaldar = new javax.swing.JLabel();
         nombres = new javax.swing.JLabel();
         biotopo = new javax.swing.JLabel();
         coloracion = new javax.swing.JLabel();
@@ -94,6 +115,11 @@ public class Inicio extends javax.swing.JFrame {
         prev.setMaximumSize(new java.awt.Dimension(130, 130));
         prev.setMinimumSize(new java.awt.Dimension(130, 130));
         prev.setPreferredSize(new java.awt.Dimension(130, 130));
+        prev.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                prevMouseClicked(evt);
+            }
+        });
         tactil.add(prev);
         prev.setBounds(100, 382, 130, 130);
 
@@ -103,6 +129,11 @@ public class Inicio extends javax.swing.JFrame {
         next.setMaximumSize(new java.awt.Dimension(130, 130));
         next.setMinimumSize(new java.awt.Dimension(130, 130));
         next.setPreferredSize(new java.awt.Dimension(130, 130));
+        next.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nextMouseClicked(evt);
+            }
+        });
         tactil.add(next);
         next.setBounds(1136, 382, 130, 130);
 
@@ -119,20 +150,31 @@ public class Inicio extends javax.swing.JFrame {
         tactil.add(slider);
         slider.setBounds(333, 297, 700, 300);
 
-        nombre.setBackground(new java.awt.Color(0, 0, 0));
+        nombre.setFont(new java.awt.Font("Tahoma", 2, 36)); // NOI18N
+        nombre.setForeground(new java.awt.Color(255, 255, 255));
         nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        nombre.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
-        nombre.setAlignmentY(0.0F);
         nombre.setMaximumSize(new java.awt.Dimension(700, 50));
         nombre.setMinimumSize(new java.awt.Dimension(700, 50));
         nombre.setPreferredSize(new java.awt.Dimension(700, 50));
-        nombre.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                nombreMouseClicked(evt);
-            }
-        });
         tactil.add(nombre);
         nombre.setBounds(333, 625, 700, 50);
+
+        trasero.setBackground(new java.awt.Color(0, 0, 0));
+        trasero.setFont(new java.awt.Font("Tahoma", 2, 36)); // NOI18N
+        trasero.setForeground(new java.awt.Color(255, 255, 255));
+        trasero.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        trasero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
+        trasero.setAlignmentY(0.0F);
+        trasero.setMaximumSize(new java.awt.Dimension(700, 50));
+        trasero.setMinimumSize(new java.awt.Dimension(700, 50));
+        trasero.setPreferredSize(new java.awt.Dimension(700, 50));
+        trasero.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                traseroMouseClicked(evt);
+            }
+        });
+        tactil.add(trasero);
+        trasero.setBounds(333, 625, 700, 50);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario.jpg"))); // NOI18N
@@ -152,6 +194,17 @@ public class Inicio extends javax.swing.JFrame {
         seleccion.setPreferredSize(new java.awt.Dimension(1366, 768));
         seleccion.setLayout(null);
 
+        close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        close.setAlignmentY(0.0F);
+        close.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                closeMouseClicked(evt);
+            }
+        });
+        seleccion.add(close);
+        close.setBounds(1290, 10, 64, 64);
+
         seleccionado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         seleccionado.setAlignmentY(0.0F);
         seleccionado.setMaximumSize(new java.awt.Dimension(700, 300));
@@ -163,7 +216,6 @@ public class Inicio extends javax.swing.JFrame {
         tittle.setFont(new java.awt.Font("Tahoma", 2, 36)); // NOI18N
         tittle.setForeground(new java.awt.Color(255, 255, 255));
         tittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        tittle.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
         tittle.setAlignmentY(0.0F);
         tittle.setMaximumSize(new java.awt.Dimension(700, 45));
         tittle.setMinimumSize(new java.awt.Dimension(700, 45));
@@ -171,16 +223,14 @@ public class Inicio extends javax.swing.JFrame {
         seleccion.add(tittle);
         tittle.setBounds(333, 75, 700, 45);
 
-        close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
-        close.setAlignmentY(0.0F);
-        close.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                closeMouseClicked(evt);
-            }
-        });
-        seleccion.add(close);
-        close.setBounds(1290, 10, 64, 64);
+        espaldar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        espaldar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
+        espaldar.setAlignmentY(0.0F);
+        espaldar.setMaximumSize(new java.awt.Dimension(700, 45));
+        espaldar.setMinimumSize(new java.awt.Dimension(700, 45));
+        espaldar.setPreferredSize(new java.awt.Dimension(700, 45));
+        seleccion.add(espaldar);
+        espaldar.setBounds(333, 75, 700, 45);
 
         nombres.setFont(new java.awt.Font("Tahoma", 2, 36)); // NOI18N
         nombres.setForeground(new java.awt.Color(255, 255, 255));
@@ -340,13 +390,15 @@ public class Inicio extends javax.swing.JFrame {
 
     private void sliderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sliderMouseClicked
         // TODO add your handling code here:
+        tittle.setText(names[contador]);
+        seleccionado.setIcon(Imagenes[contador]);
         this.setContentPane( seleccion );
     }//GEN-LAST:event_sliderMouseClicked
 
-    private void nombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreMouseClicked
+    private void traseroMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_traseroMouseClicked
         // TODO add your handling code here:
         sliderMouseClicked( evt );
-    }//GEN-LAST:event_nombreMouseClicked
+    }//GEN-LAST:event_traseroMouseClicked
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
@@ -365,40 +417,26 @@ public class Inicio extends javax.swing.JFrame {
         devices[ 1 ].setFullScreenWindow(ficha);
     }//GEN-LAST:event_nombresMouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void prevMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prevMouseClicked
+        // TODO add your handling code here:
+        contador--;
+        if (contador == -1) {
+            contador = ids.length-1;
         }
-        //</editor-fold>
+        slider.setIcon(Imagenes[contador]);
+        nombre.setText(names[contador]);
+    }//GEN-LAST:event_prevMouseClicked
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Inicio().setVisible(true);
-            }
-        });
-    }
+    private void nextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextMouseClicked
+        // TODO add your handling code here:
+        contador++;
+        if (contador == ids.length) {
+            contador = 0;
+        }
+        System.out.println("conteo " + contador);
+        slider.setIcon(Imagenes[contador]);
+        nombre.setText(names[contador]);
+    }//GEN-LAST:event_nextMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel acuario;
@@ -409,6 +447,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel coloracion;
     private javax.swing.JLabel comportamiento;
     private javax.swing.JLabel distribucion;
+    private javax.swing.JLabel espaldar;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel forma;
     private javax.swing.JLabel fseleccion;
@@ -425,5 +464,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel temperatura;
     private javax.swing.JLabel tittle;
     private javax.swing.JLabel titulo;
+    private javax.swing.JLabel trasero;
     // End of variables declaration//GEN-END:variables
 }

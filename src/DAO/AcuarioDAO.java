@@ -5,15 +5,10 @@
  */
 package DAO;
 
-import static com.sun.javafx.tk.Toolkit.getToolkit;
-import java.awt.Image;
 import principal.Conexion;
 import java.sql.*;
 import java.util.ArrayList;
 import objetos.*;
-import java.io.*;
-import javax.swing.ImageIcon;
-import principal.Ficha;
 
 /**
  *
@@ -231,16 +226,19 @@ public class AcuarioDAO {
         cn.desconectar();
         return lista;
     }
-    public ArrayList<String> getImagePrincipalFromFish()throws SQLException{
-        String ruta = null;
-        ArrayList<String> lista= new ArrayList<String>();
+    public ArrayList<PezVO> getImagePrincipalFromFish()throws SQLException{
+        PezVO pezVO = null;
+        ArrayList<PezVO> lista= new ArrayList<PezVO>();
         try {
             stm = cn.getConnection().createStatement();
-            pstm = cn.getConnection().prepareStatement("SELECT foto_ruta FROM foto WHERE tipo = true");
+            pstm = cn.getConnection().prepareStatement("SELECT f.pez_id, f.foto_ruta, p.pez_nombre FROM foto f INNER JOIN pez p ON p.pez_id = f.pez_id WHERE f.tipo = true");
             res = pstm.executeQuery();
             while (res.next()) {
-                ruta = res.getString("foto_ruta");
-                lista.add(ruta);
+                pezVO = new PezVO();
+                pezVO.setPez_id(res.getInt("pez_id"));
+                pezVO.setPez_nombComun(res.getString("foto_ruta"));
+                pezVO.setPez_nombre(res.getString("pez_nombre"));
+                lista.add(pezVO);
             }
 
         } catch (SQLException e) {
