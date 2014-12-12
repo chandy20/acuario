@@ -11,6 +11,7 @@ package principal;
  */
 
 import DAO.AcuarioDAO;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import objetos.PezVO;
@@ -20,7 +21,7 @@ public class Principal {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, IOException {
         // TODO code application logic here
         AcuarioDAO aDAO = new AcuarioDAO();
         ArrayList<PezVO> peces = aDAO.getImagePrincipalFromFish();

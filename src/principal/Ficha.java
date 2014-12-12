@@ -257,7 +257,7 @@ public class Ficha extends javax.swing.JDialog {
         tittle.setMinimumSize(new java.awt.Dimension(720, 70));
         tittle.setPreferredSize(new java.awt.Dimension(720, 70));
         visor.add(tittle);
-        tittle.setBounds(600, 50, 720, 70);
+        tittle.setBounds(600, 143, 720, 70);
 
         back1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         back1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
@@ -266,7 +266,7 @@ public class Ficha extends javax.swing.JDialog {
         back1.setMinimumSize(new java.awt.Dimension(720, 70));
         back1.setPreferredSize(new java.awt.Dimension(720, 70));
         visor.add(back1);
-        back1.setBounds(600, 50, 720, 70);
+        back1.setBounds(600, 143, 720, 70);
 
         foto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         foto.setAlignmentY(0.0F);
@@ -274,7 +274,7 @@ public class Ficha extends javax.swing.JDialog {
         foto.setMinimumSize(new java.awt.Dimension(1500, 700));
         foto.setPreferredSize(new java.awt.Dimension(1500, 700));
         visor.add(foto);
-        foto.setBounds(210, 170, 1500, 700);
+        foto.setBounds(210, 238, 1500, 700);
 
         fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario2.jpg"))); // NOI18N
         fondo1.setText("jLabel1");
