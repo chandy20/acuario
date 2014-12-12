@@ -41,8 +41,7 @@ public class Ficha extends javax.swing.JDialog {
       ArrayList<PezVO> lista =  aDAO.getDatosGenerales(pez_id, 2);
         for (PezVO pezVO : lista) {
             String biotopo = pezVO.getPez_biotopo();
-//            String datos = "<html><body><table><tr><h1><b><td align= 'center'>BIÓTOPO</td></b></h1></tr><tr><h2><td align= 'center'>"+biotopo+"</td></h2></tr></table></body></html>";
-            String datos = "BIÓTOPO\n\n"+biotopo;
+            String datos = "<html><body><table><tr><h1><b><td align= 'center'>BIÓTOPO</td></b></h1></tr><tr><h2><td align= 'center'>"+biotopo+"</td></h2></tr></table></body></html>";
             this.info.setText(datos);
         }
     }
@@ -83,9 +82,7 @@ public class Ficha extends javax.swing.JDialog {
         titulo = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
         slider = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        info = new javax.swing.JTextArea();
-        info1 = new javax.swing.JLabel();
+        info = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
         visor = new javax.swing.JPanel();
         tittle = new javax.swing.JLabel();
@@ -127,33 +124,15 @@ public class Ficha extends javax.swing.JDialog {
         datos.add(slider);
         slider.setBounds(600, 125, 720, 400);
 
-        jScrollPane1.setMaximumSize(new java.awt.Dimension(1536, 505));
-        jScrollPane1.setMinimumSize(new java.awt.Dimension(1536, 505));
-        jScrollPane1.setOpaque(false);
-        jScrollPane1.setPreferredSize(new java.awt.Dimension(1536, 505));
-
-        info.setColumns(20);
-        info.setRows(5);
+        info.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
+        info.setForeground(new java.awt.Color(255, 255, 255));
+        info.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        info.setAlignmentY(0.0F);
         info.setMaximumSize(new java.awt.Dimension(1536, 505));
-        info.setMinimumSize(new java.awt.Dimension(1536, 505));
-        info.setOpaque(false);
-        info.setPreferredSize(new java.awt.Dimension(1536, 505));
-        jScrollPane1.setViewportView(info);
-        info.getAccessibleContext().setAccessibleDescription("");
-        info.getAccessibleContext().setAccessibleParent(info);
-
-        datos.add(jScrollPane1);
-        jScrollPane1.setBounds(190, 550, 1536, 505);
-
-        info1.setFont(new java.awt.Font("Tahoma", 0, 48)); // NOI18N
-        info1.setForeground(new java.awt.Color(255, 255, 255));
-        info1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        info1.setAlignmentY(0.0F);
-        info1.setMaximumSize(new java.awt.Dimension(1536, 505));
-        info1.setMinimumSize(new java.awt.Dimension(1535, 505));
-        info1.setPreferredSize(new java.awt.Dimension(1535, 505));
-        datos.add(info1);
-        info1.setBounds(192, 550, 1535, 505);
+        info.setMinimumSize(new java.awt.Dimension(1535, 505));
+        info.setPreferredSize(new java.awt.Dimension(1535, 505));
+        datos.add(info);
+        info.setBounds(192, 550, 1535, 505);
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario2.jpg"))); // NOI18N
         fondo.setText("jLabel1");
@@ -279,10 +258,8 @@ public class Ficha extends javax.swing.JDialog {
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel fondo1;
     public javax.swing.JLabel foto;
-    private javax.swing.JTextArea info;
-    private javax.swing.JLabel info1;
+    private javax.swing.JLabel info;
     private javax.swing.JLayeredPane jLayeredPane1;
-    private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel slider;
     public javax.swing.JLabel tittle;
     private javax.swing.JLabel titulo;
