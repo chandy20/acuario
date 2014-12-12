@@ -10,6 +10,7 @@ package principal;
  * @author EnovaSoft
  */
 
+import DAO.AcuarioDAO;
 import java.sql.SQLException;
 
 public class Principal {
@@ -19,6 +20,8 @@ public class Principal {
      */
     public static void main(String[] args) throws SQLException {
         // TODO code application logic here
+        AcuarioDAO aDAO = new AcuarioDAO();
+        ArrayList<String> peces = aDAO.getImagePrincipalFromFish();
         Inicio inicio = new Inicio();
         inicio.setLocationRelativeTo(null);
         inicio.setVisible(true);
