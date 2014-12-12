@@ -542,6 +542,7 @@ public class Inicio extends javax.swing.JFrame {
             try {
             ficha.cargaImagenes(ids[contador]);
             ficha.cargaNombre(ids[contador]);
+            ficha.getColoracion(ids[contador]);
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -555,6 +556,7 @@ public class Inicio extends javax.swing.JFrame {
             try {
             ficha.cargaImagenes(ids[contador]);
             ficha.cargaNombre(ids[contador]);
+            ficha.getTamano(ids[contador]);
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -568,6 +570,7 @@ public class Inicio extends javax.swing.JFrame {
             try {
             ficha.cargaImagenes(ids[contador]);
             ficha.cargaNombre(ids[contador]);
+            ficha.getTempreratura(ids[contador]);
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -581,6 +584,7 @@ public class Inicio extends javax.swing.JFrame {
             try {
             ficha.cargaImagenes(ids[contador]);
             ficha.cargaNombre(ids[contador]);
+            ficha.getAgua(ids[contador]);
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -594,6 +598,7 @@ public class Inicio extends javax.swing.JFrame {
             try {
             ficha.cargaImagenes(ids[contador]);
             ficha.cargaNombre(ids[contador]);
+            ficha.getAcuario(ids[contador]);
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -607,6 +612,7 @@ public class Inicio extends javax.swing.JFrame {
             try {
             ficha.cargaImagenes(ids[contador]);
             ficha.cargaNombre(ids[contador]);
+            ficha.getAlimentacion(ids[contador]);
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -620,6 +626,7 @@ public class Inicio extends javax.swing.JFrame {
             try {
             ficha.cargaImagenes(ids[contador]);
             ficha.cargaNombre(ids[contador]);
+            ficha.getComportamiento(ids[contador]);
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
