@@ -29,7 +29,6 @@ public class Inicio extends javax.swing.JFrame {
     String names[] = null;
     int ids[] = null;
     int contador = 0;
-    boolean control = true;
     
     public Inicio(ArrayList<PezVO> peces) {
         initComponents();
@@ -45,6 +44,10 @@ public class Inicio extends javax.swing.JFrame {
         }
         nombre.setText(names[0]);
         slider.setIcon(Imagenes[0]);
+        ficha = new Ficha(this, false);
+        ficha.setPreferredSize(null);
+        java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+        devices[ 1 ].setFullScreenWindow(ficha);
     }
 
     /**
@@ -453,26 +456,18 @@ public class Inicio extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        ficha.dispose();
+        ficha.setContentPane(ficha.datos);
         this.setContentPane(tactil);
-        control = true;
     }//GEN-LAST:event_closeMouseClicked
 
     private void nombresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombresMouseClicked
         // TODO add your handling code here:
-        if (control) {
-            ficha = new Ficha(this, false);
-            ficha.setPreferredSize(null);
-            try {
-                ficha.cargaImagenes(ids[contador]);
-                ficha.cargaNombre(ids[contador]);
-            } catch (SQLException ex) {
-                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
-            devices[ 1 ].setFullScreenWindow(ficha);
+        try {
+            ficha.cargaImagenes(ids[contador]);
+            ficha.cargaNombre(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        control = false;
     }//GEN-LAST:event_nombresMouseClicked
 
     private void prevMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prevMouseClicked
