@@ -72,7 +72,7 @@ public class Ficha extends javax.swing.JDialog {
         titulo = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
         slider = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
+        info = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
         visor = new javax.swing.JPanel();
         tittle = new javax.swing.JLabel();
@@ -114,15 +114,15 @@ public class Ficha extends javax.swing.JDialog {
         datos.add(slider);
         slider.setBounds(600, 125, 720, 400);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setAlignmentY(0.0F);
-        jLabel1.setMaximumSize(new java.awt.Dimension(1536, 505));
-        jLabel1.setMinimumSize(new java.awt.Dimension(1535, 505));
-        jLabel1.setPreferredSize(new java.awt.Dimension(1535, 505));
-        datos.add(jLabel1);
-        jLabel1.setBounds(192, 550, 1535, 505);
+        info.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        info.setForeground(new java.awt.Color(255, 255, 255));
+        info.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        info.setAlignmentY(0.0F);
+        info.setMaximumSize(new java.awt.Dimension(1536, 505));
+        info.setMinimumSize(new java.awt.Dimension(1535, 505));
+        info.setPreferredSize(new java.awt.Dimension(1535, 505));
+        datos.add(info);
+        info.setBounds(192, 550, 1535, 505);
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario2.jpg"))); // NOI18N
         fondo.setText("jLabel1");
@@ -248,10 +248,10 @@ public class Ficha extends javax.swing.JDialog {
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel fondo1;
     public javax.swing.JLabel foto;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel info;
     private javax.swing.JLayeredPane jLayeredPane1;
     public javax.swing.JLabel slider;
-    private javax.swing.JLabel tittle;
+    public javax.swing.JLabel tittle;
     private javax.swing.JLabel titulo;
     public javax.swing.JPanel visor;
     // End of variables declaration//GEN-END:variables
