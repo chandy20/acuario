@@ -148,7 +148,7 @@ public class Ficha extends javax.swing.JDialog {
             if(acuario.equals(null)||acuario.equals("")){
                 acuario="NO ESPECIFICADO";
             }
-            String datos = "<html><body><div align = 'center'><b>AGUA</b><p><font size = '50'>" + acuario + "</font></div></body></html>";
+            String datos = "<html><body><div align = 'center'><b>ACUARIO</b><p><font size = '50'>" + acuario + "</font></div></body></html>";
             this.info.setText(datos);
         }
     }
@@ -160,7 +160,7 @@ public class Ficha extends javax.swing.JDialog {
             if(alimentacion.equals(null)||alimentacion.equals("")){
                 alimentacion = "NO ESPECIFICADA";
             }
-            String datos = "<html><body><div align = 'center'><b>AGUA</b><p><font size = '50'>" + alimentacion + "</font></div></body></html>";
+            String datos = "<html><body><div align = 'center'><b>ALIMENTACION</b><p><font size = '50'>" + alimentacion + "</font></div></body></html>";
             this.info.setText(datos);
         }
     }
@@ -172,7 +172,7 @@ public class Ficha extends javax.swing.JDialog {
             if(comportamiento.equals(null)||comportamiento.equals("")){
                 comportamiento = "NO ESPECIFICADO";
             }
-            String datos = "<html><body><div align = 'center'><b>AGUA</b><p><font size = '50'>" + comportamiento + "</font></div></body></html>";
+            String datos = "<html><body><div align = 'center'><b>COMPORTAMIENTO</b><p><font size = '50'>" + comportamiento + "</font></div></body></html>";
             this.info.setText(datos);
         }
     }
