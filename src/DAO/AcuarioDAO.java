@@ -72,41 +72,41 @@ public class AcuarioDAO {
         return nombre;
     }
 
-    public ArrayList<PezVO> getDatosGenerales(String nombre, int x) throws SQLException {
+    public ArrayList<PezVO> getDatosGenerales(int pez_id, int x) throws SQLException {
         ArrayList general = new ArrayList();
         PezVO pVO = new PezVO();
         try {
             String sql = "";
             switch (x) {
                 case 1:
-                    sql = "SELECT p.pez_nombComun, p.pez_nombCientifico, s.subf_descripcion, f.fami_descripcion, o.orde_descripcion FROM pez p INNER JOIN subfamilia s ON s.subf_id = p.subf_id INNER JOIN familia f ON f.fami_id = s.fami_id INNER JOIN orden o ON o.orde_id = f.orde_id WHERE pez_nombre = '" + nombre + "'";
+                    sql = "SELECT p.pez_nombComun, p.pez_nombCientifico, s.subf_descripcion, f.fami_descripcion, o.orde_descripcion FROM pez p INNER JOIN subfamilia s ON s.subf_id = p.subf_id INNER JOIN familia f ON f.fami_id = s.fami_id INNER JOIN orden o ON o.orde_id = f.orde_id WHERE pez_id = " + pez_id;
                     break;
                 case 2:
-                    sql = "SELECT pez_biotopo FROM pez WHERE pez_nombre = '" + nombre + "'";
+                    sql = "SELECT pez_biotopo FROM pez WHERE pez_id = " + pez_id;
                     break;
                 case 3:
-                    sql = "SELECT pez_distribucion FROM pez WHERE pez_nombre = '" + nombre + "'";
+                    sql = "SELECT pez_distribucion FROM pez WHERE pez_id = " + pez_id;
                     break;
                 case 4:
-                    sql = "SELECT pez_coloracion FROM pez WHERE pez_nombre = '" + nombre + "'";
+                    sql = "SELECT pez_coloracion FROM pez WHERE pez_id = " + pez_id;
                     break;
                 case 5:
-                    sql = "SELECT pez_tamano FROM pez WHERE pez_nombre = '" + nombre + "'";
+                    sql = "SELECT pez_tamano FROM pez WHERE pez_id = " + pez_id;
                     break;
                 case 6:
-                    sql = "SELECT pez_temperatura FROM pez WHERE pez_nombre = '" + nombre + "'";
+                    sql = "SELECT pez_temperatura FROM pez WHERE pez_id = " + pez_id;
                     break;
                 case 7:
-                    sql = "SELECT pez_agua FROM pez WHERE pez_nombre = '" + nombre + "'";
+                    sql = "SELECT pez_agua FROM pez WHERE pez_id = " + pez_id;
                     break;
                 case 8:
-                    sql = "SELECT pez_acuario FROM pez WHERE pez_nombre = '" + nombre + "'";
+                    sql = "SELECT pez_acuario FROM pez WHERE pez_id = " + pez_id;
                     break;
                 case 9:
-                    sql = "SELECT pez_alimentacion FROM pez WHERE pez_nombre = '" + nombre + "'";
+                    sql = "SELECT pez_alimentacion FROM pez WHERE pez_id = " + pez_id;
                     break;
                 case 10:
-                    sql = "SELECT pez_comportamiento FROM pez WHERE pez_nombre = '" + nombre + "'";
+                    sql = "SELECT pez_comportamiento FROM pez WHERE pez_id = " + pez_id;
                     break;
 
                 default:

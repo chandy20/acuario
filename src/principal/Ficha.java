@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
+import objetos.PezVO;
 
 /**
  *
@@ -24,6 +25,7 @@ public class Ficha extends javax.swing.JDialog {
      * Creates new form Ficha
      */
     AcuarioDAO aDAO = new AcuarioDAO();
+    PezVO pVO = new PezVO();
 
     public Ficha(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -35,6 +37,14 @@ public class Ficha extends javax.swing.JDialog {
         titulo.setText(nombre);
     }
 
+    public void getBiotopo(int pez_id) throws SQLException{
+      ArrayList<PezVO> lista =  aDAO.getDatosGenerales(pez_id, 2);
+        for (PezVO pezVO : lista) {
+            String biotopo = pezVO.getPez_biotopo();
+            String datos = "<table><tr><h1><td>BIÓTOPO</td></h1></tr><tr><h2><td>"+biotopo+"</td></h2></tr></table>";
+            this.info.setText(datos);
+        }
+    }
     public void cargaImagenes(int pez_id) throws SQLException {
 
         ArrayList<String> peces = aDAO.getImagesFromFish(pez_id);
