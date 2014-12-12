@@ -31,24 +31,24 @@ public class Ficha extends javax.swing.JDialog {
     public void cargaImagenes(int pez_id) throws SQLException {
         AcuarioDAO aDAO = new AcuarioDAO();
         ArrayList<String> peces = aDAO.getImagesFromFish(pez_id);
-        long start = System.currentTimeMillis();
-        long aux = start;
-        int x = 0;
-        while (true) {
-            long end = System.currentTimeMillis();
-            long res = end - start;
-            if (aux != end) {
-                aux = end;
-                if (res % 5000 == 0) {
-                    Image foto = getToolkit().getImage(peces.get(x));
-                    slider.setIcon(new ImageIcon(foto));
-                    x++;
-                    if (x == peces.size()) {
-                        x = 0;
-                    }
-                }
-            }
-        }
+//        long start = System.currentTimeMillis();
+//        long aux = start;
+//        int x = 0;
+//        while (true) {
+//            long end = System.currentTimeMillis();
+//            long res = end - start;
+//            if (aux != end) {
+//                aux = end;
+//                if (res % 5000 == 0) {
+//                    Image foto = getToolkit().getImage(peces.get(x));
+                    slider.setIcon(new ImageIcon(peces.get(0)));
+//                    x++;
+//                    if (x == peces.size()) {
+//                        x = 0;
+//                    }
+//                }
+//            }
+//        }
     }
 
     /**
