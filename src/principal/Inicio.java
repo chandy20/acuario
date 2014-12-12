@@ -455,7 +455,6 @@ public class Inicio extends javax.swing.JFrame {
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
         ficha.setContentPane(ficha.visor);
-        ficha.foto.setIcon(Imagenes[contador]);
         this.setContentPane(tactil);
     }//GEN-LAST:event_closeMouseClicked
 
@@ -490,176 +489,138 @@ public class Inicio extends javax.swing.JFrame {
         }
         slider.setIcon(Imagenes[contador]);
         nombre.setText(names[contador]);
+        ficha.foto.setIcon(Imagenes[contador]);
+        ficha.tittle.setText(names[contador]);
     }//GEN-LAST:event_nextMouseClicked
 
     private void biotopoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_biotopoMouseClicked
         // TODO add your handling code here:
-        if (control) {
-            ficha = new Ficha(this, false);
-            ficha.setPreferredSize(null);
-            try {
-                ficha.cargaImagenes(ids[contador]);
-                ficha.cargaNombre(ids[contador]);
-            } catch (SQLException ex) {
-                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
-            devices[ 1 ].setFullScreenWindow(ficha);
+        ficha.setContentPane(ficha.datos);
+        try {
+            ficha.cargaImagenes(ids[contador]);
+            ficha.cargaNombre(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        control = false;
+        java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+        devices[ 1].setFullScreenWindow(ficha);
     }//GEN-LAST:event_biotopoMouseClicked
 
     private void distribucionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_distribucionMouseClicked
         // TODO add your handling code here:
-        if (control) {
-            ficha = new Ficha(this, false);
-            ficha.setPreferredSize(null);
+        ficha.setContentPane(ficha.datos);
             try {
-                ficha.cargaImagenes(ids[contador]);
-                ficha.cargaNombre(ids[contador]);
-            } catch (SQLException ex) {
-                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
-            devices[ 1 ].setFullScreenWindow(ficha);
+            ficha.cargaImagenes(ids[contador]);
+            ficha.cargaNombre(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        control = false;
+        java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+        devices[ 1].setFullScreenWindow(ficha);
     }//GEN-LAST:event_distribucionMouseClicked
 
     private void formaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formaMouseClicked
         // TODO add your handling code here:
-        if (control) {
-            ficha = new Ficha(this, false);
-            ficha.setPreferredSize(null);
+        ficha.setContentPane(ficha.datos);
             try {
-                ficha.cargaImagenes(ids[contador]);
-                ficha.cargaNombre(ids[contador]);
-            } catch (SQLException ex) {
-                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
-            devices[ 1 ].setFullScreenWindow(ficha);
+            ficha.cargaImagenes(ids[contador]);
+            ficha.cargaNombre(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        control = false;
+        java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+        devices[ 1].setFullScreenWindow(ficha);
     }//GEN-LAST:event_formaMouseClicked
 
     private void coloracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coloracionMouseClicked
         // TODO add your handling code here:
-        if (control) {
-            ficha = new Ficha(this, false);
-            ficha.setPreferredSize(null);
+        ficha.setContentPane(ficha.datos);
             try {
-                ficha.cargaImagenes(ids[contador]);
-                ficha.cargaNombre(ids[contador]);
-            } catch (SQLException ex) {
-                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
-            devices[ 1 ].setFullScreenWindow(ficha);
+            ficha.cargaImagenes(ids[contador]);
+            ficha.cargaNombre(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        control = false;
+        java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+        devices[ 1].setFullScreenWindow(ficha);
     }//GEN-LAST:event_coloracionMouseClicked
 
     private void tamanoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tamanoMouseClicked
         // TODO add your handling code here:
-        if (control) {
-            ficha = new Ficha(this, false);
-            ficha.setPreferredSize(null);
+        ficha.setContentPane(ficha.datos);
             try {
-                ficha.cargaImagenes(ids[contador]);
-                ficha.cargaNombre(ids[contador]);
-            } catch (SQLException ex) {
-                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
-            devices[ 1 ].setFullScreenWindow(ficha);
+            ficha.cargaImagenes(ids[contador]);
+            ficha.cargaNombre(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        control = false;
+        java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+        devices[ 1].setFullScreenWindow(ficha);
     }//GEN-LAST:event_tamanoMouseClicked
 
     private void temperaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_temperaturaMouseClicked
         // TODO add your handling code here:
-        if (control) {
-            ficha = new Ficha(this, false);
-            ficha.setPreferredSize(null);
+        ficha.setContentPane(ficha.datos);
             try {
-                ficha.cargaImagenes(ids[contador]);
-                ficha.cargaNombre(ids[contador]);
-            } catch (SQLException ex) {
-                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
-            devices[ 1 ].setFullScreenWindow(ficha);
+            ficha.cargaImagenes(ids[contador]);
+            ficha.cargaNombre(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        control = false;
+        java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+        devices[ 1].setFullScreenWindow(ficha);
     }//GEN-LAST:event_temperaturaMouseClicked
 
     private void aguaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aguaMouseClicked
         // TODO add your handling code here:
-        if (control) {
-            ficha = new Ficha(this, false);
-            ficha.setPreferredSize(null);
+        ficha.setContentPane(ficha.datos);
             try {
-                ficha.cargaImagenes(ids[contador]);
-                ficha.cargaNombre(ids[contador]);
-            } catch (SQLException ex) {
-                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
-            devices[ 1 ].setFullScreenWindow(ficha);
+            ficha.cargaImagenes(ids[contador]);
+            ficha.cargaNombre(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        control = false;
+        java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+        devices[ 1].setFullScreenWindow(ficha);
     }//GEN-LAST:event_aguaMouseClicked
 
     private void acuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acuarioMouseClicked
         // TODO add your handling code here:
-        if (control) {
-            ficha = new Ficha(this, false);
-            ficha.setPreferredSize(null);
+        ficha.setContentPane(ficha.datos);
             try {
-                ficha.cargaImagenes(ids[contador]);
-                ficha.cargaNombre(ids[contador]);
-            } catch (SQLException ex) {
-                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
-            devices[ 1 ].setFullScreenWindow(ficha);
+            ficha.cargaImagenes(ids[contador]);
+            ficha.cargaNombre(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        control = false;
+        java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+        devices[ 1].setFullScreenWindow(ficha);
     }//GEN-LAST:event_acuarioMouseClicked
 
     private void alimentacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alimentacionMouseClicked
         // TODO add your handling code here:
-        if (control) {
-            ficha = new Ficha(this, false);
-            ficha.setPreferredSize(null);
+        ficha.setContentPane(ficha.datos);
             try {
-                ficha.cargaImagenes(ids[contador]);
-                ficha.cargaNombre(ids[contador]);
-            } catch (SQLException ex) {
-                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
-            devices[ 1 ].setFullScreenWindow(ficha);
+            ficha.cargaImagenes(ids[contador]);
+            ficha.cargaNombre(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        control = false;
+        java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+        devices[ 1].setFullScreenWindow(ficha);
     }//GEN-LAST:event_alimentacionMouseClicked
 
     private void comportamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comportamientoMouseClicked
         // TODO add your handling code here:
-        if (control) {
-            ficha = new Ficha(this, false);
-            ficha.setPreferredSize(null);
+        ficha.setContentPane(ficha.datos);
             try {
-                ficha.cargaImagenes(ids[contador]);
-                ficha.cargaNombre(ids[contador]);
-            } catch (SQLException ex) {
-                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
-            devices[ 1 ].setFullScreenWindow(ficha);
+            ficha.cargaImagenes(ids[contador]);
+            ficha.cargaNombre(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        control = false;
+        java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+        devices[ 1].setFullScreenWindow(ficha);
     }//GEN-LAST:event_comportamientoMouseClicked
 
     private void nombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreMouseClicked
