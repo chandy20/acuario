@@ -251,8 +251,4 @@ public class AcuarioDAO {
         cn.desconectar();
         return lista;
     }
-    
-    public void temporizador(ArrayList<String> peces){
-    }
-
 }

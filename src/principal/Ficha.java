@@ -31,7 +31,6 @@ public class Ficha extends javax.swing.JDialog {
     public void cargaImagenes(int pez_id) throws SQLException {
         AcuarioDAO aDAO = new AcuarioDAO();
         ArrayList<String> peces = aDAO.getImagesFromFish(pez_id);
-        aDAO.temporizador(peces);
         long start = System.currentTimeMillis();
         long aux = start;
         int x = 0;
