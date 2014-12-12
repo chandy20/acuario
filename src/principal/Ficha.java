@@ -23,12 +23,15 @@ public class Ficha extends javax.swing.JDialog {
     /**
      * Creates new form Ficha
      */
-    public Ficha(java.awt.Frame parent, boolean modal) throws SQLException {
+    public Ficha(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
-        AcuarioDAO aDAO = new AcuarioDAO();
-        ArrayList<String> peces = aDAO.getImagesFromFish(1);
-        aDAO.temporizador(peces);
         initComponents();
+    }
+
+    public void cargaImagenes(int pez_id) throws SQLException {
+        AcuarioDAO aDAO = new AcuarioDAO();
+        ArrayList<String> peces = aDAO.getImagesFromFish(pez_id);
+        aDAO.temporizador(peces);
         long start = System.currentTimeMillis();
         long aux = start;
         int x = 0;
@@ -68,7 +71,6 @@ public class Ficha extends javax.swing.JDialog {
         jLayeredPane1.setAlignmentY(0.0F);
         jLayeredPane1.setMaximumSize(new java.awt.Dimension(1920, 1080));
         jLayeredPane1.setMinimumSize(new java.awt.Dimension(1920, 1080));
-        jLayeredPane1.setPreferredSize(new java.awt.Dimension(1920, 1080));
 
         slider.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         slider.setMaximumSize(new java.awt.Dimension(800, 600));
@@ -90,13 +92,13 @@ public class Ficha extends javax.swing.JDialog {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1920, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
@@ -139,13 +141,7 @@ public class Ficha extends javax.swing.JDialog {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Ficha dialog = null;
-                try {
-                    dialog = new Ficha(new javax.swing.JFrame(), true);
-
-                } catch (SQLException ex) {
-                    Logger.getLogger(Ficha.class
-                            .getName()).log(Level.SEVERE, null, ex);
-                }
+                dialog = new Ficha(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
