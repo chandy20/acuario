@@ -231,7 +231,7 @@ public class AcuarioDAO {
         cn.desconectar();
         return lista;
     }
-    public ArrayList<String> getImagePrincipalFromFish(int pez_id)throws SQLException{
+    public ArrayList<String> getImagePrincipalFromFish()throws SQLException{
         String ruta = null;
         ArrayList<String> lista= new ArrayList<String>();
         try {
