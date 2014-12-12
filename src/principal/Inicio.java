@@ -7,10 +7,15 @@
 package principal;
 
 import java.awt.GraphicsEnvironment;
+import java.awt.Image;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import objetos.PezVO;
 
@@ -25,31 +30,35 @@ public class Inicio extends javax.swing.JFrame {
      */
     
     Ficha ficha = null;
-    ImageIcon Imagenes[] = null;
+    Image Imagenes[] = null;
     String names[] = null;
+    BufferedImage buffer[] = null;
     int ids[] = null;
     int contador = 0;
     
-    public Inicio(ArrayList<PezVO> peces) {
+    public Inicio(ArrayList<PezVO> peces) throws IOException {
         initComponents();
-        Imagenes = new ImageIcon[peces.size()];
+        Imagenes = new Image[peces.size()];
         names = new String[peces.size()];
         ids = new int[peces.size()];
+        buffer = new BufferedImage[peces.size()];
         int i = 0;
         for (PezVO pezVO : peces) {
-            Imagenes[i] = new ImageIcon(pezVO.getPez_nombComun());
+            Imagenes[i] = getToolkit().getImage(pezVO.getPez_nombComun());
             names[i] = pezVO.getPez_nombre();
             ids[i] = pezVO.getPez_id();
+            buffer[i] = ImageIO.read(new File(pezVO.getPez_nombComun()));
             i++;
         }
         nombre.setText(names[0]);
-        slider.setIcon(Imagenes[0]);
+        Image foto = Imagenes[0].getScaledInstance((int)((buffer[0].getWidth()*300)/buffer[0].getHeight(null)), 300, Image.SCALE_DEFAULT);
+        slider.setIcon(new ImageIcon(foto));
         ficha = new Ficha(this, false);
         ficha.setPreferredSize(null);
         java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
         devices[ 1 ].setFullScreenWindow(ficha);
         ficha.setContentPane(ficha.visor);
-        ficha.foto.setIcon(Imagenes[0]);
+        ficha.foto.setIcon(new ImageIcon(Imagenes[0]));
         ficha.tittle.setText(names[contador]);
     }
 
@@ -448,7 +457,8 @@ public class Inicio extends javax.swing.JFrame {
     private void sliderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sliderMouseClicked
         // TODO add your handling code here:
         tittle.setText(names[contador]);
-        seleccionado.setIcon(Imagenes[contador]);
+        Image foto = Imagenes[contador].getScaledInstance((int)((buffer[contador].getWidth()*300)/buffer[contador].getHeight(null)), 300, Image.SCALE_DEFAULT);
+        seleccionado.setIcon(new ImageIcon(foto));
         this.setContentPane( seleccion );
     }//GEN-LAST:event_sliderMouseClicked
 
@@ -477,9 +487,10 @@ public class Inicio extends javax.swing.JFrame {
         if (contador == -1) {
             contador = ids.length-1;
         }
-        slider.setIcon(Imagenes[contador]);
+        Image foto = Imagenes[contador].getScaledInstance((int)((buffer[contador].getWidth()*300)/buffer[contador].getHeight(null)), 300, Image.SCALE_DEFAULT);
+        slider.setIcon(new ImageIcon(foto));
         nombre.setText(names[contador]);
-        ficha.foto.setIcon(Imagenes[contador]);
+        ficha.foto.setIcon(new ImageIcon(Imagenes[contador]));
         ficha.tittle.setText(names[contador]);
     }//GEN-LAST:event_prevMouseClicked
 
@@ -489,9 +500,10 @@ public class Inicio extends javax.swing.JFrame {
         if (contador == ids.length) {
             contador = 0;
         }
-        slider.setIcon(Imagenes[contador]);
+        Image foto = Imagenes[contador].getScaledInstance((int)((buffer[contador].getWidth()*300)/buffer[contador].getHeight(null)), 300, Image.SCALE_DEFAULT);
+        slider.setIcon(new ImageIcon(foto));
         nombre.setText(names[contador]);
-        ficha.foto.setIcon(Imagenes[contador]);
+        ficha.foto.setIcon(new ImageIcon(Imagenes[contador]));
         ficha.tittle.setText(names[contador]);
     }//GEN-LAST:event_nextMouseClicked
 
