@@ -59,6 +59,78 @@ public class Ficha extends javax.swing.JDialog {
             this.info.setText(datos);
         }
     }
+    
+    public void getDistribucion(int pez_id)throws SQLException{
+        lista =  aDAO.getDatosGenerales(pez_id, 3);
+        for (PezVO pezVO : lista) {
+            String distribucion = pezVO.getPez_distribucion();
+            String datos = "<html><body><div align = 'center'><b><p>DISTRIBUCIÓN</p></b><br><font size = '50'>"+distribucion+"</font></div></body></html>";
+            this.info.setText(datos);
+        }
+    }
+    
+    public void getColoracion(int pez_id)throws SQLException{
+        lista =  aDAO.getDatosGenerales(pez_id, 4);
+        for (PezVO pezVO : lista) {
+            String coloracion = pezVO.getPez_coloracion();
+            String datos = "<html><body><div align = 'center'><b><p>COLORACIÓN</p></b><br><font size = '50'>"+coloracion+"</font></div></body></html>";
+            this.info.setText(datos);
+        }
+    }
+    
+    public void getTamano(int pez_id)throws SQLException{
+        lista =  aDAO.getDatosGenerales(pez_id, 5);
+        for (PezVO pezVO : lista) {
+            String tamano = pezVO.getPez_tamano();
+            String datos = "<html><body><div align = 'center'><b><p>TAMAÑO</p></b><br><font size = '50'>"+tamano+"</font></div></body></html>";
+            this.info.setText(datos);
+        }
+    }
+    
+    public void getTempreratura(int pez_id)throws SQLException{
+        lista =  aDAO.getDatosGenerales(pez_id, 6);
+        for (PezVO pezVO : lista) {
+            String temperatura = pezVO.getPez_tempreatura();
+            String datos = "<html><body><div align = 'center'><b><p>TEMPERATURA</p></b><br><font size = '50'>"+temperatura+"</font></div></body></html>";
+            this.info.setText(datos);
+        }
+    }
+    
+    public void getAgua(int pez_id)throws SQLException{
+        lista =  aDAO.getDatosGenerales(pez_id, 7);
+        for (PezVO pezVO : lista) {
+            String agua = pezVO.getPez_agua();
+            String datos = "<html><body><div align = 'center'><b><p>AGUA</p></b><br><font size = '50'>"+agua+"</font></div></body></html>";
+            this.info.setText(datos);
+        }
+    }
+    
+    public void getAcuario(int pez_id)throws SQLException{
+        lista =  aDAO.getDatosGenerales(pez_id, 8);
+        for (PezVO pezVO : lista) {
+            String acuario = pezVO.getPez_acuario();
+            String datos = "<html><body><div align = 'center'><b><p>AGUA</p></b><br><font size = '50'>"+acuario+"</font></div></body></html>";
+            this.info.setText(datos);
+        }
+    }
+    
+    public void getAlimentacion(int pez_id)throws SQLException{
+        lista =  aDAO.getDatosGenerales(pez_id, 9);
+        for (PezVO pezVO : lista) {
+            String alimentacion = pezVO.getPez_alimentacion();
+            String datos = "<html><body><div align = 'center'><b><p>AGUA</p></b><br><font size = '50'>"+alimentacion+"</font></div></body></html>";
+            this.info.setText(datos);
+        }
+    }
+    public void getComportamiento(int pez_id)throws SQLException{
+        lista =  aDAO.getDatosGenerales(pez_id, 9);
+        for (PezVO pezVO : lista) {
+            String comportamiento = pezVO.getPez_comportamiento();
+            String datos = "<html><body><div align = 'center'><b><p>AGUA</p></b><br><font size = '50'>"+comportamiento+"</font></div></body></html>";
+            this.info.setText(datos);
+        }
+    }
+    
     public void cargaImagenes(int pez_id) throws SQLException {
 
         ArrayList<String> peces = aDAO.getImagesFromFish(pez_id);
