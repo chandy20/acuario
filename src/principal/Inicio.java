@@ -406,13 +406,14 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_closeMouseClicked
 
     private void nombresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombresMouseClicked
+        // TODO add your handling code here:
+        ficha = new Ficha(this, false);
+        ficha.setPreferredSize(null);
         try {
-            // TODO add your handling code here:
-            ficha  = new Ficha(this, false);
+            ficha.cargaImagenes(ids[contador]);
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ficha.setPreferredSize(null);
         java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
         devices[ 1 ].setFullScreenWindow(ficha);
     }//GEN-LAST:event_nombresMouseClicked
