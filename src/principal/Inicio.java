@@ -257,6 +257,11 @@ public class Inicio extends javax.swing.JFrame {
         biotopo.setMaximumSize(new java.awt.Dimension(180, 45));
         biotopo.setMinimumSize(new java.awt.Dimension(180, 45));
         biotopo.setPreferredSize(new java.awt.Dimension(180, 45));
+        biotopo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                biotopoMouseClicked(evt);
+            }
+        });
         seleccion.add(biotopo);
         biotopo.setBounds(703, 545, 180, 45);
 
@@ -268,6 +273,11 @@ public class Inicio extends javax.swing.JFrame {
         coloracion.setMaximumSize(new java.awt.Dimension(250, 45));
         coloracion.setMinimumSize(new java.awt.Dimension(250, 45));
         coloracion.setPreferredSize(new java.awt.Dimension(250, 45));
+        coloracion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                coloracionMouseClicked(evt);
+            }
+        });
         seleccion.add(coloracion);
         coloracion.setBounds(354, 610, 250, 45);
 
@@ -279,6 +289,11 @@ public class Inicio extends javax.swing.JFrame {
         distribucion.setMaximumSize(new java.awt.Dimension(270, 45));
         distribucion.setMinimumSize(new java.awt.Dimension(270, 45));
         distribucion.setPreferredSize(new java.awt.Dimension(270, 45));
+        distribucion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                distribucionMouseClicked(evt);
+            }
+        });
         seleccion.add(distribucion);
         distribucion.setBounds(989, 545, 270, 45);
 
@@ -290,6 +305,11 @@ public class Inicio extends javax.swing.JFrame {
         forma.setMaximumSize(new java.awt.Dimension(140, 45));
         forma.setMinimumSize(new java.awt.Dimension(140, 45));
         forma.setPreferredSize(new java.awt.Dimension(140, 45));
+        forma.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formaMouseClicked(evt);
+            }
+        });
         seleccion.add(forma);
         forma.setBounds(107, 610, 140, 45);
 
@@ -301,6 +321,11 @@ public class Inicio extends javax.swing.JFrame {
         tamano.setMaximumSize(new java.awt.Dimension(170, 45));
         tamano.setMinimumSize(new java.awt.Dimension(170, 45));
         tamano.setPreferredSize(new java.awt.Dimension(170, 45));
+        tamano.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tamanoMouseClicked(evt);
+            }
+        });
         seleccion.add(tamano);
         tamano.setBounds(711, 610, 170, 45);
 
@@ -312,6 +337,11 @@ public class Inicio extends javax.swing.JFrame {
         temperatura.setMaximumSize(new java.awt.Dimension(270, 45));
         temperatura.setMinimumSize(new java.awt.Dimension(270, 45));
         temperatura.setPreferredSize(new java.awt.Dimension(270, 45));
+        temperatura.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                temperaturaMouseClicked(evt);
+            }
+        });
         seleccion.add(temperatura);
         temperatura.setBounds(988, 610, 270, 45);
 
@@ -444,6 +474,108 @@ public class Inicio extends javax.swing.JFrame {
         slider.setIcon(Imagenes[contador]);
         nombre.setText(names[contador]);
     }//GEN-LAST:event_nextMouseClicked
+
+    private void biotopoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_biotopoMouseClicked
+        // TODO add your handling code here:
+        if (control) {
+            ficha = new Ficha(this, false);
+            ficha.setPreferredSize(null);
+            try {
+                ficha.cargaImagenes(ids[contador]);
+                ficha.cargaNombre(ids[contador]);
+            } catch (SQLException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+            devices[ 1 ].setFullScreenWindow(ficha);
+        }
+        control = false;
+    }//GEN-LAST:event_biotopoMouseClicked
+
+    private void distribucionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_distribucionMouseClicked
+        // TODO add your handling code here:
+        if (control) {
+            ficha = new Ficha(this, false);
+            ficha.setPreferredSize(null);
+            try {
+                ficha.cargaImagenes(ids[contador]);
+                ficha.cargaNombre(ids[contador]);
+            } catch (SQLException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+            devices[ 1 ].setFullScreenWindow(ficha);
+        }
+        control = false;
+    }//GEN-LAST:event_distribucionMouseClicked
+
+    private void formaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formaMouseClicked
+        // TODO add your handling code here:
+        if (control) {
+            ficha = new Ficha(this, false);
+            ficha.setPreferredSize(null);
+            try {
+                ficha.cargaImagenes(ids[contador]);
+                ficha.cargaNombre(ids[contador]);
+            } catch (SQLException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+            devices[ 1 ].setFullScreenWindow(ficha);
+        }
+        control = false;
+    }//GEN-LAST:event_formaMouseClicked
+
+    private void coloracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coloracionMouseClicked
+        // TODO add your handling code here:
+        if (control) {
+            ficha = new Ficha(this, false);
+            ficha.setPreferredSize(null);
+            try {
+                ficha.cargaImagenes(ids[contador]);
+                ficha.cargaNombre(ids[contador]);
+            } catch (SQLException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+            devices[ 1 ].setFullScreenWindow(ficha);
+        }
+        control = false;
+    }//GEN-LAST:event_coloracionMouseClicked
+
+    private void tamanoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tamanoMouseClicked
+        // TODO add your handling code here:
+        if (control) {
+            ficha = new Ficha(this, false);
+            ficha.setPreferredSize(null);
+            try {
+                ficha.cargaImagenes(ids[contador]);
+                ficha.cargaNombre(ids[contador]);
+            } catch (SQLException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+            devices[ 1 ].setFullScreenWindow(ficha);
+        }
+        control = false;
+    }//GEN-LAST:event_tamanoMouseClicked
+
+    private void temperaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_temperaturaMouseClicked
+        // TODO add your handling code here:
+        if (control) {
+            ficha = new Ficha(this, false);
+            ficha.setPreferredSize(null);
+            try {
+                ficha.cargaImagenes(ids[contador]);
+                ficha.cargaNombre(ids[contador]);
+            } catch (SQLException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+            devices[ 1 ].setFullScreenWindow(ficha);
+        }
+        control = false;
+    }//GEN-LAST:event_temperaturaMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel acuario;
