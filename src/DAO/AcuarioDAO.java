@@ -177,7 +177,27 @@ public class AcuarioDAO {
         cn.desconectar();
         return general;
     }
-
+    
+    public String getPezName(int pez_id) throws SQLException{
+        String name = null;
+        try {
+            stm = cn.getConnection().createStatement();
+            pstm = cn.getConnection().prepareStatement("SELECT pez_nombre FROM pez WHERE pez_estado = true AND pez_id = " + pez_id);
+            res = pstm.executeQuery();
+            while (res.next()) {
+                name = res.getString("pez_nombre");
+            }
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            stm.close();
+            pstm.close();
+            res.close();
+        }
+        cn.desconectar();
+        return name;
+    }
+    
     public ArrayList<PezVO> getDatosPez(String nombre) throws SQLException {
         ArrayList general = new ArrayList();
         PezVO pVO = new PezVO();

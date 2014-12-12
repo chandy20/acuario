@@ -23,13 +23,20 @@ public class Ficha extends javax.swing.JDialog {
     /**
      * Creates new form Ficha
      */
+    AcuarioDAO aDAO = new AcuarioDAO();
+
     public Ficha(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
 
+    public void cargaNombre(int pez_id) throws SQLException {
+        String nombre = aDAO.getPezName(pez_id);
+        titulo.setText(nombre);
+    }
+
     public void cargaImagenes(int pez_id) throws SQLException {
-        AcuarioDAO aDAO = new AcuarioDAO();
+
         ArrayList<String> peces = aDAO.getImagesFromFish(pez_id);
 //        long start = System.currentTimeMillis();
 //        long aux = start;
@@ -41,7 +48,7 @@ public class Ficha extends javax.swing.JDialog {
 //                aux = end;
 //                if (res % 5000 == 0) {
 //                    Image foto = getToolkit().getImage(peces.get(x));
-                    slider.setIcon(new ImageIcon(peces.get(0)));
+        slider.setIcon(new ImageIcon(peces.get(0)));
 //                    x++;
 //                    if (x == peces.size()) {
 //                        x = 0;
