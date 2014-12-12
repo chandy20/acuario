@@ -41,7 +41,7 @@ public class Ficha extends javax.swing.JDialog {
       ArrayList<PezVO> lista =  aDAO.getDatosGenerales(pez_id, 2);
         for (PezVO pezVO : lista) {
             String biotopo = pezVO.getPez_biotopo();
-            String datos = "<table><tr><h1><td>BIÓTOPO</td></h1></tr><tr><h2><td>"+biotopo+"</td></h2></tr></table>";
+            String datos = "<html><body><table><tr><h1><td>BIÓTOPO</td></h1></tr><tr><h2><td>"+biotopo+"</td></h2></tr></table></body></html>";
             this.info.setText(datos);
         }
     }
