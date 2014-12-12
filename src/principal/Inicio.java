@@ -29,6 +29,7 @@ public class Inicio extends javax.swing.JFrame {
     String names[] = null;
     int ids[] = null;
     int contador = 0;
+    boolean control = true;
     
     public Inicio(ArrayList<PezVO> peces) {
         initComponents();
@@ -323,7 +324,7 @@ public class Inicio extends javax.swing.JFrame {
         agua.setMinimumSize(new java.awt.Dimension(120, 45));
         agua.setPreferredSize(new java.awt.Dimension(120, 45));
         seleccion.add(agua);
-        agua.setBounds(50, 675, 120, 45);
+        agua.setBounds(90, 675, 120, 45);
 
         acuario.setFont(new java.awt.Font("Tahoma", 2, 36)); // NOI18N
         acuario.setForeground(new java.awt.Color(255, 255, 255));
@@ -334,7 +335,7 @@ public class Inicio extends javax.swing.JFrame {
         acuario.setMinimumSize(new java.awt.Dimension(180, 45));
         acuario.setPreferredSize(new java.awt.Dimension(180, 45));
         seleccion.add(acuario);
-        acuario.setBounds(285, 675, 180, 45);
+        acuario.setBounds(300, 675, 180, 45);
 
         alimentacion.setFont(new java.awt.Font("Tahoma", 2, 36)); // NOI18N
         alimentacion.setForeground(new java.awt.Color(255, 255, 255));
@@ -345,7 +346,7 @@ public class Inicio extends javax.swing.JFrame {
         alimentacion.setMinimumSize(new java.awt.Dimension(280, 45));
         alimentacion.setPreferredSize(new java.awt.Dimension(280, 45));
         seleccion.add(alimentacion);
-        alimentacion.setBounds(585, 675, 280, 45);
+        alimentacion.setBounds(570, 675, 280, 45);
 
         comportamiento.setFont(new java.awt.Font("Tahoma", 2, 36)); // NOI18N
         comportamiento.setForeground(new java.awt.Color(255, 255, 255));
@@ -356,7 +357,7 @@ public class Inicio extends javax.swing.JFrame {
         comportamiento.setMinimumSize(new java.awt.Dimension(340, 45));
         comportamiento.setPreferredSize(new java.awt.Dimension(340, 45));
         seleccion.add(comportamiento);
-        comportamiento.setBounds(976, 675, 340, 45);
+        comportamiento.setBounds(940, 675, 340, 45);
 
         fseleccion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fseleccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fseleccion.jpg"))); // NOI18N
@@ -402,20 +403,25 @@ public class Inicio extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
+        ficha.dispose();
         this.setContentPane(tactil);
+        control = true;
     }//GEN-LAST:event_closeMouseClicked
 
     private void nombresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombresMouseClicked
         // TODO add your handling code here:
-        ficha = new Ficha(this, false);
-        ficha.setPreferredSize(null);
-        try {
-            ficha.cargaImagenes(ids[contador]);
-        } catch (SQLException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        if (control) {
+            ficha = new Ficha(this, false);
+            ficha.setPreferredSize(null);
+            try {
+                ficha.cargaImagenes(ids[contador]);
+            } catch (SQLException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+            devices[ 1 ].setFullScreenWindow(ficha);
         }
-        java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
-        devices[ 1 ].setFullScreenWindow(ficha);
+        control = false;
     }//GEN-LAST:event_nombresMouseClicked
 
     private void prevMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prevMouseClicked
@@ -434,7 +440,6 @@ public class Inicio extends javax.swing.JFrame {
         if (contador == ids.length) {
             contador = 0;
         }
-        System.out.println("conteo " + contador);
         slider.setIcon(Imagenes[contador]);
         nombre.setText(names[contador]);
     }//GEN-LAST:event_nextMouseClicked
