@@ -231,14 +231,16 @@ public class AcuarioDAO {
         cn.desconectar();
         return lista;
     }
-    public String getImagePrincipalFromFish(int pez_id)throws SQLException{
+    public ArrayList<String> getImagePrincipalFromFish(int pez_id)throws SQLException{
         String ruta = null;
+        ArrayList<String> lista= new ArrayList<String>();
         try {
             stm = cn.getConnection().createStatement();
-            pstm = cn.getConnection().prepareStatement("SELECT foto_ruta FROM foto WHERE pez_id =" + pez_id + " AND tipo = true");
+            pstm = cn.getConnection().prepareStatement("SELECT foto_ruta FROM foto WHERE tipo = true");
             res = pstm.executeQuery();
             while (res.next()) {
                 ruta = res.getString("foto_ruta");
+                lista.add(ruta);
             }
 
         } catch (SQLException e) {
@@ -249,7 +251,7 @@ public class AcuarioDAO {
             res.close();
         }
         cn.desconectar();
-        return ruta;
+        return lista;
     }
     
     public void temporizador(ArrayList<String> peces){

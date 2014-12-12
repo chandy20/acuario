@@ -28,7 +28,6 @@ public class Ficha extends javax.swing.JDialog {
         AcuarioDAO aDAO = new AcuarioDAO();
         ArrayList<String> peces = aDAO.getImagesFromFish(1);
         aDAO.temporizador(peces);
-        System.out.println("sadasd");
         initComponents();
         long start = System.currentTimeMillis();
         long aux = start;
@@ -42,13 +41,12 @@ public class Ficha extends javax.swing.JDialog {
                     Image foto = getToolkit().getImage(peces.get(x));
                     slider.setIcon(new ImageIcon(foto));
                     x++;
-                    if (x == peces.size() - 1) {
+                    if (x == peces.size()) {
                         x = 0;
                     }
                 }
             }
         }
-        
     }
 
     /**
