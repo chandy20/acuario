@@ -61,6 +61,9 @@ public class Ficha extends javax.swing.JDialog {
         lista = aDAO.getDatosGenerales(pez_id, 2);
         for (PezVO pezVO : lista) {
             String biotopo = pezVO.getPez_biotopo();
+            if(biotopo.equals(null) || biotopo.equals("")){
+                biotopo = "NO ESPECIFICADO";
+            }
             String datos = "<html><body><div align = 'center'><b>BIÓTOPO</b><p><font size = '60'>" + biotopo + "</font></div></body></html>";
             this.info.setText(datos);
         }
@@ -70,6 +73,9 @@ public class Ficha extends javax.swing.JDialog {
         lista = aDAO.getDatosGenerales(pez_id, 3);
         for (PezVO pezVO : lista) {
             String distribucion = pezVO.getPez_distribucion();
+            if(distribucion.equals(null)|| distribucion.endsWith("")){
+                distribucion= "NO ESPECIFICADA";
+            }
             String datos = "<html><body><div align = 'center'><b>DISTRIBUCIÓN</b><p><font size = '60'>" + distribucion + "</font></div></body></html>";
             this.info.setText(datos);
         }
@@ -79,6 +85,9 @@ public class Ficha extends javax.swing.JDialog {
         lista = aDAO.getDatosGenerales(pez_id, 11);
         for (PezVO pezVO : lista) {
             String forma = pezVO.getPez_forma();
+            if(forma.equals(null)||forma.equals("")){
+                forma = "NO ESPECIFICADA";
+            }
             String datos = "<html><body><div align = 'center'><b>FORMA</b><p><font size = '60'>" + forma + "</font></div></body></html>";
             this.info.setText(datos);
         }
@@ -88,6 +97,9 @@ public class Ficha extends javax.swing.JDialog {
         lista = aDAO.getDatosGenerales(pez_id, 4);
         for (PezVO pezVO : lista) {
             String coloracion = pezVO.getPez_coloracion();
+            if(coloracion.equals(null)||coloracion.equals("")){
+                coloracion="NO ESPECIFICADA";
+            }
             String datos = "<html><body><div align = 'center'><b>COLORACIÓN</b><p><font size = '50'>" + coloracion + "</font></div></body></html>";
             this.info.setText(datos);
         }
@@ -97,6 +109,9 @@ public class Ficha extends javax.swing.JDialog {
         lista = aDAO.getDatosGenerales(pez_id, 5);
         for (PezVO pezVO : lista) {
             String tamano = pezVO.getPez_tamano();
+            if(tamano.equals(null)|| tamano.equals("")){
+                tamano="NO ESPECIFICADO";
+            }
             String datos = "<html><body><div align = 'center'><b>TAMAÑO</b><p><font size = '50'>" + tamano + "</font></div></body></html>";
             this.info.setText(datos);
         }
@@ -106,6 +121,9 @@ public class Ficha extends javax.swing.JDialog {
         lista = aDAO.getDatosGenerales(pez_id, 6);
         for (PezVO pezVO : lista) {
             String temperatura = pezVO.getPez_tempreatura();
+            if(temperatura.equals(null)||temperatura.equals("")){
+                temperatura="NO ESPECIFICADA";
+            }
             String datos = "<html><body><div align = 'center'><b>TEMPERATURA</b><p><font size = '50'>" + temperatura + "</font></div></body></html>";
             this.info.setText(datos);
         }
@@ -115,6 +133,9 @@ public class Ficha extends javax.swing.JDialog {
         lista = aDAO.getDatosGenerales(pez_id, 7);
         for (PezVO pezVO : lista) {
             String agua = pezVO.getPez_agua();
+            if (agua.equals(null)||agua.equals("")){
+                agua="NO ESPECIFICADA";
+            }
             String datos = "<html><body><div align = 'center'><b>AGUA</b><p><font size = '50'>" + agua + "</font></div></body></html>";
             this.info.setText(datos);
         }
@@ -124,6 +145,9 @@ public class Ficha extends javax.swing.JDialog {
         lista = aDAO.getDatosGenerales(pez_id, 8);
         for (PezVO pezVO : lista) {
             String acuario = pezVO.getPez_acuario();
+            if(acuario.equals(null)||acuario.equals("")){
+                acuario="NO ESPECIFICADO";
+            }
             String datos = "<html><body><div align = 'center'><b>AGUA</b><p><font size = '50'>" + acuario + "</font></div></body></html>";
             this.info.setText(datos);
         }
@@ -133,6 +157,9 @@ public class Ficha extends javax.swing.JDialog {
         lista = aDAO.getDatosGenerales(pez_id, 9);
         for (PezVO pezVO : lista) {
             String alimentacion = pezVO.getPez_alimentacion();
+            if(alimentacion.equals(null)||alimentacion.equals("")){
+                alimentacion = "NO ESPECIFICADA";
+            }
             String datos = "<html><body><div align = 'center'><b>AGUA</b><p><font size = '50'>" + alimentacion + "</font></div></body></html>";
             this.info.setText(datos);
         }
@@ -142,6 +169,9 @@ public class Ficha extends javax.swing.JDialog {
         lista = aDAO.getDatosGenerales(pez_id, 9);
         for (PezVO pezVO : lista) {
             String comportamiento = pezVO.getPez_comportamiento();
+            if(comportamiento.equals(null)||comportamiento.equals("")){
+                comportamiento = "NO ESPECIFICADO";
+            }
             String datos = "<html><body><div align = 'center'><b>AGUA</b><p><font size = '50'>" + comportamiento + "</font></div></body></html>";
             this.info.setText(datos);
         }
