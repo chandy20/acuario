@@ -61,7 +61,10 @@ public class Ficha extends javax.swing.JDialog {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        titulo = new javax.swing.JLabel();
+        back = new javax.swing.JLabel();
         slider = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -72,12 +75,39 @@ public class Ficha extends javax.swing.JDialog {
         jLayeredPane1.setMaximumSize(new java.awt.Dimension(1920, 1080));
         jLayeredPane1.setMinimumSize(new java.awt.Dimension(1920, 1080));
 
+        titulo.setFont(new java.awt.Font("Tahoma", 2, 36)); // NOI18N
+        titulo.setForeground(new java.awt.Color(255, 255, 255));
+        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo.setAlignmentY(0.0F);
+        titulo.setMaximumSize(new java.awt.Dimension(720, 50));
+        titulo.setMinimumSize(new java.awt.Dimension(720, 50));
+        titulo.setPreferredSize(new java.awt.Dimension(720, 50));
+        jLayeredPane1.add(titulo);
+        titulo.setBounds(600, 50, 720, 50);
+
+        back.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        back.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
+        back.setAlignmentY(0.0F);
+        jLayeredPane1.add(back);
+        back.setBounds(600, 50, 720, 50);
+
         slider.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        slider.setMaximumSize(new java.awt.Dimension(550, 400));
-        slider.setMinimumSize(new java.awt.Dimension(550, 400));
-        slider.setPreferredSize(new java.awt.Dimension(550, 400));
+        slider.setAlignmentY(0.0F);
+        slider.setMaximumSize(new java.awt.Dimension(720, 400));
+        slider.setMinimumSize(new java.awt.Dimension(720, 400));
+        slider.setPreferredSize(new java.awt.Dimension(720, 400));
         jLayeredPane1.add(slider);
-        slider.setBounds(560, 40, 800, 600);
+        slider.setBounds(600, 125, 720, 400);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setAlignmentY(0.0F);
+        jLabel1.setMaximumSize(new java.awt.Dimension(1536, 505));
+        jLabel1.setMinimumSize(new java.awt.Dimension(1535, 505));
+        jLabel1.setPreferredSize(new java.awt.Dimension(1535, 505));
+        jLayeredPane1.add(jLabel1);
+        jLabel1.setBounds(192, 550, 1535, 505);
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario2.jpg"))); // NOI18N
         fondo.setText("jLabel1");
@@ -154,8 +184,11 @@ public class Ficha extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel back;
     private javax.swing.JLabel fondo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     public javax.swing.JLabel slider;
+    private javax.swing.JLabel titulo;
     // End of variables declaration//GEN-END:variables
 }
