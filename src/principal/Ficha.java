@@ -42,7 +42,7 @@ public class Ficha extends javax.swing.JDialog {
         for (PezVO pezVO : lista) {
             String biotopo = pezVO.getPez_biotopo();
 //            String datos = "<html><body><table><tr><h1><b><td align= 'center'>BIÓTOPO</td></b></h1></tr><tr><h2><td align= 'center'>"+biotopo+"</td></h2></tr></table></body></html>";
-            String datos = "<html><body><div align = 'center'><b><p><font size = '70'>BIÓTOPO</font></p></b><br><font size = '40'>"+biotopo+"</font></div></body></html>";
+            String datos = "<html><body><div align = 'center'><b><p><font size = '100'>BIÓTOPO</font></p></b><br><font size = '60'>"+biotopo+"</font></div></body></html>";
             this.info.setText(datos);
         }
     }
@@ -126,7 +126,7 @@ public class Ficha extends javax.swing.JDialog {
         datos.add(slider);
         slider.setBounds(600, 125, 720, 400);
 
-        info.setFont(new java.awt.Font("Tahoma", 2, 56)); // NOI18N
+        info.setFont(new java.awt.Font("Tahoma", 2, 70)); // NOI18N
         info.setForeground(new java.awt.Color(255, 255, 255));
         info.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         info.setAlignmentY(0.0F);
@@ -158,7 +158,7 @@ public class Ficha extends javax.swing.JDialog {
 
         visor.setLayout(null);
 
-        tittle.setFont(new java.awt.Font("Tahoma", 2, 36)); // NOI18N
+        tittle.setFont(new java.awt.Font("Tahoma", 2, 48)); // NOI18N
         tittle.setForeground(new java.awt.Color(255, 255, 255));
         tittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tittle.setAlignmentY(0.0F);
