@@ -244,7 +244,7 @@ public class Ficha extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel back;
     private javax.swing.JLabel back1;
-    private javax.swing.JPanel datos;
+    public javax.swing.JPanel datos;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel fondo1;
     public javax.swing.JLabel foto;
@@ -253,6 +253,6 @@ public class Ficha extends javax.swing.JDialog {
     public javax.swing.JLabel slider;
     private javax.swing.JLabel tittle;
     private javax.swing.JLabel titulo;
-    private javax.swing.JPanel visor;
+    public javax.swing.JPanel visor;
     // End of variables declaration//GEN-END:variables
 }
