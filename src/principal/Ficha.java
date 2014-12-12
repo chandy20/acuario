@@ -126,7 +126,7 @@ public class Ficha extends javax.swing.JDialog {
         datos.add(slider);
         slider.setBounds(600, 125, 720, 400);
 
-        info.setFont(new java.awt.Font("Tahoma", 2, 48)); // NOI18N
+        info.setFont(new java.awt.Font("Tahoma", 2, 56)); // NOI18N
         info.setForeground(new java.awt.Color(255, 255, 255));
         info.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         info.setAlignmentY(0.0F);
