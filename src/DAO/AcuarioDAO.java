@@ -5,6 +5,7 @@
  */
 package DAO;
 
+import java.io.File;
 import principal.Conexion;
 import java.sql.*;
 import java.util.ArrayList;
@@ -107,7 +108,7 @@ public class AcuarioDAO {
                 case 10:
                     sql = "SELECT pez_comportamiento FROM pez WHERE pez_nombre = '" + nombre + "'";
                     break;
-                    
+
                 default:
                     throw new AssertionError();
             }
@@ -177,8 +178,8 @@ public class AcuarioDAO {
         cn.desconectar();
         return general;
     }
-    
-    public String getPezName(int pez_id) throws SQLException{
+
+    public String getPezName(int pez_id) throws SQLException {
         String name = null;
         try {
             stm = cn.getConnection().createStatement();
@@ -197,7 +198,7 @@ public class AcuarioDAO {
         cn.desconectar();
         return name;
     }
-    
+
     public ArrayList<PezVO> getDatosPez(String nombre) throws SQLException {
         ArrayList general = new ArrayList();
         PezVO pVO = new PezVO();
@@ -225,8 +226,8 @@ public class AcuarioDAO {
         cn.desconectar();
         return general;
     }
-    
-    public ArrayList<String> getImagesFromFish(int pez_id)throws SQLException{
+
+    public ArrayList<String> getImagesFromFish(int pez_id) throws SQLException {
         ArrayList lista = new ArrayList();
         try {
             stm = cn.getConnection().createStatement();
@@ -246,19 +247,26 @@ public class AcuarioDAO {
         cn.desconectar();
         return lista;
     }
-    public ArrayList<PezVO> getImagePrincipalFromFish()throws SQLException{
+
+    public ArrayList<PezVO> getImagePrincipalFromFish() throws SQLException {
         PezVO pezVO = null;
-        ArrayList<PezVO> lista= new ArrayList<PezVO>();
+        ArrayList<PezVO> lista = new ArrayList<PezVO>();
+        String url = null;
+        File archivo = null;
         try {
             stm = cn.getConnection().createStatement();
-            pstm = cn.getConnection().prepareStatement("SELECT f.pez_id, f.foto_ruta, p.pez_nombre FROM foto f INNER JOIN pez p ON p.pez_id = f.pez_id WHERE f.tipo = true");
+            pstm = cn.getConnection().prepareStatement("SELECT f.pez_id, f.foto_ruta, p.pez_nombre FROM foto f INNER JOIN pez p ON p.pez_id = f.pez_id WHERE f.tipo = true AND p.pez_estado = true");
             res = pstm.executeQuery();
             while (res.next()) {
-                pezVO = new PezVO();
-                pezVO.setPez_id(res.getInt("pez_id"));
-                pezVO.setPez_nombComun(res.getString("foto_ruta"));
-                pezVO.setPez_nombre(res.getString("pez_nombre"));
-                lista.add(pezVO);
+                url = res.getString("foto_ruta");
+                archivo = new File(url);
+                if (archivo.exists()) {
+                    pezVO = new PezVO();
+                    pezVO.setPez_id(res.getInt("pez_id"));
+                    pezVO.setPez_nombComun(res.getString("foto_ruta"));
+                    pezVO.setPez_nombre(res.getString("pez_nombre"));
+                    lista.add(pezVO);
+                }
             }
 
         } catch (SQLException e) {
