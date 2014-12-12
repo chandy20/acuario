@@ -353,6 +353,11 @@ public class Inicio extends javax.swing.JFrame {
         agua.setMaximumSize(new java.awt.Dimension(120, 45));
         agua.setMinimumSize(new java.awt.Dimension(120, 45));
         agua.setPreferredSize(new java.awt.Dimension(120, 45));
+        agua.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                aguaMouseClicked(evt);
+            }
+        });
         seleccion.add(agua);
         agua.setBounds(90, 675, 120, 45);
 
@@ -364,6 +369,11 @@ public class Inicio extends javax.swing.JFrame {
         acuario.setMaximumSize(new java.awt.Dimension(180, 45));
         acuario.setMinimumSize(new java.awt.Dimension(180, 45));
         acuario.setPreferredSize(new java.awt.Dimension(180, 45));
+        acuario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                acuarioMouseClicked(evt);
+            }
+        });
         seleccion.add(acuario);
         acuario.setBounds(300, 675, 180, 45);
 
@@ -375,6 +385,11 @@ public class Inicio extends javax.swing.JFrame {
         alimentacion.setMaximumSize(new java.awt.Dimension(280, 45));
         alimentacion.setMinimumSize(new java.awt.Dimension(280, 45));
         alimentacion.setPreferredSize(new java.awt.Dimension(280, 45));
+        alimentacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                alimentacionMouseClicked(evt);
+            }
+        });
         seleccion.add(alimentacion);
         alimentacion.setBounds(570, 675, 280, 45);
 
@@ -386,6 +401,11 @@ public class Inicio extends javax.swing.JFrame {
         comportamiento.setMaximumSize(new java.awt.Dimension(340, 45));
         comportamiento.setMinimumSize(new java.awt.Dimension(340, 45));
         comportamiento.setPreferredSize(new java.awt.Dimension(340, 45));
+        comportamiento.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                comportamientoMouseClicked(evt);
+            }
+        });
         seleccion.add(comportamiento);
         comportamiento.setBounds(940, 675, 340, 45);
 
@@ -576,6 +596,74 @@ public class Inicio extends javax.swing.JFrame {
         }
         control = false;
     }//GEN-LAST:event_temperaturaMouseClicked
+
+    private void aguaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aguaMouseClicked
+        // TODO add your handling code here:
+        if (control) {
+            ficha = new Ficha(this, false);
+            ficha.setPreferredSize(null);
+            try {
+                ficha.cargaImagenes(ids[contador]);
+                ficha.cargaNombre(ids[contador]);
+            } catch (SQLException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+            devices[ 1 ].setFullScreenWindow(ficha);
+        }
+        control = false;
+    }//GEN-LAST:event_aguaMouseClicked
+
+    private void acuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acuarioMouseClicked
+        // TODO add your handling code here:
+        if (control) {
+            ficha = new Ficha(this, false);
+            ficha.setPreferredSize(null);
+            try {
+                ficha.cargaImagenes(ids[contador]);
+                ficha.cargaNombre(ids[contador]);
+            } catch (SQLException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+            devices[ 1 ].setFullScreenWindow(ficha);
+        }
+        control = false;
+    }//GEN-LAST:event_acuarioMouseClicked
+
+    private void alimentacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alimentacionMouseClicked
+        // TODO add your handling code here:
+        if (control) {
+            ficha = new Ficha(this, false);
+            ficha.setPreferredSize(null);
+            try {
+                ficha.cargaImagenes(ids[contador]);
+                ficha.cargaNombre(ids[contador]);
+            } catch (SQLException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+            devices[ 1 ].setFullScreenWindow(ficha);
+        }
+        control = false;
+    }//GEN-LAST:event_alimentacionMouseClicked
+
+    private void comportamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comportamientoMouseClicked
+        // TODO add your handling code here:
+        if (control) {
+            ficha = new Ficha(this, false);
+            ficha.setPreferredSize(null);
+            try {
+                ficha.cargaImagenes(ids[contador]);
+                ficha.cargaNombre(ids[contador]);
+            } catch (SQLException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+            devices[ 1 ].setFullScreenWindow(ficha);
+        }
+        control = false;
+    }//GEN-LAST:event_comportamientoMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel acuario;
