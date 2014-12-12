@@ -42,7 +42,7 @@ public class Ficha extends javax.swing.JDialog {
         for (PezVO pezVO : lista) {
             String biotopo = pezVO.getPez_biotopo();
 //            String datos = "<html><body><table><tr><h1><b><td align= 'center'>BIÓTOPO</td></b></h1></tr><tr><h2><td align= 'center'>"+biotopo+"</td></h2></tr></table></body></html>";
-            String datos = "<html><body><div align = 'center'><h1><b><p><font size = '40'>BIÓTOPO</font></p></b></h1><br><h2>"+biotopo+"</h2></div></body></html>";
+            String datos = "<html><body><div align = 'center'><h1><b><p><font size = '40'>BIÓTOPO</font></p></b></h1><br><h2><font size = '30'>"+biotopo+"</font></h2></div></body></html>";
             this.info.setText(datos);
         }
     }
