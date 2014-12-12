@@ -5,11 +5,15 @@
  */
 package DAO;
 
+import static com.sun.javafx.tk.Toolkit.getToolkit;
+import java.awt.Image;
 import principal.Conexion;
 import java.sql.*;
 import java.util.ArrayList;
 import objetos.*;
 import java.io.*;
+import javax.swing.ImageIcon;
+import principal.Ficha;
 
 /**
  *
@@ -205,6 +209,50 @@ public class AcuarioDAO {
         }
         cn.desconectar();
         return general;
+    }
+    
+    public ArrayList<String> getImagesFromFish(int pez_id)throws SQLException{
+        ArrayList lista = new ArrayList();
+        try {
+            stm = cn.getConnection().createStatement();
+            pstm = cn.getConnection().prepareStatement("SELECT foto_ruta FROM foto WHERE pez_id =" + pez_id + " AND tipo = false");
+            res = pstm.executeQuery();
+            while (res.next()) {
+                lista.add(res.getString("foto_ruta"));
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            stm.close();
+            pstm.close();
+            res.close();
+        }
+        cn.desconectar();
+        return lista;
+    }
+    public String getImagePrincipalFromFish(int pez_id)throws SQLException{
+        String ruta = null;
+        try {
+            stm = cn.getConnection().createStatement();
+            pstm = cn.getConnection().prepareStatement("SELECT foto_ruta FROM foto WHERE pez_id =" + pez_id + " AND tipo = true");
+            res = pstm.executeQuery();
+            while (res.next()) {
+                ruta = res.getString("foto_ruta");
+            }
+
+        } catch (SQLException e) {
+            System.out.println(e);
+        } finally {
+            stm.close();
+            pstm.close();
+            res.close();
+        }
+        cn.desconectar();
+        return ruta;
+    }
+    
+    public void temporizador(ArrayList<String> peces){
     }
 
 }
