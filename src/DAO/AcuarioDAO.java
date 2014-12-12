@@ -217,7 +217,7 @@ public class AcuarioDAO {
             }
 
         } catch (SQLException e) {
-            System.out.println(e);
+            System.out.println("error " + e);
         } finally {
             stm.close();
             pstm.close();
