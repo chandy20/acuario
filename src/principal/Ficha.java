@@ -65,6 +65,7 @@ public class Ficha extends javax.swing.JDialog {
         fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setUndecorated(true);
 
         jLayeredPane1.setAlignmentX(0.0F);
         jLayeredPane1.setAlignmentY(0.0F);
