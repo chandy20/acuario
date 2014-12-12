@@ -22,6 +22,7 @@ public class Ficha extends javax.swing.JDialog {
      */
     AcuarioDAO aDAO = new AcuarioDAO();
     PezVO pVO = new PezVO();
+    ArrayList<PezVO> lista = new ArrayList<PezVO>();
 
     public Ficha(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -32,12 +33,28 @@ public class Ficha extends javax.swing.JDialog {
         String nombre = aDAO.getPezName(pez_id);
         titulo.setText(nombre);
     }
+    
+    public void getNombres(int pez_id) throws SQLException {
+        lista =  aDAO.getDatosGenerales(pez_id, 1);
+        for (PezVO pezVO : lista) {
+            String nombreComun = pezVO.getPez_nombComun();
+            String nombreCientifico = pezVO.getPez_nombCientifico();
+            String orden = pezVO.getPez_coloracion();
+            String familia = pezVO.getPez_alimentacion();
+            String subfamilia = pezVO.getPez_biotopo();
+            String datos = "<html><body><div align = 'center'><b><p>NOMBRE COMÚN</p></b><br><font size = '50'>"+nombreComun+"</font>" +
+                    "<b><p>NOMBRE CIENTÍFICO</p></b><br><font size = '50'>"+nombreCientifico+"</font> " +
+                    "<b><p>CLASICACIÓN</p></b><br><b><p>ORDEN</p></b><br><font size = '50'>"+orden+"</font> " +
+                    "<b><p>FAMILIA</p></b><br><font size = '50'>"+familia+"</font> " +
+                    "<b><p>SUBFAMILIA</p></b><br><font size = '50'>"+subfamilia+"</font></div></body></html>";
+            this.info.setText(datos);
+        }
+    }
 
     public void getBiotopo(int pez_id) throws SQLException{
-      ArrayList<PezVO> lista =  aDAO.getDatosGenerales(pez_id, 2);
+        lista =  aDAO.getDatosGenerales(pez_id, 2);
         for (PezVO pezVO : lista) {
             String biotopo = pezVO.getPez_biotopo();
-//            String datos = "<html><body><table><tr><h1><b><td align= 'center'>BIÓTOPO</td></b></h1></tr><tr><h2><td align= 'center'>"+biotopo+"</td></h2></tr></table></body></html>";
             String datos = "<html><body><div align = 'center'><b><p>BIÓTOPO</p></b><br><font size = '50'>"+biotopo+"</font></div></body></html>";
             this.info.setText(datos);
         }
