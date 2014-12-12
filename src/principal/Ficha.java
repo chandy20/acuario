@@ -72,9 +72,9 @@ public class Ficha extends javax.swing.JDialog {
         jLayeredPane1.setMinimumSize(new java.awt.Dimension(1920, 1080));
 
         slider.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        slider.setMaximumSize(new java.awt.Dimension(800, 600));
-        slider.setMinimumSize(new java.awt.Dimension(800, 600));
-        slider.setPreferredSize(new java.awt.Dimension(800, 600));
+        slider.setMaximumSize(new java.awt.Dimension(550, 400));
+        slider.setMinimumSize(new java.awt.Dimension(550, 400));
+        slider.setPreferredSize(new java.awt.Dimension(550, 400));
         jLayeredPane1.add(slider);
         slider.setBounds(560, 40, 800, 600);
 
