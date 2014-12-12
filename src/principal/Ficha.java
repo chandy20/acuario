@@ -6,12 +6,8 @@
 package principal;
 
 import DAO.AcuarioDAO;
-import static com.sun.javafx.tk.Toolkit.getToolkit;
-import java.awt.Image;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import objetos.PezVO;
 
@@ -42,7 +38,7 @@ public class Ficha extends javax.swing.JDialog {
         for (PezVO pezVO : lista) {
             String biotopo = pezVO.getPez_biotopo();
 //            String datos = "<html><body><table><tr><h1><b><td align= 'center'>BIÓTOPO</td></b></h1></tr><tr><h2><td align= 'center'>"+biotopo+"</td></h2></tr></table></body></html>";
-            String datos = "<html><body><div align = 'center'><b><p>BIÓTOPO</p></b><br><font size = '50'"+biotopo+"</font></div></body></html>";
+            String datos = "<html><body><div align = 'center'><b><p>BIÓTOPO</p></b><br><font size = '50'>"+biotopo+"</font></div></body></html>";
             this.info.setText(datos);
         }
     }
