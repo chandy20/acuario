@@ -73,7 +73,7 @@ public class Ficha extends javax.swing.JDialog {
         lista = aDAO.getDatosGenerales(pez_id, 3);
         for (PezVO pezVO : lista) {
             String distribucion = pezVO.getPez_distribucion();
-            if(distribucion.equals(null)|| distribucion.endsWith("")){
+            if(distribucion.equals(null)|| distribucion.equals("")){
                 distribucion= "NO ESPECIFICADA";
             }
             String datos = "<html><body><div align = 'center'><b>DISTRIBUCIÓN</b><p><font size = '60'>" + distribucion + "</font></div></body></html>";
@@ -166,7 +166,7 @@ public class Ficha extends javax.swing.JDialog {
     }
 
     public void getComportamiento(int pez_id) throws SQLException {
-        lista = aDAO.getDatosGenerales(pez_id, 9);
+        lista = aDAO.getDatosGenerales(pez_id, 10);
         for (PezVO pezVO : lista) {
             String comportamiento = pezVO.getPez_comportamiento();
             if(comportamiento.equals(null)||comportamiento.equals("")){
