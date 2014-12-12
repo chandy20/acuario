@@ -27,6 +27,7 @@ public class Ficha extends javax.swing.JDialog {
     private final int velocidad = 5000;//en milisegundos
     AcuarioDAO aDAO = new AcuarioDAO();
     PezVO pVO = new PezVO();
+    int x = 0;
     ArrayList<PezVO> lista = new ArrayList<PezVO>();
 
     public Ficha(java.awt.Frame parent, boolean modal) {
@@ -153,9 +154,11 @@ public class Ficha extends javax.swing.JDialog {
             scheduler.scheduleAtFixedRate(
                     new Runnable() {
                         public void run() {
+                            System.out.println("equis: " + x);
+                            x++;
                             slider.setIcon(new ImageIcon(ruta));
                         }
-                    }, 100, velocidad, TimeUnit.MILLISECONDS);
+                    }, 0, velocidad, TimeUnit.MILLISECONDS);
         }
 
     }
