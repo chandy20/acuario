@@ -6,11 +6,14 @@
 
 package principal;
 
+import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -149,20 +152,26 @@ public class Inicio extends javax.swing.JFrame {
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mundoIII.png"))); // NOI18N
         logo.setAlignmentY(0.0F);
         menu.add(logo);
-        logo.setBounds(383, 50, 600, 400);
+        logo.setBounds(383, 100, 600, 400);
 
         video.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         video.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/video.png"))); // NOI18N
+        video.setAlignmentY(0.0F);
+        video.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                videoMouseClicked(evt);
+            }
+        });
         menu.add(video);
-        video.setBounds(250, 570, 128, 128);
+        video.setBounds(260, 570, 130, 130);
 
-        vvideo.setFont(new java.awt.Font("BoyzRGross", 0, 48)); // NOI18N
+        vvideo.setFont(new java.awt.Font("BoyzRGross", 0, 55)); // NOI18N
         vvideo.setForeground(new java.awt.Color(255, 255, 255));
         vvideo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         vvideo.setText("Ver Video");
         vvideo.setAlignmentY(0.0F);
         menu.add(vvideo);
-        vvideo.setBounds(390, 610, 170, 60);
+        vvideo.setBounds(390, 604, 170, 60);
 
         peces.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         peces.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fish.png"))); // NOI18N
@@ -173,9 +182,9 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         menu.add(peces);
-        peces.setBounds(760, 570, 128, 128);
+        peces.setBounds(820, 570, 130, 130);
 
-        vpeces.setFont(new java.awt.Font("BoyzRGross", 0, 48)); // NOI18N
+        vpeces.setFont(new java.awt.Font("BoyzRGross", 0, 55)); // NOI18N
         vpeces.setForeground(new java.awt.Color(255, 255, 255));
         vpeces.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         vpeces.setText("Ver Peces");
@@ -186,7 +195,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         menu.add(vpeces);
-        vpeces.setBounds(880, 620, 190, 50);
+        vpeces.setBounds(950, 604, 160, 60);
 
         mfondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         mfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario.jpg"))); // NOI18N
@@ -776,6 +785,20 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.setContentPane( menu );
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void videoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_videoMouseClicked
+        // TODO add your handling code here:
+        try {
+//        this.setContentPane( PanelVideo );
+            URL url = new URL( "file:/c:/acuario/inicial.mpg" );
+            Dimension d = new Dimension( 1280, 720 );
+            PanelVideo video = new PanelVideo(url, d);
+            ficha.video.add(video);
+            ficha.setContentPane(ficha.video);
+        } catch ( MalformedURLException ex ) {
+            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
+        }
+    }//GEN-LAST:event_videoMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel acuario;
