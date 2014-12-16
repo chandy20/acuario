@@ -47,6 +47,7 @@ public class Inicio extends javax.swing.JFrame {
         java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
         devices[ 1 ].setFullScreenWindow( ficha );
         ficha.setContentPane( ficha.visor );
+        video.setIcon( new ImageIcon ( getClass().getResource( "/images/veideo.png" )));
         llenarVectores( peces );
         cargarComponentes();
     }
@@ -115,7 +116,6 @@ public class Inicio extends javax.swing.JFrame {
         close = new javax.swing.JLabel();
         seleccionado = new javax.swing.JLabel();
         tittle = new javax.swing.JLabel();
-        espaldar = new javax.swing.JLabel();
         nombres = new javax.swing.JLabel();
         biotopo = new javax.swing.JLabel();
         coloracion = new javax.swing.JLabel();
@@ -170,6 +170,11 @@ public class Inicio extends javax.swing.JFrame {
         vvideo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         vvideo.setText("Ver Video");
         vvideo.setAlignmentY(0.0F);
+        vvideo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                vvideoMouseClicked(evt);
+            }
+        });
         menu.add(vvideo);
         vvideo.setBounds(390, 604, 170, 60);
 
@@ -355,30 +360,23 @@ public class Inicio extends javax.swing.JFrame {
         seleccion.add(seleccionado);
         seleccionado.setBounds(333, 150, 700, 300);
 
-        tittle.setFont(new java.awt.Font("Tahoma", 2, 36)); // NOI18N
+        tittle.setFont(new java.awt.Font("BoyzRGross", 2, 70)); // NOI18N
         tittle.setForeground(new java.awt.Color(255, 255, 255));
         tittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tittle.setToolTipText("");
         tittle.setAlignmentY(0.0F);
         tittle.setMaximumSize(new java.awt.Dimension(700, 45));
         tittle.setMinimumSize(new java.awt.Dimension(700, 45));
         tittle.setPreferredSize(new java.awt.Dimension(700, 45));
         seleccion.add(tittle);
-        tittle.setBounds(333, 75, 700, 45);
-
-        espaldar.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        espaldar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
-        espaldar.setAlignmentY(0.0F);
-        espaldar.setMaximumSize(new java.awt.Dimension(700, 45));
-        espaldar.setMinimumSize(new java.awt.Dimension(700, 45));
-        espaldar.setPreferredSize(new java.awt.Dimension(700, 45));
-        seleccion.add(espaldar);
-        espaldar.setBounds(333, 75, 700, 45);
+        tittle.setBounds(333, 50, 700, 85);
 
         nombres.setFont(new java.awt.Font("Tahoma", 2, 36)); // NOI18N
         nombres.setForeground(new java.awt.Color(255, 255, 255));
         nombres.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombres.setText("NOMBRES Y CLASIFICACIÓN");
         nombres.setAlignmentY(0.0F);
+        nombres.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(255, 255, 0), 4, true));
         nombres.setMaximumSize(new java.awt.Dimension(490, 45));
         nombres.setMinimumSize(new java.awt.Dimension(490, 45));
         nombres.setPreferredSize(new java.awt.Dimension(490, 45));
@@ -388,7 +386,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         seleccion.add(nombres);
-        nombres.setBounds(107, 545, 490, 45);
+        nombres.setBounds(107, 530, 490, 60);
 
         biotopo.setFont(new java.awt.Font("Tahoma", 2, 36)); // NOI18N
         biotopo.setForeground(new java.awt.Color(255, 255, 255));
@@ -788,17 +786,23 @@ public class Inicio extends javax.swing.JFrame {
 
     private void videoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_videoMouseClicked
         // TODO add your handling code here:
-        try {
-//        this.setContentPane( PanelVideo );
-            URL url = new URL( "file:/c:/acuario/inicial.mpg" );
-            Dimension d = new Dimension( 1280, 720 );
-            PanelVideo video = new PanelVideo(url, d);
-            ficha.video.add(video);
-            ficha.setContentPane(ficha.video);
-        } catch ( MalformedURLException ex ) {
-            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
-        }
+        video.setIcon( new ImageIcon( getClass().getResource( "/images/videoP.png" )));
+//        try {
+////        this.setContentPane( PanelVideo );
+//            URL url = new URL( "file:/c:/acuario/inicial.mpg" );
+//            Dimension d = new Dimension( 720, 540 );
+//            PanelVideo video = new PanelVideo( url, d );
+//            ficha.video.add( video );
+//            ficha.setContentPane( ficha.video );
+//        } catch ( MalformedURLException ex ) {
+//            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
+//        }
     }//GEN-LAST:event_videoMouseClicked
+
+    private void vvideoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vvideoMouseClicked
+        // TODO add your handling code here:
+        videoMouseClicked( evt );
+    }//GEN-LAST:event_vvideoMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel acuario;
@@ -810,7 +814,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel coloracion;
     private javax.swing.JLabel comportamiento;
     private javax.swing.JLabel distribucion;
-    private javax.swing.JLabel espaldar;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel forma;
     private javax.swing.JLabel fseleccion;
