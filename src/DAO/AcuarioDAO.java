@@ -274,6 +274,8 @@ public class AcuarioDAO {
                     pezVO.setPez_nombre(res.getString("pez_nombre"));
                     lista.add(pezVO);
                 }
+                else
+                    System.out.println("El archivo " + url + " no existe o no ha sido sincronizado, pez_id = " + res.getInt("pez_id"));
             }
 
         } catch (SQLException e) {

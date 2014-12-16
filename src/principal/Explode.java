@@ -9,7 +9,6 @@ package principal;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
-import javax.swing.JDialog;
 import javax.swing.JFrame;
 
 public class Explode {
