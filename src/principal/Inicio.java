@@ -59,14 +59,11 @@ public class Inicio extends javax.swing.JFrame {
         ids = new int[peces.size()];
         buffer = new BufferedImage[peces.size()];
         int i = 0;
-        grillaPeces.setLayout( new GridLayout( 4, 4 ));
         for ( PezVO pezVO : peces ) {
             Imagenes[i] = getToolkit().getImage( pezVO.getPez_nombComun() );
             names[i] = pezVO.getPez_nombre();
             ids[i] = pezVO.getPez_id();
             buffer[i] = ImageIO.read( new File( pezVO.getPez_nombComun() ));
-            Image foto = Imagenes[contador].getScaledInstance(( int )(( buffer[i].getWidth()*150 )/buffer[i].getHeight() ), 150, Image.SCALE_DEFAULT );
-            grillaPeces.add( new JButton( new ImageIcon( foto ) ));
             i++;
         }
     }
@@ -106,9 +103,6 @@ public class Inicio extends javax.swing.JFrame {
         peces = new javax.swing.JButton();
         vpeces = new javax.swing.JLabel();
         mfondo = new javax.swing.JLabel();
-        grilla = new javax.swing.JPanel();
-        grillaPeces = new javax.swing.JPanel();
-        fgrilla = new javax.swing.JLabel();
         tactil = new javax.swing.JPanel();
         cerrar = new javax.swing.JButton();
         titulo = new javax.swing.JLabel();
@@ -239,31 +233,6 @@ public class Inicio extends javax.swing.JFrame {
 
         jLayeredPane1.add(menu);
         menu.setBounds(0, 0, 1366, 768);
-
-        grilla.setLayout(null);
-
-        grillaPeces.setAlignmentX(0.0F);
-        grillaPeces.setAlignmentY(0.0F);
-        grillaPeces.setAutoscrolls(true);
-        grillaPeces.setMaximumSize(new java.awt.Dimension(1200, 700));
-        grillaPeces.setMinimumSize(new java.awt.Dimension(1200, 700));
-        grillaPeces.setOpaque(false);
-        grillaPeces.setPreferredSize(new java.awt.Dimension(1200, 700));
-        grillaPeces.setLayout(new java.awt.GridLayout(1, 0));
-        grilla.add(grillaPeces);
-        grillaPeces.setBounds(83, 34, 1200, 700);
-
-        fgrilla.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fgrilla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario.jpg"))); // NOI18N
-        fgrilla.setAlignmentY(0.0F);
-        fgrilla.setMaximumSize(new java.awt.Dimension(1366, 768));
-        fgrilla.setMinimumSize(new java.awt.Dimension(1366, 768));
-        fgrilla.setPreferredSize(new java.awt.Dimension(1366, 768));
-        grilla.add(fgrilla);
-        fgrilla.setBounds(0, 0, 1366, 768);
-
-        jLayeredPane1.add(grilla);
-        grilla.setBounds(0, 0, 0, 0);
 
         tactil.setAlignmentX(0.0F);
         tactil.setAlignmentY(0.0F);
@@ -1003,12 +972,9 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton coloracion;
     private javax.swing.JButton comportamiento;
     private javax.swing.JButton distribucion;
-    private javax.swing.JLabel fgrilla;
     private javax.swing.JLabel fondo;
     private javax.swing.JButton forma;
     private javax.swing.JLabel fseleccion;
-    private javax.swing.JPanel grilla;
-    private javax.swing.JPanel grillaPeces;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel logo;
     public javax.swing.JPanel menu;
