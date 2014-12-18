@@ -29,6 +29,7 @@ public class Principal {
         ArrayList<PezVO> peces = aDAO.getImagePrincipalFromFish();
         Inicio inicio = new Inicio( peces );
         inicio.setLocationRelativeTo( null );
+        inicio.setContentPane( inicio.menu );
         inicio.setVisible( true );
     }
 

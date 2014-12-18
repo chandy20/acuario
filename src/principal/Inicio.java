@@ -46,7 +46,7 @@ public class Inicio extends javax.swing.JFrame {
         ficha.setPreferredSize( null );
         java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
         devices[ 1 ].setFullScreenWindow( ficha );
-        ficha.setContentPane( ficha.visor );
+        ficha.setContentPane( ficha.inicial );
         llenarVectores( peces );
         cargarComponentes();
     }
@@ -452,6 +452,11 @@ public class Inicio extends javax.swing.JFrame {
         clasificacion.setMinimumSize(new java.awt.Dimension(256, 128));
         clasificacion.setPreferredSize(new java.awt.Dimension(256, 128));
         clasificacion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clasificacionP.png"))); // NOI18N
+        clasificacion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clasificacionMouseClicked(evt);
+            }
+        });
         seleccion.add(clasificacion);
         clasificacion.setBounds(330, 470, 256, 128);
 
@@ -763,6 +768,7 @@ public class Inicio extends javax.swing.JFrame {
     private void pecesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pecesMouseClicked
         // TODO add your handling code here:
         this.setContentPane( tactil );
+        ficha.setContentPane( ficha.visor );
     }//GEN-LAST:event_pecesMouseClicked
 
     private void prevMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prevMouseClicked
@@ -786,6 +792,7 @@ public class Inicio extends javax.swing.JFrame {
     private void cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseClicked
         // TODO add your handling code here:
         this.setContentPane( menu );
+        ficha.setContentPane( ficha.inicial );
     }//GEN-LAST:event_cerrarMouseClicked
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
@@ -938,6 +945,19 @@ public class Inicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_comportamientoMouseClicked
 
+    private void clasificacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clasificacionMouseClicked
+        // TODO add your handling code here:
+        if ( control ) {
+            iniciarFicha();
+            control = false;
+        }
+        try {
+            ficha.getClasificacion( ids[contador] );
+        } catch ( SQLException ex ) {
+            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
+        }
+    }//GEN-LAST:event_clasificacionMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton acuario;
     private javax.swing.JButton agua;
@@ -955,7 +975,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel fseleccion;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel logo;
-    private javax.swing.JPanel menu;
+    public javax.swing.JPanel menu;
     private javax.swing.JLabel mfondo;
     private javax.swing.JButton next;
     private javax.swing.JLabel nombre;
