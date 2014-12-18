@@ -800,7 +800,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void pecesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pecesMouseClicked
         // TODO add your handling code here:
-        this.setContentPane( grilla );
+        this.setContentPane( tactil );
         ficha.setContentPane( ficha.visor );
     }//GEN-LAST:event_pecesMouseClicked
 
