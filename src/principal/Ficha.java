@@ -203,6 +203,8 @@ public class Ficha extends javax.swing.JDialog {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
+        inicial = new javax.swing.JPanel();
+        finicial = new javax.swing.JLabel();
         datos = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
         back = new javax.swing.JLabel();
@@ -225,6 +227,22 @@ public class Ficha extends javax.swing.JDialog {
         jLayeredPane1.setAlignmentY(0.0F);
         jLayeredPane1.setMaximumSize(new java.awt.Dimension(1920, 1080));
         jLayeredPane1.setMinimumSize(new java.awt.Dimension(1920, 1080));
+
+        inicial.setAlignmentX(0.0F);
+        inicial.setAlignmentY(0.0F);
+        inicial.setMaximumSize(new java.awt.Dimension(1920, 1080));
+        inicial.setMinimumSize(new java.awt.Dimension(1920, 1080));
+        inicial.setPreferredSize(new java.awt.Dimension(1920, 1080));
+        inicial.setLayout(null);
+
+        finicial.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        finicial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario2.jpg"))); // NOI18N
+        finicial.setAlignmentY(0.0F);
+        inicial.add(finicial);
+        finicial.setBounds(0, 0, 1920, 1080);
+
+        jLayeredPane1.add(inicial);
+        inicial.setBounds(0, 0, 1920, 1080);
 
         datos.setLayout(null);
 
@@ -407,10 +425,12 @@ public class Ficha extends javax.swing.JDialog {
     private javax.swing.JLabel back;
     private javax.swing.JLabel back1;
     public javax.swing.JPanel datos;
+    private javax.swing.JLabel finicial;
     private javax.swing.JLabel fondo;
     private javax.swing.JLabel fondo1;
     public javax.swing.JLabel foto;
     private javax.swing.JLabel info;
+    private javax.swing.JPanel inicial;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLayeredPane jLayeredPane1;
     public javax.swing.JLabel slider;
