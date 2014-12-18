@@ -73,7 +73,6 @@ public class Ficha extends javax.swing.JDialog {
         lista = aDAO.getDatosGenerales(pez_id, 3);
         for (PezVO pezVO : lista) {
             String distribucion = pezVO.getPez_distribucion();
-            System.out.println("distri " + pezVO.getPez_distribucion());
             if (pezVO.getPez_distribucion() == null || pezVO.getPez_distribucion().equals("")) {
                 distribucion = "NO ESPECIFICADA";
             }
