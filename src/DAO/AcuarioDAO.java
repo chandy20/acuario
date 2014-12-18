@@ -79,37 +79,37 @@ public class AcuarioDAO {
             String sql = "";
             switch (x) {
                 case 1:
-                    sql = "SELECT lower(p.pez_nombComun), lower(p.pez_nombCientifico), lower(s.subf_descripcion), lower(f.fami_descripcion), lower(o.orde_descripcion) FROM pez p INNER JOIN subfamilia s ON s.subf_id = p.subf_id INNER JOIN familia f ON f.fami_id = s.fami_id INNER JOIN orden o ON o.orde_id = f.orde_id WHERE pez_id = " + pez_id;
+                    sql = "SELECT p.pez_nombComun, p.pez_nombCientifico, s.subf_descripcion, f.fami_descripcion, o.orde_descripcion FROM pez p INNER JOIN subfamilia s ON s.subf_id = p.subf_id INNER JOIN familia f ON f.fami_id = s.fami_id INNER JOIN orden o ON o.orde_id = f.orde_id WHERE pez_id = " + pez_id;
                     break;
                 case 2:
-                    sql = "SELECT lower(pez_biotopo) FROM pez WHERE pez_id = " + pez_id;
+                    sql = "SELECT pez_biotopo FROM pez WHERE pez_id = " + pez_id;
                     break;
                 case 3:
-                    sql = "SELECT lower(pez_distribucion) FROM pez WHERE pez_id = " + pez_id;
+                    sql = "SELECT pez_distribucion FROM pez WHERE pez_id = " + pez_id;
                     break;
                 case 4:
-                    sql = "SELECT lower(pez_coloracion) FROM pez WHERE pez_id = " + pez_id;
+                    sql = "SELECT pez_coloracion FROM pez WHERE pez_id = " + pez_id;
                     break;
                 case 5:
-                    sql = "SELECT lower(pez_tamano) FROM pez WHERE pez_id = " + pez_id;
+                    sql = "SELECT pez_tamano FROM pez WHERE pez_id = " + pez_id;
                     break;
                 case 6:
-                    sql = "SELECT lower(pez_temperatura) FROM pez WHERE pez_id = " + pez_id;
+                    sql = "SELECT pez_temperatura FROM pez WHERE pez_id = " + pez_id;
                     break;
                 case 7:
-                    sql = "SELECT lower(pez_agua) FROM pez WHERE pez_id = " + pez_id;
+                    sql = "SELECT pez_agua FROM pez WHERE pez_id = " + pez_id;
                     break;
                 case 8:
-                    sql = "SELECT lower(pez_acuario) FROM pez WHERE pez_id = " + pez_id;
+                    sql = "SELECT pez_acuario FROM pez WHERE pez_id = " + pez_id;
                     break;
                 case 9:
-                    sql = "SELECT lower(pez_alimentacion) FROM pez WHERE pez_id = " + pez_id;
+                    sql = "SELECT pez_alimentacion FROM pez WHERE pez_id = " + pez_id;
                     break;
                 case 10:
-                    sql = "SELECT lower(pez_comportamiento) FROM pez WHERE pez_id = " + pez_id;
+                    sql = "SELECT pez_comportamiento FROM pez WHERE pez_id = " + pez_id;
                     break;
                 case 11:
-                    sql = "SELECT lower(pez_forma) FROM pez WHERE pez_id = " + pez_id;
+                    sql = "SELECT pez_forma FROM pez WHERE pez_id = " + pez_id;
                     break;
 
                 default:
