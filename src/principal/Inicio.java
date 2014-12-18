@@ -101,6 +101,7 @@ public class Inicio extends javax.swing.JFrame {
         peces = new javax.swing.JButton();
         vpeces = new javax.swing.JLabel();
         mfondo = new javax.swing.JLabel();
+        grilla = new javax.swing.JPanel();
         tactil = new javax.swing.JPanel();
         cerrar = new javax.swing.JButton();
         titulo = new javax.swing.JLabel();
@@ -231,6 +232,10 @@ public class Inicio extends javax.swing.JFrame {
 
         jLayeredPane1.add(menu);
         menu.setBounds(0, 0, 1366, 768);
+
+        grilla.setLayout(null);
+        jLayeredPane1.add(grilla);
+        grilla.setBounds(0, 0, 100, 100);
 
         tactil.setAlignmentX(0.0F);
         tactil.setAlignmentY(0.0F);
@@ -973,6 +978,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel fondo;
     private javax.swing.JButton forma;
     private javax.swing.JLabel fseleccion;
+    private javax.swing.JPanel grilla;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel logo;
     public javax.swing.JPanel menu;

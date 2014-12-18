@@ -45,10 +45,10 @@ public class Ficha extends javax.swing.JDialog {
         for (PezVO pezVO : lista) {
             String nombreComun = pezVO.getPez_nombComun();
             String nombreCientifico = pezVO.getPez_nombCientifico();           
-            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>NOMBRE COMÚN</b></td></tr>"
-                    + "<tr><td align='center' style='font-size:50px'>" + nombreComun + "</td></tr>"
-                    + "<tr><td align='center' style='font-size:60px'><b>NOMBRE CIENTÍFICO</b></td></tr>"
-                    + "<tr><td align='center' style='font-size:50px'>" + nombreCientifico + "</td></tr></table></body></html>";
+            String datos = "<html><body><table><tr><td width='800px' align='center' style='font-size:50px'><b>NOMBRE COMÚN</b></td>"
+                    + "<td width='835px' align='center' style='font-size:50px'><b>NOMBRE CIENTÍFICO</b></td></tr>"
+                    + "<tr><td align='center' style='font-size:40px'>" + nombreComun + "</td>"
+                    + "<td align='center' style='font-size:40px'>" + nombreCientifico + "</td></tr></table></body></html>";
             this.info.setText(datos);
         }
     }
@@ -59,10 +59,13 @@ public class Ficha extends javax.swing.JDialog {
             String orden = pezVO.getPez_coloracion();
             String familia = pezVO.getPez_alimentacion();
             String subfamilia = pezVO.getPez_biotopo();
-            String datos = "<html><body><table><tr><td colspan=2 align='center' style='font-size:60px'><b>CLASICACIÓN</b></td></tr>"
-                    + "<tr><td align='center' style='font-size:50px'><b>ORDEN  </b></td><td align='center' style='font-size:50px'>" + orden + "</td></tr>"
-                    + "<tr><td align='center' style='font-size:50px'><b>FAMILIA  </b></td><td align='center' style='font-size:50px'>" + familia + "</td></tr>"
-                    + "<tr><td align='center' style='font-size:50px'><b>SUBFAMILIA  </b></td><td align='center' style='font-size:50px'>" + subfamilia + "</td></tr></table></body></html>";
+            String datos = "<html><body><table><tr><td colspan=3 align='center' style='font-size:70px'><b>CLASICACIÓN</b></td></tr>"
+                    + "<tr><td width='545px' align='center' style='font-size:50px'><b>ORDEN</b></td>"
+                    + "<td width='545px' align='center' style='font-size:50px'><b>FAMILIA</b></td>"
+                    + "<td width='545px' align='center' style='font-size:50px'><b>SUBFAMILIA  </b></td></tr>"
+                    + "<tr><td align='center' style='font-size:50px'>" + orden + "</td>"
+                    + "<td align='center' style='font-size:50px'>" + familia + "</td>"
+                    + "<td align='center' style='font-size:50px'>" + subfamilia + "</td></tr></table></body></html>";
             this.info.setText(datos);
         }
 
@@ -330,7 +333,7 @@ public class Ficha extends javax.swing.JDialog {
         info.setMinimumSize(new java.awt.Dimension(1535, 505));
         info.setPreferredSize(new java.awt.Dimension(1535, 505));
         datos.add(info);
-        info.setBounds(192, 550, 1535, 505);
+        info.setBounds(140, 550, 1635, 505);
 
         fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario2.jpg"))); // NOI18N
         fondo.setText("jLabel1");
