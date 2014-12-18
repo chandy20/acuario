@@ -44,17 +44,28 @@ public class Ficha extends javax.swing.JDialog {
         lista = aDAO.getDatosGenerales(pez_id, 1);
         for (PezVO pezVO : lista) {
             String nombreComun = pezVO.getPez_nombComun();
-            String nombreCientifico = pezVO.getPez_nombCientifico();
+            String nombreCientifico = pezVO.getPez_nombCientifico();           
+            String datos = "<html><body><div align = 'center'><b><font size = '60'>NOMBRE COMÚN</font></b><p><font size = '50'>" + nombreComun + "</font><p>"
+                    + "<b><font size = '60'>NOMBRE CIENTÍFICO</font></b><p><font size = '50'>" + nombreCientifico + "</font><p>"
+                    + "</div></body></html>";
+            this.info.setText(datos);
+        }
+    }
+
+    public void getClasificacion(int pez_id) throws SQLException {
+        lista = aDAO.getDatosGenerales(pez_id, 1);
+        for (PezVO pezVO : lista) {
             String orden = pezVO.getPez_coloracion();
             String familia = pezVO.getPez_alimentacion();
             String subfamilia = pezVO.getPez_biotopo();
-            String datos = "<html><body><div align = 'center'><b><font size = '60'>NOMBRE COMÚN</font></b><p><font size = '50'>" + nombreComun + "</font><p>"
-                    + "<b><font size = '60'>NOMBRE CIENTÍFICO</font></b><p><font size = '50'>" + nombreCientifico + "</font><p>"
+            String datos = "<html><body><div align = 'center'>"
                     + "<b><font size = '60'>CLASICACIÓN</font></b><p><b><font size = '60'>ORDEN</font></b><p><font size = '50'>" + orden + "</font><p>"
                     + "<b><font size = '60'>FAMILIA</font></b><p><font size = '50'>" + familia + "</font><p>"
-                    + "<b><font size = '60'>SUBFAMILIA</font></b><p><font size = '50'>" + subfamilia + "</font></div></body></html>";
+                    + "<b><font size = '60'>SUBFAMILIA</font></b><p><font size = '50'>" + subfamilia + "</font>"
+                    + "</div></body></html>";
             this.info.setText(datos);
         }
+
     }
 
     public void getBiotopo(int pez_id) throws SQLException {
