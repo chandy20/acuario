@@ -8,6 +8,7 @@ package principal;
 
 import java.awt.Dimension;
 import java.awt.GraphicsEnvironment;
+import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -20,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import objetos.PezVO;
 
 /**
@@ -57,11 +59,14 @@ public class Inicio extends javax.swing.JFrame {
         ids = new int[peces.size()];
         buffer = new BufferedImage[peces.size()];
         int i = 0;
+        grillaPeces.setLayout( new GridLayout( 4, 4 ));
         for ( PezVO pezVO : peces ) {
             Imagenes[i] = getToolkit().getImage( pezVO.getPez_nombComun() );
             names[i] = pezVO.getPez_nombre();
             ids[i] = pezVO.getPez_id();
             buffer[i] = ImageIO.read( new File( pezVO.getPez_nombComun() ));
+            Image foto = Imagenes[contador].getScaledInstance(( int )(( buffer[i].getWidth()*150 )/buffer[i].getHeight() ), 150, Image.SCALE_DEFAULT );
+            grillaPeces.add( new JButton( new ImageIcon( foto ) ));
             i++;
         }
     }
@@ -242,8 +247,9 @@ public class Inicio extends javax.swing.JFrame {
         grillaPeces.setAutoscrolls(true);
         grillaPeces.setMaximumSize(new java.awt.Dimension(1200, 700));
         grillaPeces.setMinimumSize(new java.awt.Dimension(1200, 700));
+        grillaPeces.setOpaque(false);
         grillaPeces.setPreferredSize(new java.awt.Dimension(1200, 700));
-        grillaPeces.setLayout(new java.awt.GridLayout());
+        grillaPeces.setLayout(new java.awt.GridLayout(1, 0));
         grilla.add(grillaPeces);
         grillaPeces.setBounds(83, 34, 1200, 700);
 
@@ -257,7 +263,7 @@ public class Inicio extends javax.swing.JFrame {
         fgrilla.setBounds(0, 0, 1366, 768);
 
         jLayeredPane1.add(grilla);
-        grilla.setBounds(0, 0, 100, 100);
+        grilla.setBounds(0, 0, 0, 0);
 
         tactil.setAlignmentX(0.0F);
         tactil.setAlignmentY(0.0F);
@@ -794,7 +800,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void pecesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pecesMouseClicked
         // TODO add your handling code here:
-        this.setContentPane( tactil );
+        this.setContentPane( grilla );
         ficha.setContentPane( ficha.visor );
     }//GEN-LAST:event_pecesMouseClicked
 
