@@ -102,6 +102,8 @@ public class Inicio extends javax.swing.JFrame {
         vpeces = new javax.swing.JLabel();
         mfondo = new javax.swing.JLabel();
         grilla = new javax.swing.JPanel();
+        grillaPeces = new javax.swing.JPanel();
+        fgrilla = new javax.swing.JLabel();
         tactil = new javax.swing.JPanel();
         cerrar = new javax.swing.JButton();
         titulo = new javax.swing.JLabel();
@@ -234,6 +236,26 @@ public class Inicio extends javax.swing.JFrame {
         menu.setBounds(0, 0, 1366, 768);
 
         grilla.setLayout(null);
+
+        grillaPeces.setAlignmentX(0.0F);
+        grillaPeces.setAlignmentY(0.0F);
+        grillaPeces.setAutoscrolls(true);
+        grillaPeces.setMaximumSize(new java.awt.Dimension(1200, 700));
+        grillaPeces.setMinimumSize(new java.awt.Dimension(1200, 700));
+        grillaPeces.setPreferredSize(new java.awt.Dimension(1200, 700));
+        grillaPeces.setLayout(new java.awt.GridLayout());
+        grilla.add(grillaPeces);
+        grillaPeces.setBounds(83, 34, 1200, 700);
+
+        fgrilla.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fgrilla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario.jpg"))); // NOI18N
+        fgrilla.setAlignmentY(0.0F);
+        fgrilla.setMaximumSize(new java.awt.Dimension(1366, 768));
+        fgrilla.setMinimumSize(new java.awt.Dimension(1366, 768));
+        fgrilla.setPreferredSize(new java.awt.Dimension(1366, 768));
+        grilla.add(fgrilla);
+        fgrilla.setBounds(0, 0, 1366, 768);
+
         jLayeredPane1.add(grilla);
         grilla.setBounds(0, 0, 100, 100);
 
@@ -975,10 +997,12 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton coloracion;
     private javax.swing.JButton comportamiento;
     private javax.swing.JButton distribucion;
+    private javax.swing.JLabel fgrilla;
     private javax.swing.JLabel fondo;
     private javax.swing.JButton forma;
     private javax.swing.JLabel fseleccion;
     private javax.swing.JPanel grilla;
+    private javax.swing.JPanel grillaPeces;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel logo;
     public javax.swing.JPanel menu;
