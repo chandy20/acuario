@@ -754,17 +754,15 @@ public class Inicio extends javax.swing.JFrame {
 
     private void videoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_videoMouseClicked
         // TODO add your handling code here:
-//        try {
-//            URL url = new URL( "file:/c:/acuario/inicial.mpg" );
-//            Dimension d = new Dimension( 720, 540 );
-//            PanelVideo video = new PanelVideo( url, d );
-//            ficha.video.add( video );
-//            ficha.setContentPane( ficha.video );
-//        } catch ( MalformedURLException ex ) {
-//            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
-//        }
-//        video.setIcon( new ImageIcon( getClass().getResource( "/images/video.png" )));
-//        vvideo.setFont( vvideo.getFont().deriveFont( 55f ));
+        try {
+            URL url = new URL( "file:/c:/acuario/inicial.avi" );
+            Dimension d = new Dimension( 720, 540 );
+            PanelVideo video = new PanelVideo( url, d );
+            ficha.video.add( video );
+            ficha.setContentPane( ficha.video );
+        } catch ( MalformedURLException ex ) {
+            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
+        }
     }//GEN-LAST:event_videoMouseClicked
 
     private void pecesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pecesMouseClicked
