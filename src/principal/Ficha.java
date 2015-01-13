@@ -238,8 +238,6 @@ public class Ficha extends javax.swing.JDialog {
         slider = new javax.swing.JLabel();
         info = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
-        video = new javax.swing.JPanel();
-        vfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -264,7 +262,7 @@ public class Ficha extends javax.swing.JDialog {
         jLabel2.setBounds(560, 200, 800, 560);
 
         finicial.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        finicial.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario2.jpg"))); // NOI18N
+        finicial.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoSegunda.jpg")); // NOI18N
         finicial.setAlignmentY(0.0F);
         inicial.add(finicial);
         finicial.setBounds(0, 0, 1920, 1080);
@@ -294,8 +292,7 @@ public class Ficha extends javax.swing.JDialog {
         visor.add(foto);
         foto.setBounds(210, 258, 1500, 700);
 
-        fondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario2.jpg"))); // NOI18N
-        fondo1.setText("jLabel1");
+        fondo1.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoSegunda.jpg")); // NOI18N
         fondo1.setMaximumSize(new java.awt.Dimension(1920, 1080));
         fondo1.setMinimumSize(new java.awt.Dimension(1920, 1080));
         fondo1.setPreferredSize(new java.awt.Dimension(1920, 1080));
@@ -335,8 +332,8 @@ public class Ficha extends javax.swing.JDialog {
         datos.add(info);
         info.setBounds(140, 550, 1635, 505);
 
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario2.jpg"))); // NOI18N
-        fondo.setText("jLabel1");
+        fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fondo.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoSegunda.jpg")); // NOI18N
         fondo.setMaximumSize(new java.awt.Dimension(1920, 1080));
         fondo.setMinimumSize(new java.awt.Dimension(1920, 1080));
         fondo.setPreferredSize(new java.awt.Dimension(1920, 1080));
@@ -345,21 +342,6 @@ public class Ficha extends javax.swing.JDialog {
 
         jLayeredPane1.add(datos);
         datos.setBounds(0, 0, 1920, 1080);
-
-        video.setAlignmentX(0.0F);
-        video.setAlignmentY(0.0F);
-        video.setMaximumSize(new java.awt.Dimension(1920, 1080));
-        video.setMinimumSize(new java.awt.Dimension(1920, 1080));
-        video.setLayout(null);
-
-        vfondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        vfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario2.jpg"))); // NOI18N
-        vfondo.setAlignmentY(0.0F);
-        video.add(vfondo);
-        vfondo.setBounds(0, 0, 1920, 1080);
-
-        jLayeredPane1.add(video);
-        video.setBounds(0, 0, 1920, 1080);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -440,8 +422,6 @@ public class Ficha extends javax.swing.JDialog {
     public javax.swing.JLabel slider;
     public javax.swing.JLabel tittle;
     private javax.swing.JLabel titulo;
-    private javax.swing.JLabel vfondo;
-    public javax.swing.JPanel video;
     public javax.swing.JPanel visor;
     // End of variables declaration//GEN-END:variables
 }

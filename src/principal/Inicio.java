@@ -54,33 +54,33 @@ public class Inicio extends javax.swing.JFrame {
     }
     
     public void llenarVectores( ArrayList<PezVO> peces ) throws IOException {
-        Imagenes = new Image[peces.size()];
-        names = new String[peces.size()];
-        ids = new int[peces.size()];
-        buffer = new BufferedImage[peces.size()];
+        Imagenes = new Image[ peces.size() ];
+        names = new String[ peces.size() ];
+        ids = new int[ peces.size() ];
+        buffer = new BufferedImage[ peces.size() ];
         int i = 0;
         for ( PezVO pezVO : peces ) {
-            Imagenes[i] = getToolkit().getImage( pezVO.getPez_nombComun() );
-            names[i] = pezVO.getPez_nombre();
-            ids[i] = pezVO.getPez_id();
-            buffer[i] = ImageIO.read( new File( pezVO.getPez_nombComun() ));
+            Imagenes[ i ] = getToolkit().getImage( pezVO.getPez_nombComun() );
+            names[ i ] = pezVO.getPez_nombre();
+            ids[ i ] = pezVO.getPez_id();
+            buffer[ i ] = ImageIO.read( new File( pezVO.getPez_nombComun() ));
             i++;
         }
     }
     
     public void cargarComponentes() {
-        Image foto = Imagenes[contador].getScaledInstance(( int )(( buffer[contador].getWidth()*300 )/buffer[contador].getHeight() ), 300, Image.SCALE_DEFAULT );
-        slider.setIcon( new ImageIcon(foto) );
-        nombre.setText( names[contador] );
-        ficha.foto.setIcon( new ImageIcon( Imagenes[contador] ));
-        ficha.tittle.setText( names[contador] );
+        Image foto = Imagenes[ contador ].getScaledInstance(( int )(( buffer[contador].getWidth()*300 )/buffer[contador].getHeight() ), 300, Image.SCALE_DEFAULT );
+        slider.setIcon( new ImageIcon( foto ));
+        nombre.setText( names[ contador ] );
+        ficha.foto.setIcon( new ImageIcon( Imagenes[ contador ]));
+        ficha.tittle.setText( names[ contador ]);
     }
     
     public void iniciarFicha() {
-        ficha.setContentPane(ficha.datos);
+        ficha.setContentPane( ficha.datos );
         try {
-            ficha.cargaImagenes(ids[contador]);
-            ficha.cargaNombre(ids[contador]);
+            ficha.cargaImagenes( ids[ contador ]);
+            ficha.cargaNombre( ids[ contador ]);
         } catch ( SQLException ex ) {
             Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
         }
@@ -102,6 +102,7 @@ public class Inicio extends javax.swing.JFrame {
         vvideo = new javax.swing.JLabel();
         peces = new javax.swing.JButton();
         vpeces = new javax.swing.JLabel();
+        banner = new javax.swing.JLabel();
         mfondo = new javax.swing.JLabel();
         tactil = new javax.swing.JPanel();
         cerrar = new javax.swing.JButton();
@@ -154,7 +155,7 @@ public class Inicio extends javax.swing.JFrame {
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mundoIII.png"))); // NOI18N
         logo.setAlignmentY(0.0F);
         menu.add(logo);
-        logo.setBounds(383, 100, 600, 400);
+        logo.setBounds(383, 50, 600, 400);
 
         video.setForeground(new java.awt.Color(255, 255, 255));
         video.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/video.png"))); // NOI18N
@@ -174,7 +175,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         menu.add(video);
-        video.setBounds(262, 570, 128, 128);
+        video.setBounds(262, 470, 128, 128);
 
         vvideo.setFont(new java.awt.Font("BoyzRGross", 0, 55)); // NOI18N
         vvideo.setForeground(new java.awt.Color(255, 255, 255));
@@ -188,7 +189,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         menu.add(vvideo);
-        vvideo.setBounds(390, 604, 170, 60);
+        vvideo.setBounds(390, 504, 170, 60);
 
         peces.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fishI.png"))); // NOI18N
         peces.setAlignmentY(0.0F);
@@ -206,7 +207,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         menu.add(peces);
-        peces.setBounds(822, 570, 128, 128);
+        peces.setBounds(822, 470, 128, 128);
 
         vpeces.setFont(new java.awt.Font("BoyzRGross", 0, 55)); // NOI18N
         vpeces.setForeground(new java.awt.Color(255, 255, 255));
@@ -220,10 +221,16 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         menu.add(vpeces);
-        vpeces.setBounds(950, 604, 160, 60);
+        vpeces.setBounds(950, 504, 160, 60);
+
+        banner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        banner.setIcon(new javax.swing.ImageIcon("C:\\acuario\\social.jpg")); // NOI18N
+        banner.setAlignmentY(0.0F);
+        menu.add(banner);
+        banner.setBounds(0, 648, 1366, 120);
 
         mfondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        mfondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario.jpg"))); // NOI18N
+        mfondo.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoMenu.jpg")); // NOI18N
         mfondo.setAlignmentY(0.0F);
         mfondo.setMaximumSize(new java.awt.Dimension(1366, 768));
         mfondo.setMinimumSize(new java.awt.Dimension(1366, 768));
@@ -363,7 +370,7 @@ public class Inicio extends javax.swing.JFrame {
         nombre.setBounds(333, 625, 700, 70);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario.jpg"))); // NOI18N
+        fondo.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoPeces.jpg")); // NOI18N
         fondo.setMaximumSize(new java.awt.Dimension(1366, 768));
         fondo.setMinimumSize(new java.awt.Dimension(1366, 768));
         fondo.setPreferredSize(new java.awt.Dimension(1366, 768));
@@ -690,7 +697,7 @@ public class Inicio extends javax.swing.JFrame {
         comportamiento.setBounds(1080, 590, 256, 128);
 
         fseleccion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fseleccion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fseleccion.jpg"))); // NOI18N
+        fseleccion.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoPeces.jpg")); // NOI18N
         fseleccion.setAlignmentY(0.0F);
         fseleccion.setMaximumSize(new java.awt.Dimension(1366, 768));
         fseleccion.setMinimumSize(new java.awt.Dimension(1366, 768));
@@ -721,8 +728,8 @@ public class Inicio extends javax.swing.JFrame {
 
     private void sliderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sliderMouseClicked
         // TODO add your handling code here:
-        tittle.setText( names[contador] );
-        Image foto = Imagenes[contador].getScaledInstance(( int )(( buffer[contador].getWidth()*300 )/buffer[contador].getHeight()), 300, Image.SCALE_DEFAULT );
+        tittle.setText( names[ contador ]);
+        Image foto = Imagenes[ contador ].getScaledInstance(( int )(( buffer[ contador ].getWidth()*300 )/buffer[ contador ].getHeight() ), 300, Image.SCALE_DEFAULT );
         seleccionado.setIcon( new ImageIcon( foto ));
         this.setContentPane( seleccion );
     }//GEN-LAST:event_sliderMouseClicked
@@ -754,15 +761,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void videoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_videoMouseClicked
         // TODO add your handling code here:
-        try {
-            URL url = new URL( "file:/c:/acuario/inicial.avi" );
-            Dimension d = new Dimension( 720, 540 );
-            PanelVideo video = new PanelVideo( url, d );
-            ficha.video.add( video );
-            ficha.setContentPane( ficha.video );
-        } catch ( MalformedURLException ex ) {
-            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
-        }
+        
     }//GEN-LAST:event_videoMouseClicked
 
     private void pecesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pecesMouseClicked
@@ -963,6 +962,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton agua;
     private javax.swing.JButton alimentacion;
     private javax.swing.JLabel anterior;
+    private javax.swing.JLabel banner;
     private javax.swing.JButton biotopo;
     private javax.swing.JButton cerrar;
     private javax.swing.JButton clasificacion;
@@ -976,7 +976,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel logo;
     public javax.swing.JPanel menu;
-    private javax.swing.JLabel mfondo;
+    public javax.swing.JLabel mfondo;
     private javax.swing.JButton next;
     private javax.swing.JLabel nombre;
     private javax.swing.JButton nombres;
