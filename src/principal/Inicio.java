@@ -760,8 +760,26 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_vvideoMouseClicked
 
     private void videoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_videoMouseClicked
+<<<<<<< HEAD
         // TODO add your handling code here:
         
+=======
+        try {
+            // TODO add your handling code here:
+//        try {
+//            URL url = new URL( "file:/c:/acuario/inicial.avi" );
+//            Dimension d = new Dimension( 720, 540 );
+//            PanelVideo video = new PanelVideo( url, d );
+//            ficha.video.add( video );
+//            ficha.setContentPane( ficha.video );
+//        } catch ( MalformedURLException ex ) {
+//            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
+//        }
+            Runtime.getRuntime().exec("file:///C:/acuario/video-js/demo.html");
+        } catch (IOException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+>>>>>>> 75734a557bece801489de4bb936173187b3b7e54
     }//GEN-LAST:event_videoMouseClicked
 
     private void pecesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pecesMouseClicked
