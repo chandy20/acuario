@@ -96,7 +96,9 @@
             <Component class="javax.swing.JLabel" name="logo">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="text" type="java.lang.String" value="&lt;html&gt; &lt;head&gt;   &lt;link href=&quot;../../../../acuario/video/video-js.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;   &lt;script src=&quot;../../../../acuario/video/video.js&quot;&gt;&lt;/script&gt;   &lt;script&gt;     videojs.options.flash.swf = &quot;video-js.swf&quot;;   &lt;/script&gt; &lt;/head&gt; &lt;body&quot;&gt; &lt;div align=&apos;center&apos;&gt;   &lt;video id=&quot;example_video_1&quot; class=&quot;video-js vjs-default-skin&quot; controls autoplay  width=&quot;576&quot; height=&quot;432&quot;       poster=&quot;../acuario/peces.jpg&quot;       data-setup=&quot;{}&quot;&gt;     &lt;source src=&quot;../../../../acuario/inicial.mp4&quot; type=&apos;video/mp4&apos; /&gt;   &lt;/video&gt; &lt;/div&gt; &lt;/body&gt; &lt;/html&gt; "/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="3" name="/images/mundoIII.png"/>
+                </Property>
                 <Property name="alignmentY" type="float" value="0.0"/>
               </Properties>
               <Constraints>

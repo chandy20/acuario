@@ -6,22 +6,18 @@
 
 package principal;
 
-import java.awt.Dimension;
+import java.awt.Desktop;
 import java.awt.GraphicsEnvironment;
-import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import objetos.PezVO;
 
 /**
@@ -152,7 +148,7 @@ public class Inicio extends javax.swing.JFrame {
         menu.setLayout(null);
 
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        logo.setText("<html> <head>   <link href=\"../../../../acuario/video/video-js.css\" rel=\"stylesheet\" type=\"text/css\">   <script src=\"../../../../acuario/video/video.js\"></script>   <script>     videojs.options.flash.swf = \"video-js.swf\";   </script> </head> <body\"> <div align='center'>   <video id=\"example_video_1\" class=\"video-js vjs-default-skin\" controls autoplay  width=\"576\" height=\"432\"       poster=\"../acuario/peces.jpg\"       data-setup=\"{}\">     <source src=\"../../../../acuario/inicial.mp4\" type='video/mp4' />   </video> </div> </body> </html> ");
+        logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mundoIII.png"))); // NOI18N
         logo.setAlignmentY(0.0F);
         menu.add(logo);
         logo.setBounds(383, 50, 600, 400);
@@ -762,7 +758,11 @@ public class Inicio extends javax.swing.JFrame {
     private void videoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_videoMouseClicked
         // TODO add your handling code here:
         try {
-            Runtime.getRuntime().exec("file:///C:/acuario/video-js/demo.html");
+            File objetofile = new File ( "file:///C:/acuario/video-js/demo.html" );
+//            Runtime.getRuntime().exec();
+            Desktop.getDesktop().open(objetofile);
+            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+//            devices[ 1 ].setFullScreenWindow(  );
         } catch (IOException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
