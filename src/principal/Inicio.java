@@ -37,16 +37,21 @@ public class Inicio extends javax.swing.JFrame {
     int ids[] = null;
     int contador = 0;
     boolean control = true;
+    boolean controlSegunda = true;
     
     public Inicio( ArrayList<PezVO> peces ) throws IOException {
         initComponents();
+        comenzarFicha();
+        llenarVectores( peces );
+        cargarComponentes();
+    }
+    
+    public void comenzarFicha() {
         ficha = new Ficha( this, false );
         ficha.setPreferredSize( null );
         java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
         devices[ 1 ].setFullScreenWindow( ficha );
         ficha.setContentPane( ficha.inicial );
-        llenarVectores( peces );
-        cargarComponentes();
     }
     
     public void llenarVectores( ArrayList<PezVO> peces ) throws IOException {
@@ -758,11 +763,10 @@ public class Inicio extends javax.swing.JFrame {
     private void videoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_videoMouseClicked
         // TODO add your handling code here:
         try {
-            File objetofile = new File ( "file:///C:/acuario/video-js/demo.html" );
-//            Runtime.getRuntime().exec();
-            Desktop.getDesktop().open(objetofile);
-            java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
-//            devices[ 1 ].setFullScreenWindow(  );
+            File file = new File( "c:\\acuario/video/demo.html" );
+            Desktop.getDesktop().open(file);
+            ficha.dispose();
+            controlSegunda = false;
         } catch (IOException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -771,6 +775,11 @@ public class Inicio extends javax.swing.JFrame {
     private void pecesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pecesMouseClicked
         // TODO add your handling code here:
         this.setContentPane( tactil );
+        if ( !controlSegunda ) {
+            comenzarFicha();
+            cargarComponentes();
+            controlSegunda = true;
+        }
         ficha.setContentPane( ficha.visor );
     }//GEN-LAST:event_pecesMouseClicked
 
