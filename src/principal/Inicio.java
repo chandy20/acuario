@@ -12,8 +12,16 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -38,12 +46,14 @@ public class Inicio extends javax.swing.JFrame {
     int contador = 0;
     boolean control = true;
     boolean controlSegunda = true;
+    private Connection connection = Conexion.getConnection();
     
     public Inicio( ArrayList<PezVO> peces ) throws IOException {
         initComponents();
         comenzarFicha();
         llenarVectores( peces );
         cargarComponentes();
+        hilo.start();
     }
     
     public void comenzarFicha() {
@@ -77,6 +87,10 @@ public class Inicio extends javax.swing.JFrame {
         ficha.tittle.setText( names[ contador ]);
     }
     
+    public void iniciarInicio() {
+        this.setContentPane( this.menu );
+    }
+    
     public void iniciarFicha() {
         ficha.setContentPane( ficha.datos );
         try {
@@ -86,6 +100,74 @@ public class Inicio extends javax.swing.JFrame {
             Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
         }
     }
+    
+    public void cerrarVideo() {
+        String cmd = "tskill chrome";
+        Process hijo;
+        try {
+            hijo = Runtime.getRuntime().exec(cmd);
+            hijo.waitFor();
+            if (hijo.exitValue() == 0) {
+                System.out.println("Video cerrado con exito");
+            } else {
+                System.out.println("Incapaz de cerrar Video. Exit code: " + hijo.exitValue() + "n");
+            }
+        } catch (IOException e) {
+            System.out.println("Incapaz de cerrar Video.");
+        } catch (InterruptedException e) {
+            System.out.println("Incapaz de cerrar Video.");
+        }
+    }
+    
+    Thread hilo = new Thread() {//declaramos el hilo
+
+        public long tiempo(String Fecha, String Fecha2) throws ParseException {
+            Calendar calFechaInicial = Calendar.getInstance();
+            Calendar calFechaFinal = Calendar.getInstance();
+            DateFormat df = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+            calFechaInicial.setTime(df.parse(Fecha));
+            calFechaFinal.setTime(df.parse(Fecha2));
+            long segundos = ((calFechaFinal.getTimeInMillis() - calFechaInicial.getTimeInMillis()) / 1000);
+            return segundos;
+        }
+
+        @Override
+        public void run() {
+            boolean x = true;
+            Calendar fecha = new GregorianCalendar();
+            String año = Integer.toString(fecha.get(Calendar.YEAR));
+            String mes = Integer.toString(fecha.get(Calendar.MONTH));
+            String dia = Integer.toString(fecha.get(Calendar.DAY_OF_MONTH));
+            String hora = Integer.toString(fecha.get(Calendar.HOUR_OF_DAY));
+            String minuto = Integer.toString(fecha.get(Calendar.MINUTE));
+            String segundo = Integer.toString(fecha.get(Calendar.SECOND));
+            String Fecha = año + "-" + mes + "-" + dia + " " + hora + ":" + minuto + ":" + segundo;
+            while (x) {
+                try {
+                    String sql = "select CURRENT_TIMESTAMP as fechaActual";
+                    Statement statement = connection.createStatement();
+                    ResultSet rs = statement.executeQuery(sql);
+                    String Fecha2 = "";
+                    if (rs.next()) {
+                        Fecha2 = rs.getString("fechaActual");
+                    }
+                    long y = 0;
+                    try {
+                        y = tiempo(Fecha, Fecha2);
+                    } catch (ParseException ex) {
+                        System.out.println(ex);
+                    }
+                    if (y == 5) {
+                        x = false;
+                        iniciarInicio();
+                        run();
+                    }
+                } catch (SQLException ex) {
+                    System.out.println(ex);
+                }
+            }
+        }
+    };
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -778,6 +860,7 @@ public class Inicio extends javax.swing.JFrame {
         if ( !controlSegunda ) {
             comenzarFicha();
             cargarComponentes();
+            cerrarVideo();
             controlSegunda = true;
         }
         ficha.setContentPane( ficha.visor );
