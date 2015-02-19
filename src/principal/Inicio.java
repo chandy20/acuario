@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package principal;
 
 import java.awt.Desktop;
@@ -12,16 +11,8 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -37,7 +28,6 @@ public class Inicio extends javax.swing.JFrame {
     /**
      * Creates new form Inicio
      */
-    
     Ficha ficha = null;
     Image Imagenes[] = null;
     String names[] = null;
@@ -46,71 +36,71 @@ public class Inicio extends javax.swing.JFrame {
     int contador = 0;
     boolean control = true;
     boolean controlSegunda = true;
-    private Connection connection = Conexion.getConnection();
-    
-    public Inicio( ArrayList<PezVO> peces ) throws IOException {
+    boolean controlInactividad = true;
+    long y = 0;
+
+    public Inicio(ArrayList<PezVO> peces) throws IOException {
         initComponents();
         comenzarFicha();
-        llenarVectores( peces );
+        llenarVectores(peces);
         cargarComponentes();
         hilo.start();
     }
-    
+
     public void comenzarFicha() {
-        ficha = new Ficha( this, false );
-        ficha.setPreferredSize( null );
+        ficha = new Ficha(this, false);
+        ficha.setPreferredSize(null);
         java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
-        devices[ 1 ].setFullScreenWindow( ficha );
-        ficha.setContentPane( ficha.inicial );
+        devices[ 1].setFullScreenWindow(ficha);
+        ficha.setContentPane(ficha.inicial);
     }
-    
-    public void llenarVectores( ArrayList<PezVO> peces ) throws IOException {
-        Imagenes = new Image[ peces.size() ];
-        names = new String[ peces.size() ];
-        ids = new int[ peces.size() ];
-        buffer = new BufferedImage[ peces.size() ];
+
+    public void llenarVectores(ArrayList<PezVO> peces) throws IOException {
+        Imagenes = new Image[peces.size()];
+        names = new String[peces.size()];
+        ids = new int[peces.size()];
+        buffer = new BufferedImage[peces.size()];
         int i = 0;
-        for ( PezVO pezVO : peces ) {
-            Imagenes[ i ] = getToolkit().getImage( pezVO.getPez_nombComun() );
-            names[ i ] = pezVO.getPez_nombre();
-            ids[ i ] = pezVO.getPez_id();
-            buffer[ i ] = ImageIO.read( new File( pezVO.getPez_nombComun() ));
+        for (PezVO pezVO : peces) {
+            Imagenes[ i] = getToolkit().getImage(pezVO.getPez_nombComun());
+            names[ i] = pezVO.getPez_nombre();
+            ids[ i] = pezVO.getPez_id();
+            buffer[ i] = ImageIO.read(new File(pezVO.getPez_nombComun()));
             i++;
         }
     }
-    
+
     public void cargarComponentes() {
-        Image foto = Imagenes[ contador ].getScaledInstance(( int )(( buffer[contador].getWidth()*300 )/buffer[contador].getHeight() ), 300, Image.SCALE_DEFAULT );
-        slider.setIcon( new ImageIcon( foto ));
-        nombre.setText( names[ contador ] );
-        ficha.foto.setIcon( new ImageIcon( Imagenes[ contador ]));
-        ficha.tittle.setText( names[ contador ]);
+        Image foto = Imagenes[ contador].getScaledInstance((int) ((buffer[contador].getWidth() * 300) / buffer[contador].getHeight()), 300, Image.SCALE_DEFAULT);
+        slider.setIcon(new ImageIcon(foto));
+        nombre.setText(names[ contador]);
+        ficha.foto.setIcon(new ImageIcon(Imagenes[ contador]));
+        ficha.tittle.setText(names[ contador]);
     }
-    
+
     public void iniciarInicio() {
-        this.setContentPane( this.menu );
+        this.setContentPane(this.menu);
     }
-    
+
     public void iniciarFicha() {
-        ficha.setContentPane( ficha.datos );
+        ficha.setContentPane(ficha.datos);
         try {
-            ficha.cargaImagenes( ids[ contador ]);
-            ficha.cargaNombre( ids[ contador ]);
-        } catch ( SQLException ex ) {
-            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
+            ficha.cargaImagenes(ids[ contador]);
+            ficha.cargaNombre(ids[ contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
+
     public void cerrarVideo() {
-        String cmd = "tskill chrome";
         Process hijo;
         try {
-            hijo = Runtime.getRuntime().exec(cmd);
+            hijo = Runtime.getRuntime().exec("tskill chrome");
             hijo.waitFor();
             if (hijo.exitValue() == 0) {
                 System.out.println("Video cerrado con exito");
             } else {
-                System.out.println("Incapaz de cerrar Video. Exit code: " + hijo.exitValue() + "n");
+                System.out.println("Incapaz de cerrar Video. Exit code: " + hijo.exitValue() + "\n");
             }
         } catch (IOException e) {
             System.out.println("Incapaz de cerrar Video.");
@@ -118,53 +108,32 @@ public class Inicio extends javax.swing.JFrame {
             System.out.println("Incapaz de cerrar Video.");
         }
     }
-    
-    Thread hilo = new Thread() {//declaramos el hilo
 
-        public long tiempo(String Fecha, String Fecha2) throws ParseException {
-            Calendar calFechaInicial = Calendar.getInstance();
-            Calendar calFechaFinal = Calendar.getInstance();
-            DateFormat df = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-            calFechaInicial.setTime(df.parse(Fecha));
-            calFechaFinal.setTime(df.parse(Fecha2));
-            long segundos = ((calFechaFinal.getTimeInMillis() - calFechaInicial.getTimeInMillis()) / 1000);
-            return segundos;
-        }
+    Thread hilo = new Thread() {//declaramos el hilo
 
         @Override
         public void run() {
-            boolean x = true;
-            Calendar fecha = new GregorianCalendar();
-            String año = Integer.toString(fecha.get(Calendar.YEAR));
-            String mes = Integer.toString(fecha.get(Calendar.MONTH));
-            String dia = Integer.toString(fecha.get(Calendar.DAY_OF_MONTH));
-            String hora = Integer.toString(fecha.get(Calendar.HOUR_OF_DAY));
-            String minuto = Integer.toString(fecha.get(Calendar.MINUTE));
-            String segundo = Integer.toString(fecha.get(Calendar.SECOND));
-            String Fecha = año + "-" + mes + "-" + dia + " " + hora + ":" + minuto + ":" + segundo;
-            while (x) {
-                try {
-                    String sql = "select CURRENT_TIMESTAMP as fechaActual";
-                    Statement statement = connection.createStatement();
-                    ResultSet rs = statement.executeQuery(sql);
-                    String Fecha2 = "";
-                    if (rs.next()) {
-                        Fecha2 = rs.getString("fechaActual");
+            try {
+                while (true) {//ciclo infinito
+                    if (y == 10) {
+                       controlInactividad = false;
+                        if (controlSegunda) {
+                            iniciarInicio();
+                            try {
+                                File file = new File("c:\\acuario/video/demo.html");
+                                Desktop.getDesktop().open(file);
+                                ficha.dispose();
+                                controlSegunda = false;
+                            } catch (IOException ex) {
+                                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+                            }
+                        }
                     }
-                    long y = 0;
-                    try {
-                        y = tiempo(Fecha, Fecha2);
-                    } catch (ParseException ex) {
-                        System.out.println(ex);
-                    }
-                    if (y == 5) {
-                        x = false;
-                        iniciarInicio();
-                        run();
-                    }
-                } catch (SQLException ex) {
-                    System.out.println(ex);
+                    y++;
+                    hilo.sleep(1000);//que duerma un segundo
                 }
+            } catch (java.lang.InterruptedException ie) {
+                System.out.println(ie.getMessage());
             }
         }
     };
@@ -199,6 +168,7 @@ public class Inicio extends javax.swing.JFrame {
         fondo = new javax.swing.JLabel();
         seleccion = new javax.swing.JPanel();
         close = new javax.swing.JButton();
+        home = new javax.swing.JButton();
         seleccionado = new javax.swing.JLabel();
         tittle = new javax.swing.JLabel();
         nombres = new javax.swing.JButton();
@@ -237,6 +207,11 @@ public class Inicio extends javax.swing.JFrame {
         logo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mundoIII.png"))); // NOI18N
         logo.setAlignmentY(0.0F);
+        logo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoMouseClicked(evt);
+            }
+        });
         menu.add(logo);
         logo.setBounds(383, 50, 600, 400);
 
@@ -309,6 +284,11 @@ public class Inicio extends javax.swing.JFrame {
         banner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         banner.setIcon(new javax.swing.ImageIcon("C:\\acuario\\social.jpg")); // NOI18N
         banner.setAlignmentY(0.0F);
+        banner.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bannerMouseClicked(evt);
+            }
+        });
         menu.add(banner);
         banner.setBounds(0, 648, 1366, 120);
 
@@ -318,6 +298,11 @@ public class Inicio extends javax.swing.JFrame {
         mfondo.setMaximumSize(new java.awt.Dimension(1366, 768));
         mfondo.setMinimumSize(new java.awt.Dimension(1366, 768));
         mfondo.setPreferredSize(new java.awt.Dimension(1366, 768));
+        mfondo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                mfondoMouseClicked(evt);
+            }
+        });
         menu.add(mfondo);
         mfondo.setBounds(0, 0, 1366, 768);
 
@@ -330,16 +315,17 @@ public class Inicio extends javax.swing.JFrame {
         tactil.setMinimumSize(new java.awt.Dimension(1366, 768));
         tactil.setLayout(null);
 
-        cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/review.png"))); // NOI18N
         cerrar.setAlignmentY(0.0F);
         cerrar.setBorder(null);
         cerrar.setBorderPainted(false);
         cerrar.setContentAreaFilled(false);
         cerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        cerrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cerrar.setMaximumSize(new java.awt.Dimension(64, 64));
         cerrar.setMinimumSize(new java.awt.Dimension(64, 64));
         cerrar.setPreferredSize(new java.awt.Dimension(64, 64));
-        cerrar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/closeP.png"))); // NOI18N
+        cerrar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/reviewP.png"))); // NOI18N
         cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cerrarMouseClicked(evt);
@@ -470,7 +456,7 @@ public class Inicio extends javax.swing.JFrame {
         seleccion.setPreferredSize(new java.awt.Dimension(1366, 768));
         seleccion.setLayout(null);
 
-        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/close.png"))); // NOI18N
+        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/review.png"))); // NOI18N
         close.setAlignmentY(0.0F);
         close.setBorder(null);
         close.setBorderPainted(false);
@@ -478,7 +464,7 @@ public class Inicio extends javax.swing.JFrame {
         close.setMaximumSize(new java.awt.Dimension(64, 64));
         close.setMinimumSize(new java.awt.Dimension(64, 64));
         close.setPreferredSize(new java.awt.Dimension(64, 64));
-        close.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/closeP.png"))); // NOI18N
+        close.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/reviewP.png"))); // NOI18N
         close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 closeMouseClicked(evt);
@@ -486,6 +472,24 @@ public class Inicio extends javax.swing.JFrame {
         });
         seleccion.add(close);
         close.setBounds(1290, 10, 64, 64);
+
+        home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home.png"))); // NOI18N
+        home.setAlignmentY(0.0F);
+        home.setBorderPainted(false);
+        home.setContentAreaFilled(false);
+        home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        home.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        home.setMaximumSize(new java.awt.Dimension(64, 64));
+        home.setMinimumSize(new java.awt.Dimension(64, 64));
+        home.setPreferredSize(new java.awt.Dimension(64, 64));
+        home.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homeP.png"))); // NOI18N
+        home.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                homeMouseClicked(evt);
+            }
+        });
+        seleccion.add(home);
+        home.setBounds(1206, 10, 64, 64);
 
         seleccionado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         seleccionado.setAlignmentY(0.0F);
@@ -811,44 +815,48 @@ public class Inicio extends javax.swing.JFrame {
 
     private void sliderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sliderMouseClicked
         // TODO add your handling code here:
-        tittle.setText( names[ contador ]);
-        Image foto = Imagenes[ contador ].getScaledInstance(( int )(( buffer[ contador ].getWidth()*300 )/buffer[ contador ].getHeight() ), 300, Image.SCALE_DEFAULT );
-        seleccionado.setIcon( new ImageIcon( foto ));
-        this.setContentPane( seleccion );
+        tittle.setText(names[ contador]);
+        Image foto = Imagenes[ contador].getScaledInstance((int) ((buffer[ contador].getWidth() * 300) / buffer[ contador].getHeight()), 300, Image.SCALE_DEFAULT);
+        seleccionado.setIcon(new ImageIcon(foto));
+        this.setContentPane(seleccion);
     }//GEN-LAST:event_sliderMouseClicked
 
     private void nombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreMouseClicked
         // TODO add your handling code here:
-        sliderMouseClicked( evt );
+        sliderMouseClicked(evt);
     }//GEN-LAST:event_nombreMouseClicked
 
     private void vpecesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vpecesMouseClicked
         // TODO add your handling code here:
-        pecesMouseClicked( evt );
+        pecesMouseClicked(evt);
     }//GEN-LAST:event_vpecesMouseClicked
 
     private void siguienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_siguienteMouseClicked
         // TODO add your handling code here:
-        nextMouseClicked( evt );
+        nextMouseClicked(evt);
     }//GEN-LAST:event_siguienteMouseClicked
 
     private void anteriorMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_anteriorMouseClicked
         // TODO add your handling code here:
-        prevMouseClicked( evt );
+        prevMouseClicked(evt);
     }//GEN-LAST:event_anteriorMouseClicked
 
     private void vvideoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_vvideoMouseClicked
         // TODO add your handling code here:
-        videoMouseClicked( evt );
+        videoMouseClicked(evt);
     }//GEN-LAST:event_vvideoMouseClicked
 
     private void videoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_videoMouseClicked
         // TODO add your handling code here:
+        y = 0;
+        controlInactividad = true;
         try {
-            File file = new File( "c:\\acuario/video/demo.html" );
-            Desktop.getDesktop().open(file);
-            ficha.dispose();
-            controlSegunda = false;
+            if (controlSegunda) {
+                File file = new File("c:\\acuario/video/demo.html");
+                Desktop.getDesktop().open(file);
+                ficha.dispose();
+                controlSegunda = false;
+            }
         } catch (IOException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -856,21 +864,23 @@ public class Inicio extends javax.swing.JFrame {
 
     private void pecesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pecesMouseClicked
         // TODO add your handling code here:
-        this.setContentPane( tactil );
-        if ( !controlSegunda ) {
+        y = 0;
+        controlInactividad = true;
+        this.setContentPane(tactil);
+        if (!controlSegunda) {
             comenzarFicha();
             cargarComponentes();
             cerrarVideo();
             controlSegunda = true;
         }
-        ficha.setContentPane( ficha.visor );
+        ficha.setContentPane(ficha.visor);
     }//GEN-LAST:event_pecesMouseClicked
 
     private void prevMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prevMouseClicked
         // TODO add your handling code here:
         contador--;
-        if ( contador == -1 ) {
-            contador = ids.length-1;
+        if (contador == -1) {
+            contador = ids.length - 1;
         }
         cargarComponentes();
     }//GEN-LAST:event_prevMouseClicked
@@ -878,7 +888,7 @@ public class Inicio extends javax.swing.JFrame {
     private void nextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextMouseClicked
         // TODO add your handling code here:
         contador++;
-        if ( contador == ids.length ) {
+        if (contador == ids.length) {
             contador = 0;
         }
         cargarComponentes();
@@ -886,172 +896,215 @@ public class Inicio extends javax.swing.JFrame {
 
     private void cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseClicked
         // TODO add your handling code here:
-        this.setContentPane( menu );
-        ficha.setContentPane( ficha.inicial );
+        this.setContentPane(menu);
+        ficha.setContentPane(ficha.inicial);
     }//GEN-LAST:event_cerrarMouseClicked
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        ficha.setContentPane( ficha.visor );
-        this.setContentPane( tactil );
+        ficha.setContentPane(ficha.visor);
+        this.setContentPane(tactil);
         control = true;
     }//GEN-LAST:event_closeMouseClicked
 
     private void nombresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombresMouseClicked
         // TODO add your handling code here:
-        if ( control ) {
+        if (control) {
             iniciarFicha();
             control = false;
         }
         try {
-            ficha.getNombres( ids[contador] );
-        } catch ( SQLException ex ) {
-            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
+            ficha.getNombres(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_nombresMouseClicked
 
     private void biotopoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_biotopoMouseClicked
         // TODO add your handling code here:
-        if ( control ) {
+        if (control) {
             iniciarFicha();
             control = false;
         }
         try {
-            ficha.getBiotopo( ids[contador] );
-        } catch ( SQLException ex ) {
-            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
+            ficha.getBiotopo(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_biotopoMouseClicked
 
     private void distribucionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_distribucionMouseClicked
         // TODO add your handling code here:
-        if ( control ) {
+        if (control) {
             iniciarFicha();
             control = false;
         }
         try {
-            ficha.getDistribucion( ids[contador] );
-        } catch ( SQLException ex ) {
-            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
+            ficha.getDistribucion(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_distribucionMouseClicked
 
     private void formaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formaMouseClicked
         // TODO add your handling code here:
-        if ( control ) {
+        if (control) {
             iniciarFicha();
             control = false;
         }
         try {
-            ficha.getForma( ids[contador] );
-        } catch ( SQLException ex ) {
-            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
+            ficha.getForma(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_formaMouseClicked
 
     private void coloracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coloracionMouseClicked
         // TODO add your handling code here:
-        if ( control ) {
+        if (control) {
             iniciarFicha();
             control = false;
         }
         try {
-            ficha.getColoracion( ids[contador] );
-        } catch ( SQLException ex ) {
-            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
+            ficha.getColoracion(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_coloracionMouseClicked
 
     private void tamanoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tamanoMouseClicked
         // TODO add your handling code here:
-        if ( control ) {
+        if (control) {
             iniciarFicha();
             control = false;
         }
         try {
-            ficha.getTamano( ids[contador] );
-        } catch ( SQLException ex ) {
-            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
+            ficha.getTamano(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_tamanoMouseClicked
 
     private void temperaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_temperaturaMouseClicked
         // TODO add your handling code here:
-        if ( control ) {
+        if (control) {
             iniciarFicha();
             control = false;
         }
         try {
-            ficha.getTempreratura( ids[contador] );
-        } catch ( SQLException ex ) {
-            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
+            ficha.getTempreratura(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_temperaturaMouseClicked
 
     private void aguaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aguaMouseClicked
         // TODO add your handling code here:
-        if ( control ) {
+        if (control) {
             iniciarFicha();
             control = false;
         }
         try {
-            ficha.getAgua( ids[contador] );
-        } catch ( SQLException ex ) {
-            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
+            ficha.getAgua(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_aguaMouseClicked
 
     private void acuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acuarioMouseClicked
         // TODO add your handling code here:
-        if ( control ) {
+        if (control) {
             iniciarFicha();
             control = false;
         }
         try {
-            ficha.getAcuario( ids[contador] );
-        } catch ( SQLException ex ) {
-            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
+            ficha.getAcuario(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_acuarioMouseClicked
 
     private void alimentacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alimentacionMouseClicked
         // TODO add your handling code here:
-        if ( control ) {
+        if (control) {
             iniciarFicha();
             control = false;
         }
         try {
-            ficha.getAlimentacion( ids[contador] );
-        } catch ( SQLException ex ) {
-            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
+            ficha.getAlimentacion(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_alimentacionMouseClicked
 
     private void comportamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comportamientoMouseClicked
         // TODO add your handling code here:
-        if ( control ) {
+        if (control) {
             iniciarFicha();
             control = false;
         }
         try {
-            ficha.getComportamiento( ids[contador] );
-        } catch ( SQLException ex ) {
-            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
+            ficha.getComportamiento(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_comportamientoMouseClicked
 
     private void clasificacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clasificacionMouseClicked
         // TODO add your handling code here:
-        if ( control ) {
+        if (control) {
             iniciarFicha();
             control = false;
         }
         try {
-            ficha.getClasificacion( ids[contador] );
-        } catch ( SQLException ex ) {
-            Logger.getLogger( Inicio.class.getName() ).log( Level.SEVERE, null, ex );
+            ficha.getClasificacion(ids[contador]);
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_clasificacionMouseClicked
+
+    private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
+        // TODO add your handling code here:
+        ficha.setContentPane(ficha.inicial);
+        this.setContentPane(menu);
+        control = true;
+    }//GEN-LAST:event_homeMouseClicked
+
+    private void mfondoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mfondoMouseClicked
+        // TODO add your handling code here:
+        y = 0;
+        if (!controlInactividad) {
+            comenzarFicha();
+            cargarComponentes();
+            cerrarVideo();
+            controlInactividad = true;
+            controlSegunda = true;
+        }
+    }//GEN-LAST:event_mfondoMouseClicked
+
+    private void logoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoMouseClicked
+        // TODO add your handling code here:
+        y = 0;
+        if (!controlInactividad) {
+            comenzarFicha();
+            cargarComponentes();
+            cerrarVideo();
+            controlInactividad = true;
+            controlSegunda = true;
+        }
+    }//GEN-LAST:event_logoMouseClicked
+
+    private void bannerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bannerMouseClicked
+        // TODO add your handling code here:
+        y = 0;
+        if (!controlInactividad) {
+            comenzarFicha();
+            cargarComponentes();
+            cerrarVideo();
+            controlInactividad = true;
+            controlSegunda = true;
+        }
+    }//GEN-LAST:event_bannerMouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton acuario;
@@ -1069,6 +1122,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel fondo;
     private javax.swing.JButton forma;
     private javax.swing.JLabel fseleccion;
+    private javax.swing.JButton home;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel logo;
     public javax.swing.JPanel menu;

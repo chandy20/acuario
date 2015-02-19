@@ -9,7 +9,6 @@ package principal;
  *
  * @author EnovaSoft
  */
-
 import DAO.AcuarioDAO;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -24,14 +23,13 @@ public class Principal {
      * @throws java.sql.SQLException
      * @throws java.io.IOException
      */
-    public static void main( String[] args ) throws SQLException, IOException {
+    public static void main(String[] args) throws SQLException, IOException {
         // TODO code application logic here
         AcuarioDAO aDAO = new AcuarioDAO();
         ArrayList<PezVO> peces = aDAO.getImagePrincipalFromFish();
-        Inicio inicio = new Inicio( peces );
-        inicio.setLocationRelativeTo( null );
-        inicio.setContentPane( inicio.menu );
-        inicio.setVisible( true );
+        Inicio inicio = new Inicio(peces);
+        inicio.setLocationRelativeTo(null);
+        inicio.setContentPane(inicio.menu);
+        inicio.setVisible(true);
     }
-
 }

@@ -44,7 +44,7 @@ public class Ficha extends javax.swing.JDialog {
         lista = aDAO.getDatosGenerales(pez_id, 1);
         for (PezVO pezVO : lista) {
             String nombreComun = pezVO.getPez_nombComun();
-            String nombreCientifico = pezVO.getPez_nombCientifico();           
+            String nombreCientifico = pezVO.getPez_nombCientifico();
             String datos = "<html><body><table><tr><td width='800px' align='center' style='font-size:50px'><b>NOMBRE COMÚN</b></td>"
                     + "<td width='835px' align='center' style='font-size:50px'><b>NOMBRE CIENTÍFICO</b></td></tr>"
                     + "<tr><td align='center' style='font-size:40px'>" + nombreComun + "</td>"
