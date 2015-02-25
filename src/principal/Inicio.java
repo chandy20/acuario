@@ -184,6 +184,24 @@ public class Inicio extends javax.swing.JFrame {
         alimentacion = new javax.swing.JButton();
         comportamiento = new javax.swing.JButton();
         fseleccion = new javax.swing.JLabel();
+        grilla = new javax.swing.JPanel();
+        gcerrar = new javax.swing.JButton();
+        gtitulo = new javax.swing.JLabel();
+        P1 = new javax.swing.JLabel();
+        P2 = new javax.swing.JLabel();
+        P3 = new javax.swing.JLabel();
+        P4 = new javax.swing.JLabel();
+        P5 = new javax.swing.JLabel();
+        P6 = new javax.swing.JLabel();
+        P7 = new javax.swing.JLabel();
+        P8 = new javax.swing.JLabel();
+        P9 = new javax.swing.JLabel();
+        P10 = new javax.swing.JLabel();
+        P11 = new javax.swing.JLabel();
+        P12 = new javax.swing.JLabel();
+        up = new javax.swing.JButton();
+        down = new javax.swing.JButton();
+        gfondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
@@ -795,6 +813,212 @@ public class Inicio extends javax.swing.JFrame {
         jLayeredPane1.add(seleccion);
         seleccion.setBounds(0, 0, 1366, 768);
 
+        grilla.setAlignmentX(0.0F);
+        grilla.setAlignmentY(0.0F);
+        grilla.setMaximumSize(new java.awt.Dimension(1366, 768));
+        grilla.setMinimumSize(new java.awt.Dimension(1366, 768));
+        grilla.setLayout(null);
+
+        gcerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/review.png"))); // NOI18N
+        gcerrar.setAlignmentY(0.0F);
+        gcerrar.setBorder(null);
+        gcerrar.setBorderPainted(false);
+        gcerrar.setContentAreaFilled(false);
+        gcerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        gcerrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        gcerrar.setMaximumSize(new java.awt.Dimension(64, 64));
+        gcerrar.setMinimumSize(new java.awt.Dimension(64, 64));
+        gcerrar.setPreferredSize(new java.awt.Dimension(64, 64));
+        gcerrar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/reviewP.png"))); // NOI18N
+        gcerrar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                gcerrarMouseClicked(evt);
+            }
+        });
+        grilla.add(gcerrar);
+        gcerrar.setBounds(1290, 10, 64, 64);
+
+        gtitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        gtitulo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mundoII.png"))); // NOI18N
+        gtitulo.setAlignmentY(0.0F);
+        gtitulo.setMaximumSize(new java.awt.Dimension(330, 200));
+        gtitulo.setMinimumSize(new java.awt.Dimension(330, 200));
+        gtitulo.setPreferredSize(new java.awt.Dimension(330, 200));
+        grilla.add(gtitulo);
+        gtitulo.setBounds(518, 25, 300, 200);
+
+        P1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        P1.setAlignmentY(0.0F);
+        P1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        P1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        P1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        P1.setMaximumSize(new java.awt.Dimension(284, 150));
+        P1.setMinimumSize(new java.awt.Dimension(284, 150));
+        P1.setPreferredSize(new java.awt.Dimension(284, 150));
+        grilla.add(P1);
+        P1.setBounds(34, 267, 284, 150);
+
+        P2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        P2.setAlignmentY(0.0F);
+        P2.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        P2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        P2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        P2.setMaximumSize(new java.awt.Dimension(284, 150));
+        P2.setMinimumSize(new java.awt.Dimension(284, 150));
+        P2.setPreferredSize(new java.awt.Dimension(284, 150));
+        grilla.add(P2);
+        P2.setBounds(351, 267, 284, 150);
+
+        P3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        P3.setAlignmentY(0.0F);
+        P3.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        P3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        P3.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        P3.setMaximumSize(new java.awt.Dimension(284, 150));
+        P3.setMinimumSize(new java.awt.Dimension(284, 150));
+        P3.setPreferredSize(new java.awt.Dimension(284, 150));
+        grilla.add(P3);
+        P3.setBounds(668, 267, 284, 150);
+
+        P4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        P4.setAlignmentY(0.0F);
+        P4.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        P4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        P4.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        P4.setMaximumSize(new java.awt.Dimension(284, 150));
+        P4.setMinimumSize(new java.awt.Dimension(284, 150));
+        P4.setPreferredSize(new java.awt.Dimension(284, 150));
+        grilla.add(P4);
+        P4.setBounds(985, 267, 284, 150);
+
+        P5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        P5.setAlignmentY(0.0F);
+        P5.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        P5.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        P5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        P5.setMaximumSize(new java.awt.Dimension(284, 150));
+        P5.setMinimumSize(new java.awt.Dimension(284, 150));
+        P5.setPreferredSize(new java.awt.Dimension(284, 150));
+        grilla.add(P5);
+        P5.setBounds(34, 434, 284, 150);
+
+        P6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        P6.setAlignmentY(0.0F);
+        P6.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        P6.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        P6.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        P6.setMaximumSize(new java.awt.Dimension(284, 150));
+        P6.setMinimumSize(new java.awt.Dimension(284, 150));
+        P6.setPreferredSize(new java.awt.Dimension(284, 150));
+        grilla.add(P6);
+        P6.setBounds(351, 434, 284, 150);
+
+        P7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        P7.setAlignmentY(0.0F);
+        P7.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        P7.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        P7.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        P7.setMaximumSize(new java.awt.Dimension(284, 150));
+        P7.setMinimumSize(new java.awt.Dimension(284, 150));
+        P7.setPreferredSize(new java.awt.Dimension(284, 150));
+        grilla.add(P7);
+        P7.setBounds(668, 434, 284, 150);
+
+        P8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        P8.setAlignmentY(0.0F);
+        P8.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        P8.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        P8.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        P8.setMaximumSize(new java.awt.Dimension(284, 150));
+        P8.setMinimumSize(new java.awt.Dimension(284, 150));
+        P8.setPreferredSize(new java.awt.Dimension(284, 150));
+        grilla.add(P8);
+        P8.setBounds(985, 434, 284, 150);
+
+        P9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        P9.setAlignmentY(0.0F);
+        P9.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        P9.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        P9.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        P9.setMaximumSize(new java.awt.Dimension(284, 150));
+        P9.setMinimumSize(new java.awt.Dimension(284, 150));
+        P9.setPreferredSize(new java.awt.Dimension(284, 150));
+        grilla.add(P9);
+        P9.setBounds(34, 601, 284, 150);
+
+        P10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        P10.setAlignmentY(0.0F);
+        P10.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        P10.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        P10.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        P10.setMaximumSize(new java.awt.Dimension(284, 150));
+        P10.setMinimumSize(new java.awt.Dimension(284, 150));
+        P10.setPreferredSize(new java.awt.Dimension(284, 150));
+        grilla.add(P10);
+        P10.setBounds(351, 601, 284, 150);
+
+        P11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        P11.setAlignmentY(0.0F);
+        P11.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        P11.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        P11.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        P11.setMaximumSize(new java.awt.Dimension(284, 150));
+        P11.setMinimumSize(new java.awt.Dimension(284, 150));
+        P11.setPreferredSize(new java.awt.Dimension(284, 150));
+        grilla.add(P11);
+        P11.setBounds(668, 601, 284, 150);
+
+        P12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        P12.setAlignmentY(0.0F);
+        P12.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        P12.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        P12.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        P12.setMaximumSize(new java.awt.Dimension(284, 150));
+        P12.setMinimumSize(new java.awt.Dimension(284, 150));
+        P12.setPreferredSize(new java.awt.Dimension(284, 150));
+        grilla.add(P12);
+        P12.setBounds(985, 601, 284, 150);
+
+        up.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/up.png"))); // NOI18N
+        up.setAlignmentY(0.0F);
+        up.setBorder(null);
+        up.setBorderPainted(false);
+        up.setContentAreaFilled(false);
+        up.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        up.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        up.setMaximumSize(new java.awt.Dimension(64, 64));
+        up.setMinimumSize(new java.awt.Dimension(64, 64));
+        up.setPreferredSize(new java.awt.Dimension(64, 64));
+        up.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/upP.png"))); // NOI18N
+        grilla.add(up);
+        up.setBounds(1285, 267, 64, 64);
+
+        down.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/down.png"))); // NOI18N
+        down.setAlignmentY(0.0F);
+        down.setAutoscrolls(true);
+        down.setBorder(null);
+        down.setBorderPainted(false);
+        down.setContentAreaFilled(false);
+        down.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        down.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        down.setMaximumSize(new java.awt.Dimension(64, 64));
+        down.setMinimumSize(new java.awt.Dimension(64, 64));
+        down.setPreferredSize(new java.awt.Dimension(64, 64));
+        down.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/downP.png"))); // NOI18N
+        grilla.add(down);
+        down.setBounds(1285, 687, 64, 64);
+
+        gfondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        gfondo.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoPeces.jpg")); // NOI18N
+        gfondo.setMaximumSize(new java.awt.Dimension(1366, 768));
+        gfondo.setMinimumSize(new java.awt.Dimension(1366, 768));
+        gfondo.setPreferredSize(new java.awt.Dimension(1366, 768));
+        grilla.add(gfondo);
+        gfondo.setBounds(0, 0, 1366, 768);
+
+        jLayeredPane1.add(grilla);
+        grilla.setBounds(0, 0, 1366, 768);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -1106,7 +1330,23 @@ public class Inicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_bannerMouseClicked
 
+    private void gcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gcerrarMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_gcerrarMouseClicked
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel P1;
+    private javax.swing.JLabel P10;
+    private javax.swing.JLabel P11;
+    private javax.swing.JLabel P12;
+    private javax.swing.JLabel P2;
+    private javax.swing.JLabel P3;
+    private javax.swing.JLabel P4;
+    private javax.swing.JLabel P5;
+    private javax.swing.JLabel P6;
+    private javax.swing.JLabel P7;
+    private javax.swing.JLabel P8;
+    private javax.swing.JLabel P9;
     private javax.swing.JButton acuario;
     private javax.swing.JButton agua;
     private javax.swing.JButton alimentacion;
@@ -1119,9 +1359,14 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton coloracion;
     private javax.swing.JButton comportamiento;
     private javax.swing.JButton distribucion;
+    private javax.swing.JButton down;
     private javax.swing.JLabel fondo;
     private javax.swing.JButton forma;
     private javax.swing.JLabel fseleccion;
+    private javax.swing.JButton gcerrar;
+    private javax.swing.JLabel gfondo;
+    private javax.swing.JPanel grilla;
+    private javax.swing.JLabel gtitulo;
     private javax.swing.JButton home;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JLabel logo;
@@ -1141,6 +1386,7 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton temperatura;
     private javax.swing.JLabel tittle;
     private javax.swing.JLabel titulo;
+    private javax.swing.JButton up;
     private javax.swing.JButton video;
     private javax.swing.JLabel vpeces;
     private javax.swing.JLabel vvideo;
