@@ -290,12 +290,9 @@ public class Ficha extends javax.swing.JDialog {
         foto.setMinimumSize(new java.awt.Dimension(1500, 700));
         foto.setPreferredSize(new java.awt.Dimension(1500, 700));
         visor.add(foto);
-        foto.setBounds(210, 258, 1500, 700);
+        foto.setBounds(210, 250, 1500, 700);
 
         fondo1.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoSegunda.jpg")); // NOI18N
-        fondo1.setMaximumSize(new java.awt.Dimension(1920, 1080));
-        fondo1.setMinimumSize(new java.awt.Dimension(1920, 1080));
-        fondo1.setPreferredSize(new java.awt.Dimension(1920, 1080));
         visor.add(fondo1);
         fondo1.setBounds(0, 0, 1920, 1080);
 
@@ -333,10 +330,7 @@ public class Ficha extends javax.swing.JDialog {
         info.setBounds(140, 550, 1635, 505);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fondo.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoSegunda.jpg")); // NOI18N
-        fondo.setMaximumSize(new java.awt.Dimension(1920, 1080));
-        fondo.setMinimumSize(new java.awt.Dimension(1920, 1080));
-        fondo.setPreferredSize(new java.awt.Dimension(1920, 1080));
+        fondo.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoSegundaDatos.jpg")); // NOI18N
         datos.add(fondo);
         fondo.setBounds(0, 0, 1920, 1080);
 
