@@ -119,14 +119,14 @@ public class Inicio extends javax.swing.JFrame {
                        controlInactividad = false;
                         if (controlSegunda) {
                             iniciarInicio();
-                            try {
-                                File file = new File("c:\\acuario/video/demo.html");
-                                Desktop.getDesktop().open(file);
-                                ficha.dispose();
-                                controlSegunda = false;
-                            } catch (IOException ex) {
-                                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-                            }
+//                            try {
+////                                File file = new File("c:\\acuario/video/demo.html");
+////                                Desktop.getDesktop().open(file);
+////                                ficha.dispose();
+//                                controlSegunda = false;
+//                            } catch (IOException ex) {
+//                                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+//                            }
                         }
                     }
                     y++;
@@ -137,6 +137,8 @@ public class Inicio extends javax.swing.JFrame {
             }
         }
     };
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -976,15 +978,11 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         y = 0;
         controlInactividad = true;
-        try {
-            if (controlSegunda) {
-                File file = new File("c:\\acuario/video/demo.html");
-                Desktop.getDesktop().open(file);
-                ficha.dispose();
-                controlSegunda = false;
-            }
-        } catch (IOException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        if (controlSegunda) {
+//                File file = new File("c:\\acuario/video/demo.html");
+//                Desktop.getDesktop().open(file);
+            ficha.setContentPane(ficha.videoPane);
+            controlSegunda = false;
         }
     }//GEN-LAST:event_videoMouseClicked
 
@@ -996,7 +994,7 @@ public class Inicio extends javax.swing.JFrame {
         if (!controlSegunda) {
             comenzarFicha();
             cargarComponentes();
-            cerrarVideo();
+            //cerrarVideo();
             controlSegunda = true;
         }
         ficha.setContentPane(ficha.visor);
@@ -1202,7 +1200,7 @@ public class Inicio extends javax.swing.JFrame {
         if (!controlInactividad) {
             comenzarFicha();
             cargarComponentes();
-            cerrarVideo();
+//            cerrarVideo();
             controlInactividad = true;
             controlSegunda = true;
         }
@@ -1214,7 +1212,7 @@ public class Inicio extends javax.swing.JFrame {
         if (!controlInactividad) {
             comenzarFicha();
             cargarComponentes();
-            cerrarVideo();
+//            cerrarVideo();
             controlInactividad = true;
             controlSegunda = true;
         }

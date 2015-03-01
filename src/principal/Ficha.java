@@ -5,13 +5,30 @@
  */
 package principal;
 
+import java.awt.BorderLayout;
+import java.awt.Component;
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.media.CannotRealizeException;
+import javax.media.Manager;
+import javax.media.MediaLocator;
+import javax.media.NoPlayerException;
+import javax.media.Player;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 import DAO.AcuarioDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import javax.media.Time;
 import javax.swing.ImageIcon;
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import objetos.PezVO;
 
 /**
@@ -23,16 +40,21 @@ public class Ficha extends javax.swing.JDialog {
     /**
      * Creates new form Ficha
      */
+    public Player player;
+    public Component video;
+    public Component controles;
     private ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
     private final int velocidad = 5000;//en milisegundos
     AcuarioDAO aDAO = new AcuarioDAO();
     PezVO pVO = new PezVO();
     int x = 0;
+    double t = 0;
     ArrayList<PezVO> lista = new ArrayList<PezVO>();
 
     public Ficha(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+        hiloVideo.start();;
     }
 
     public void cargaNombre(int pez_id) throws SQLException {
@@ -216,6 +238,79 @@ public class Ficha extends javax.swing.JDialog {
         }
     }
 
+    public void VideoPrincipal() {
+//        JPanel panel = new JPanel();
+//        videoPane.setLayout(new BorderLayout());
+        videoPane.setSize(1920, 1080);
+
+//        setLocationRelativeTo(null);
+//        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        URL url = null;
+        try {
+            url = new URL("file:///C:/Users/Conditop/Desktop/agua.mpg");
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Ficha.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+//            System.out.println("url: " + new MediaLocator(url));
+            player = Manager.createRealizedPlayer(new MediaLocator(url));
+//            System.out.println("player: " + player);
+            video = player.getVisualComponent();
+//            System.out.println("video: " + video);
+            video.setSize(1920, 1080);
+            video.setVisible(true);
+            if (video != null) {
+                videoPane.add("Center", video);
+            }
+
+            controles = player.getControlPanelComponent();
+
+//            controles.setSize(1920, 100);
+//            controles.setVisible(true);
+//            if (controles != null) {
+//                videoPane.add("South", controles);
+//            }
+            player.start();
+            videoPane.updateUI();
+//            this.setContentPane(videoPane);
+//            player.getDuration().getSeconds() con este llamado se sabe la duracion del video
+            //player.setMediaTime(new Time(0));
+            //player.deallocate();
+
+        } catch (IOException | NoPlayerException | CannotRealizeException ex) {
+            Logger.getLogger(Ficha.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    Thread hiloVideo = new Thread() {//declaramos el hilo
+
+        @Override
+        public void run() {
+            try {
+                VideoPrincipal();
+                Time cero = player.getMediaTime();
+//                int sw = 0;
+                System.out.println("Time.TIME_UNKNOWN: ");
+                while (true) {//ciclo infinito
+
+//                    if (t > 4 && sw == 0) {
+//                        cero = player.getMediaTime();
+//                        sw = 1;
+//                    }
+                    if (t >= player.getDuration().getSeconds()) {
+                        player.setMediaTime(cero);
+                        player.start();
+                        t = 0;
+                    }
+                    t++;
+                    hiloVideo.sleep(1000);//que duerma un segundo
+                }
+            } catch (java.lang.InterruptedException ie) {
+                System.out.println(ie.getMessage());
+            }
+        }
+    };
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -238,6 +333,7 @@ public class Ficha extends javax.swing.JDialog {
         slider = new javax.swing.JLabel();
         info = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
+        videoPane = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -330,12 +426,19 @@ public class Ficha extends javax.swing.JDialog {
         info.setBounds(140, 550, 1635, 505);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fondo.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoSegundaDatos.jpg")); // NOI18N
         datos.add(fondo);
         fondo.setBounds(0, 0, 1920, 1080);
 
         jLayeredPane1.add(datos);
         datos.setBounds(0, 0, 1920, 1080);
+
+        videoPane.setAlignmentX(0.0F);
+        videoPane.setAlignmentY(0.0F);
+        videoPane.setMaximumSize(new java.awt.Dimension(1920, 1080));
+        videoPane.setMinimumSize(new java.awt.Dimension(1920, 1080));
+        videoPane.setLayout(null);
+        jLayeredPane1.add(videoPane);
+        videoPane.setBounds(0, 0, 1920, 1080);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -416,6 +519,7 @@ public class Ficha extends javax.swing.JDialog {
     public javax.swing.JLabel slider;
     public javax.swing.JLabel tittle;
     private javax.swing.JLabel titulo;
+    public javax.swing.JPanel videoPane;
     public javax.swing.JPanel visor;
     // End of variables declaration//GEN-END:variables
 }
