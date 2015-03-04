@@ -85,7 +85,7 @@ public class Inicio extends javax.swing.JFrame {
     public void iniciarFicha() {
         ficha.setContentPane(ficha.datos);
         try {
-            ficha.cargaImagenes(ids[ contador]);
+//            ficha.cargaImagenes(ids[ contador]);
             ficha.cargaNombre(ids[ contador]);
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
@@ -156,6 +156,8 @@ public class Inicio extends javax.swing.JFrame {
         banner = new javax.swing.JLabel();
         mfondo = new javax.swing.JLabel();
         tactil = new javax.swing.JPanel();
+        bgrilla = new javax.swing.JButton();
+        bcarrusel = new javax.swing.JButton();
         cerrar = new javax.swing.JButton();
         slider = new javax.swing.JLabel();
         backslider = new javax.swing.JLabel();
@@ -169,15 +171,11 @@ public class Inicio extends javax.swing.JFrame {
         seleccionado = new javax.swing.JLabel();
         tittle = new javax.swing.JLabel();
         nombres = new javax.swing.JButton();
-        clasificacion = new javax.swing.JButton();
         biotopo = new javax.swing.JButton();
         distribucion = new javax.swing.JButton();
         forma = new javax.swing.JButton();
-        coloracion = new javax.swing.JButton();
         tamano = new javax.swing.JButton();
         temperatura = new javax.swing.JButton();
-        agua = new javax.swing.JButton();
-        acuario = new javax.swing.JButton();
         alimentacion = new javax.swing.JButton();
         comportamiento = new javax.swing.JButton();
         fseleccion = new javax.swing.JLabel();
@@ -291,38 +289,66 @@ public class Inicio extends javax.swing.JFrame {
         tactil.setMinimumSize(new java.awt.Dimension(1366, 768));
         tactil.setLayout(null);
 
-        cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/review.png"))); // NOI18N
+        bgrilla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/grilla.png"))); // NOI18N
+        bgrilla.setAlignmentY(0.0F);
+        bgrilla.setBorder(null);
+        bgrilla.setBorderPainted(false);
+        bgrilla.setContentAreaFilled(false);
+        bgrilla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bgrilla.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bgrilla.setMaximumSize(new java.awt.Dimension(100, 100));
+        bgrilla.setMinimumSize(new java.awt.Dimension(100, 100));
+        bgrilla.setPreferredSize(new java.awt.Dimension(100, 100));
+        bgrilla.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/grillaP.png"))); // NOI18N
+        tactil.add(bgrilla);
+        bgrilla.setBounds(1246, 20, 100, 100);
+
+        bcarrusel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/carrusel.png"))); // NOI18N
+        bcarrusel.setAlignmentY(0.0F);
+        bcarrusel.setBorder(null);
+        bcarrusel.setBorderPainted(false);
+        bcarrusel.setContentAreaFilled(false);
+        bcarrusel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        bcarrusel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        bcarrusel.setMaximumSize(new java.awt.Dimension(100, 100));
+        bcarrusel.setMinimumSize(new java.awt.Dimension(100, 100));
+        bcarrusel.setPreferredSize(new java.awt.Dimension(100, 100));
+        bcarrusel.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/carruselP.png"))); // NOI18N
+        tactil.add(bcarrusel);
+        bcarrusel.setBounds(1136, 20, 100, 100);
+
+        cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/atras.png"))); // NOI18N
         cerrar.setAlignmentY(0.0F);
         cerrar.setBorder(null);
         cerrar.setBorderPainted(false);
         cerrar.setContentAreaFilled(false);
         cerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         cerrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        cerrar.setMaximumSize(new java.awt.Dimension(64, 64));
-        cerrar.setMinimumSize(new java.awt.Dimension(64, 64));
-        cerrar.setPreferredSize(new java.awt.Dimension(64, 64));
-        cerrar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/reviewP.png"))); // NOI18N
+        cerrar.setMaximumSize(new java.awt.Dimension(100, 100));
+        cerrar.setMinimumSize(new java.awt.Dimension(100, 100));
+        cerrar.setPreferredSize(new java.awt.Dimension(100, 100));
+        cerrar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/atrasP.png"))); // NOI18N
         cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 cerrarMouseClicked(evt);
             }
         });
         tactil.add(cerrar);
-        cerrar.setBounds(1290, 10, 64, 64);
+        cerrar.setBounds(20, 20, 100, 100);
 
         slider.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         slider.setAlignmentY(0.0F);
         slider.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        slider.setMaximumSize(new java.awt.Dimension(700, 300));
-        slider.setMinimumSize(new java.awt.Dimension(700, 300));
-        slider.setPreferredSize(new java.awt.Dimension(700, 300));
+        slider.setMaximumSize(new java.awt.Dimension(500, 350));
+        slider.setMinimumSize(new java.awt.Dimension(500, 350));
+        slider.setPreferredSize(new java.awt.Dimension(500, 350));
         slider.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 sliderMouseClicked(evt);
             }
         });
         tactil.add(slider);
-        slider.setBounds(350, 290, 700, 300);
+        slider.setBounds(433, 274, 500, 350);
 
         backslider.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         backslider.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bkpeces.png"))); // NOI18N
@@ -370,7 +396,7 @@ public class Inicio extends javax.swing.JFrame {
         tactil.add(prev);
         prev.setBounds(150, 260, 315, 380);
 
-        nombre.setFont(new java.awt.Font("BoyzRGross", 0, 60)); // NOI18N
+        nombre.setFont(new java.awt.Font("Harabara", 0, 100)); // NOI18N
         nombre.setForeground(new java.awt.Color(255, 255, 255));
         nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombre.setAlignmentY(0.0F);
@@ -385,7 +411,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         tactil.add(nombre);
-        nombre.setBounds(333, 50, 700, 70);
+        nombre.setBounds(233, 20, 900, 100);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoPeces.jpg")); // NOI18N
@@ -406,7 +432,7 @@ public class Inicio extends javax.swing.JFrame {
         seleccion.setPreferredSize(new java.awt.Dimension(1366, 768));
         seleccion.setLayout(null);
 
-        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/review.png"))); // NOI18N
+        close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/atras.png"))); // NOI18N
         close.setAlignmentY(0.0F);
         close.setBorder(null);
         close.setBorderPainted(false);
@@ -414,43 +440,43 @@ public class Inicio extends javax.swing.JFrame {
         close.setMaximumSize(new java.awt.Dimension(64, 64));
         close.setMinimumSize(new java.awt.Dimension(64, 64));
         close.setPreferredSize(new java.awt.Dimension(64, 64));
-        close.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/reviewP.png"))); // NOI18N
+        close.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/atrasP.png"))); // NOI18N
         close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 closeMouseClicked(evt);
             }
         });
         seleccion.add(close);
-        close.setBounds(610, 660, 64, 64);
+        close.setBounds(143, 33, 100, 100);
 
-        home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/home.png"))); // NOI18N
+        home.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/inicio.png"))); // NOI18N
         home.setAlignmentY(0.0F);
         home.setBorderPainted(false);
         home.setContentAreaFilled(false);
         home.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         home.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        home.setMaximumSize(new java.awt.Dimension(64, 64));
-        home.setMinimumSize(new java.awt.Dimension(64, 64));
-        home.setPreferredSize(new java.awt.Dimension(64, 64));
-        home.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/homeP.png"))); // NOI18N
+        home.setMaximumSize(new java.awt.Dimension(100, 100));
+        home.setMinimumSize(new java.awt.Dimension(100, 100));
+        home.setPreferredSize(new java.awt.Dimension(100, 100));
+        home.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/inicioP.png"))); // NOI18N
         home.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 homeMouseClicked(evt);
             }
         });
         seleccion.add(home);
-        home.setBounds(680, 660, 64, 64);
+        home.setBounds(33, 33, 100, 100);
 
         seleccionado.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         seleccionado.setAlignmentY(0.0F);
-        seleccionado.setMaximumSize(new java.awt.Dimension(700, 300));
-        seleccionado.setMinimumSize(new java.awt.Dimension(700, 300));
-        seleccionado.setPreferredSize(new java.awt.Dimension(700, 300));
+        seleccionado.setMaximumSize(new java.awt.Dimension(500, 350));
+        seleccionado.setMinimumSize(new java.awt.Dimension(500, 350));
+        seleccionado.setPreferredSize(new java.awt.Dimension(500, 350));
         seleccion.add(seleccionado);
-        seleccionado.setBounds(333, 150, 700, 300);
+        seleccionado.setBounds(433, 160, 500, 350);
 
-        tittle.setFont(new java.awt.Font("BoyzRGross", 2, 70)); // NOI18N
-        tittle.setForeground(new java.awt.Color(255, 255, 255));
+        tittle.setFont(new java.awt.Font("Harabara", 1, 70)); // NOI18N
+        tittle.setForeground(new java.awt.Color(255, 247, 152));
         tittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tittle.setToolTipText("");
         tittle.setAlignmentY(0.0F);
@@ -458,7 +484,7 @@ public class Inicio extends javax.swing.JFrame {
         tittle.setMinimumSize(new java.awt.Dimension(700, 45));
         tittle.setPreferredSize(new java.awt.Dimension(700, 45));
         seleccion.add(tittle);
-        tittle.setBounds(333, 34, 700, 85);
+        tittle.setBounds(333, 48, 700, 70);
 
         nombres.setFont(new java.awt.Font("BoyzRGross", 0, 50)); // NOI18N
         nombres.setForeground(new java.awt.Color(255, 255, 255));
@@ -470,9 +496,9 @@ public class Inicio extends javax.swing.JFrame {
         nombres.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nombres.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         nombres.setIconTextGap(0);
-        nombres.setMaximumSize(new java.awt.Dimension(220, 220));
-        nombres.setMinimumSize(new java.awt.Dimension(220, 220));
-        nombres.setPreferredSize(new java.awt.Dimension(220, 220));
+        nombres.setMaximumSize(new java.awt.Dimension(190, 190));
+        nombres.setMinimumSize(new java.awt.Dimension(190, 190));
+        nombres.setPreferredSize(new java.awt.Dimension(190, 190));
         nombres.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nombreP.png"))); // NOI18N
         nombres.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -480,30 +506,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         seleccion.add(nombres);
-        nombres.setBounds(20, 34, 220, 220);
-
-        clasificacion.setFont(new java.awt.Font("BoyzRGross", 0, 50)); // NOI18N
-        clasificacion.setForeground(new java.awt.Color(255, 255, 255));
-        clasificacion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clasificacion.png"))); // NOI18N
-        clasificacion.setText("Clasificación");
-        clasificacion.setAlignmentY(0.0F);
-        clasificacion.setBorder(null);
-        clasificacion.setBorderPainted(false);
-        clasificacion.setContentAreaFilled(false);
-        clasificacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        clasificacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        clasificacion.setIconTextGap(0);
-        clasificacion.setMaximumSize(new java.awt.Dimension(256, 128));
-        clasificacion.setMinimumSize(new java.awt.Dimension(256, 128));
-        clasificacion.setPreferredSize(new java.awt.Dimension(256, 128));
-        clasificacion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/clasificacionP.png"))); // NOI18N
-        clasificacion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                clasificacionMouseClicked(evt);
-            }
-        });
-        seleccion.add(clasificacion);
-        clasificacion.setBounds(430, 390, 256, 128);
+        nombres.setBounds(33, 323, 190, 190);
 
         biotopo.setFont(new java.awt.Font("BoyzRGross", 0, 50)); // NOI18N
         biotopo.setForeground(new java.awt.Color(255, 255, 255));
@@ -514,9 +517,9 @@ public class Inicio extends javax.swing.JFrame {
         biotopo.setContentAreaFilled(false);
         biotopo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         biotopo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        biotopo.setMaximumSize(new java.awt.Dimension(220, 220));
-        biotopo.setMinimumSize(new java.awt.Dimension(220, 220));
-        biotopo.setPreferredSize(new java.awt.Dimension(220, 220));
+        biotopo.setMaximumSize(new java.awt.Dimension(190, 190));
+        biotopo.setMinimumSize(new java.awt.Dimension(190, 190));
+        biotopo.setPreferredSize(new java.awt.Dimension(190, 190));
         biotopo.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/informacionP.png"))); // NOI18N
         biotopo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -524,7 +527,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         seleccion.add(biotopo);
-        biotopo.setBounds(1126, 514, 220, 220);
+        biotopo.setBounds(921, 545, 190, 190);
 
         distribucion.setFont(new java.awt.Font("BoyzRGross", 0, 50)); // NOI18N
         distribucion.setForeground(new java.awt.Color(255, 255, 255));
@@ -535,9 +538,9 @@ public class Inicio extends javax.swing.JFrame {
         distribucion.setContentAreaFilled(false);
         distribucion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         distribucion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        distribucion.setMaximumSize(new java.awt.Dimension(220, 220));
-        distribucion.setMinimumSize(new java.awt.Dimension(220, 220));
-        distribucion.setPreferredSize(new java.awt.Dimension(220, 220));
+        distribucion.setMaximumSize(new java.awt.Dimension(190, 190));
+        distribucion.setMinimumSize(new java.awt.Dimension(190, 190));
+        distribucion.setPreferredSize(new java.awt.Dimension(190, 190));
         distribucion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casaP.png"))); // NOI18N
         distribucion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -545,7 +548,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         seleccion.add(distribucion);
-        distribucion.setBounds(20, 274, 220, 220);
+        distribucion.setBounds(33, 545, 190, 190);
 
         forma.setFont(new java.awt.Font("BoyzRGross", 0, 50)); // NOI18N
         forma.setForeground(new java.awt.Color(255, 255, 255));
@@ -556,9 +559,9 @@ public class Inicio extends javax.swing.JFrame {
         forma.setContentAreaFilled(false);
         forma.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         forma.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        forma.setMaximumSize(new java.awt.Dimension(220, 220));
-        forma.setMinimumSize(new java.awt.Dimension(220, 220));
-        forma.setPreferredSize(new java.awt.Dimension(220, 220));
+        forma.setMaximumSize(new java.awt.Dimension(190, 190));
+        forma.setMinimumSize(new java.awt.Dimension(190, 190));
+        forma.setPreferredSize(new java.awt.Dimension(190, 190));
         forma.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cuerpoP.png"))); // NOI18N
         forma.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -566,30 +569,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         seleccion.add(forma);
-        forma.setBounds(20, 514, 220, 220);
-
-        coloracion.setFont(new java.awt.Font("BoyzRGross", 0, 50)); // NOI18N
-        coloracion.setForeground(new java.awt.Color(255, 255, 255));
-        coloracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/coloracion.png"))); // NOI18N
-        coloracion.setText("Coloración");
-        coloracion.setAlignmentY(0.0F);
-        coloracion.setBorder(null);
-        coloracion.setBorderPainted(false);
-        coloracion.setContentAreaFilled(false);
-        coloracion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        coloracion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        coloracion.setIconTextGap(0);
-        coloracion.setMaximumSize(new java.awt.Dimension(162, 128));
-        coloracion.setMinimumSize(new java.awt.Dimension(162, 128));
-        coloracion.setPreferredSize(new java.awt.Dimension(162, 128));
-        coloracion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/coloracionP.png"))); // NOI18N
-        coloracion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                coloracionMouseClicked(evt);
-            }
-        });
-        seleccion.add(coloracion);
-        coloracion.setBounds(250, 390, 162, 128);
+        forma.setBounds(255, 545, 190, 190);
 
         tamano.setFont(new java.awt.Font("BoyzRGross", 0, 50)); // NOI18N
         tamano.setForeground(new java.awt.Color(255, 255, 255));
@@ -601,9 +581,9 @@ public class Inicio extends javax.swing.JFrame {
         tamano.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         tamano.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         tamano.setIconTextGap(0);
-        tamano.setMaximumSize(new java.awt.Dimension(220, 220));
-        tamano.setMinimumSize(new java.awt.Dimension(220, 220));
-        tamano.setPreferredSize(new java.awt.Dimension(220, 220));
+        tamano.setMaximumSize(new java.awt.Dimension(190, 190));
+        tamano.setMinimumSize(new java.awt.Dimension(190, 190));
+        tamano.setPreferredSize(new java.awt.Dimension(190, 190));
         tamano.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/medidasP.png"))); // NOI18N
         tamano.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -611,7 +591,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         seleccion.add(tamano);
-        tamano.setBounds(260, 514, 220, 220);
+        tamano.setBounds(477, 545, 190, 190);
 
         temperatura.setFont(new java.awt.Font("BoyzRGross", 0, 50)); // NOI18N
         temperatura.setForeground(new java.awt.Color(255, 255, 255));
@@ -623,9 +603,9 @@ public class Inicio extends javax.swing.JFrame {
         temperatura.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         temperatura.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         temperatura.setIconTextGap(0);
-        temperatura.setMaximumSize(new java.awt.Dimension(220, 220));
-        temperatura.setMinimumSize(new java.awt.Dimension(220, 220));
-        temperatura.setPreferredSize(new java.awt.Dimension(220, 220));
+        temperatura.setMaximumSize(new java.awt.Dimension(190, 190));
+        temperatura.setMinimumSize(new java.awt.Dimension(190, 190));
+        temperatura.setPreferredSize(new java.awt.Dimension(190, 190));
         temperatura.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/temperaturaP.png"))); // NOI18N
         temperatura.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -633,53 +613,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         seleccion.add(temperatura);
-        temperatura.setBounds(1126, 34, 220, 220);
-
-        agua.setFont(new java.awt.Font("BoyzRGross", 0, 50)); // NOI18N
-        agua.setForeground(new java.awt.Color(255, 255, 255));
-        agua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/agua.png"))); // NOI18N
-        agua.setText("Agua");
-        agua.setAlignmentY(0.0F);
-        agua.setBorder(null);
-        agua.setBorderPainted(false);
-        agua.setContentAreaFilled(false);
-        agua.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        agua.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        agua.setIconTextGap(0);
-        agua.setMaximumSize(new java.awt.Dimension(128, 128));
-        agua.setMinimumSize(new java.awt.Dimension(128, 128));
-        agua.setPreferredSize(new java.awt.Dimension(128, 128));
-        agua.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/aguaP.png"))); // NOI18N
-        agua.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                aguaMouseClicked(evt);
-            }
-        });
-        seleccion.add(agua);
-        agua.setBounds(980, 370, 128, 128);
-
-        acuario.setFont(new java.awt.Font("BoyzRGross", 0, 50)); // NOI18N
-        acuario.setForeground(new java.awt.Color(255, 255, 255));
-        acuario.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuario.png"))); // NOI18N
-        acuario.setText("Acuario");
-        acuario.setAlignmentY(0.0F);
-        acuario.setBorder(null);
-        acuario.setBorderPainted(false);
-        acuario.setContentAreaFilled(false);
-        acuario.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        acuario.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        acuario.setIconTextGap(0);
-        acuario.setMaximumSize(new java.awt.Dimension(128, 128));
-        acuario.setMinimumSize(new java.awt.Dimension(128, 128));
-        acuario.setPreferredSize(new java.awt.Dimension(128, 128));
-        acuario.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/acuarioP.png"))); // NOI18N
-        acuario.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                acuarioMouseClicked(evt);
-            }
-        });
-        seleccion.add(acuario);
-        acuario.setBounds(770, 400, 128, 128);
+        temperatura.setBounds(1143, 323, 190, 190);
 
         alimentacion.setFont(new java.awt.Font("BoyzRGross", 0, 50)); // NOI18N
         alimentacion.setForeground(new java.awt.Color(255, 255, 255));
@@ -691,9 +625,9 @@ public class Inicio extends javax.swing.JFrame {
         alimentacion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         alimentacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         alimentacion.setIconTextGap(0);
-        alimentacion.setMaximumSize(new java.awt.Dimension(220, 220));
-        alimentacion.setMinimumSize(new java.awt.Dimension(220, 220));
-        alimentacion.setPreferredSize(new java.awt.Dimension(220, 220));
+        alimentacion.setMaximumSize(new java.awt.Dimension(190, 190));
+        alimentacion.setMinimumSize(new java.awt.Dimension(190, 190));
+        alimentacion.setPreferredSize(new java.awt.Dimension(190, 190));
         alimentacion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/comidaP.png"))); // NOI18N
         alimentacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -701,7 +635,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         seleccion.add(alimentacion);
-        alimentacion.setBounds(1126, 274, 220, 220);
+        alimentacion.setBounds(1143, 545, 190, 190);
 
         comportamiento.setFont(new java.awt.Font("BoyzRGross", 0, 50)); // NOI18N
         comportamiento.setForeground(new java.awt.Color(255, 255, 255));
@@ -713,9 +647,9 @@ public class Inicio extends javax.swing.JFrame {
         comportamiento.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         comportamiento.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         comportamiento.setIconTextGap(0);
-        comportamiento.setMaximumSize(new java.awt.Dimension(220, 220));
-        comportamiento.setMinimumSize(new java.awt.Dimension(220, 220));
-        comportamiento.setPreferredSize(new java.awt.Dimension(220, 220));
+        comportamiento.setMaximumSize(new java.awt.Dimension(190, 190));
+        comportamiento.setMinimumSize(new java.awt.Dimension(190, 190));
+        comportamiento.setPreferredSize(new java.awt.Dimension(190, 190));
         comportamiento.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/curiosidadesP.png"))); // NOI18N
         comportamiento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -723,7 +657,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         seleccion.add(comportamiento);
-        comportamiento.setBounds(886, 514, 220, 220);
+        comportamiento.setBounds(699, 545, 190, 190);
 
         fseleccion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fseleccion.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoPeces.jpg")); // NOI18N
@@ -1083,19 +1017,6 @@ public class Inicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formaMouseClicked
 
-    private void coloracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_coloracionMouseClicked
-        // TODO add your handling code here:
-        if (control) {
-            iniciarFicha();
-            control = false;
-        }
-        try {
-            ficha.getColoracion(ids[contador]);
-        } catch (SQLException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_coloracionMouseClicked
-
     private void tamanoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tamanoMouseClicked
         // TODO add your handling code here:
         if (control) {
@@ -1122,32 +1043,6 @@ public class Inicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_temperaturaMouseClicked
 
-    private void aguaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_aguaMouseClicked
-        // TODO add your handling code here:
-        if (control) {
-            iniciarFicha();
-            control = false;
-        }
-        try {
-            ficha.getAgua(ids[contador]);
-        } catch (SQLException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_aguaMouseClicked
-
-    private void acuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_acuarioMouseClicked
-        // TODO add your handling code here:
-        if (control) {
-            iniciarFicha();
-            control = false;
-        }
-        try {
-            ficha.getAcuario(ids[contador]);
-        } catch (SQLException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_acuarioMouseClicked
-
     private void alimentacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alimentacionMouseClicked
         // TODO add your handling code here:
         if (control) {
@@ -1173,19 +1068,6 @@ public class Inicio extends javax.swing.JFrame {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_comportamientoMouseClicked
-
-    private void clasificacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clasificacionMouseClicked
-        // TODO add your handling code here:
-        if (control) {
-            iniciarFicha();
-            control = false;
-        }
-        try {
-            ficha.getClasificacion(ids[contador]);
-        } catch (SQLException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_clasificacionMouseClicked
 
     private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
         // TODO add your handling code here:
@@ -1235,16 +1117,14 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel P7;
     private javax.swing.JLabel P8;
     private javax.swing.JLabel P9;
-    private javax.swing.JButton acuario;
-    private javax.swing.JButton agua;
     private javax.swing.JButton alimentacion;
     private javax.swing.JLabel backslider;
     private javax.swing.JLabel banner;
+    private javax.swing.JButton bcarrusel;
+    private javax.swing.JButton bgrilla;
     private javax.swing.JButton biotopo;
     private javax.swing.JButton cerrar;
-    private javax.swing.JButton clasificacion;
     private javax.swing.JButton close;
-    private javax.swing.JButton coloracion;
     private javax.swing.JButton comportamiento;
     private javax.swing.JButton distribucion;
     private javax.swing.JButton down;

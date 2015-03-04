@@ -218,21 +218,6 @@ public class Ficha extends javax.swing.JDialog {
         }
     }
 
-    public void cargaImagenes(int pez_id) throws SQLException {
-        ArrayList<String> peces = aDAO.getImagesFromFish(pez_id);
-        for (String ruta : peces) {
-            scheduler = Executors.newSingleThreadScheduledExecutor();
-            scheduler.scheduleAtFixedRate(
-                    new Runnable() {
-                        public void run() {
-                            System.out.println("equis: " + x);
-                            x++;
-                            slider.setIcon(new ImageIcon(ruta));
-                        }
-                    }, 0, velocidad, TimeUnit.MILLISECONDS);
-        }
-    }
-
     public void VideoPrincipal() {
 //        JPanel panel = new JPanel();
 //        videoPane.setLayout(new BorderLayout());
@@ -320,12 +305,12 @@ public class Ficha extends javax.swing.JDialog {
         jLabel2 = new javax.swing.JLabel();
         finicial = new javax.swing.JLabel();
         visor = new javax.swing.JPanel();
+        subtittle = new javax.swing.JLabel();
         tittle = new javax.swing.JLabel();
         foto = new javax.swing.JLabel();
         fondo1 = new javax.swing.JLabel();
         datos = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
-        slider = new javax.swing.JLabel();
         info = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
         videoPane = new javax.swing.JPanel();
@@ -363,25 +348,37 @@ public class Ficha extends javax.swing.JDialog {
 
         visor.setLayout(null);
 
-        tittle.setFont(new java.awt.Font("BoyzRGross", 0, 80)); // NOI18N
+        subtittle.setFont(new java.awt.Font("Harabara", 0, 100)); // NOI18N
+        subtittle.setForeground(new java.awt.Color(255, 255, 255));
+        subtittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        subtittle.setToolTipText("");
+        subtittle.setAlignmentY(0.0F);
+        subtittle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        subtittle.setMaximumSize(new java.awt.Dimension(1850, 100));
+        subtittle.setMinimumSize(new java.awt.Dimension(1850, 100));
+        subtittle.setPreferredSize(new java.awt.Dimension(1850, 100));
+        visor.add(subtittle);
+        subtittle.setBounds(35, 935, 1850, 100);
+
+        tittle.setFont(new java.awt.Font("Harabara", 0, 100)); // NOI18N
         tittle.setForeground(new java.awt.Color(255, 255, 255));
         tittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         tittle.setToolTipText("");
         tittle.setAlignmentY(0.0F);
         tittle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        tittle.setMaximumSize(new java.awt.Dimension(720, 95));
-        tittle.setMinimumSize(new java.awt.Dimension(720, 95));
-        tittle.setPreferredSize(new java.awt.Dimension(720, 95));
+        tittle.setMaximumSize(new java.awt.Dimension(720, 100));
+        tittle.setMinimumSize(new java.awt.Dimension(720, 100));
+        tittle.setPreferredSize(new java.awt.Dimension(720, 100));
         visor.add(tittle);
-        tittle.setBounds(600, 130, 720, 95);
+        tittle.setBounds(510, 45, 900, 100);
 
         foto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         foto.setAlignmentY(0.0F);
-        foto.setMaximumSize(new java.awt.Dimension(1500, 700));
-        foto.setMinimumSize(new java.awt.Dimension(1500, 700));
-        foto.setPreferredSize(new java.awt.Dimension(1500, 700));
+        foto.setMaximumSize(new java.awt.Dimension(1050, 700));
+        foto.setMinimumSize(new java.awt.Dimension(1050, 700));
+        foto.setPreferredSize(new java.awt.Dimension(1050, 700));
         visor.add(foto);
-        foto.setBounds(210, 250, 1500, 700);
+        foto.setBounds(435, 190, 1050, 700);
 
         fondo1.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoSegunda.jpg")); // NOI18N
         visor.add(fondo1);
@@ -400,15 +397,7 @@ public class Ficha extends javax.swing.JDialog {
         titulo.setMinimumSize(new java.awt.Dimension(720, 95));
         titulo.setPreferredSize(new java.awt.Dimension(720, 95));
         datos.add(titulo);
-        titulo.setBounds(600, 25, 720, 95);
-
-        slider.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        slider.setAlignmentY(0.0F);
-        slider.setMaximumSize(new java.awt.Dimension(720, 400));
-        slider.setMinimumSize(new java.awt.Dimension(720, 400));
-        slider.setPreferredSize(new java.awt.Dimension(720, 400));
-        datos.add(slider);
-        slider.setBounds(600, 135, 720, 400);
+        titulo.setBounds(20, 20, 720, 95);
 
         info.setFont(new java.awt.Font("BoyzRGross", 0, 70)); // NOI18N
         info.setForeground(new java.awt.Color(255, 255, 255));
@@ -418,9 +407,10 @@ public class Ficha extends javax.swing.JDialog {
         info.setMinimumSize(new java.awt.Dimension(1535, 505));
         info.setPreferredSize(new java.awt.Dimension(1535, 505));
         datos.add(info);
-        info.setBounds(140, 550, 1635, 505);
+        info.setBounds(20, 120, 1280, 380);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fondo.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoSegundaDatos.jpg")); // NOI18N
         datos.add(fondo);
         fondo.setBounds(0, 0, 1920, 1080);
 
@@ -511,7 +501,7 @@ public class Ficha extends javax.swing.JDialog {
     public javax.swing.JPanel inicial;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
-    public javax.swing.JLabel slider;
+    public javax.swing.JLabel subtittle;
     public javax.swing.JLabel tittle;
     private javax.swing.JLabel titulo;
     public javax.swing.JPanel videoPane;
