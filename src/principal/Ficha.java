@@ -5,7 +5,6 @@
  */
 package principal;
 
-import java.awt.BorderLayout;
 import java.awt.Component;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -17,9 +16,6 @@ import javax.media.Manager;
 import javax.media.MediaLocator;
 import javax.media.NoPlayerException;
 import javax.media.Player;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
 import DAO.AcuarioDAO;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -28,7 +24,6 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import javax.media.Time;
 import javax.swing.ImageIcon;
-import static javax.swing.JFrame.EXIT_ON_CLOSE;
 import objetos.PezVO;
 
 /**
@@ -247,7 +242,7 @@ public class Ficha extends javax.swing.JDialog {
 //        setDefaultCloseOperation(EXIT_ON_CLOSE);
         URL url = null;
         try {
-            url = new URL("file:///C:/Users/Conditop/Desktop/agua.mpg");
+            url = new URL("file:///c:/acuario/video/acuario.mpg");
         } catch (MalformedURLException ex) {
             Logger.getLogger(Ficha.class.getName()).log(Level.SEVERE, null, ex);
         }
