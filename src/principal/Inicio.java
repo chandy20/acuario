@@ -44,7 +44,7 @@ public class Inicio extends javax.swing.JFrame {
         comenzarFicha();
         llenarVectores(peces);
         cargarComponentes();
-        hilo.start();
+//        hilo.start();
     }
 
     public void comenzarFicha() {
@@ -71,10 +71,11 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     public void cargarComponentes() {
-        Image foto = Imagenes[ contador].getScaledInstance((int) ((buffer[contador].getWidth() * 300) / buffer[contador].getHeight()), 300, Image.SCALE_DEFAULT);
+        Image foto = Imagenes[ contador].getScaledInstance(500, (int) ((buffer[contador].getHeight() * 500) / buffer[contador].getWidth()), Image.SCALE_DEFAULT);
         slider.setIcon(new ImageIcon(foto));
         nombre.setText(names[ contador]);
-        ficha.foto.setIcon(new ImageIcon(Imagenes[ contador]));
+        Image fotoTv = Imagenes[ contador].getScaledInstance(1050, (int) ((buffer[contador].getHeight() * 1050) / buffer[contador].getWidth()), Image.SCALE_DEFAULT);
+        ficha.foto.setIcon(new ImageIcon(fotoTv));
         ficha.tittle.setText(names[ contador]);
     }
 
@@ -898,7 +899,7 @@ public class Inicio extends javax.swing.JFrame {
     private void sliderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sliderMouseClicked
         // TODO add your handling code here:
         tittle.setText(names[ contador]);
-        Image foto = Imagenes[ contador].getScaledInstance((int) ((buffer[ contador].getWidth() * 300) / buffer[ contador].getHeight()), 300, Image.SCALE_DEFAULT);
+        Image foto = Imagenes[ contador].getScaledInstance(500, (int) ((buffer[ contador].getHeight() * 500) / buffer[ contador].getWidth()), Image.SCALE_DEFAULT);
         seleccionado.setIcon(new ImageIcon(foto));
         this.setContentPane(seleccion);
     }//GEN-LAST:event_sliderMouseClicked

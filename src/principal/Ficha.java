@@ -224,7 +224,7 @@ public class Ficha extends javax.swing.JDialog {
         videoPane.setSize(1920, 1080);
 
 //        setLocationRelativeTo(null);
-//        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         URL url = null;
         try {
             url = new URL("file:///c:/acuario/video/acuario.mpg");
