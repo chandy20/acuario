@@ -55,10 +55,10 @@ public class AcuarioDAO {
         String p;
         try {
             stm = cn.getConnection().createStatement();
-            pstm = cn.getConnection().prepareStatement("SELECT pez_nombre FROM pez WHERE pez_estado = true");
+            pstm = cn.getConnection().prepareStatement("SELECT pez_nombComun FROM pez WHERE pez_estado = true");
             res = pstm.executeQuery();
             while (res.next()) {
-                p = res.getString("pez_nombre");
+                p = res.getString("pez_nombComun");
                 nombre.add(p);
             }
         } catch (SQLException e) {
@@ -207,7 +207,7 @@ public class AcuarioDAO {
         PezVO pVO = new PezVO();
         try {
             stm = cn.getConnection().createStatement();
-            pstm = cn.getConnection().prepareStatement("SELECT pez_biotopo FROM pez WHERE pez_nombre = '" + nombre + "'");
+            pstm = cn.getConnection().prepareStatement("SELECT pez_biotopo FROM pez WHERE pez_nombComun = '" + nombre + "'");
             res = pstm.executeQuery();
             while (res.next()) {
                 pVO.setPez_nombComun(res.getString("pez_nombComun"));
@@ -252,8 +252,6 @@ public class AcuarioDAO {
     public ArrayList<PezVO> getInfoFromFish() throws SQLException {
         PezVO pezVO = null;
         ArrayList<PezVO> lista = new ArrayList<PezVO>();
-        String url = null;
-        File archivo = null;
         try {
             stm = cn.getConnection().createStatement();
             pstm = cn.getConnection().prepareStatement("SELECT pez_id, pez_nombComun, pez_nombCientifico FROM pez WHERE pez_estado = true");
