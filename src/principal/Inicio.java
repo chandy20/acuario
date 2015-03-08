@@ -931,6 +931,7 @@ public class Inicio extends javax.swing.JFrame {
         y = 0;
         controlInactividad = true;
         this.setContentPane(tactil);
+        ficha.videoPane.setVisible(false);
         if (!controlSegunda) {
             comenzarFicha();
             cargarComponentes();
