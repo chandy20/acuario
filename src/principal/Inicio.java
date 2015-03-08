@@ -79,23 +79,23 @@ public class Inicio extends javax.swing.JFrame {
         ficha.tittle.setText(names[ contador]);
     }
 
-    public void iniciarInicio() {
+    public void iniciarInicio() {//inicio inactividad
         this.setContentPane(this.menu);
         ficha.videoPane.removeAll();
         ficha.VideoPrincipal("file:///c:/acuario/video/agua_converted.mpg");
         ficha.reproducirPrincipal();
-        ficha.setContentPane(ficha.videoPane);        
+        ficha.setContentPane(ficha.videoPane);
     }
 
     public void iniciarFicha() {
-        ficha.setContentPane(ficha.datos);
+//        ficha.setContentPane(ficha.datos);
         try {
 //            ficha.cargaImagenes(ids[ contador]);
             ficha.cargaNombre(ids[ contador]);
             ficha.videoPeces.removeAll();
             ficha.VideoInfo("c:/acuario/" + String.valueOf(ids[contador]) + "/general.mpg");
             ficha.reproducir();
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -105,7 +105,7 @@ public class Inicio extends javax.swing.JFrame {
         ficha.videoPane.removeAll();
         ficha.VideoPrincipal("file:///c:/acuario/video/agua_converted.mpg");
         ficha.reproducirPrincipal();
-        this.setContentPane(menu);
+//        this.setContentPane();
     }
 
     Thread hilo = new Thread() {//declaramos el hilo
@@ -145,8 +145,6 @@ public class Inicio extends javax.swing.JFrame {
         banner = new javax.swing.JLabel();
         mfondo = new javax.swing.JLabel();
         tactil = new javax.swing.JPanel();
-        bgrilla = new javax.swing.JButton();
-        bcarrusel = new javax.swing.JButton();
         cerrar = new javax.swing.JButton();
         slider = new javax.swing.JLabel();
         backslider = new javax.swing.JLabel();
@@ -277,34 +275,6 @@ public class Inicio extends javax.swing.JFrame {
         tactil.setMaximumSize(new java.awt.Dimension(1366, 768));
         tactil.setMinimumSize(new java.awt.Dimension(1366, 768));
         tactil.setLayout(null);
-
-        bgrilla.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/grilla.png"))); // NOI18N
-        bgrilla.setAlignmentY(0.0F);
-        bgrilla.setBorder(null);
-        bgrilla.setBorderPainted(false);
-        bgrilla.setContentAreaFilled(false);
-        bgrilla.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bgrilla.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        bgrilla.setMaximumSize(new java.awt.Dimension(100, 100));
-        bgrilla.setMinimumSize(new java.awt.Dimension(100, 100));
-        bgrilla.setPreferredSize(new java.awt.Dimension(100, 100));
-        bgrilla.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/grillaP.png"))); // NOI18N
-        tactil.add(bgrilla);
-        bgrilla.setBounds(1246, 20, 100, 100);
-
-        bcarrusel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/carrusel.png"))); // NOI18N
-        bcarrusel.setAlignmentY(0.0F);
-        bcarrusel.setBorder(null);
-        bcarrusel.setBorderPainted(false);
-        bcarrusel.setContentAreaFilled(false);
-        bcarrusel.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        bcarrusel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        bcarrusel.setMaximumSize(new java.awt.Dimension(100, 100));
-        bcarrusel.setMinimumSize(new java.awt.Dimension(100, 100));
-        bcarrusel.setPreferredSize(new java.awt.Dimension(100, 100));
-        bcarrusel.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/carruselP.png"))); // NOI18N
-        tactil.add(bcarrusel);
-        bcarrusel.setBounds(1136, 20, 100, 100);
 
         cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/atras.png"))); // NOI18N
         cerrar.setAlignmentY(0.0F);
@@ -886,10 +856,17 @@ public class Inicio extends javax.swing.JFrame {
 
     private void sliderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sliderMouseClicked
         // TODO add your handling code here:
-        tittle.setText(names[ contador]);
-        Image foto = Imagenes[ contador].getScaledInstance(500, (int) ((buffer[ contador].getHeight() * 500) / buffer[ contador].getWidth()), Image.SCALE_DEFAULT);
-        seleccionado.setIcon(new ImageIcon(foto));
-        this.setContentPane(seleccion);
+        y = 0;
+        if (!controlInactividad) {
+
+            tittle.setText(names[ contador]);
+            Image foto = Imagenes[ contador].getScaledInstance(500, (int) ((buffer[ contador].getHeight() * 500) / buffer[ contador].getWidth()), Image.SCALE_DEFAULT);
+            seleccionado.setIcon(new ImageIcon(foto));
+            this.setContentPane(seleccion);
+
+            controlInactividad = true;
+            controlSegunda = true;
+        }
     }//GEN-LAST:event_sliderMouseClicked
 
     private void nombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreMouseClicked
@@ -916,49 +893,81 @@ public class Inicio extends javax.swing.JFrame {
         y = 0;
         controlInactividad = true;
 
-        setContentPane(tactil);
+        this.setContentPane(this.tactil);
 
         if (!controlSegunda) {
             cerrarVideo();
-//            controlSegunda = true;
+            controlSegunda = true;
         }
         ficha.setContentPane(ficha.visor);
     }//GEN-LAST:event_pecesMouseClicked
 
     private void prevMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prevMouseClicked
         // TODO add your handling code here:
-        contador--;
-        if (contador == -1) {
-            contador = ids.length - 1;
+        y = 0;
+        if (!controlInactividad) {
+
+            contador--;
+            if (contador == -1) {
+                contador = ids.length - 1;
+            }
+            cargarComponentes();
+
+            controlInactividad = true;
+            controlSegunda = true;
         }
-        cargarComponentes();
     }//GEN-LAST:event_prevMouseClicked
 
     private void nextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextMouseClicked
         // TODO add your handling code here:
-        contador++;
-        if (contador == ids.length) {
-            contador = 0;
+        y = 0;
+        if (!controlInactividad) {
+
+            contador++;
+            if (contador == ids.length) {
+                contador = 0;
+            }
+            cargarComponentes();
+
+            controlInactividad = true;
+            controlSegunda = true;
         }
-        cargarComponentes();
+
     }//GEN-LAST:event_nextMouseClicked
 
     private void cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseClicked
         // TODO add your handling code here:
-        this.setContentPane(menu);
-        ficha.setContentPane(ficha.inicial);
+        y = 0;
+        if (!controlInactividad) {
+
+            this.setContentPane(menu);
+            ficha.setContentPane(ficha.inicial);
+
+            controlInactividad = true;
+            controlSegunda = true;
+        }
     }//GEN-LAST:event_cerrarMouseClicked
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
-        ficha.setContentPane(ficha.visor);
-        this.setContentPane(tactil);
-        control = true;
+        y = 0;
+        if (!controlInactividad) {
+
+            ficha.setContentPane(ficha.visor);
+            this.setContentPane(tactil);
+
+            controlInactividad = true;
+            controlSegunda = true;
+            control = true;
+        }
     }//GEN-LAST:event_closeMouseClicked
 
     private void nombresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombresMouseClicked
         // TODO add your handling code here:
-        if (control) {
+        y = 0;
+        if (!controlInactividad) {
+
+            if (control) {
             iniciarFicha();
             control = false;
         }
@@ -969,6 +978,10 @@ public class Inicio extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
+            controlInactividad = true;
+            controlSegunda = true;
+        }
+        
     }//GEN-LAST:event_nombresMouseClicked
 
     private void biotopoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_biotopoMouseClicked
@@ -1054,6 +1067,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void comportamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comportamientoMouseClicked
         // TODO add your handling code here:
+        
         if (control) {
             iniciarFicha();
             control = false;
@@ -1075,21 +1089,23 @@ public class Inicio extends javax.swing.JFrame {
     private void mfondoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mfondoMouseClicked
         // TODO add your handling code here:
         y = 0;
-        if (!controlInactividad) {            
+        if (!controlInactividad) {
             cerrarVideo();
             controlInactividad = true;
             controlSegunda = true;
         }
+        this.setContentPane(menu);
     }//GEN-LAST:event_mfondoMouseClicked
 
     private void bannerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bannerMouseClicked
         // TODO add your handling code here:
         y = 0;
-        if (!controlInactividad) {            
+        if (!controlInactividad) {
             cerrarVideo();
             controlInactividad = true;
             controlSegunda = true;
         }
+        this.setContentPane(menu);
     }//GEN-LAST:event_bannerMouseClicked
 
     private void gcerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_gcerrarMouseClicked
@@ -1112,8 +1128,6 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JButton alimentacion;
     private javax.swing.JLabel backslider;
     private javax.swing.JLabel banner;
-    private javax.swing.JButton bcarrusel;
-    private javax.swing.JButton bgrilla;
     private javax.swing.JButton biotopo;
     private javax.swing.JButton cerrar;
     private javax.swing.JButton close;
