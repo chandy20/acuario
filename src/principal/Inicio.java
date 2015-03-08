@@ -1052,15 +1052,22 @@ public class Inicio extends javax.swing.JFrame {
 
     private void alimentacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alimentacionMouseClicked
         // TODO add your handling code here:
-        
-        if (control) {
-            iniciarFicha();
-            control = false;
-        }
-        try {
-            ficha.getAlimentacion(ids[contador]);
-        } catch (SQLException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        y = 0;
+        if (!controlInactividad) {
+
+            if (control) {
+                iniciarFicha();
+                control = false;
+            }
+            try {
+//            ficha.setContentPane(ficha.datos);
+                ficha.setContentPane(ficha.videoPeces);
+                ficha.getAlimentacion(ids[contador]);
+            } catch (SQLException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            controlInactividad = true;
+            controlSegunda = true;
         }
     }//GEN-LAST:event_alimentacionMouseClicked
 
