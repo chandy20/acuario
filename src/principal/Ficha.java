@@ -49,7 +49,7 @@ public class Ficha extends javax.swing.JDialog {
     AcuarioDAO aDAO = new AcuarioDAO();
     PezVO pVO = new PezVO();
     int x = 0;
-    double t = 0, tiempo = 0;
+    double t = 0, tiempo = 0, tiempogeneral=0;
     Manager f1, f2;
 //    int principal = 0;
     ArrayList<PezVO> lista = new ArrayList<PezVO>();
@@ -227,7 +227,7 @@ public class Ficha extends javax.swing.JDialog {
         }
     }
 
-    public void VideoPrincipal(String direccion, int x, int y) {
+    public void VideoPrincipal(String direccion) {
 //        JPanel panel = new JPanel();
 //        videoPane.setLayout(new BorderLayout());
         videoPane.setSize(1920, 1080);
@@ -246,7 +246,7 @@ public class Ficha extends javax.swing.JDialog {
 //            System.out.println("player: " + player);
             video = player.getVisualComponent();
 //            System.out.println("video: " + video);
-            video.setSize(x, y);
+            video.setSize(1920, 1080);
 //            video.setLocation(0, 540);
             video.setVisible(true);
             if (video != null) {
@@ -272,8 +272,10 @@ public class Ficha extends javax.swing.JDialog {
     public void VideoInfo(String direccion) {
         File directorio = new File(direccion);
         System.out.println("archivo "+directorio.exists());
-        if (directorio.exists()) {
+        if (!directorio.exists()) {
             direccion = "file:///c:/acuario/defoult.mpg";
+        }else{
+            direccion = "file:///"+direccion;
         }
 
 //        System.out.println(direccion);
@@ -310,6 +312,7 @@ public class Ficha extends javax.swing.JDialog {
                 videoPeces.add(info);
                 videoPeces.add(fondo);
 //            video.repaint();
+                tiempogeneral = player1.getDuration().getSeconds() + (0.8);
                 controles1 = player1.getControlPanelComponent();
 //            controles.setSize(1920, 100);
 //            controles.setVisible(true);
@@ -344,7 +347,7 @@ public class Ficha extends javax.swing.JDialog {
         @Override
         public void run() {
             try {
-                VideoPrincipal("file:///c:/acuario/video/agua_converted.mpg", 1920, 1080);
+                VideoPrincipal("file:///c:/acuario/video/agua_converted.mpg");
 //                VideoInfo("file:///c:/acuario/video/agua_converted.mpg");
                 cero = player.getMediaTime();
                 reproducirPrincipal();
@@ -357,7 +360,7 @@ public class Ficha extends javax.swing.JDialog {
                     }
 //                    System.out.println("activo "+titulo.getText().equals(""));
                     if (!info.getText().equals("")) {
-                        if (t >= player1.getDuration().getSeconds()) {
+                        if (t >= tiempogeneral) {
                             reproducir();
                         }
                         t++;
