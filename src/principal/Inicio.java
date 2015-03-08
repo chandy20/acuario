@@ -71,24 +71,7 @@ public class Inicio extends javax.swing.JFrame {
             i++;
         }
     }
-    /*public void llenarVectores(ArrayList<PezVO> peces) throws IOException {
-        Imagenes = new Image[peces.size()];
-        names = new String[peces.size()];
-        ids = new int[peces.size()];
-        scientistNames = new String[peces.size()];
-        buffer = new BufferedImage[peces.size()];
-        int i = 0;
-        for (PezVO pezVO : peces) {
-            Imagenes[i] = getToolkit().getImage("file:///c:/acuario/" + pezVO.getPez_id() + "/descripcion.png");
-            names[i] = pezVO.getPez_nombComun();
-            scientistNames[i] = pezVO.getPez_nombCientifico();
-            ids[i] = pezVO.getPez_id();
-            String fabio = "C:/acuario/" + pezVO.getPez_id() + "/descripcion.png";
-            System.out.println(fabio);
-            buffer[i] = ImageIO.read(new File(fabio));
-            i++;
-        }
-    }*/
+    
 
      public void cargarComponentes() {
         Image foto = Imagenes[ contador].getScaledInstance(500, (int) ((buffer[contador].getHeight() * 500) / buffer[contador].getWidth()), Image.SCALE_DEFAULT);
@@ -98,14 +81,7 @@ public class Inicio extends javax.swing.JFrame {
         ficha.foto.setIcon(new ImageIcon(fotoTv));
         ficha.tittle.setText(names[ contador]);
     }
-    /*public void cargarComponentes() {
-        Image foto = Imagenes[ contador].getScaledInstance(500, (int) ((buffer[contador].getHeight() * 500) / buffer[contador].getWidth()), Image.SCALE_DEFAULT);
-        slider.setIcon(new ImageIcon(foto));
-        nombre.setText(names[ contador]);
-        Image fotoTv = Imagenes[ contador].getScaledInstance(1050, (int) ((buffer[contador].getHeight() * 1050) / buffer[contador].getWidth()), Image.SCALE_DEFAULT);
-        ficha.foto.setIcon(new ImageIcon(fotoTv));
-        ficha.tittle.setText(names[ contador]);
-    }*/
+    
 
     public void iniciarInicio() {//inicio inactividad
         this.setContentPane(this.menu);
