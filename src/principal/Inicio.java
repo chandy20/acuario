@@ -5,7 +5,6 @@
  */
 package principal;
 
-import java.awt.Desktop;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
