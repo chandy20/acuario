@@ -18,22 +18,14 @@ public class PezVO implements Serializable{
     }
     
     private int pez_id;
-    private String pez_nombre;
     private String pez_nombComun;
     private String pez_nombCientifico;
-    private String pez_biotopo;
     private String pez_distribucion;
-    private String pez_rutaDistribucion;
-    private String pez_forma;
-    private String pez_coloracion;
-    private String pez_tamano;
-    private String pez_tempreatura;
-    private String pez_agua;
     private String pez_alimentacion;
-    private String pez_comportamiento;
-    private String pez_acuario;
+    private String pez_cuerpo;
+    private String pez_generalidades;
+    private String pez_curiosidades;
     private boolean pez_estado;
-    private int subf_id;
 
     public int getPez_id() {
         return pez_id;
@@ -43,14 +35,7 @@ public class PezVO implements Serializable{
         this.pez_id = pez_id;
     }
 
-    public String getPez_nombre() {
-        return pez_nombre;
-    }
-
-    public void setPez_nombre(String pez_nombre) {
-        this.pez_nombre = pez_nombre;
-    }
-
+    
     public String getPez_nombComun() {
         return pez_nombComun;
     }
@@ -67,68 +52,12 @@ public class PezVO implements Serializable{
         this.pez_nombCientifico = pez_nombCientifico;
     }
 
-    public String getPez_biotopo() {
-        return pez_biotopo;
-    }
-
-    public void setPez_biotopo(String pez_biotopo) {
-        this.pez_biotopo = pez_biotopo;
-    }
-
     public String getPez_distribucion() {
         return pez_distribucion;
     }
 
     public void setPez_distribucion(String pez_distribucion) {
         this.pez_distribucion = pez_distribucion;
-    }
-
-    public String getPez_rutaDistribucion() {
-        return pez_rutaDistribucion;
-    }
-
-    public void setPez_rutaDistribucion(String pez_rutaDistribucion) {
-        this.pez_rutaDistribucion = pez_rutaDistribucion;
-    }
-
-    public String getPez_forma() {
-        return pez_forma;
-    }
-
-    public void setPez_forma(String pez_forma) {
-        this.pez_forma = pez_forma;
-    }
-
-    public String getPez_coloracion() {
-        return pez_coloracion;
-    }
-
-    public void setPez_coloracion(String pez_coloracion) {
-        this.pez_coloracion = pez_coloracion;
-    }
-
-    public String getPez_tamano() {
-        return pez_tamano;
-    }
-
-    public void setPez_tamano(String pez_tamano) {
-        this.pez_tamano = pez_tamano;
-    }
-
-    public String getPez_tempreatura() {
-        return pez_tempreatura;
-    }
-
-    public void setPez_tempreatura(String pez_tempreatura) {
-        this.pez_tempreatura = pez_tempreatura;
-    }
-
-    public String getPez_agua() {
-        return pez_agua;
-    }
-
-    public void setPez_agua(String pez_agua) {
-        this.pez_agua = pez_agua;
     }
 
     public String getPez_alimentacion() {
@@ -139,37 +68,35 @@ public class PezVO implements Serializable{
         this.pez_alimentacion = pez_alimentacion;
     }
 
-    public String getPez_comportamiento() {
-        return pez_comportamiento;
+    public String getPez_cuerpo() {
+        return pez_cuerpo;
     }
 
-    public void setPez_comportamiento(String pez_comportamiento) {
-        this.pez_comportamiento = pez_comportamiento;
+    public void setPez_cuerpo(String pez_cuerpo) {
+        this.pez_cuerpo = pez_cuerpo;
     }
 
-    public String getPez_acuario() {
-        return pez_acuario;
+    public String getPez_generalidades() {
+        return pez_generalidades;
     }
 
-    public void setPez_acuario(String pez_acuario) {
-        this.pez_acuario = pez_acuario;
+    public void setPez_generalidades(String pez_generalidades) {
+        this.pez_generalidades = pez_generalidades;
     }
-    
-    
+
+    public String getPez_curiosidades() {
+        return pez_curiosidades;
+    }
+
+    public void setPez_curiosidades(String pez_curiosidades) {
+        this.pez_curiosidades = pez_curiosidades;
+    }
+
     public boolean isPez_estado() {
         return pez_estado;
     }
 
     public void setPez_estado(boolean pez_estado) {
         this.pez_estado = pez_estado;
-    }
-
-    public int getSubf_id() {
-        return subf_id;
-    }
-
-    public void setSubf_id(int subf_id) {
-        this.subf_id = subf_id;
-    }    
-    
+    }  
 }
