@@ -782,48 +782,74 @@ public class Inicio extends javax.swing.JFrame {
             controlInactividad = true;
             controlSegunda = true;
         }
-        
+
     }//GEN-LAST:event_biotopoMouseClicked
 
     private void distribucionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_distribucionMouseClicked
         // TODO add your handling code here:
-        if (control) {
-            iniciarFicha();
-            control = false;
-        }
-        try {
-            ficha.getDistribucion(ids[contador]);
-        } catch (SQLException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        y = 0;
+        if (!controlInactividad) {
+
+            ficha.videoPane.removeAll();
+            ficha.VideoPrincipal("file:///c:/acuario/"+String.valueOf(ids[contador])+"/videos/vivo.mpg"); //vivo.mpg
+            ficha.reproducirPrincipal();
+            
+            ficha.setContentPane(ficha.videoPane);
+            
+            controlInactividad = true;
+            controlSegunda = true;
+            control = true;
         }
     }//GEN-LAST:event_distribucionMouseClicked
 
     private void formaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formaMouseClicked
         // TODO add your handling code here:
-        if (control) {
-            iniciarFicha();
-            control = false;
-        }
-        try {
-            ficha.getForma(ids[contador]);
-        } catch (SQLException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        y = 0;
+        if (!controlInactividad) {
+
+            ficha.videoPane.removeAll();
+            ficha.VideoPrincipal("file:///c:/acuario/"+String.valueOf(ids[contador])+"/videos/cuerpo.mpg");//cuerpo.mpg
+            ficha.reproducirPrincipal();
+            
+            ficha.setContentPane(ficha.videoPane);
+            
+            controlInactividad = true;
+            controlSegunda = true;
+            control = true;
         }
     }//GEN-LAST:event_formaMouseClicked
 
     private void tamanoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tamanoMouseClicked
         // TODO add your handling code here:
-        if (control) {
-            iniciarFicha();
-            control = false;
+        y = 0;
+        if (!controlInactividad) {
+
+            ficha.videoPane.removeAll();
+            ficha.VideoPrincipal("file:///c:/acuario/"+String.valueOf(ids[contador])+"/videos/medidas.mpg");//medidas.mpg
+            ficha.reproducirPrincipal();
+            
+            ficha.setContentPane(ficha.videoPane);
+            
+            controlInactividad = true;
+            controlSegunda = true;
+            control = true;
         }
     }//GEN-LAST:event_tamanoMouseClicked
 
     private void temperaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_temperaturaMouseClicked
         // TODO add your handling code here:
-        if (control) {
-            iniciarFicha();
-            control = false;
+        y = 0;
+        if (!controlInactividad) {
+
+            ficha.videoPane.removeAll();
+            ficha.VideoPrincipal("file:///c:/acuario/"+String.valueOf(ids[contador])+"/videos/temperatura.mpg");//temperatura.mpg
+            ficha.reproducirPrincipal();
+            
+            ficha.setContentPane(ficha.videoPane);
+            
+            controlInactividad = true;
+            controlSegunda = true;
+            control = true;
         }
     }//GEN-LAST:event_temperaturaMouseClicked
 
