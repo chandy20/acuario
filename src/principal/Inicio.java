@@ -54,8 +54,24 @@ public class Inicio extends javax.swing.JFrame {
         devices[ 1].setFullScreenWindow(ficha);
         ficha.setContentPane(ficha.inicial);
     }
-
+    
     public void llenarVectores(ArrayList<PezVO> peces) throws IOException {
+        Imagenes = new Image[peces.size()];
+        names = new String[peces.size()];
+        ids = new int[peces.size()];
+        scientistNames = new String[peces.size()];
+        buffer = new BufferedImage[peces.size()];
+        int i = 0;
+        for (PezVO pezVO : peces) {
+            Imagenes[ i] = getToolkit().getImage("file:///c:/acuario/" + pezVO.getPez_id() + "/descripcion.png");
+            names[ i] = pezVO.getPez_nombComun();
+            scientistNames [ i] = pezVO.getPez_nombCientifico();
+            ids[ i] = pezVO.getPez_id();
+            buffer[ i] = ImageIO.read(new File("c:/acuario/" + pezVO.getPez_id() + "/descripcion.png"));
+            i++;
+        }
+    }
+    /*public void llenarVectores(ArrayList<PezVO> peces) throws IOException {
         Imagenes = new Image[peces.size()];
         names = new String[peces.size()];
         ids = new int[peces.size()];
@@ -68,19 +84,29 @@ public class Inicio extends javax.swing.JFrame {
             scientistNames[i] = pezVO.getPez_nombCientifico();
             ids[i] = pezVO.getPez_id();
             String fabio = "C:/acuario/" + pezVO.getPez_id() + "/descripcion.png";
-           buffer[i] = ImageIO.read(new File(fabio));
+            System.out.println(fabio);
+            buffer[i] = ImageIO.read(new File(fabio));
             i++;
         }
-    }
+    }*/
 
-    public void cargarComponentes() {
+     public void cargarComponentes() {
         Image foto = Imagenes[ contador].getScaledInstance(500, (int) ((buffer[contador].getHeight() * 500) / buffer[contador].getWidth()), Image.SCALE_DEFAULT);
+         System.out.println("foto "+foto);
         slider.setIcon(new ImageIcon(foto));
         nombre.setText(names[ contador]);
         Image fotoTv = Imagenes[ contador].getScaledInstance(1050, (int) ((buffer[contador].getHeight() * 1050) / buffer[contador].getWidth()), Image.SCALE_DEFAULT);
         ficha.foto.setIcon(new ImageIcon(fotoTv));
         ficha.tittle.setText(names[ contador]);
     }
+    /*public void cargarComponentes() {
+        Image foto = Imagenes[ contador].getScaledInstance(500, (int) ((buffer[contador].getHeight() * 500) / buffer[contador].getWidth()), Image.SCALE_DEFAULT);
+        slider.setIcon(new ImageIcon(foto));
+        nombre.setText(names[ contador]);
+        Image fotoTv = Imagenes[ contador].getScaledInstance(1050, (int) ((buffer[contador].getHeight() * 1050) / buffer[contador].getWidth()), Image.SCALE_DEFAULT);
+        ficha.foto.setIcon(new ImageIcon(fotoTv));
+        ficha.tittle.setText(names[ contador]);
+    }*/
 
     public void iniciarInicio() {//inicio inactividad
         this.setContentPane(this.menu);
@@ -638,14 +664,15 @@ public class Inicio extends javax.swing.JFrame {
         y = 0;
         if (!controlInactividad) {
 
+            controlInactividad = true;
+            controlSegunda = true;
+        } else {
             tittle.setText(names[ contador]);
             Image foto = Imagenes[ contador].getScaledInstance(500, (int) ((buffer[ contador].getHeight() * 500) / buffer[ contador].getWidth()), Image.SCALE_DEFAULT);
             seleccionado.setIcon(new ImageIcon(foto));
             this.setContentPane(seleccion);
-
-            controlInactividad = true;
-            controlSegunda = true;
         }
+
     }//GEN-LAST:event_sliderMouseClicked
 
     private void nombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreMouseClicked
@@ -673,7 +700,7 @@ public class Inicio extends javax.swing.JFrame {
         controlInactividad = true;
 
         this.setContentPane(this.tactil);
-
+        cargarComponentes();
         if (!controlSegunda) {
             cerrarVideo();
             controlSegunda = true;
@@ -686,14 +713,14 @@ public class Inicio extends javax.swing.JFrame {
         y = 0;
         if (!controlInactividad) {
 
+            controlInactividad = true;
+            controlSegunda = true;
+        } else {
             contador--;
             if (contador == -1) {
                 contador = ids.length - 1;
             }
             cargarComponentes();
-
-            controlInactividad = true;
-            controlSegunda = true;
         }
     }//GEN-LAST:event_prevMouseClicked
 
@@ -702,16 +729,15 @@ public class Inicio extends javax.swing.JFrame {
         y = 0;
         if (!controlInactividad) {
 
+            controlInactividad = true;
+            controlSegunda = true;
+        } else {
             contador++;
             if (contador == ids.length) {
                 contador = 0;
             }
             cargarComponentes();
-
-            controlInactividad = true;
-            controlSegunda = true;
         }
-
     }//GEN-LAST:event_nextMouseClicked
 
     private void cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseClicked
@@ -719,11 +745,11 @@ public class Inicio extends javax.swing.JFrame {
         y = 0;
         if (!controlInactividad) {
 
-            this.setContentPane(menu);
-            ficha.setContentPane(ficha.inicial);
-
             controlInactividad = true;
             controlSegunda = true;
+        } else {
+            this.setContentPane(menu);
+            ficha.setContentPane(ficha.inicial);
         }
     }//GEN-LAST:event_cerrarMouseClicked
 
@@ -731,21 +757,24 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         y = 0;
         if (!controlInactividad) {
-
-            ficha.setContentPane(ficha.visor);
-            this.setContentPane(tactil);
-
             controlInactividad = true;
             controlSegunda = true;
+
+        } else {
+            ficha.setContentPane(ficha.visor);
+            this.setContentPane(tactil);
             control = true;
         }
+
     }//GEN-LAST:event_closeMouseClicked
 
     private void nombresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombresMouseClicked
         // TODO add your handling code here:
         y = 0;
         if (!controlInactividad) {
-
+            controlInactividad = true;
+            controlSegunda = true;
+        } else {
             if (control) {
                 iniciarFicha();
                 control = false;
@@ -757,8 +786,6 @@ public class Inicio extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
             }
-            controlInactividad = true;
-            controlSegunda = true;
         }
 
     }//GEN-LAST:event_nombresMouseClicked
@@ -768,6 +795,9 @@ public class Inicio extends javax.swing.JFrame {
         y = 0;
         if (!controlInactividad) {
 
+            controlInactividad = true;
+            controlSegunda = true;
+        } else {
             if (control) {
                 iniciarFicha();
                 control = false;
@@ -779,8 +809,6 @@ public class Inicio extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
             }
-            controlInactividad = true;
-            controlSegunda = true;
         }
 
     }//GEN-LAST:event_biotopoMouseClicked
@@ -790,15 +818,15 @@ public class Inicio extends javax.swing.JFrame {
         y = 0;
         if (!controlInactividad) {
 
-            ficha.videoPane.removeAll();
-            ficha.VideoPrincipal("file:///c:/acuario/"+String.valueOf(ids[contador])+"/videos/vivo.mpg"); //vivo.mpg
-            ficha.reproducirPrincipal();
-            
-            ficha.setContentPane(ficha.videoPane);
-            
             controlInactividad = true;
             controlSegunda = true;
+
+        } else {
+            ficha.videoPane.removeAll();
+            ficha.VideoPrincipal("file:///c:/acuario/" + String.valueOf(ids[contador]) + "/videos/vivo.mpg"); //vivo.mpg
+            ficha.reproducirPrincipal();
             control = true;
+            ficha.setContentPane(ficha.videoPane);
         }
     }//GEN-LAST:event_distribucionMouseClicked
 
@@ -806,16 +834,15 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         y = 0;
         if (!controlInactividad) {
-
-            ficha.videoPane.removeAll();
-            ficha.VideoPrincipal("file:///c:/acuario/"+String.valueOf(ids[contador])+"/videos/cuerpo.mpg");//cuerpo.mpg
-            ficha.reproducirPrincipal();
-            
-            ficha.setContentPane(ficha.videoPane);
-            
             controlInactividad = true;
             controlSegunda = true;
+
+        } else {
+            ficha.videoPane.removeAll();
+            ficha.VideoPrincipal("file:///c:/acuario/" + String.valueOf(ids[contador]) + "/videos/cuerpo.mpg");//cuerpo.mpg
+            ficha.reproducirPrincipal();
             control = true;
+            ficha.setContentPane(ficha.videoPane);
         }
     }//GEN-LAST:event_formaMouseClicked
 
@@ -824,15 +851,15 @@ public class Inicio extends javax.swing.JFrame {
         y = 0;
         if (!controlInactividad) {
 
-            ficha.videoPane.removeAll();
-            ficha.VideoPrincipal("file:///c:/acuario/"+String.valueOf(ids[contador])+"/videos/medidas.mpg");//medidas.mpg
-            ficha.reproducirPrincipal();
-            
-            ficha.setContentPane(ficha.videoPane);
-            
             controlInactividad = true;
             controlSegunda = true;
+
+        } else {
+            ficha.videoPane.removeAll();
+            ficha.VideoPrincipal("file:///c:/acuario/" + String.valueOf(ids[contador]) + "/videos/medidas.mpg");//medidas.mpg
+            ficha.reproducirPrincipal();
             control = true;
+            ficha.setContentPane(ficha.videoPane);
         }
     }//GEN-LAST:event_tamanoMouseClicked
 
@@ -841,15 +868,15 @@ public class Inicio extends javax.swing.JFrame {
         y = 0;
         if (!controlInactividad) {
 
-            ficha.videoPane.removeAll();
-            ficha.VideoPrincipal("file:///c:/acuario/"+String.valueOf(ids[contador])+"/videos/temperatura.mpg");//temperatura.mpg
-            ficha.reproducirPrincipal();
-            
-            ficha.setContentPane(ficha.videoPane);
-            
             controlInactividad = true;
             controlSegunda = true;
+
+        } else {
+            ficha.videoPane.removeAll();
+            ficha.VideoPrincipal("file:///c:/acuario/" + String.valueOf(ids[contador]) + "/videos/temperatura.mpg");//temperatura.mpg
+            ficha.reproducirPrincipal();
             control = true;
+            ficha.setContentPane(ficha.videoPane);
         }
     }//GEN-LAST:event_temperaturaMouseClicked
 
@@ -858,6 +885,9 @@ public class Inicio extends javax.swing.JFrame {
         y = 0;
         if (!controlInactividad) {
 
+            controlInactividad = true;
+            controlSegunda = true;
+        } else {
             if (control) {
                 iniciarFicha();
                 control = false;
@@ -869,8 +899,6 @@ public class Inicio extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
             }
-            controlInactividad = true;
-            controlSegunda = true;
         }
     }//GEN-LAST:event_alimentacionMouseClicked
 
@@ -879,6 +907,9 @@ public class Inicio extends javax.swing.JFrame {
         y = 0;
         if (!controlInactividad) {
 
+            controlInactividad = true;
+            controlSegunda = true;
+        } else {
             if (control) {
                 iniciarFicha();
                 control = false;
@@ -890,8 +921,6 @@ public class Inicio extends javax.swing.JFrame {
             } catch (SQLException ex) {
                 Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
             }
-            controlInactividad = true;
-            controlSegunda = true;
         }
     }//GEN-LAST:event_comportamientoMouseClicked
 
