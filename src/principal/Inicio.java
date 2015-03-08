@@ -997,7 +997,7 @@ public class Inicio extends javax.swing.JFrame {
             try {
 //            ficha.setContentPane(ficha.datos);
                 ficha.setContentPane(ficha.videoPeces);
-                ficha.getBiotopo(ids[contador]);
+                ficha.getComportamiento(ids[contador]);
             } catch (SQLException ex) {
                 Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
             }
