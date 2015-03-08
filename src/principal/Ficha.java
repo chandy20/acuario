@@ -80,35 +80,35 @@ public class Ficha extends javax.swing.JDialog {
 
     }
 
-    public void getClasificacion(int pez_id) throws SQLException {
-        lista = aDAO.getDatosGenerales(pez_id, 1);
-        for (PezVO pezVO : lista) {
-            String orden = pezVO.getPez_coloracion();
-            String familia = pezVO.getPez_alimentacion();
-            String subfamilia = pezVO.getPez_biotopo();
-            String datos = "<html><body><table><tr><td colspan=3 align='center' style='font-size:70px'><b>CLASICACIÓN</b></td></tr>"
-                    + "<tr><td width='545px' align='center' style='font-size:50px'><b>ORDEN</b></td>"
-                    + "<td width='545px' align='center' style='font-size:50px'><b>FAMILIA</b></td>"
-                    + "<td width='545px' align='center' style='font-size:50px'><b>SUBFAMILIA  </b></td></tr>"
-                    + "<tr><td align='center' style='font-size:50px'>" + orden + "</td>"
-                    + "<td align='center' style='font-size:50px'>" + familia + "</td>"
-                    + "<td align='center' style='font-size:50px'>" + subfamilia + "</td></tr></table></body></html>";
-            this.info.setText(datos);
-        }
-    }
+//    public void getClasificacion(int pez_id) throws SQLException {
+//        lista = aDAO.getDatosGenerales(pez_id, 1);
+//        for (PezVO pezVO : lista) {
+//            String orden = pezVO.getPez_coloracion();
+//            String familia = pezVO.getPez_alimentacion();
+//            String subfamilia = pezVO.getPez_biotopo();
+//            String datos = "<html><body><table><tr><td colspan=3 align='center' style='font-size:70px'><b>CLASICACIÓN</b></td></tr>"
+//                    + "<tr><td width='545px' align='center' style='font-size:50px'><b>ORDEN</b></td>"
+//                    + "<td width='545px' align='center' style='font-size:50px'><b>FAMILIA</b></td>"
+//                    + "<td width='545px' align='center' style='font-size:50px'><b>SUBFAMILIA  </b></td></tr>"
+//                    + "<tr><td align='center' style='font-size:50px'>" + orden + "</td>"
+//                    + "<td align='center' style='font-size:50px'>" + familia + "</td>"
+//                    + "<td align='center' style='font-size:50px'>" + subfamilia + "</td></tr></table></body></html>";
+//            this.info.setText(datos);
+//        }
+//    }
 
-    public void getBiotopo(int pez_id) throws SQLException {
-        lista = aDAO.getDatosGenerales(pez_id, 2);
-        for (PezVO pezVO : lista) {
-            String biotopo = pezVO.getPez_biotopo();
-            if (pezVO.getPez_biotopo() == null || biotopo.equals("")) {
-                biotopo = "NO ESPECIFICADO";
-            }
-            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>BIÓTOPO</b></td></tr>"
-                    + "<tr><td align='center' style='font-size:40px'>" + biotopo + "</td></tr><table></body></html>";
-            this.info.setText(datos);
-        }
-    }
+//    public void getBiotopo(int pez_id) throws SQLException {
+//        lista = aDAO.getDatosGenerales(pez_id, 2);
+//        for (PezVO pezVO : lista) {
+//            String biotopo = pezVO.getPez_biotopo();
+//            if (pezVO.getPez_biotopo() == null || biotopo.equals("")) {
+//                biotopo = "NO ESPECIFICADO";
+//            }
+//            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>BIÓTOPO</b></td></tr>"
+//                    + "<tr><td align='center' style='font-size:40px'>" + biotopo + "</td></tr><table></body></html>";
+//            this.info.setText(datos);
+//        }
+//    }
 
     public void getDistribucion(int pez_id) throws SQLException {
         lista = aDAO.getDatosGenerales(pez_id, 3);
@@ -117,111 +117,109 @@ public class Ficha extends javax.swing.JDialog {
             if (pezVO.getPez_distribucion() == null || pezVO.getPez_distribucion().equals("")) {
                 distribucion = "NO ESPECIFICADA";
             }
-            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>DISTRIBUCIÓN</b></td></tr>"
+            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>ME ENCUENTRO EN</b></td></tr>"
                     + "<tr><td align='center' style='font-size:40px'>" + distribucion + "</td></tr><table></body></html>";
             this.info.setText(datos);
         }
     }
 
     public void getForma(int pez_id) throws SQLException {
-        lista = aDAO.getDatosGenerales(pez_id, 11);
-        for (PezVO pezVO : lista) {
-            String forma = pezVO.getPez_forma();
-            if (pezVO.getPez_forma() == null || forma.equals("")) {
+        ArrayList<PezVO> lista1 = aDAO.getDatosGenerales(pez_id, 11);
+        getAlimentacion(pez_id);
+        for (PezVO pezVO : lista1) {
+            String forma = pezVO.getPez_curiosidades();
+            String alimentacion = pezVO.getPez_alimentacion();
+            if (pezVO.getPez_curiosidades()== null || forma.equals("")) {
                 forma = "NO ESPECIFICADA";
             }
-            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>FORMA</b></td></tr>"
-                    + "<tr><td align='center' style='font-size:40px'>" + forma + "</td></tr><table></body></html>";
+            if (pezVO.getPez_alimentacion()== null || alimentacion.equals("")) {
+                alimentacion = "NO ESPECIFICADA";
+            }
+            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>MIS CURIOSIDADES</b></td></tr>"
+                    + "<tr><td align='center' style='font-size:40px'>" + forma + "</td></tr>"
+                    + "<tr><td align='center' style='font-size:40px'>YO COMO </td></tr>"
+                    + "<tr><td align='center' style='font-size:40px'>" + alimentacion + "</td></tr></table></body></html>";       
             this.info.setText(datos);
         }
     }
 
-    public void getColoracion(int pez_id) throws SQLException {
-        lista = aDAO.getDatosGenerales(pez_id, 4);
-        for (PezVO pezVO : lista) {
-            String coloracion = pezVO.getPez_coloracion();
-            if (pezVO.getPez_coloracion() == null || coloracion.equals("")) {
-                coloracion = "NO ESPECIFICADA";
-            }
-            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>COLORACIÓN</b></td></tr>"
-                    + "<tr><td align='center' style='font-size:40px'>" + coloracion + "</td></tr><table></body></html>";
-            this.info.setText(datos);
-        }
-    }
+//    public void getColoracion(int pez_id) throws SQLException {
+//        lista = aDAO.getDatosGenerales(pez_id, 4);
+//        for (PezVO pezVO : lista) {
+//            String coloracion = pezVO.getPez_coloracion();
+//            if (pezVO.getPez_coloracion() == null || coloracion.equals("")) {
+//                coloracion = "NO ESPECIFICADA";
+//            }
+//            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>COLORACIÓN</b></td></tr>"
+//                    + "<tr><td align='center' style='font-size:40px'>" + coloracion + "</td></tr><table></body></html>";
+//            this.info.setText(datos);
+//        }
+//    }
 
-    public void getTamano(int pez_id) throws SQLException {
-        lista = aDAO.getDatosGenerales(pez_id, 5);
-        for (PezVO pezVO : lista) {
-            String tamano = pezVO.getPez_tamano();
-            if (pezVO.getPez_tamano() == null || tamano.equals("")) {
-                tamano = "NO ESPECIFICADO";
-            }
-            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>TAMAÑO</b></td></tr>"
-                    + "<tr><td align='center' style='font-size:50px'>" + tamano + "</td></tr><table></body></html>";
-            this.info.setText(datos);
-        }
-    }
+//    public void getTamano(int pez_id) throws SQLException {
+//        lista = aDAO.getDatosGenerales(pez_id, 5);
+//        for (PezVO pezVO : lista) {
+//            String tamano = pezVO.getPez_tamano();
+//            if (pezVO.getPez_tamano() == null || tamano.equals("")) {
+//                tamano = "NO ESPECIFICADO";
+//            }
+//            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>TAMAÑO</b></td></tr>"
+//                    + "<tr><td align='center' style='font-size:50px'>" + tamano + "</td></tr><table></body></html>";
+//            this.info.setText(datos);
+//        }
+//    }
 
-    public void getTempreratura(int pez_id) throws SQLException {
-        lista = aDAO.getDatosGenerales(pez_id, 6);
-        for (PezVO pezVO : lista) {
-            String temperatura = pezVO.getPez_tempreatura();
-            if (pezVO.getPez_tempreatura() == null || temperatura.equals("")) {
-                temperatura = "NO ESPECIFICADA";
-            }
-            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>TEMPERATURA</b></td></tr>"
-                    + "<tr><td align='center' style='font-size:50px'>" + temperatura + "</td></tr><table></body></html>";
-            this.info.setText(datos);
-        }
-    }
+//    public void getTempreratura(int pez_id) throws SQLException {
+//        lista = aDAO.getDatosGenerales(pez_id, 6);
+//        for (PezVO pezVO : lista) {
+//            String temperatura = pezVO.getPez_tempreatura();
+//            if (pezVO.getPez_tempreatura() == null || temperatura.equals("")) {
+//                temperatura = "NO ESPECIFICADA";
+//            }
+//            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>TEMPERATURA</b></td></tr>"
+//                    + "<tr><td align='center' style='font-size:50px'>" + temperatura + "</td></tr><table></body></html>";
+//            this.info.setText(datos);
+//        }
+//    }
 
-    public void getAgua(int pez_id) throws SQLException {
-        lista = aDAO.getDatosGenerales(pez_id, 7);
-        for (PezVO pezVO : lista) {
-            String agua = pezVO.getPez_agua();
-            if (pezVO.getPez_agua() == null || agua.equals("")) {
-                agua = "NO ESPECIFICADA";
-            }
-            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>AGUA</b></td></tr>"
-                    + "<tr><td align='center' style='font-size:40px'>" + agua + "</td></tr><table></body></html>";
-            this.info.setText(datos);
-        }
-    }
+//    public void getAgua(int pez_id) throws SQLException {
+//        lista = aDAO.getDatosGenerales(pez_id, 7);
+//        for (PezVO pezVO : lista) {
+//            String agua = pezVO.getPez_agua();
+//            if (pezVO.getPez_agua() == null || agua.equals("")) {
+//                agua = "NO ESPECIFICADA";
+//            }
+//            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>AGUA</b></td></tr>"
+//                    + "<tr><td align='center' style='font-size:40px'>" + agua + "</td></tr><table></body></html>";
+//            this.info.setText(datos);
+//        }
+//    }
 
-    public void getAcuario(int pez_id) throws SQLException {
-        lista = aDAO.getDatosGenerales(pez_id, 8);
-        for (PezVO pezVO : lista) {
-            String acuario = pezVO.getPez_acuario();
-            if (pezVO.getPez_acuario() == null || acuario.equals("")) {
-                acuario = "NO ESPECIFICADO";
-            }
-            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>ACUARIO</b></td></tr>"
-                    + "<tr><td align='center' style='font-size:40px'>" + acuario + "</td></tr><table></body></html>";
-            this.info.setText(datos);
-        }
-    }
+//    public void getAcuario(int pez_id) throws SQLException {
+//        lista = aDAO.getDatosGenerales(pez_id, 8);
+//        for (PezVO pezVO : lista) {
+//            String acuario = pezVO.getPez_acuario();
+//            if (pezVO.getPez_acuario() == null || acuario.equals("")) {
+//                acuario = "NO ESPECIFICADO";
+//            }
+//            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>ACUARIO</b></td></tr>"
+//                    + "<tr><td align='center' style='font-size:40px'>" + acuario + "</td></tr><table></body></html>";
+//            this.info.setText(datos);
+//        }
+//    }
 
     public void getAlimentacion(int pez_id) throws SQLException {
         lista = aDAO.getDatosGenerales(pez_id, 9);
-        for (PezVO pezVO : lista) {
-            String alimentacion = pezVO.getPez_alimentacion();
-            if (pezVO.getPez_alimentacion() == null || alimentacion.equals("")) {
-                alimentacion = "NO ESPECIFICADA";
-            }
-            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>ALIMENTACION</b></td></tr>"
-                    + "<tr><td align='center' style='font-size:40px'>" + alimentacion + "</td></tr><table></body></html>";
-            this.info.setText(datos);
-        }
     }
 
     public void getComportamiento(int pez_id) throws SQLException {
         lista = aDAO.getDatosGenerales(pez_id, 10);
         for (PezVO pezVO : lista) {
-            String comportamiento = pezVO.getPez_comportamiento();
-            if (pezVO.getPez_comportamiento() == null || comportamiento.equals("")) {
+            String comportamiento = pezVO.getPez_generalidades();
+            if (pezVO.getPez_generalidades()== null || comportamiento.equals("")) {
                 comportamiento = "NO ESPECIFICADO";
             }
-            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>COMPORTAMIENTO</b></td></tr>"
+            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>MIS GENERALIDADES</b></td></tr>"
                     + "<tr><td align='center' style='font-size:40px'>" + comportamiento + "</td></tr><table></body></html>";
             this.info.setText(datos);
         }

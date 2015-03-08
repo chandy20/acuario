@@ -249,7 +249,7 @@ public class AcuarioDAO {
         return lista;
     }
 
-    public ArrayList<PezVO> getImagePrincipalFromFish() throws SQLException {
+    public ArrayList<PezVO> getInfoFromFish() throws SQLException {
         PezVO pezVO = null;
         ArrayList<PezVO> lista = new ArrayList<PezVO>();
         String url = null;

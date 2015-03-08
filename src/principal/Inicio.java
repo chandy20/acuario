@@ -1040,11 +1040,6 @@ public class Inicio extends javax.swing.JFrame {
             iniciarFicha();
             control = false;
         }
-        try {
-            ficha.getTamano(ids[contador]);
-        } catch (SQLException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-        }
     }//GEN-LAST:event_tamanoMouseClicked
 
     private void temperaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_temperaturaMouseClicked
@@ -1052,11 +1047,6 @@ public class Inicio extends javax.swing.JFrame {
         if (control) {
             iniciarFicha();
             control = false;
-        }
-        try {
-            ficha.getTempreratura(ids[contador]);
-        } catch (SQLException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_temperaturaMouseClicked
 
