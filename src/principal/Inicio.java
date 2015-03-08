@@ -44,7 +44,7 @@ public class Inicio extends javax.swing.JFrame {
         comenzarFicha();
         llenarVectores(peces);
         cargarComponentes();
-//        hilo.start();
+        hilo.start();
     }
 
     public void comenzarFicha() {
@@ -81,6 +81,10 @@ public class Inicio extends javax.swing.JFrame {
 
     public void iniciarInicio() {
         this.setContentPane(this.menu);
+        ficha.videoPane.removeAll();
+        ficha.VideoPrincipal("file:///c:/acuario/video/agua_converted.mpg");
+        ficha.reproducirPrincipal();
+        ficha.setContentPane(ficha.videoPane);        
     }
 
     public void iniciarFicha() {
@@ -89,7 +93,7 @@ public class Inicio extends javax.swing.JFrame {
 //            ficha.cargaImagenes(ids[ contador]);
             ficha.cargaNombre(ids[ contador]);
             ficha.videoPeces.removeAll();
-            ficha.VideoInfo("file:///c:/acuario/" + String.valueOf(ids[contador]) + "/general.mpg");
+            ficha.VideoInfo("c:/acuario/" + String.valueOf(ids[contador]) + "/general.mpg");
             ficha.reproducir();
             
         } catch (SQLException ex) {
@@ -98,20 +102,10 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     public void cerrarVideo() {
-        Process hijo;
-        try {
-            hijo = Runtime.getRuntime().exec("tskill chrome");
-            hijo.waitFor();
-            if (hijo.exitValue() == 0) {
-                System.out.println("Video cerrado con exito");
-            } else {
-                System.out.println("Incapaz de cerrar Video. Exit code: " + hijo.exitValue() + "\n");
-            }
-        } catch (IOException e) {
-            System.out.println("Incapaz de cerrar Video.");
-        } catch (InterruptedException e) {
-            System.out.println("Incapaz de cerrar Video.");
-        }
+        ficha.videoPane.removeAll();
+        ficha.VideoPrincipal("file:///c:/acuario/video/agua_converted.mpg");
+        ficha.reproducirPrincipal();
+        this.setContentPane(menu);
     }
 
     Thread hilo = new Thread() {//declaramos el hilo
@@ -124,14 +118,6 @@ public class Inicio extends javax.swing.JFrame {
                         controlInactividad = false;
                         if (controlSegunda) {
                             iniciarInicio();
-//                            try {
-////                                File file = new File("c:\\acuario/video/demo.html");
-////                                Desktop.getDesktop().open(file);
-////                                ficha.dispose();
-//                                controlSegunda = false;
-//                            } catch (IOException ex) {
-//                                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-//                            }
                         }
                     }
                     y++;
@@ -917,11 +903,8 @@ public class Inicio extends javax.swing.JFrame {
         y = 0;
         controlInactividad = true;
         if (controlSegunda) {
-//                File file = new File("c:\\acuario/video/demo.html");
-//                Desktop.getDesktop().open(file);
-//            ficha.VideoPrincipal("file:///c:/acuario/video/acuario.mpg", 1920, 1080);
-//            ficha.videoPane.setLocation(0,0);
-//            ficha.video.setLocation(0, 0);
+            ficha.videoPane.removeAll();
+            ficha.VideoPrincipal("file:///c:/acuario/video/promo.mpg");///url video promociones
             ficha.reproducirPrincipal();
             ficha.setContentPane(ficha.videoPane);
             controlSegunda = false;
@@ -934,13 +917,10 @@ public class Inicio extends javax.swing.JFrame {
         controlInactividad = true;
 
         setContentPane(tactil);
-//        ficha.videoPane.setVisible(false);
 
         if (!controlSegunda) {
-            comenzarFicha();
-            cargarComponentes();
-            //cerrarVideo();
-            controlSegunda = true;
+            cerrarVideo();
+//            controlSegunda = true;
         }
         ficha.setContentPane(ficha.visor);
     }//GEN-LAST:event_pecesMouseClicked
@@ -1095,10 +1075,8 @@ public class Inicio extends javax.swing.JFrame {
     private void mfondoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mfondoMouseClicked
         // TODO add your handling code here:
         y = 0;
-        if (!controlInactividad) {
-            comenzarFicha();
-            cargarComponentes();
-//            cerrarVideo();
+        if (!controlInactividad) {            
+            cerrarVideo();
             controlInactividad = true;
             controlSegunda = true;
         }
@@ -1107,10 +1085,8 @@ public class Inicio extends javax.swing.JFrame {
     private void bannerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bannerMouseClicked
         // TODO add your handling code here:
         y = 0;
-        if (!controlInactividad) {
-            comenzarFicha();
-            cargarComponentes();
-//            cerrarVideo();
+        if (!controlInactividad) {            
+            cerrarVideo();
             controlInactividad = true;
             controlSegunda = true;
         }
