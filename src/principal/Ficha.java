@@ -17,6 +17,7 @@ import javax.media.MediaLocator;
 import javax.media.NoPlayerException;
 import javax.media.Player;
 import DAO.AcuarioDAO;
+import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.concurrent.Executors;
@@ -49,7 +50,7 @@ public class Ficha extends javax.swing.JDialog {
     PezVO pVO = new PezVO();
     int x = 0;
     double t = 0, tiempo = 0;
-    Manager f1,f2;
+    Manager f1, f2;
 //    int principal = 0;
     ArrayList<PezVO> lista = new ArrayList<PezVO>();
 
@@ -61,8 +62,6 @@ public class Ficha extends javax.swing.JDialog {
 
     public void cargaNombre(int pez_id) throws SQLException {
         String nombre = aDAO.getPezName(pez_id);
-        VideoInfo("file:///c:/acuario/video/agua_converted.mpg");
-        reproducir();
         titulo.setText(nombre);
     }
 
@@ -78,7 +77,7 @@ public class Ficha extends javax.swing.JDialog {
                     + "<td align='center' style='font-size:40px'>" + nombreCientifico + "</td></tr></table></body></html>";
             this.info.setText(datos);
         }
-        
+
     }
 
     public void getClasificacion(int pez_id) throws SQLException {
@@ -271,33 +270,47 @@ public class Ficha extends javax.swing.JDialog {
     }
 
     public void VideoInfo(String direccion) {
+        File directorio = new File(direccion);
+        System.out.println("archivo "+directorio.exists());
+        if (directorio.exists()) {
+            direccion = "file:///c:/acuario/defoult.mpg";
+        }
+
+//        System.out.println(direccion);
 //        JPanel panel = new JPanel();
 //        videoPane.setLayout(new BorderLayout());
-        datos.setSize(1920, 1080);
+            videoPeces.setSize(1920, 1080);
 //        datos.setLocation(0, 0);
-        
-//        videoPane.setLocation(0, 0);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        URL url = null;
-        try {
-            url = new URL(direccion);
-        } catch (MalformedURLException ex) {
-            Logger.getLogger(Ficha.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        try {
-//            System.out.println("url: " + new MediaLocator(url));
-            player1 = f2.createRealizedPlayer(new MediaLocator(url));
-//            System.out.println("player: " + player);
-            video1 = player1.getVisualComponent();
-//            System.out.println("video: " + video);
-            video1.setSize(1920, 540);
-            video1.setLocation(0, 540);
-            video1.setVisible(true);
-            if (video1 != null) {
-                datos.add("Center", video1);
+
+//        videoPeces.setOpaque();
+//        setLocation(0, 540);
+            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            URL url = null;
+            try {
+                url = new URL(direccion);
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(Ficha.class.getName()).log(Level.SEVERE, null, ex);
             }
+            try {
+//            System.out.println("url: " + new MediaLocator(url));
+//            player1
+                player1 = f2.createRealizedPlayer(new MediaLocator(url));
+
+                System.out.println("player: " + player1);
+                video1 = player1.getVisualComponent();
+//            System.out.println("video: " + video);
+                video1.setSize(1920, 540);
+                video1.setLocation(0, 540);
+                video1.setVisible(true);
+
+                if (video1 != null) {
+                    videoPeces.add("Center", video1);
+                }
+                videoPeces.add(titulo);
+                videoPeces.add(info);
+                videoPeces.add(fondo);
 //            video.repaint();
-            controles1 = player1.getControlPanelComponent();
+                controles1 = player1.getControlPanelComponent();
 //            controles.setSize(1920, 100);
 //            controles.setVisible(true);
 //            if (controles != null) {
@@ -305,11 +318,11 @@ public class Ficha extends javax.swing.JDialog {
 //            }
 //            this.setContentPane(videoPane);
 //            player.getDuration().getSeconds() con este llamado se sabe la duracion del video
-            //player.setMediaTime(new Time(0));
-            //player.deallocate();
-        } catch (IOException | NoPlayerException | CannotRealizeException ex) {
-            Logger.getLogger(Ficha.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                //player.setMediaTime(new Time(0));
+                //player.deallocate();
+            } catch (IOException | NoPlayerException | CannotRealizeException ex) {
+                Logger.getLogger(Ficha.class.getName()).log(Level.SEVERE, null, ex);
+            }
     }
 
     public void reproducirPrincipal() {
@@ -322,7 +335,7 @@ public class Ficha extends javax.swing.JDialog {
     public void reproducir() {
         player1.setMediaTime(cero);
         player1.start();
-        datos.updateUI();
+        videoPeces.updateUI();
         t = 0;
     }
 
@@ -343,11 +356,13 @@ public class Ficha extends javax.swing.JDialog {
                         reproducirPrincipal();
                     }
 //                    System.out.println("activo "+titulo.getText().equals(""));
-                    if(!titulo.getText().equals("")){
+                    if (!info.getText().equals("")) {
                         if (t >= player1.getDuration().getSeconds()) {
                             reproducir();
                         }
                         t++;
+                    } else {
+                        t = 0;
                     }
                     tiempo++;
                     hiloVideoPrincipal.sleep(1000);//que duerma un segundo
@@ -381,6 +396,7 @@ public class Ficha extends javax.swing.JDialog {
         info = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
         videoPane = new javax.swing.JPanel();
+        videoPeces = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setUndecorated(true);
@@ -482,7 +498,7 @@ public class Ficha extends javax.swing.JDialog {
         fondo.setBounds(0, 0, 1920, 520);
 
         jLayeredPane1.add(datos);
-        datos.setBounds(0, 0, 1920, 1080);
+        datos.setBounds(0, 0, 1920, 540);
 
         videoPane.setAlignmentX(0.0F);
         videoPane.setAlignmentY(0.0F);
@@ -491,6 +507,14 @@ public class Ficha extends javax.swing.JDialog {
         videoPane.setLayout(null);
         jLayeredPane1.add(videoPane);
         videoPane.setBounds(0, 0, 1920, 1080);
+
+        videoPeces.setAlignmentX(0.0F);
+        videoPeces.setAlignmentY(0.0F);
+        videoPeces.setMaximumSize(new java.awt.Dimension(1920, 1080));
+        videoPeces.setMinimumSize(new java.awt.Dimension(1920, 1080));
+        videoPeces.setLayout(null);
+        jLayeredPane1.add(videoPeces);
+        videoPeces.setBounds(0, 0, 1920, 540);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -572,6 +596,7 @@ public class Ficha extends javax.swing.JDialog {
     public javax.swing.JLabel tittle;
     private javax.swing.JLabel titulo;
     public javax.swing.JPanel videoPane;
+    public javax.swing.JPanel videoPeces;
     public javax.swing.JPanel visor;
     // End of variables declaration//GEN-END:variables
 }

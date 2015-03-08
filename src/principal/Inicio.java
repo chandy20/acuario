@@ -88,6 +88,10 @@ public class Inicio extends javax.swing.JFrame {
         try {
 //            ficha.cargaImagenes(ids[ contador]);
             ficha.cargaNombre(ids[ contador]);
+            ficha.videoPeces.removeAll();
+            ficha.VideoInfo("file:///c:/acuario/" + String.valueOf(ids[contador]) + "/general.mpg");
+            ficha.reproducir();
+            
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -117,7 +121,7 @@ public class Inicio extends javax.swing.JFrame {
             try {
                 while (true) {//ciclo infinito
                     if (y == 10) {
-                       controlInactividad = false;
+                        controlInactividad = false;
                         if (controlSegunda) {
                             iniciarInicio();
 //                            try {
@@ -138,8 +142,6 @@ public class Inicio extends javax.swing.JFrame {
             }
         }
     };
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -930,7 +932,8 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         y = 0;
         controlInactividad = true;
-        this.setContentPane(tactil);
+        setContentPane(tactil);
+//        ficha.videoPane.setVisible(false);
         if (!controlSegunda) {
             comenzarFicha();
             cargarComponentes();
@@ -978,8 +981,8 @@ public class Inicio extends javax.swing.JFrame {
             control = false;
         }
         try {
-            
-            ficha.setContentPane(ficha.datos);
+//            ficha.setContentPane(ficha.datos);
+            ficha.setContentPane(ficha.videoPeces);
             ficha.getNombres(ids[contador]);
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
@@ -993,6 +996,9 @@ public class Inicio extends javax.swing.JFrame {
             control = false;
         }
         try {
+            ficha.videoPeces.removeAll();
+            ficha.VideoInfo("file:///c:/acuario/" + String.valueOf(ids[contador]) + "/general.mpg");
+            ficha.reproducir();
             ficha.getBiotopo(ids[contador]);
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
