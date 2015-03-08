@@ -63,7 +63,7 @@ public class Inicio extends javax.swing.JFrame {
         buffer = new BufferedImage[peces.size()];
         int i = 0;
         for (PezVO pezVO : peces) {
-            Imagenes[ i] = getToolkit().getImage("file:///c:/acuario/" + pezVO.getPez_id() + "/descripcion.png");
+            Imagenes[ i] = getToolkit().getImage("c:/acuario/" + pezVO.getPez_id() + "/descripcion.png");
             names[ i] = pezVO.getPez_nombComun();
             scientistNames [ i] = pezVO.getPez_nombCientifico();
             ids[ i] = pezVO.getPez_id();
@@ -92,7 +92,6 @@ public class Inicio extends javax.swing.JFrame {
 
      public void cargarComponentes() {
         Image foto = Imagenes[ contador].getScaledInstance(500, (int) ((buffer[contador].getHeight() * 500) / buffer[contador].getWidth()), Image.SCALE_DEFAULT);
-         System.out.println("foto "+foto);
         slider.setIcon(new ImageIcon(foto));
         nombre.setText(names[ contador]);
         Image fotoTv = Imagenes[ contador].getScaledInstance(1050, (int) ((buffer[contador].getHeight() * 1050) / buffer[contador].getWidth()), Image.SCALE_DEFAULT);
