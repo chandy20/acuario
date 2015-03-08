@@ -256,21 +256,15 @@ public class AcuarioDAO {
         File archivo = null;
         try {
             stm = cn.getConnection().createStatement();
-            pstm = cn.getConnection().prepareStatement("SELECT pez_id, pez_nombComun FROM pez WHERE pez_estado = true");
+            pstm = cn.getConnection().prepareStatement("SELECT pez_id, pez_nombComun, pez_nombCientifico FROM pez WHERE pez_estado = true");
             res = pstm.executeQuery();
             while (res.next()) {
-                url = res.getString("foto_ruta");
-                archivo = new File(url);
-                if (archivo.exists()) {
-                    pezVO = new PezVO();
-                    pezVO.setPez_id(res.getInt("pez_id"));
-                    pezVO.setPez_nombComun(res.getString("pez_nombComun"));
-                    lista.add(pezVO);
-                } else {
-                    System.out.println("El archivo " + url + " no existe o no ha sido sincronizado, pez_id = " + res.getInt("pez_id"));
-                }
+                pezVO = new PezVO();
+                pezVO.setPez_id(res.getInt("pez_id"));
+                pezVO.setPez_nombComun(res.getString("pez_nombComun"));
+                pezVO.setPez_nombCientifico(res.getString("pez_nombCientifico"));
+                lista.add(pezVO);
             }
-
         } catch (SQLException e) {
             System.out.println(e);
         } finally {

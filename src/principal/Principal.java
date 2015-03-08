@@ -25,7 +25,7 @@ public class Principal {
     public static void main(String[] args) throws SQLException, IOException {
         // TODO code application logic here
         AcuarioDAO aDAO = new AcuarioDAO();
-        ArrayList<PezVO> peces = aDAO.getImagePrincipalFromFish();
+        ArrayList<PezVO> peces = aDAO.getInfoFromFish();
         Inicio inicio = new Inicio(peces);
         inicio.setLocationRelativeTo(null);
         inicio.setContentPane(inicio.menu);

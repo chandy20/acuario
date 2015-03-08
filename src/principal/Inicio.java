@@ -31,6 +31,7 @@ public class Inicio extends javax.swing.JFrame {
     Ficha ficha = null;
     Image Imagenes[] = null;
     String names[] = null;
+    String scientistNames[] = null;
     BufferedImage buffer[] = null;
     int ids[] = null;
     int contador = 0;
@@ -62,10 +63,11 @@ public class Inicio extends javax.swing.JFrame {
         buffer = new BufferedImage[peces.size()];
         int i = 0;
         for (PezVO pezVO : peces) {
-            Imagenes[ i] = getToolkit().getImage(pezVO.getPez_nombComun());
-            names[ i] = pezVO.getPez_nombre();
+            Imagenes[ i] = getToolkit().getImage("file:///c:/acuario/" + pezVO.getPez_id() + "/descripcion.png");
+            names[ i] = pezVO.getPez_nombComun();
+            scientistNames [ i] = pezVO.getPez_nombCientifico();
             ids[ i] = pezVO.getPez_id();
-            buffer[ i] = ImageIO.read(new File(pezVO.getPez_nombComun()));
+            buffer[ i] = ImageIO.read(new File("file:///c:/acuario/" + pezVO.getPez_id() + "/descripcion.png"));
             i++;
         }
     }
