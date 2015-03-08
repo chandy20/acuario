@@ -65,7 +65,7 @@ public class Inicio extends javax.swing.JFrame {
         for (PezVO pezVO : peces) {
             Imagenes[ i] = getToolkit().getImage("file:///c:/acuario/" + pezVO.getPez_id() + "/descripcion.png");
             names[ i] = pezVO.getPez_nombComun();
-            scientistNames [ i] = pezVO.getPez_nombCientifico();
+            scientistNames[ i] = pezVO.getPez_nombCientifico();
             ids[ i] = pezVO.getPez_id();
             buffer[ i] = ImageIO.read(new File("file:///c:/acuario/" + pezVO.getPez_id() + "/descripcion.png"));
             i++;
@@ -970,36 +970,42 @@ public class Inicio extends javax.swing.JFrame {
         if (!controlInactividad) {
 
             if (control) {
-            iniciarFicha();
-            control = false;
-        }
-        try {
+                iniciarFicha();
+                control = false;
+            }
+            try {
 //            ficha.setContentPane(ficha.datos);
-            ficha.setContentPane(ficha.videoPeces);
-            ficha.getNombres(ids[contador]);
-        } catch (SQLException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-        }
+                ficha.setContentPane(ficha.videoPeces);
+                ficha.getNombres(ids[contador]);
+            } catch (SQLException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
             controlInactividad = true;
             controlSegunda = true;
         }
-        
+
     }//GEN-LAST:event_nombresMouseClicked
 
     private void biotopoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_biotopoMouseClicked
         // TODO add your handling code here:
-        if (control) {
-            iniciarFicha();
-            control = false;
+        y = 0;
+        if (!controlInactividad) {
+
+            if (control) {
+                iniciarFicha();
+                control = false;
+            }
+            try {
+//            ficha.setContentPane(ficha.datos);
+                ficha.setContentPane(ficha.videoPeces);
+                ficha.getBiotopo(ids[contador]);
+            } catch (SQLException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            controlInactividad = true;
+            controlSegunda = true;
         }
-        try {
-            ficha.videoPeces.removeAll();
-            ficha.VideoInfo("file:///c:/acuario/" + String.valueOf(ids[contador]) + "/general.mpg");
-            ficha.reproducir();
-            ficha.getBiotopo(ids[contador]);
-        } catch (SQLException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
     }//GEN-LAST:event_biotopoMouseClicked
 
     private void distribucionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_distribucionMouseClicked
@@ -1056,6 +1062,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void alimentacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alimentacionMouseClicked
         // TODO add your handling code here:
+        
         if (control) {
             iniciarFicha();
             control = false;
@@ -1069,15 +1076,22 @@ public class Inicio extends javax.swing.JFrame {
 
     private void comportamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comportamientoMouseClicked
         // TODO add your handling code here:
-        
-        if (control) {
-            iniciarFicha();
-            control = false;
-        }
-        try {
-            ficha.getComportamiento(ids[contador]);
-        } catch (SQLException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        y = 0;
+        if (!controlInactividad) {
+
+            if (control) {
+                iniciarFicha();
+                control = false;
+            }
+            try {
+//            ficha.setContentPane(ficha.datos);
+                ficha.setContentPane(ficha.videoPeces);
+                ficha.getComportamiento(ids[contador]);
+            } catch (SQLException ex) {
+                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            controlInactividad = true;
+            controlSegunda = true;
         }
     }//GEN-LAST:event_comportamientoMouseClicked
 
