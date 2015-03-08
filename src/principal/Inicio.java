@@ -911,11 +911,16 @@ public class Inicio extends javax.swing.JFrame {
 
     private void videoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_videoMouseClicked
         // TODO add your handling code here:
+//        ficha.videoPane
         y = 0;
         controlInactividad = true;
         if (controlSegunda) {
 //                File file = new File("c:\\acuario/video/demo.html");
 //                Desktop.getDesktop().open(file);
+//            ficha.VideoPrincipal("file:///c:/acuario/video/acuario.mpg", 1920, 1080);
+//            ficha.videoPane.setLocation(0,0);
+//            ficha.video.setLocation(0, 0);
+            ficha.reproducirPrincipal();
             ficha.setContentPane(ficha.videoPane);
             controlSegunda = false;
         }
@@ -973,6 +978,8 @@ public class Inicio extends javax.swing.JFrame {
             control = false;
         }
         try {
+            
+            ficha.setContentPane(ficha.datos);
             ficha.getNombres(ids[contador]);
         } catch (SQLException ex) {
             Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);

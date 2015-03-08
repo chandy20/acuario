@@ -38,26 +38,36 @@ public class Ficha extends javax.swing.JDialog {
     public Player player;
     public Component video;
     public Component controles;
+    public Player player1;
+    public Component video1;
+    public Component controles1;
+    public Time cero;
+    public Time cero1;
     private ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
     private final int velocidad = 5000;//en milisegundos
     AcuarioDAO aDAO = new AcuarioDAO();
     PezVO pVO = new PezVO();
     int x = 0;
-    double t = 0;
+    double t = 0, tiempo = 0;
+    Manager f1,f2;
+//    int principal = 0;
     ArrayList<PezVO> lista = new ArrayList<PezVO>();
 
     public Ficha(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        hiloVideo.start();;
+        hiloVideoPrincipal.start();
     }
 
     public void cargaNombre(int pez_id) throws SQLException {
         String nombre = aDAO.getPezName(pez_id);
+        VideoInfo("file:///c:/acuario/video/agua_converted.mpg");
+        reproducir();
         titulo.setText(nombre);
     }
 
     public void getNombres(int pez_id) throws SQLException {
+
         lista = aDAO.getDatosGenerales(pez_id, 1);
         for (PezVO pezVO : lista) {
             String nombreComun = pezVO.getPez_nombComun();
@@ -68,6 +78,7 @@ public class Ficha extends javax.swing.JDialog {
                     + "<td align='center' style='font-size:40px'>" + nombreCientifico + "</td></tr></table></body></html>";
             this.info.setText(datos);
         }
+        
     }
 
     public void getClasificacion(int pez_id) throws SQLException {
@@ -85,7 +96,6 @@ public class Ficha extends javax.swing.JDialog {
                     + "<td align='center' style='font-size:50px'>" + subfamilia + "</td></tr></table></body></html>";
             this.info.setText(datos);
         }
-
     }
 
     public void getBiotopo(int pez_id) throws SQLException {
@@ -218,31 +228,32 @@ public class Ficha extends javax.swing.JDialog {
         }
     }
 
-    public void VideoPrincipal() {
+    public void VideoPrincipal(String direccion, int x, int y) {
 //        JPanel panel = new JPanel();
 //        videoPane.setLayout(new BorderLayout());
         videoPane.setSize(1920, 1080);
 
-//        setLocationRelativeTo(null);
+//        videoPane.setLocation(0, 0);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         URL url = null;
         try {
-            url = new URL("file:///c:/acuario/video/acuario.mpg");
+            url = new URL(direccion);
         } catch (MalformedURLException ex) {
             Logger.getLogger(Ficha.class.getName()).log(Level.SEVERE, null, ex);
         }
         try {
 //            System.out.println("url: " + new MediaLocator(url));
-            player = Manager.createRealizedPlayer(new MediaLocator(url));
+            player = f1.createRealizedPlayer(new MediaLocator(url));
 //            System.out.println("player: " + player);
             video = player.getVisualComponent();
 //            System.out.println("video: " + video);
-            video.setSize(1920, 1080);
+            video.setSize(x, y);
+//            video.setLocation(0, 540);
             video.setVisible(true);
             if (video != null) {
                 videoPane.add("Center", video);
             }
-
+//            video.repaint();
             controles = player.getControlPanelComponent();
 
 //            controles.setSize(1920, 100);
@@ -250,40 +261,96 @@ public class Ficha extends javax.swing.JDialog {
 //            if (controles != null) {
 //                videoPane.add("South", controles);
 //            }
-            player.start();
-            videoPane.updateUI();
 //            this.setContentPane(videoPane);
 //            player.getDuration().getSeconds() con este llamado se sabe la duracion del video
             //player.setMediaTime(new Time(0));
             //player.deallocate();
-
         } catch (IOException | NoPlayerException | CannotRealizeException ex) {
             Logger.getLogger(Ficha.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    Thread hiloVideo = new Thread() {//declaramos el hilo
+    public void VideoInfo(String direccion) {
+//        JPanel panel = new JPanel();
+//        videoPane.setLayout(new BorderLayout());
+        datos.setSize(1920, 1080);
+//        datos.setLocation(0, 0);
+        
+//        videoPane.setLocation(0, 0);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        URL url = null;
+        try {
+            url = new URL(direccion);
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(Ficha.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        try {
+//            System.out.println("url: " + new MediaLocator(url));
+            player1 = f2.createRealizedPlayer(new MediaLocator(url));
+//            System.out.println("player: " + player);
+            video1 = player1.getVisualComponent();
+//            System.out.println("video: " + video);
+            video1.setSize(1920, 540);
+            video1.setLocation(0, 540);
+            video1.setVisible(true);
+            if (video1 != null) {
+                datos.add("Center", video1);
+            }
+//            video.repaint();
+            controles1 = player1.getControlPanelComponent();
+//            controles.setSize(1920, 100);
+//            controles.setVisible(true);
+//            if (controles != null) {
+//                videoPane.add("South", controles);
+//            }
+//            this.setContentPane(videoPane);
+//            player.getDuration().getSeconds() con este llamado se sabe la duracion del video
+            //player.setMediaTime(new Time(0));
+            //player.deallocate();
+        } catch (IOException | NoPlayerException | CannotRealizeException ex) {
+            Logger.getLogger(Ficha.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public void reproducirPrincipal() {
+        player.setMediaTime(cero);
+        player.start();
+        videoPane.updateUI();
+        tiempo = 0;
+    }
+
+    public void reproducir() {
+        player1.setMediaTime(cero);
+        player1.start();
+        datos.updateUI();
+        t = 0;
+    }
+
+    Thread hiloVideoPrincipal = new Thread() {//declaramos el hilo
 
         @Override
         public void run() {
             try {
-                VideoPrincipal();
-                Time cero = player.getMediaTime();
+                VideoPrincipal("file:///c:/acuario/video/agua_converted.mpg", 1920, 1080);
+//                VideoInfo("file:///c:/acuario/video/agua_converted.mpg");
+                cero = player.getMediaTime();
+                reproducirPrincipal();
+//                reproducir();
 //                int sw = 0;
-                System.out.println("Time.TIME_UNKNOWN: ");
+//                System.out.println("Time.TIME_UNKNOWN: ");
                 while (true) {//ciclo infinito
-
-//                    if (t > 4 && sw == 0) {
-//                        cero = player.getMediaTime();
-//                        sw = 1;
-//                    }
-                    if (t >= player.getDuration().getSeconds()) {
-                        player.setMediaTime(cero);
-                        player.start();
-                        t = 0;
+                    if (tiempo >= player.getDuration().getSeconds()) {
+                        reproducirPrincipal();
                     }
-                    t++;
-                    hiloVideo.sleep(1000);//que duerma un segundo
+//                    System.out.println("activo "+titulo.getText().equals(""));
+                    if(!titulo.getText().equals("")){
+                        if (t >= player1.getDuration().getSeconds()) {
+                            reproducir();
+                        }
+                        t++;
+                    }
+                    tiempo++;
+                    hiloVideoPrincipal.sleep(1000);//que duerma un segundo
                 }
             } catch (java.lang.InterruptedException ie) {
                 System.out.println(ie.getMessage());
@@ -409,10 +476,10 @@ public class Ficha extends javax.swing.JDialog {
         datos.add(info);
         info.setBounds(20, 120, 1280, 380);
 
+        fondo.setBackground(new java.awt.Color(204, 204, 0));
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        fondo.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoSegundaDatos.jpg")); // NOI18N
         datos.add(fondo);
-        fondo.setBounds(0, 0, 1920, 1080);
+        fondo.setBounds(0, 0, 1920, 520);
 
         jLayeredPane1.add(datos);
         datos.setBounds(0, 0, 1920, 1080);
