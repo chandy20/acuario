@@ -385,7 +385,6 @@ public class Ficha extends javax.swing.JDialog {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
         inicial = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
         finicial = new javax.swing.JLabel();
         visor = new javax.swing.JPanel();
         subtittle = new javax.swing.JLabel();
@@ -413,13 +412,6 @@ public class Ficha extends javax.swing.JDialog {
         inicial.setMinimumSize(new java.awt.Dimension(1920, 1080));
         inicial.setPreferredSize(new java.awt.Dimension(1920, 1080));
         inicial.setLayout(null);
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/mundoIV.png"))); // NOI18N
-        jLabel2.setAlignmentY(0.0F);
-        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        inicial.add(jLabel2);
-        jLabel2.setBounds(560, 200, 800, 560);
 
         finicial.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         finicial.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoSegunda.jpg")); // NOI18N
@@ -495,6 +487,7 @@ public class Ficha extends javax.swing.JDialog {
 
         fondo.setBackground(new java.awt.Color(204, 204, 0));
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fondo.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoSegundaDatos.jpg")); // NOI18N
         datos.add(fondo);
         fondo.setBounds(0, 0, 1920, 520);
 
@@ -591,7 +584,6 @@ public class Ficha extends javax.swing.JDialog {
     public javax.swing.JLabel foto;
     private javax.swing.JLabel info;
     public javax.swing.JPanel inicial;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLayeredPane jLayeredPane1;
     public javax.swing.JLabel subtittle;
     public javax.swing.JLabel tittle;
