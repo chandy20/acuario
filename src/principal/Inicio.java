@@ -271,6 +271,7 @@ public class Inicio extends javax.swing.JFrame {
         cerrar.setBorderPainted(false);
         cerrar.setContentAreaFilled(false);
         cerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        cerrar.setFocusPainted(false);
         cerrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         cerrar.setMaximumSize(new java.awt.Dimension(100, 100));
         cerrar.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -312,6 +313,7 @@ public class Inicio extends javax.swing.JFrame {
         next.setBorderPainted(false);
         next.setContentAreaFilled(false);
         next.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        next.setFocusPainted(false);
         next.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         next.setMaximumSize(new java.awt.Dimension(315, 380));
         next.setMinimumSize(new java.awt.Dimension(315, 380));
@@ -331,6 +333,7 @@ public class Inicio extends javax.swing.JFrame {
         prev.setBorderPainted(false);
         prev.setContentAreaFilled(false);
         prev.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        prev.setFocusPainted(false);
         prev.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         prev.setMaximumSize(new java.awt.Dimension(315, 380));
         prev.setMinimumSize(new java.awt.Dimension(315, 380));
@@ -385,6 +388,7 @@ public class Inicio extends javax.swing.JFrame {
         close.setBorder(null);
         close.setBorderPainted(false);
         close.setContentAreaFilled(false);
+        close.setFocusPainted(false);
         close.setMaximumSize(new java.awt.Dimension(64, 64));
         close.setMinimumSize(new java.awt.Dimension(64, 64));
         close.setPreferredSize(new java.awt.Dimension(64, 64));
@@ -402,6 +406,7 @@ public class Inicio extends javax.swing.JFrame {
         home.setBorderPainted(false);
         home.setContentAreaFilled(false);
         home.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        home.setFocusPainted(false);
         home.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         home.setMaximumSize(new java.awt.Dimension(100, 100));
         home.setMinimumSize(new java.awt.Dimension(100, 100));
@@ -442,6 +447,7 @@ public class Inicio extends javax.swing.JFrame {
         nombres.setBorderPainted(false);
         nombres.setContentAreaFilled(false);
         nombres.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        nombres.setFocusPainted(false);
         nombres.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         nombres.setIconTextGap(0);
         nombres.setMaximumSize(new java.awt.Dimension(190, 190));
@@ -464,6 +470,7 @@ public class Inicio extends javax.swing.JFrame {
         biotopo.setBorderPainted(false);
         biotopo.setContentAreaFilled(false);
         biotopo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        biotopo.setFocusPainted(false);
         biotopo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         biotopo.setMaximumSize(new java.awt.Dimension(190, 190));
         biotopo.setMinimumSize(new java.awt.Dimension(190, 190));
@@ -485,6 +492,7 @@ public class Inicio extends javax.swing.JFrame {
         distribucion.setBorderPainted(false);
         distribucion.setContentAreaFilled(false);
         distribucion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        distribucion.setFocusPainted(false);
         distribucion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         distribucion.setMaximumSize(new java.awt.Dimension(190, 190));
         distribucion.setMinimumSize(new java.awt.Dimension(190, 190));
@@ -506,6 +514,7 @@ public class Inicio extends javax.swing.JFrame {
         forma.setBorderPainted(false);
         forma.setContentAreaFilled(false);
         forma.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        forma.setFocusPainted(false);
         forma.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         forma.setMaximumSize(new java.awt.Dimension(190, 190));
         forma.setMinimumSize(new java.awt.Dimension(190, 190));
@@ -527,6 +536,7 @@ public class Inicio extends javax.swing.JFrame {
         tamano.setBorderPainted(false);
         tamano.setContentAreaFilled(false);
         tamano.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tamano.setFocusPainted(false);
         tamano.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         tamano.setIconTextGap(0);
         tamano.setMaximumSize(new java.awt.Dimension(190, 190));
@@ -549,6 +559,7 @@ public class Inicio extends javax.swing.JFrame {
         temperatura.setBorderPainted(false);
         temperatura.setContentAreaFilled(false);
         temperatura.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        temperatura.setFocusPainted(false);
         temperatura.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         temperatura.setIconTextGap(0);
         temperatura.setMaximumSize(new java.awt.Dimension(190, 190));
@@ -571,6 +582,7 @@ public class Inicio extends javax.swing.JFrame {
         alimentacion.setBorderPainted(false);
         alimentacion.setContentAreaFilled(false);
         alimentacion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        alimentacion.setFocusPainted(false);
         alimentacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         alimentacion.setIconTextGap(0);
         alimentacion.setMaximumSize(new java.awt.Dimension(190, 190));
@@ -593,6 +605,7 @@ public class Inicio extends javax.swing.JFrame {
         comportamiento.setBorderPainted(false);
         comportamiento.setContentAreaFilled(false);
         comportamiento.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        comportamiento.setFocusPainted(false);
         comportamiento.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         comportamiento.setIconTextGap(0);
         comportamiento.setMaximumSize(new java.awt.Dimension(190, 190));
@@ -783,7 +796,7 @@ public class Inicio extends javax.swing.JFrame {
             try {
 //            ficha.setContentPane(ficha.datos);
                 ficha.setContentPane(ficha.videoPeces);
-                ficha.getComportamiento(ids[contador]);
+                ficha.getForma(ids[contador]);
             } catch (SQLException ex) {
                 Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
             }

@@ -71,10 +71,10 @@ public class Ficha extends javax.swing.JDialog {
         for (PezVO pezVO : lista) {
             String nombreComun = pezVO.getPez_nombComun();
             String nombreCientifico = pezVO.getPez_nombCientifico();
-            String datos = "<html><body><table><tr><td width='800px' align='center' style='font-size:50px'><b>NOMBRE COMÚN</b></td>"
-                    + "<td width='835px' align='center' style='font-size:50px'><b>NOMBRE CIENTÍFICO</b></td></tr>"
-                    + "<tr><td align='center' style='font-size:40px'>" + nombreComun + "</td>"
-                    + "<td align='center' style='font-size:40px'>" + nombreCientifico + "</td></tr></table></body></html>";
+            String datos = "<html><body><table><tr><td><b>MI NOMBRE ES...</b></td></tr>"
+                    + "<tr><td>" + nombreComun + "</td></tr>"
+                    + "<td><b>MI NOMBRE CIENTÍFICO ES...</b></td></tr>"
+                    + "<td>" + nombreCientifico + "</td></tr></table></body></html>";
             this.info.setText(datos);
         }
 
@@ -112,33 +112,24 @@ public class Ficha extends javax.swing.JDialog {
 
     public void getDistribucion(int pez_id) throws SQLException {
         lista = aDAO.getDatosGenerales(pez_id, 3);
-        for (PezVO pezVO : lista) {
-            String distribucion = pezVO.getPez_distribucion();
-            if (pezVO.getPez_distribucion() == null || pezVO.getPez_distribucion().equals("")) {
-                distribucion = "NO ESPECIFICADA";
-            }
-            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>ME ENCUENTRO EN</b></td></tr>"
-                    + "<tr><td align='center' style='font-size:40px'>" + distribucion + "</td></tr><table></body></html>";
-            this.info.setText(datos);
-        }
     }
 
     public void getForma(int pez_id) throws SQLException {
-        ArrayList<PezVO> lista1 = aDAO.getDatosGenerales(pez_id, 11);
-        getAlimentacion(pez_id);
+        ArrayList<PezVO> lista1 = aDAO.getDatosGenerales(pez_id, 10);
+        getDistribucion(pez_id);
         for (PezVO pezVO : lista1) {
-            String forma = pezVO.getPez_curiosidades();
-            String alimentacion = pezVO.getPez_alimentacion();
-            if (pezVO.getPez_curiosidades()== null || forma.equals("")) {
-                forma = "NO ESPECIFICADA";
+            String general = pezVO.getPez_generalidades();
+            String distribucion = pezVO.getPez_distribucion();
+            if (pezVO.getPez_generalidades()== null || general.equals("")) {
+                general = "No especificadas";
             }
-            if (pezVO.getPez_alimentacion()== null || alimentacion.equals("")) {
-                alimentacion = "NO ESPECIFICADA";
+            if (pezVO.getPez_distribucion()== null || distribucion.equals("")) {
+                distribucion = "No especificado";
             }
-            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>MIS CURIOSIDADES</b></td></tr>"
-                    + "<tr><td align='center' style='font-size:40px'>" + forma + "</td></tr>"
-                    + "<tr><td align='center' style='font-size:40px'>YO COMO </td></tr>"
-                    + "<tr><td align='center' style='font-size:40px'>" + alimentacion + "</td></tr></table></body></html>";       
+            String datos = "<html><body><table><tr><td><b>INFORMACION GENERAL</b></td></tr>"
+                    + "<tr><td>" + general + "</td></tr>"
+                    + "<tr><td><b>ME ENCUENTRO EN...</b></td></tr>"
+                    + "<tr><td>" + distribucion + "</td></tr><table></body></html>";       
             this.info.setText(datos);
         }
     }
@@ -210,17 +201,26 @@ public class Ficha extends javax.swing.JDialog {
 
     public void getAlimentacion(int pez_id) throws SQLException {
         lista = aDAO.getDatosGenerales(pez_id, 9);
+        for (PezVO pezVO : lista) {
+            String alimentos = pezVO.getPez_alimentacion();
+            if (pezVO.getPez_alimentacion()== null || alimentos.equals("")) {
+                alimentos = "No especificada";
+            }
+            String datos = "<html><body><table><tr><td><b>MI COMIDA FAVORITA ES...</b></td></tr>"
+                    + "<tr><td>" + alimentos + "</td></tr><table></body></html>";
+            this.info.setText(datos);
+        }
     }
 
     public void getComportamiento(int pez_id) throws SQLException {
         lista = aDAO.getDatosGenerales(pez_id, 10);
         for (PezVO pezVO : lista) {
-            String comportamiento = pezVO.getPez_generalidades();
-            if (pezVO.getPez_generalidades()== null || comportamiento.equals("")) {
-                comportamiento = "NO ESPECIFICADO";
+            String curiosidades = pezVO.getPez_curiosidades();
+            if (pezVO.getPez_curiosidades()== null || curiosidades.equals("")) {
+                curiosidades = "No especificadas";
             }
-            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>MIS GENERALIDADES</b></td></tr>"
-                    + "<tr><td align='center' style='font-size:40px'>" + comportamiento + "</td></tr><table></body></html>";
+            String datos = "<html><body><table><tr><td><b>MIS CURIOSIDADES...</b></td></tr>"
+                    + "<tr><td>" + curiosidades + "</td></tr><table></body></html>";
             this.info.setText(datos);
         }
     }
@@ -308,6 +308,7 @@ public class Ficha extends javax.swing.JDialog {
                 }
                 videoPeces.add(titulo);
                 videoPeces.add(info);
+                videoPeces.add(barra);
                 videoPeces.add(fondo);
 //            video.repaint();
                 tiempogeneral = player1.getDuration().getSeconds() + (0.8);
@@ -471,7 +472,6 @@ public class Ficha extends javax.swing.JDialog {
         titulo.setFont(new java.awt.Font("Harabara", 0, 50)); // NOI18N
         titulo.setForeground(new java.awt.Color(255, 255, 255));
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        titulo.setText("Pez Oscar");
         titulo.setAlignmentY(0.0F);
         titulo.setMaximumSize(new java.awt.Dimension(720, 95));
         titulo.setMinimumSize(new java.awt.Dimension(720, 95));
@@ -488,7 +488,6 @@ public class Ficha extends javax.swing.JDialog {
         info.setFont(new java.awt.Font("Gandhi Sans", 0, 40)); // NOI18N
         info.setForeground(new java.awt.Color(255, 255, 255));
         info.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        info.setText("hola");
         info.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         info.setAlignmentY(0.0F);
         info.setMaximumSize(new java.awt.Dimension(1536, 505));
