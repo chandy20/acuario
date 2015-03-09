@@ -83,21 +83,6 @@
             <Property name="useNullLayout" type="boolean" value="true"/>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel2">
-              <Properties>
-                <Property name="horizontalAlignment" type="int" value="0"/>
-                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/images/mundoIV.png"/>
-                </Property>
-                <Property name="alignmentY" type="float" value="0.0"/>
-                <Property name="horizontalTextPosition" type="int" value="0"/>
-              </Properties>
-              <Constraints>
-                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="560" y="200" width="800" height="560"/>
-                </Constraint>
-              </Constraints>
-            </Component>
             <Component class="javax.swing.JLabel" name="finicial">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
@@ -299,6 +284,9 @@
                   <Color blue="0" green="cc" red="cc" type="rgb"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="2" name="C:\acuario\fondoSegundaDatos.jpg"/>
+                </Property>
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
