@@ -463,6 +463,8 @@ public class Ficha extends javax.swing.JDialog {
         jLayeredPane1.add(visor);
         visor.setBounds(0, 0, 1920, 1080);
 
+        datos.setAlignmentX(0.0F);
+        datos.setAlignmentY(0.0F);
         datos.setLayout(null);
 
         titulo.setFont(new java.awt.Font("BoyzRGross", 0, 80)); // NOI18N
@@ -488,8 +490,9 @@ public class Ficha extends javax.swing.JDialog {
         fondo.setBackground(new java.awt.Color(204, 204, 0));
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoSegundaDatos.jpg")); // NOI18N
+        fondo.setAlignmentY(0.0F);
         datos.add(fondo);
-        fondo.setBounds(0, 0, 1920, 520);
+        fondo.setBounds(0, 0, 1920, 1080);
 
         jLayeredPane1.add(datos);
         datos.setBounds(0, 0, 1920, 540);
