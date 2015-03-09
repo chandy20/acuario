@@ -393,6 +393,7 @@ public class Ficha extends javax.swing.JDialog {
         fondo1 = new javax.swing.JLabel();
         datos = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
+        barra = new javax.swing.JLabel();
         info = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
         videoPane = new javax.swing.JPanel();
@@ -467,25 +468,34 @@ public class Ficha extends javax.swing.JDialog {
         datos.setAlignmentY(0.0F);
         datos.setLayout(null);
 
-        titulo.setFont(new java.awt.Font("BoyzRGross", 0, 80)); // NOI18N
+        titulo.setFont(new java.awt.Font("Harabara", 0, 50)); // NOI18N
         titulo.setForeground(new java.awt.Color(255, 255, 255));
-        titulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        titulo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        titulo.setText("Pez Oscar");
         titulo.setAlignmentY(0.0F);
         titulo.setMaximumSize(new java.awt.Dimension(720, 95));
         titulo.setMinimumSize(new java.awt.Dimension(720, 95));
         titulo.setPreferredSize(new java.awt.Dimension(720, 95));
         datos.add(titulo);
-        titulo.setBounds(20, 20, 720, 95);
+        titulo.setBounds(20, 20, 720, 50);
 
-        info.setFont(new java.awt.Font("BoyzRGross", 0, 70)); // NOI18N
+        barra.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        barra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/linea_titulo.jpg"))); // NOI18N
+        barra.setAlignmentY(0.0F);
+        datos.add(barra);
+        barra.setBounds(20, 70, 720, 15);
+
+        info.setFont(new java.awt.Font("Gandhi Sans", 0, 40)); // NOI18N
         info.setForeground(new java.awt.Color(255, 255, 255));
-        info.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        info.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        info.setText("hola");
+        info.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         info.setAlignmentY(0.0F);
         info.setMaximumSize(new java.awt.Dimension(1536, 505));
         info.setMinimumSize(new java.awt.Dimension(1535, 505));
         info.setPreferredSize(new java.awt.Dimension(1535, 505));
         datos.add(info);
-        info.setBounds(20, 120, 1280, 380);
+        info.setBounds(20, 90, 1360, 440);
 
         fondo.setBackground(new java.awt.Color(204, 204, 0));
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -580,6 +590,7 @@ public class Ficha extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel barra;
     public javax.swing.JPanel datos;
     private javax.swing.JLabel finicial;
     private javax.swing.JLabel fondo;
