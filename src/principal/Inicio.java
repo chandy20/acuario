@@ -198,6 +198,7 @@ public class Inicio extends javax.swing.JFrame {
         video.setBorderPainted(false);
         video.setContentAreaFilled(false);
         video.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        video.setFocusPainted(false);
         video.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         video.setMaximumSize(new java.awt.Dimension(340, 340));
         video.setMinimumSize(new java.awt.Dimension(340, 340));
@@ -217,6 +218,7 @@ public class Inicio extends javax.swing.JFrame {
         peces.setBorderPainted(false);
         peces.setContentAreaFilled(false);
         peces.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        peces.setFocusPainted(false);
         peces.setMaximumSize(new java.awt.Dimension(340, 340));
         peces.setMinimumSize(new java.awt.Dimension(340, 340));
         peces.setPreferredSize(new java.awt.Dimension(340, 340));
