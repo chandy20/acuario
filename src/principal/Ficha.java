@@ -17,6 +17,9 @@ import javax.media.MediaLocator;
 import javax.media.NoPlayerException;
 import javax.media.Player;
 import DAO.AcuarioDAO;
+import java.awt.Font;
+import java.awt.font.FontRenderContext;
+import java.awt.geom.AffineTransform;
 import java.io.File;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -25,6 +28,7 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 import javax.media.Time;
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import objetos.PezVO;
 
 /**
@@ -51,6 +55,7 @@ public class Ficha extends javax.swing.JDialog {
     int x = 0;
     double t = 0, tiempo = 0, tiempogeneral=0;
     Manager f1, f2;
+    private String aux08032015="";
 //    int principal = 0;
     ArrayList<PezVO> lista = new ArrayList<PezVO>();
 
@@ -71,44 +76,29 @@ public class Ficha extends javax.swing.JDialog {
         for (PezVO pezVO : lista) {
             String nombreComun = pezVO.getPez_nombComun();
             String nombreCientifico = pezVO.getPez_nombCientifico();
-            String datos = "<html><body><table><tr><td><b>MI NOMBRE ES...</b></td></tr>"
-                    + "<tr><td>" + nombreComun + "</td></tr>"
-                    + "<td><b>MI NOMBRE CIENTÍFICO ES...</b></td></tr>"
-                    + "<td>" + nombreCientifico + "</td></tr></table></body></html>";
+            String datos = "<html><body><table><tr><td width='800px' align='center' style='font-size:50px'><b>NOMBRE COMÚN</b></td>"
+                    + "<td width='835px' align='center' style='font-size:50px'><b>NOMBRE CIENTÍFICO</b></td></tr>"
+                    + "<tr><td align='center' style='font-size:40px'>" + nombreComun + "</td>"
+                    + "<td align='center' style='font-size:40px'>" + nombreCientifico + "</td></tr></table></body></html>";
+
+            try {
+                String text = "Hello World";
+                AffineTransform affinetransform = new AffineTransform();
+                FontRenderContext frc = new FontRenderContext(affinetransform, true, true);
+                Font font = new Font("Harabara", Font.PLAIN, 50);
+                int textwidth = (int) (font.getStringBounds(nombreComun, frc).getWidth());
+                int textheight = (int) (font.getStringBounds(nombreComun, frc).getHeight());
+                VideoInfo(textwidth);
+
+            } catch (Exception e) {
+                System.out.println("widht: ");
+            }
+
+            
             this.info.setText(datos);
         }
 
     }
-
-//    public void getClasificacion(int pez_id) throws SQLException {
-//        lista = aDAO.getDatosGenerales(pez_id, 1);
-//        for (PezVO pezVO : lista) {
-//            String orden = pezVO.getPez_coloracion();
-//            String familia = pezVO.getPez_alimentacion();
-//            String subfamilia = pezVO.getPez_biotopo();
-//            String datos = "<html><body><table><tr><td colspan=3 align='center' style='font-size:70px'><b>CLASICACIÓN</b></td></tr>"
-//                    + "<tr><td width='545px' align='center' style='font-size:50px'><b>ORDEN</b></td>"
-//                    + "<td width='545px' align='center' style='font-size:50px'><b>FAMILIA</b></td>"
-//                    + "<td width='545px' align='center' style='font-size:50px'><b>SUBFAMILIA  </b></td></tr>"
-//                    + "<tr><td align='center' style='font-size:50px'>" + orden + "</td>"
-//                    + "<td align='center' style='font-size:50px'>" + familia + "</td>"
-//                    + "<td align='center' style='font-size:50px'>" + subfamilia + "</td></tr></table></body></html>";
-//            this.info.setText(datos);
-//        }
-//    }
-
-//    public void getBiotopo(int pez_id) throws SQLException {
-//        lista = aDAO.getDatosGenerales(pez_id, 2);
-//        for (PezVO pezVO : lista) {
-//            String biotopo = pezVO.getPez_biotopo();
-//            if (pezVO.getPez_biotopo() == null || biotopo.equals("")) {
-//                biotopo = "NO ESPECIFICADO";
-//            }
-//            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>BIÓTOPO</b></td></tr>"
-//                    + "<tr><td align='center' style='font-size:40px'>" + biotopo + "</td></tr><table></body></html>";
-//            this.info.setText(datos);
-//        }
-//    }
 
     public void getDistribucion(int pez_id) throws SQLException {
         lista = aDAO.getDatosGenerales(pez_id, 3);
@@ -133,71 +123,6 @@ public class Ficha extends javax.swing.JDialog {
             this.info.setText(datos);
         }
     }
-
-//    public void getColoracion(int pez_id) throws SQLException {
-//        lista = aDAO.getDatosGenerales(pez_id, 4);
-//        for (PezVO pezVO : lista) {
-//            String coloracion = pezVO.getPez_coloracion();
-//            if (pezVO.getPez_coloracion() == null || coloracion.equals("")) {
-//                coloracion = "NO ESPECIFICADA";
-//            }
-//            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>COLORACIÓN</b></td></tr>"
-//                    + "<tr><td align='center' style='font-size:40px'>" + coloracion + "</td></tr><table></body></html>";
-//            this.info.setText(datos);
-//        }
-//    }
-
-//    public void getTamano(int pez_id) throws SQLException {
-//        lista = aDAO.getDatosGenerales(pez_id, 5);
-//        for (PezVO pezVO : lista) {
-//            String tamano = pezVO.getPez_tamano();
-//            if (pezVO.getPez_tamano() == null || tamano.equals("")) {
-//                tamano = "NO ESPECIFICADO";
-//            }
-//            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>TAMAÑO</b></td></tr>"
-//                    + "<tr><td align='center' style='font-size:50px'>" + tamano + "</td></tr><table></body></html>";
-//            this.info.setText(datos);
-//        }
-//    }
-
-//    public void getTempreratura(int pez_id) throws SQLException {
-//        lista = aDAO.getDatosGenerales(pez_id, 6);
-//        for (PezVO pezVO : lista) {
-//            String temperatura = pezVO.getPez_tempreatura();
-//            if (pezVO.getPez_tempreatura() == null || temperatura.equals("")) {
-//                temperatura = "NO ESPECIFICADA";
-//            }
-//            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>TEMPERATURA</b></td></tr>"
-//                    + "<tr><td align='center' style='font-size:50px'>" + temperatura + "</td></tr><table></body></html>";
-//            this.info.setText(datos);
-//        }
-//    }
-
-//    public void getAgua(int pez_id) throws SQLException {
-//        lista = aDAO.getDatosGenerales(pez_id, 7);
-//        for (PezVO pezVO : lista) {
-//            String agua = pezVO.getPez_agua();
-//            if (pezVO.getPez_agua() == null || agua.equals("")) {
-//                agua = "NO ESPECIFICADA";
-//            }
-//            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>AGUA</b></td></tr>"
-//                    + "<tr><td align='center' style='font-size:40px'>" + agua + "</td></tr><table></body></html>";
-//            this.info.setText(datos);
-//        }
-//    }
-
-//    public void getAcuario(int pez_id) throws SQLException {
-//        lista = aDAO.getDatosGenerales(pez_id, 8);
-//        for (PezVO pezVO : lista) {
-//            String acuario = pezVO.getPez_acuario();
-//            if (pezVO.getPez_acuario() == null || acuario.equals("")) {
-//                acuario = "NO ESPECIFICADO";
-//            }
-//            String datos = "<html><body><table><tr><td align='center' style='font-size:60px'><b>ACUARIO</b></td></tr>"
-//                    + "<tr><td align='center' style='font-size:40px'>" + acuario + "</td></tr><table></body></html>";
-//            this.info.setText(datos);
-//        }
-//    }
 
     public void getAlimentacion(int pez_id) throws SQLException {
         lista = aDAO.getDatosGenerales(pez_id, 9);
@@ -268,6 +193,7 @@ public class Ficha extends javax.swing.JDialog {
     }
 
     public void VideoInfo(String direccion) {
+        aux08032015=direccion;
         File directorio = new File(direccion);
         System.out.println("archivo "+directorio.exists());
         if (!directorio.exists()) {
@@ -276,14 +202,7 @@ public class Ficha extends javax.swing.JDialog {
             direccion = "file:///"+direccion;
         }
 
-//        System.out.println(direccion);
-//        JPanel panel = new JPanel();
-//        videoPane.setLayout(new BorderLayout());
             videoPeces.setSize(1920, 1080);
-//        datos.setLocation(0, 0);
-
-//        videoPeces.setOpaque();
-//        setLocation(0, 540);
             setDefaultCloseOperation(DISPOSE_ON_CLOSE);
             URL url = null;
             try {
@@ -292,13 +211,9 @@ public class Ficha extends javax.swing.JDialog {
                 Logger.getLogger(Ficha.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
-//            System.out.println("url: " + new MediaLocator(url));
-//            player1
                 player1 = f2.createRealizedPlayer(new MediaLocator(url));
-
                 System.out.println("player: " + player1);
                 video1 = player1.getVisualComponent();
-//            System.out.println("video: " + video);
                 video1.setSize(1920, 540);
                 video1.setLocation(0, 540);
                 video1.setVisible(true);
@@ -310,21 +225,54 @@ public class Ficha extends javax.swing.JDialog {
                 videoPeces.add(info);
                 videoPeces.add(barra);
                 videoPeces.add(fondo);
-//            video.repaint();
                 tiempogeneral = player1.getDuration().getSeconds() + (0.8);
                 controles1 = player1.getControlPanelComponent();
-//            controles.setSize(1920, 100);
-//            controles.setVisible(true);
-//            if (controles != null) {
-//                videoPane.add("South", controles);
-//            }
-//            this.setContentPane(videoPane);
-//            player.getDuration().getSeconds() con este llamado se sabe la duracion del video
-                //player.setMediaTime(new Time(0));
-                //player.deallocate();
             } catch (IOException | NoPlayerException | CannotRealizeException ex) {
                 Logger.getLogger(Ficha.class.getName()).log(Level.SEVERE, null, ex);
             }
+    }
+    
+    public void VideoInfo(int width) {
+        String direccion= aux08032015;
+        File directorio = new File(direccion);
+        System.out.println("archivo " + directorio.exists());
+        if (!directorio.exists()) {
+            direccion = "file:///c:/acuario/defoult.mpg";
+        } else {
+            direccion = "file:///" + direccion;
+        }
+
+            videoPeces.setSize(1920, 1080);
+            setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            URL url = null;
+            try {
+                url = new URL(direccion);
+            } catch (MalformedURLException ex) {
+                Logger.getLogger(Ficha.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                player1 = f2.createRealizedPlayer(new MediaLocator(url));
+                System.out.println("player: " + player1);
+                video1 = player1.getVisualComponent();
+                video1.setSize(1920, 540);
+                video1.setLocation(0, 540);
+                video1.setVisible(true);
+
+            if (video1 != null) {
+                videoPeces.add("Center", video1);
+            }
+            videoPeces.add(titulo);
+            videoPeces.add(info);
+            JLabel lbl1=new JLabel("");
+            lbl1.setBounds(20,70,width,10);
+            lbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/linea_titulo.jpg"))); // NOI18N
+            videoPeces.add(lbl1);
+            videoPeces.add(fondo);
+            tiempogeneral = player1.getDuration().getSeconds() + (0.8);
+            controles1 = player1.getControlPanelComponent();
+        } catch (IOException | NoPlayerException | CannotRealizeException ex) {
+            Logger.getLogger(Ficha.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void reproducirPrincipal() {
@@ -605,4 +553,5 @@ public class Ficha extends javax.swing.JDialog {
     public javax.swing.JPanel videoPeces;
     public javax.swing.JPanel visor;
     // End of variables declaration//GEN-END:variables
+
 }
