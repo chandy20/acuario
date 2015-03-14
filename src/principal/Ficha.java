@@ -79,7 +79,11 @@ public class Ficha extends javax.swing.JDialog {
         for (PezVO pezVO : lista) {
             String nombreComun = pezVO.getPez_nombComun();
             String nombreCientifico = pezVO.getPez_nombCientifico();
-            String datos = nombreComun + "\n" + nombreCientifico;
+            String datos = "<table><tr><td>" 
+                    + nombreComun 
+                    + "</td></tr><tr><td>" 
+                    + nombreCientifico
+                    + "</td></tr></table>";
 
             try {
                 String text = "Hello World";
@@ -94,7 +98,6 @@ public class Ficha extends javax.swing.JDialog {
                 System.out.println("widht: ");
             }
             this.titulito.setText("Nombre Común & Nombre Científico");
-
             this.info.setText(datos);
         }
 
