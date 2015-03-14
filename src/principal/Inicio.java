@@ -273,9 +273,6 @@ public class Inicio extends javax.swing.JFrame {
         cerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cerrar.setFocusPainted(false);
         cerrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        cerrar.setMaximumSize(new java.awt.Dimension(100, 100));
-        cerrar.setMinimumSize(new java.awt.Dimension(100, 100));
-        cerrar.setPreferredSize(new java.awt.Dimension(100, 100));
         cerrar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/atrasP.png"))); // NOI18N
         cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -450,9 +447,6 @@ public class Inicio extends javax.swing.JFrame {
         nombres.setFocusPainted(false);
         nombres.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         nombres.setIconTextGap(0);
-        nombres.setMaximumSize(new java.awt.Dimension(190, 190));
-        nombres.setMinimumSize(new java.awt.Dimension(190, 190));
-        nombres.setPreferredSize(new java.awt.Dimension(190, 190));
         nombres.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nombreP.png"))); // NOI18N
         nombres.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -472,9 +466,6 @@ public class Inicio extends javax.swing.JFrame {
         biotopo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         biotopo.setFocusPainted(false);
         biotopo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        biotopo.setMaximumSize(new java.awt.Dimension(190, 190));
-        biotopo.setMinimumSize(new java.awt.Dimension(190, 190));
-        biotopo.setPreferredSize(new java.awt.Dimension(190, 190));
         biotopo.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/informacionP.png"))); // NOI18N
         biotopo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -494,9 +485,6 @@ public class Inicio extends javax.swing.JFrame {
         distribucion.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         distribucion.setFocusPainted(false);
         distribucion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        distribucion.setMaximumSize(new java.awt.Dimension(190, 190));
-        distribucion.setMinimumSize(new java.awt.Dimension(190, 190));
-        distribucion.setPreferredSize(new java.awt.Dimension(190, 190));
         distribucion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/casaP.png"))); // NOI18N
         distribucion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -516,9 +504,6 @@ public class Inicio extends javax.swing.JFrame {
         forma.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         forma.setFocusPainted(false);
         forma.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        forma.setMaximumSize(new java.awt.Dimension(190, 190));
-        forma.setMinimumSize(new java.awt.Dimension(190, 190));
-        forma.setPreferredSize(new java.awt.Dimension(190, 190));
         forma.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/cuerpoP.png"))); // NOI18N
         forma.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -539,9 +524,6 @@ public class Inicio extends javax.swing.JFrame {
         tamano.setFocusPainted(false);
         tamano.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         tamano.setIconTextGap(0);
-        tamano.setMaximumSize(new java.awt.Dimension(190, 190));
-        tamano.setMinimumSize(new java.awt.Dimension(190, 190));
-        tamano.setPreferredSize(new java.awt.Dimension(190, 190));
         tamano.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/medidasP.png"))); // NOI18N
         tamano.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -562,9 +544,6 @@ public class Inicio extends javax.swing.JFrame {
         temperatura.setFocusPainted(false);
         temperatura.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         temperatura.setIconTextGap(0);
-        temperatura.setMaximumSize(new java.awt.Dimension(190, 190));
-        temperatura.setMinimumSize(new java.awt.Dimension(190, 190));
-        temperatura.setPreferredSize(new java.awt.Dimension(190, 190));
         temperatura.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/temperaturaP.png"))); // NOI18N
         temperatura.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -585,9 +564,6 @@ public class Inicio extends javax.swing.JFrame {
         alimentacion.setFocusPainted(false);
         alimentacion.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         alimentacion.setIconTextGap(0);
-        alimentacion.setMaximumSize(new java.awt.Dimension(190, 190));
-        alimentacion.setMinimumSize(new java.awt.Dimension(190, 190));
-        alimentacion.setPreferredSize(new java.awt.Dimension(190, 190));
         alimentacion.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/comidaP.png"))); // NOI18N
         alimentacion.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -608,9 +584,6 @@ public class Inicio extends javax.swing.JFrame {
         comportamiento.setFocusPainted(false);
         comportamiento.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         comportamiento.setIconTextGap(0);
-        comportamiento.setMaximumSize(new java.awt.Dimension(190, 190));
-        comportamiento.setMinimumSize(new java.awt.Dimension(190, 190));
-        comportamiento.setPreferredSize(new java.awt.Dimension(190, 190));
         comportamiento.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/curiosidadesP.png"))); // NOI18N
         comportamiento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

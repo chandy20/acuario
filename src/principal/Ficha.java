@@ -76,16 +76,13 @@ public class Ficha extends javax.swing.JDialog {
         for (PezVO pezVO : lista) {
             String nombreComun = pezVO.getPez_nombComun();
             String nombreCientifico = pezVO.getPez_nombCientifico();
-            String datos = "<html><body><table><tr><td width='800px' align='center' style='font-size:50px'><b>NOMBRE COMÚN</b></td>"
-                    + "<td width='835px' align='center' style='font-size:50px'><b>NOMBRE CIENTÍFICO</b></td></tr>"
-                    + "<tr><td align='center' style='font-size:40px'>" + nombreComun + "</td>"
-                    + "<td align='center' style='font-size:40px'>" + nombreCientifico + "</td></tr></table></body></html>";
+            String datos = nombreComun + "\n" + nombreCientifico;
 
             try {
                 String text = "Hello World";
                 AffineTransform affinetransform = new AffineTransform();
                 FontRenderContext frc = new FontRenderContext(affinetransform, true, true);
-                Font font = new Font("Harabara", Font.PLAIN, 50);
+                Font font = new Font("Harabara", Font.PLAIN, 60);
                 int textwidth = (int) (font.getStringBounds(nombreComun, frc).getWidth());
                 int textheight = (int) (font.getStringBounds(nombreComun, frc).getHeight());
                 VideoInfo(textwidth);
@@ -93,8 +90,7 @@ public class Ficha extends javax.swing.JDialog {
             } catch (Exception e) {
                 System.out.println("widht: ");
             }
-
-            
+            this.titulito.setText("Nombre Común & Nombre Científico");
             this.info.setText(datos);
         }
 
@@ -116,10 +112,8 @@ public class Ficha extends javax.swing.JDialog {
             if (pezVO.getPez_distribucion()== null || distribucion.equals("")) {
                 distribucion = "No especificado";
             }
-            String datos = "<html><body><table><tr><td><b>INFORMACION GENERAL</b></td></tr>"
-                    + "<tr><td>" + general + "</td></tr>"
-                    + "<tr><td><b>ME ENCUENTRO EN...</b></td></tr>"
-                    + "<tr><td>" + distribucion + "</td></tr><table></body></html>";       
+            String datos = general + "\nYo vivo en...\n" + distribucion;       
+            this.titulito.setText("Información General");
             this.info.setText(datos);
         }
     }
@@ -131,8 +125,8 @@ public class Ficha extends javax.swing.JDialog {
             if (pezVO.getPez_alimentacion()== null || alimentos.equals("")) {
                 alimentos = "No especificada";
             }
-            String datos = "<html><body><table><tr><td><b>MI COMIDA FAVORITA ES...</b></td></tr>"
-                    + "<tr><td>" + alimentos + "</td></tr><table></body></html>";
+            String datos = alimentos;
+            this.titulito.setText("Mi comida favorita es...");
             this.info.setText(datos);
         }
     }
@@ -144,8 +138,8 @@ public class Ficha extends javax.swing.JDialog {
             if (pezVO.getPez_curiosidades()== null || curiosidades.equals("")) {
                 curiosidades = "No especificadas";
             }
-            String datos = "<html><body><table><tr><td><b>MIS CURIOSIDADES...</b></td></tr>"
-                    + "<tr><td>" + curiosidades + "</td></tr><table></body></html>";
+            String datos = curiosidades;
+            this.titulito.setText("Mis Curiosidades");
             this.info.setText(datos);
         }
     }
@@ -342,6 +336,7 @@ public class Ficha extends javax.swing.JDialog {
         fondo1 = new javax.swing.JLabel();
         datos = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
+        titulito = new javax.swing.JLabel();
         barra = new javax.swing.JLabel();
         info = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
@@ -417,7 +412,7 @@ public class Ficha extends javax.swing.JDialog {
         datos.setAlignmentY(0.0F);
         datos.setLayout(null);
 
-        titulo.setFont(new java.awt.Font("Harabara", 0, 50)); // NOI18N
+        titulo.setFont(new java.awt.Font("Harabara", 0, 60)); // NOI18N
         titulo.setForeground(new java.awt.Color(255, 255, 255));
         titulo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         titulo.setAlignmentY(0.0F);
@@ -427,13 +422,24 @@ public class Ficha extends javax.swing.JDialog {
         datos.add(titulo);
         titulo.setBounds(20, 20, 720, 50);
 
+        titulito.setFont(new java.awt.Font("Bitter", 0, 40)); // NOI18N
+        titulito.setForeground(new java.awt.Color(255, 247, 152));
+        titulito.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        titulito.setToolTipText("");
+        titulito.setAlignmentY(0.0F);
+        titulito.setMaximumSize(new java.awt.Dimension(1360, 95));
+        titulito.setMinimumSize(new java.awt.Dimension(1360, 95));
+        titulito.setPreferredSize(new java.awt.Dimension(1360, 95));
+        datos.add(titulito);
+        titulito.setBounds(20, 90, 1360, 40);
+
         barra.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         barra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/linea_titulo.jpg"))); // NOI18N
         barra.setAlignmentY(0.0F);
         datos.add(barra);
         barra.setBounds(20, 70, 720, 15);
 
-        info.setFont(new java.awt.Font("Gandhi Sans", 0, 40)); // NOI18N
+        info.setFont(new java.awt.Font("Gandhi Sans", 0, 35)); // NOI18N
         info.setForeground(new java.awt.Color(255, 255, 255));
         info.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         info.setVerticalAlignment(javax.swing.SwingConstants.TOP);
@@ -442,14 +448,14 @@ public class Ficha extends javax.swing.JDialog {
         info.setMinimumSize(new java.awt.Dimension(1535, 505));
         info.setPreferredSize(new java.awt.Dimension(1535, 505));
         datos.add(info);
-        info.setBounds(20, 90, 1360, 440);
+        info.setBounds(20, 130, 1360, 400);
 
         fondo.setBackground(new java.awt.Color(204, 204, 0));
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoSegundaDatos.jpg")); // NOI18N
         fondo.setAlignmentY(0.0F);
         datos.add(fondo);
-        fondo.setBounds(0, 0, 1920, 1080);
+        fondo.setBounds(0, 10, 1920, 1080);
 
         jLayeredPane1.add(datos);
         datos.setBounds(0, 0, 1920, 540);
@@ -548,6 +554,7 @@ public class Ficha extends javax.swing.JDialog {
     private javax.swing.JLayeredPane jLayeredPane1;
     public javax.swing.JLabel subtittle;
     public javax.swing.JLabel tittle;
+    private javax.swing.JLabel titulito;
     private javax.swing.JLabel titulo;
     public javax.swing.JPanel videoPane;
     public javax.swing.JPanel videoPeces;
