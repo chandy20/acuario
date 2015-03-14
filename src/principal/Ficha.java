@@ -81,7 +81,7 @@ public class Ficha extends javax.swing.JDialog {
             String nombreCientifico = pezVO.getPez_nombCientifico();
             String datos = "<html><body><table><tr><td>" 
                     + nombreComun 
-                    + "</td></tr><tr><td>" 
+                    + "</td></tr><tr><td>&nbsp;</td></tr><tr><td>" 
                     + nombreCientifico
                     + "</td></tr></table></body></html>";
 
