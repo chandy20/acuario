@@ -222,6 +222,7 @@ public class Ficha extends javax.swing.JDialog {
             videoPeces.add(titulo);
             videoPeces.add(info);
             videoPeces.add(barra);
+            videoPeces.add(titulito);
             videoPeces.add(fondo);
             tiempogeneral = player1.getDuration().getSeconds() + (0.8);
             controles1 = player1.getControlPanelComponent();
@@ -382,6 +383,7 @@ public class Ficha extends javax.swing.JDialog {
         barra = new javax.swing.JLabel();
         info = new javax.swing.JLabel();
         fondo = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
         videoPane = new javax.swing.JPanel();
         videoPeces = new javax.swing.JPanel();
         videoDetalle = new javax.swing.JPanel();
@@ -474,13 +476,12 @@ public class Ficha extends javax.swing.JDialog {
         titulito.setMinimumSize(new java.awt.Dimension(1360, 95));
         titulito.setPreferredSize(new java.awt.Dimension(1360, 95));
         datos.add(titulito);
-        titulito.setBounds(20, 90, 1360, 40);
+        titulito.setBounds(20, 110, 1360, 40);
 
         barra.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        barra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/linea_titulo.jpg"))); // NOI18N
         barra.setAlignmentY(0.0F);
         datos.add(barra);
-        barra.setBounds(20, 70, 720, 15);
+        barra.setBounds(20, 80, 720, 15);
 
         info.setFont(new java.awt.Font("Gandhi Sans", 0, 35)); // NOI18N
         info.setForeground(new java.awt.Color(255, 255, 255));
@@ -491,13 +492,16 @@ public class Ficha extends javax.swing.JDialog {
         info.setMinimumSize(new java.awt.Dimension(1535, 505));
         info.setPreferredSize(new java.awt.Dimension(1535, 505));
         datos.add(info);
-        info.setBounds(20, 130, 1360, 400);
+        info.setBounds(20, 170, 1360, 360);
 
         fondo.setBackground(new java.awt.Color(204, 204, 0));
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        fondo.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoSegundaDatos.jpg")); // NOI18N
         fondo.setAlignmentY(0.0F);
         datos.add(fondo);
-        fondo.setBounds(0, 10, 1920, 1080);
+        fondo.setBounds(0, 0, 1920, 1080);
+        datos.add(jScrollPane1);
+        jScrollPane1.setBounds(1220, 440, 2, 2);
 
         jLayeredPane1.add(datos);
         datos.setBounds(0, 0, 1920, 540);
@@ -608,6 +612,7 @@ public class Ficha extends javax.swing.JDialog {
     private javax.swing.JLabel info;
     public javax.swing.JPanel inicial;
     private javax.swing.JLayeredPane jLayeredPane1;
+    private javax.swing.JScrollPane jScrollPane1;
     public javax.swing.JLabel subtittle;
     public javax.swing.JLabel tittle;
     private javax.swing.JLabel titulito;
