@@ -119,7 +119,11 @@ public class Ficha extends javax.swing.JDialog {
             if (pezVO.getPez_distribucion()== null || distribucion.equals("")) {
                 distribucion = "No especificado";
             }
-            String datos = general + "\nYo vivo en...\n" + distribucion;       
+            String datos = "<html><body><tr><td>" 
+                    + general 
+                    + "</td></tr><tr><td>&nbsp;</td></tr><tr><td>Yo vivo en...</td></tr><tr><td>" 
+                    + distribucion 
+                    + "</td></tr></table></body></html>";
             this.titulito.setText("Información General");
             this.info.setText(datos);
         }
@@ -132,7 +136,9 @@ public class Ficha extends javax.swing.JDialog {
             if (pezVO.getPez_alimentacion() == null || alimentos.equals("")) {
                 alimentos = "No especificada";
             }
-            String datos = alimentos;
+            String datos = "<html><body><tr><td>" 
+                    + alimentos
+                    + "</td></tr></table></body></html>";
             this.titulito.setText("Mi comida favorita es...");
             this.info.setText(datos);
         }
@@ -145,7 +151,9 @@ public class Ficha extends javax.swing.JDialog {
             if (pezVO.getPez_curiosidades() == null || curiosidades.equals("")) {
                 curiosidades = "No especificadas";
             }
-            String datos = curiosidades;
+            String datos = "<html><body><tr><td>" 
+                    + curiosidades
+                    + "</td></tr></table></body></html>";
             this.titulito.setText("Mis Curiosidades");
             this.info.setText(datos);
         }
