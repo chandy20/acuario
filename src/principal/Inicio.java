@@ -38,9 +38,10 @@ public class Inicio extends javax.swing.JFrame {
     boolean controlSegunda = true;
     boolean controlInactividad = true;
     long y = 0;
-    
-    public Inicio(){}
-    
+
+    public Inicio() {
+    }
+
     public Inicio(ArrayList<PezVO> peces) throws IOException {
         initComponents();
         comenzarFicha();
@@ -56,7 +57,7 @@ public class Inicio extends javax.swing.JFrame {
         devices[ 1].setFullScreenWindow(ficha);
         ficha.setContentPane(ficha.inicial);
     }
-    
+
     public void llenarVectores(ArrayList<PezVO> peces) throws IOException {
         Imagenes = new Image[peces.size()];
         names = new String[peces.size()];
@@ -67,15 +68,14 @@ public class Inicio extends javax.swing.JFrame {
         for (PezVO pezVO : peces) {
             Imagenes[ i] = getToolkit().getImage("c:/acuario/" + pezVO.getPez_id() + "/descripcion.png");
             names[ i] = pezVO.getPez_nombComun();
-            scientistNames [ i] = pezVO.getPez_nombCientifico();
+            scientistNames[ i] = pezVO.getPez_nombCientifico();
             ids[ i] = pezVO.getPez_id();
             buffer[ i] = ImageIO.read(new File("c:/acuario/" + pezVO.getPez_id() + "/descripcion.png"));
             i++;
         }
     }
-    
 
-     public void cargarComponentes() {
+    public void cargarComponentes() {
         Image foto = Imagenes[ contador].getScaledInstance(500, (int) ((buffer[contador].getHeight() * 500) / buffer[contador].getWidth()), Image.SCALE_DEFAULT);
         slider.setIcon(new ImageIcon(foto));
         nombre.setText(names[ contador]);
@@ -84,13 +84,11 @@ public class Inicio extends javax.swing.JFrame {
         ficha.tittle.setText(names[ contador]);
         ficha.subtittle.setText(scientistNames[contador]);
     }
-    
 
     public void iniciarInicio() {//inicio inactividad
         this.setContentPane(this.menu);
         ficha.videoPane.removeAll();
-        ficha.VideoPrincipal("file:///c:/acuario/video/promo.mpg");
-        ficha.reproducirPrincipal();
+        ficha.VideoPrincipal("file:///c:/acuario/video/peces.mpg");
         ficha.setContentPane(ficha.videoPane);
     }
 
@@ -110,8 +108,8 @@ public class Inicio extends javax.swing.JFrame {
 
     public void cerrarVideo() {
         ficha.videoPane.removeAll();
-        ficha.VideoPrincipal("file:///c:/acuario/video/promo.mpg");
-        ficha.reproducirPrincipal();
+//        ficha.VideoPrincipal("file:///c:/acuario/video/promo.mpg");
+//        ficha.reproducirPrincipal();
 //        this.setContentPane();
     }
 
@@ -120,7 +118,39 @@ public class Inicio extends javax.swing.JFrame {
         @Override
         public void run() {
             try {
+//                ficha.VideoPrincipal("file:///c:/acuario/video/peces.mpg");
+////                VideoInfo("file:///c:/acuario/video/agua_converted.mpg");
+//                
+//                ficha.reproducirPrincipal();
                 while (true) {//ciclo infinito
+//                    
+                    if (ficha.verVideo) {
+                        if (ficha.player.getMediaTime().getSeconds() != 0) {
+
+                            System.out.println("tiempo del video " + ficha.tiempo);
+                            if (ficha.tiempo >= 90) {
+                                ficha.videoPane.removeAll();
+                                ficha.VideoPrincipal("file:///c:/acuario/video/peces.mpg");
+                                ficha.setContentPane(ficha.videoPane);
+                            }
+                            ficha.tiempo++;
+                        }
+                    } else {
+                        if (y <= 2) {
+                            ficha.videoPane.removeAll();
+//                            ficha.player.stop();
+                        }
+                    }
+
+//                    if (control == false) {
+//                        if (ficha.t >= ficha.tiempogeneral) {
+//                            System.out.println("finaliza "+control);
+//                            ficha.reproducir();
+//                        }
+//                        ficha.t++;
+//                    }else{
+//                        ficha.t=0;
+//                    }
                     if (y == 360) {
                         controlInactividad = false;
                         if (controlSegunda) {

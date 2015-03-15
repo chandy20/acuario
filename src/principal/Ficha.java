@@ -51,6 +51,7 @@ public class Ficha extends javax.swing.JDialog {
     public Component controles2;
     public Time cero;
     public Time cero1;
+    boolean verVideo = false;
     private ScheduledExecutorService scheduler = Executors.newSingleThreadScheduledExecutor();
     private final int velocidad = 5000;//en milisegundos
     AcuarioDAO aDAO = new AcuarioDAO();
@@ -65,7 +66,7 @@ public class Ficha extends javax.swing.JDialog {
     public Ficha(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        hiloVideoPrincipal.start();
+//        hiloVideoPrincipal.start();
     }
 
     public void cargaNombre(int pez_id) throws SQLException {
@@ -79,9 +80,9 @@ public class Ficha extends javax.swing.JDialog {
         for (PezVO pezVO : lista) {
             String nombreComun = pezVO.getPez_nombComun();
             String nombreCientifico = pezVO.getPez_nombCientifico();
-            String datos = "<html><body><table><tr><td>" 
-                    + nombreComun 
-                    + "</td></tr><tr><td>&nbsp;</td></tr><tr><td>" 
+            String datos = "<html><body><table><tr><td>"
+                    + nombreComun
+                    + "</td></tr><tr><td>&nbsp;</td></tr><tr><td>"
                     + nombreCientifico
                     + "</td></tr></table></body></html>";
 
@@ -107,22 +108,22 @@ public class Ficha extends javax.swing.JDialog {
         lista = aDAO.getDatosGenerales(pez_id, 3);
     }
 
-   public void getForma(int pez_id) throws SQLException {
+    public void getForma(int pez_id) throws SQLException {
         ArrayList<PezVO> lista1 = aDAO.getDatosGenerales(pez_id, 10);
         getDistribucion(pez_id);
         for (PezVO pezVO : lista1) {
             String general = pezVO.getPez_generalidades();
             String distribucion = pezVO.getPez_distribucion();
-            if (pezVO.getPez_generalidades()== null || general.equals("")) {
+            if (pezVO.getPez_generalidades() == null || general.equals("")) {
                 general = "No especificadas";
             }
-            if (pezVO.getPez_distribucion()== null || distribucion.equals("")) {
+            if (pezVO.getPez_distribucion() == null || distribucion.equals("")) {
                 distribucion = "No especificado";
             }
-            String datos = "<html><body><tr><td>" 
-                    + general 
-                    + "</td></tr><tr><td>&nbsp;</td></tr><tr><td>Yo vivo en...</td></tr><tr><td>" 
-                    + distribucion 
+            String datos = "<html><body><tr><td>"
+                    + general
+                    + "</td></tr><tr><td>&nbsp;</td></tr><tr><td>Yo vivo en...</td></tr><tr><td>"
+                    + distribucion
                     + "</td></tr></table></body></html>";
             this.titulito.setText("Información General");
             this.info.setText(datos);
@@ -136,7 +137,7 @@ public class Ficha extends javax.swing.JDialog {
             if (pezVO.getPez_alimentacion() == null || alimentos.equals("")) {
                 alimentos = "No especificada";
             }
-            String datos = "<html><body><tr><td>" 
+            String datos = "<html><body><tr><td>"
                     + alimentos
                     + "</td></tr></table></body></html>";
             this.titulito.setText("Mi comida favorita es...");
@@ -151,7 +152,7 @@ public class Ficha extends javax.swing.JDialog {
             if (pezVO.getPez_curiosidades() == null || curiosidades.equals("")) {
                 curiosidades = "No especificadas";
             }
-            String datos = "<html><body><tr><td>" 
+            String datos = "<html><body><tr><td>"
                     + curiosidades
                     + "</td></tr></table></body></html>";
             this.titulito.setText("Mis Curiosidades");
@@ -186,16 +187,12 @@ public class Ficha extends javax.swing.JDialog {
             }
 //            video.repaint();
             controles = player.getControlPanelComponent();
-
-//            controles.setSize(1920, 100);
-//            controles.setVisible(true);
-//            if (controles != null) {
-//                videoPane.add("South", controles);
-//            }
-//            this.setContentPane(videoPane);
-//            player.getDuration().getSeconds() con este llamado se sabe la duracion del video
-            //player.setMediaTime(new Time(0));
-            //player.deallocate();
+            player.start();
+            cero = player.getMediaTime();
+            videoPane.updateUI();
+            tiempo = 0;
+            verVideo = true;
+            System.out.println("time secunds "+player.getDuration().getSeconds());
         } catch (IOException | NoPlayerException | CannotRealizeException ex) {
             Logger.getLogger(Ficha.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -208,7 +205,7 @@ public class Ficha extends javax.swing.JDialog {
 //        if (!directorio.exists()) {
 //            direccion = "file:///c:/acuario/defoult.mpg";
 //        } else {
-            direccion = "file:///" + direccion;
+        direccion = "file:///" + direccion;
 //        }
 
         videoPeces.setSize(1920, 1080);
@@ -284,7 +281,7 @@ public class Ficha extends javax.swing.JDialog {
 //        if (!directorio.exists()) {
 //            direccion = "file:///c:/acuario/defoult.mpg";
 //        } else {
-            direccion = "file:///" + direccion;
+        direccion = "file:///" + direccion;
 //        }
 
         videoPeces.setSize(1920, 1080);
@@ -321,56 +318,39 @@ public class Ficha extends javax.swing.JDialog {
     }
 
     public void reproducirPrincipal() {
-        player.setMediaTime(cero);
+//        player.setMediaTime(cero);
         player.start();
         videoPane.updateUI();
         tiempo = 0;
     }
 
     public void reproducir() {
-        player1.setMediaTime(cero);
+//        player1.setMediaTime(cero);
         player1.start();
         videoPeces.updateUI();
         t = 0;
     }
-    
+
     Inicio init = new Inicio();
-    
-    Thread hiloVideoPrincipal = new Thread() {//declaramos el hilo
 
-        @Override
-        public void run() {
-            try {
-                VideoPrincipal("file:///c:/acuario/video/peces.mpg");
-//                VideoInfo("file:///c:/acuario/video/agua_converted.mpg");
-                cero = player.getMediaTime();
-                reproducirPrincipal();
-//                reproducir();
-//                int sw = 0;
-//                System.out.println("Time.TIME_UNKNOWN: ");
-                while (true) {//ciclo infinito
-                    if (tiempo >= player.getDuration().getSeconds()) {
-//                        reproducirPrincipal();
-                    }
-
-                    if (init.control == false) {
-                        if (t >= tiempogeneral) {
-                            System.out.println("finaliza "+init.control);
-                            reproducir();
-                        }
-                        t++;
-                    }else{
-                        t=0;
-                    }
-                    tiempo++;
-                    hiloVideoPrincipal.sleep(1000);//que duerma un segundo
-                }
-            } catch (java.lang.InterruptedException ie) {
-                System.out.println(ie.getMessage());
-            }
-        }
-    };
-
+//    Thread hiloVideoPrincipal = new Thread() {//declaramos el hilo
+//
+//        @Override
+//        public void run() {
+//            try {
+//                
+////                reproducir();
+////                int sw = 0;
+////                System.out.println("Time.TIME_UNKNOWN: ");
+//                while (true) {//ciclo infinito
+//                    
+//                    hiloVideoPrincipal.sleep(1000);//que duerma un segundo
+//                }
+//            } catch (java.lang.InterruptedException ie) {
+//                System.out.println(ie.getMessage());
+//            }
+//        }
+//    };
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
