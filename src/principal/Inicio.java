@@ -107,6 +107,7 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     public void cerrarVideo() {
+        ficha.verVideo = false;
         ficha.videoPane.removeAll();
 //        ficha.VideoPrincipal("file:///c:/acuario/video/promo.mpg");
 //        ficha.reproducirPrincipal();
@@ -123,8 +124,8 @@ public class Inicio extends javax.swing.JFrame {
 //                
 //                ficha.reproducirPrincipal();
                 while (true) {//ciclo infinito
-//                    
-                    if (ficha.verVideo) {
+                    System.out.println("ver video " + ficha.verVideo);
+                    if (ficha.verVideo == true) {
                         if (ficha.player.getMediaTime().getSeconds() != 0) {
 
                             System.out.println("tiempo del video " + ficha.tiempo);
@@ -137,20 +138,12 @@ public class Inicio extends javax.swing.JFrame {
                         }
                     } else {
                         if (y <= 2) {
+                            System.out.println("die");
+                            ficha.tiempo = 0;
                             ficha.videoPane.removeAll();
 //                            ficha.player.stop();
                         }
                     }
-
-//                    if (control == false) {
-//                        if (ficha.t >= ficha.tiempogeneral) {
-//                            System.out.println("finaliza "+control);
-//                            ficha.reproducir();
-//                        }
-//                        ficha.t++;
-//                    }else{
-//                        ficha.t=0;
-//                    }
                     if (y == 360) {
                         controlInactividad = false;
                         if (controlSegunda) {
@@ -684,7 +677,7 @@ public class Inicio extends javax.swing.JFrame {
         if (controlSegunda) {
             ficha.videoPane.removeAll();
             ficha.VideoPrincipal("file:///c:/acuario/video/promo.mpg");///url video promociones
-            ficha.reproducirPrincipal();
+            // ficha.reproducirPrincipal();
             ficha.setContentPane(ficha.videoPane);
             controlSegunda = false;
         }
@@ -694,7 +687,7 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         y = 0;
         controlInactividad = true;
-
+        ficha.verVideo = true;
         this.setContentPane(this.tactil);
         cargarComponentes();
         if (!controlSegunda) {
