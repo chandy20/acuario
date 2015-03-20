@@ -206,13 +206,14 @@ public class Inicio extends javax.swing.JFrame {
         jLayeredPane1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jLayeredPane1.setAlignmentX(0.0F);
         jLayeredPane1.setAlignmentY(0.0F);
-        jLayeredPane1.setMaximumSize(new java.awt.Dimension(1366, 768));
-        jLayeredPane1.setMinimumSize(new java.awt.Dimension(1366, 768));
+        jLayeredPane1.setMaximumSize(new java.awt.Dimension(1920, 1080));
+        jLayeredPane1.setMinimumSize(new java.awt.Dimension(1920, 1080));
+        jLayeredPane1.setName(""); // NOI18N
 
         menu.setAlignmentX(0.0F);
         menu.setAlignmentY(0.0F);
-        menu.setMaximumSize(new java.awt.Dimension(1366, 768));
-        menu.setMinimumSize(new java.awt.Dimension(1366, 768));
+        menu.setMaximumSize(new java.awt.Dimension(1920, 1080));
+        menu.setMinimumSize(new java.awt.Dimension(1920, 1080));
         menu.setOpaque(false);
         menu.setLayout(null);
 
@@ -225,9 +226,9 @@ public class Inicio extends javax.swing.JFrame {
         video.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         video.setFocusPainted(false);
         video.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        video.setMaximumSize(new java.awt.Dimension(340, 340));
-        video.setMinimumSize(new java.awt.Dimension(340, 340));
-        video.setPreferredSize(new java.awt.Dimension(340, 340));
+        video.setMaximumSize(new java.awt.Dimension(480, 480));
+        video.setMinimumSize(new java.awt.Dimension(480, 480));
+        video.setPreferredSize(new java.awt.Dimension(480, 480));
         video.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/videoP.png"))); // NOI18N
         video.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -235,7 +236,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         menu.add(video);
-        video.setBounds(250, 139, 340, 340);
+        video.setBounds(250, 139, 480, 480);
 
         peces.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/peces.png"))); // NOI18N
         peces.setAlignmentY(0.0F);
@@ -244,9 +245,9 @@ public class Inicio extends javax.swing.JFrame {
         peces.setContentAreaFilled(false);
         peces.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         peces.setFocusPainted(false);
-        peces.setMaximumSize(new java.awt.Dimension(340, 340));
-        peces.setMinimumSize(new java.awt.Dimension(340, 340));
-        peces.setPreferredSize(new java.awt.Dimension(340, 340));
+        peces.setMaximumSize(new java.awt.Dimension(480, 480));
+        peces.setMinimumSize(new java.awt.Dimension(480, 480));
+        peces.setPreferredSize(new java.awt.Dimension(480, 480));
         peces.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pecesP.png"))); // NOI18N
         peces.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -254,7 +255,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         menu.add(peces);
-        peces.setBounds(806, 139, 340, 340);
+        peces.setBounds(806, 139, 480, 480);
 
         banner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         banner.setIcon(new javax.swing.ImageIcon("C:\\acuario\\social.jpg")); // NOI18N
@@ -265,24 +266,25 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         menu.add(banner);
-        banner.setBounds(0, 618, 1366, 150);
+        banner.setBounds(0, 868, 1920, 212);
 
-        mfondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        mfondo.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         mfondo.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoMenu.jpg")); // NOI18N
+        mfondo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         mfondo.setAlignmentY(0.0F);
-        mfondo.setMaximumSize(new java.awt.Dimension(1366, 768));
-        mfondo.setMinimumSize(new java.awt.Dimension(1366, 768));
-        mfondo.setPreferredSize(new java.awt.Dimension(1366, 768));
+        mfondo.setMaximumSize(new java.awt.Dimension(1920, 1080));
+        mfondo.setMinimumSize(new java.awt.Dimension(1920, 1080));
+        mfondo.setPreferredSize(new java.awt.Dimension(1920, 1080));
         mfondo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mfondoMouseClicked(evt);
             }
         });
         menu.add(mfondo);
-        mfondo.setBounds(0, 0, 1366, 768);
+        mfondo.setBounds(0, 0, 1920, 1080);
 
         jLayeredPane1.add(menu);
-        menu.setBounds(0, 0, 1366, 768);
+        menu.setBounds(0, 0, 1920, 1080);
 
         tactil.setAlignmentX(0.0F);
         tactil.setAlignmentY(0.0F);
@@ -635,13 +637,13 @@ public class Inicio extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1366, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1920, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 768, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLayeredPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1080, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
