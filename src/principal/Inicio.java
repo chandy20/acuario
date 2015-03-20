@@ -52,10 +52,10 @@ public class Inicio extends javax.swing.JFrame {
 
     public void comenzarFicha() {
         ficha = new Ficha(this, false);
-        ficha.setPreferredSize(null);
-        java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
-        devices[ 1].setFullScreenWindow(ficha);
-        ficha.setContentPane(ficha.inicial);
+//        ficha.setPreferredSize(null);
+//        java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
+//        devices[ 1].setFullScreenWindow(ficha);
+//        ficha.setContentPane(ficha.inicial);
     }
 
     public void llenarVectores(ArrayList<PezVO> peces) throws IOException {
@@ -80,9 +80,9 @@ public class Inicio extends javax.swing.JFrame {
         slider.setIcon(new ImageIcon(foto));
         nombre.setText(names[ contador]);
         Image fotoTv = Imagenes[ contador].getScaledInstance(1050, (int) ((buffer[contador].getHeight() * 1050) / buffer[contador].getWidth()), Image.SCALE_DEFAULT);
-        ficha.foto.setIcon(new ImageIcon(fotoTv));
-        ficha.tittle.setText(names[ contador]);
-        ficha.subtittle.setText(scientistNames[contador]);
+//        ficha.foto.setIcon(new ImageIcon(fotoTv));
+//        ficha.tittle.setText(names[ contador]);
+//        ficha.subtittle.setText(scientistNames[contador]);
     }
 
     public void iniciarInicio() {//inicio inactividad
@@ -199,7 +199,6 @@ public class Inicio extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setAlwaysOnTop(true);
-        setMaximumSize(new java.awt.Dimension(1366, 768));
         setMinimumSize(new java.awt.Dimension(1366, 768));
         setUndecorated(true);
 
@@ -226,9 +225,6 @@ public class Inicio extends javax.swing.JFrame {
         video.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         video.setFocusPainted(false);
         video.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        video.setMaximumSize(new java.awt.Dimension(480, 480));
-        video.setMinimumSize(new java.awt.Dimension(480, 480));
-        video.setPreferredSize(new java.awt.Dimension(480, 480));
         video.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/videoP.png"))); // NOI18N
         video.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -236,7 +232,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         menu.add(video);
-        video.setBounds(250, 139, 480, 480);
+        video.setBounds(330, 194, 480, 480);
 
         peces.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/peces.png"))); // NOI18N
         peces.setAlignmentY(0.0F);
@@ -245,9 +241,6 @@ public class Inicio extends javax.swing.JFrame {
         peces.setContentAreaFilled(false);
         peces.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         peces.setFocusPainted(false);
-        peces.setMaximumSize(new java.awt.Dimension(480, 480));
-        peces.setMinimumSize(new java.awt.Dimension(480, 480));
-        peces.setPreferredSize(new java.awt.Dimension(480, 480));
         peces.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pecesP.png"))); // NOI18N
         peces.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -255,7 +248,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         menu.add(peces);
-        peces.setBounds(806, 139, 480, 480);
+        peces.setBounds(1110, 194, 480, 480);
 
         banner.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         banner.setIcon(new javax.swing.ImageIcon("C:\\acuario\\social.jpg")); // NOI18N
@@ -696,7 +689,7 @@ public class Inicio extends javax.swing.JFrame {
             cerrarVideo();
             controlSegunda = true;
         }
-        ficha.setContentPane(ficha.visor);
+//        ficha.setContentPane(ficha.visor);
     }//GEN-LAST:event_pecesMouseClicked
 
     private void prevMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prevMouseClicked
@@ -740,7 +733,7 @@ public class Inicio extends javax.swing.JFrame {
             controlSegunda = true;
         } else {
             this.setContentPane(menu);
-            ficha.setContentPane(ficha.inicial);
+//            ficha.setContentPane(ficha.inicial);
         }
     }//GEN-LAST:event_cerrarMouseClicked
 
@@ -752,7 +745,7 @@ public class Inicio extends javax.swing.JFrame {
             controlSegunda = true;
 
         } else {
-            ficha.setContentPane(ficha.visor);
+//            ficha.setContentPane(ficha.visor);
             this.setContentPane(tactil);
             control = true;
         }
@@ -913,7 +906,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
         // TODO add your handling code here:
-        ficha.setContentPane(ficha.inicial);
+//        ficha.setContentPane(ficha.inicial);
         this.setContentPane(menu);
         control = true;
     }//GEN-LAST:event_homeMouseClicked

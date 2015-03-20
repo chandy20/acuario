@@ -361,13 +361,6 @@ public class Ficha extends javax.swing.JDialog {
     private void initComponents() {
 
         jLayeredPane1 = new javax.swing.JLayeredPane();
-        inicial = new javax.swing.JPanel();
-        finicial = new javax.swing.JLabel();
-        visor = new javax.swing.JPanel();
-        subtittle = new javax.swing.JLabel();
-        tittle = new javax.swing.JLabel();
-        foto = new javax.swing.JLabel();
-        fondo1 = new javax.swing.JLabel();
         datos = new javax.swing.JPanel();
         titulo = new javax.swing.JLabel();
         titulito = new javax.swing.JLabel();
@@ -386,63 +379,6 @@ public class Ficha extends javax.swing.JDialog {
         jLayeredPane1.setAlignmentY(0.0F);
         jLayeredPane1.setMaximumSize(new java.awt.Dimension(1920, 1080));
         jLayeredPane1.setMinimumSize(new java.awt.Dimension(1920, 1080));
-
-        inicial.setAlignmentX(0.0F);
-        inicial.setAlignmentY(0.0F);
-        inicial.setMaximumSize(new java.awt.Dimension(1920, 1080));
-        inicial.setMinimumSize(new java.awt.Dimension(1920, 1080));
-        inicial.setPreferredSize(new java.awt.Dimension(1920, 1080));
-        inicial.setLayout(null);
-
-        finicial.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        finicial.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoSegunda.jpg")); // NOI18N
-        finicial.setAlignmentY(0.0F);
-        inicial.add(finicial);
-        finicial.setBounds(0, 0, 1920, 1080);
-
-        jLayeredPane1.add(inicial);
-        inicial.setBounds(0, 0, 1920, 1080);
-
-        visor.setLayout(null);
-
-        subtittle.setFont(new java.awt.Font("Harabara", 0, 100)); // NOI18N
-        subtittle.setForeground(new java.awt.Color(255, 255, 255));
-        subtittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        subtittle.setToolTipText("");
-        subtittle.setAlignmentY(0.0F);
-        subtittle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        subtittle.setMaximumSize(new java.awt.Dimension(1850, 100));
-        subtittle.setMinimumSize(new java.awt.Dimension(1850, 100));
-        subtittle.setPreferredSize(new java.awt.Dimension(1850, 100));
-        visor.add(subtittle);
-        subtittle.setBounds(35, 935, 1850, 100);
-
-        tittle.setFont(new java.awt.Font("Harabara", 0, 100)); // NOI18N
-        tittle.setForeground(new java.awt.Color(255, 255, 255));
-        tittle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        tittle.setToolTipText("");
-        tittle.setAlignmentY(0.0F);
-        tittle.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        tittle.setMaximumSize(new java.awt.Dimension(720, 100));
-        tittle.setMinimumSize(new java.awt.Dimension(720, 100));
-        tittle.setPreferredSize(new java.awt.Dimension(720, 100));
-        visor.add(tittle);
-        tittle.setBounds(510, 45, 900, 100);
-
-        foto.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        foto.setAlignmentY(0.0F);
-        foto.setMaximumSize(new java.awt.Dimension(1050, 700));
-        foto.setMinimumSize(new java.awt.Dimension(1050, 700));
-        foto.setPreferredSize(new java.awt.Dimension(1050, 700));
-        visor.add(foto);
-        foto.setBounds(435, 190, 1050, 700);
-
-        fondo1.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoSegunda.jpg")); // NOI18N
-        visor.add(fondo1);
-        fondo1.setBounds(0, 0, 1920, 1080);
-
-        jLayeredPane1.add(visor);
-        visor.setBounds(0, 0, 1920, 1080);
 
         datos.setAlignmentX(0.0F);
         datos.setAlignmentY(0.0F);
@@ -596,22 +532,15 @@ public class Ficha extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel barra;
     public javax.swing.JPanel datos;
-    private javax.swing.JLabel finicial;
     private javax.swing.JLabel fondo;
-    private javax.swing.JLabel fondo1;
-    public javax.swing.JLabel foto;
     private javax.swing.JLabel info;
-    public javax.swing.JPanel inicial;
     private javax.swing.JLayeredPane jLayeredPane1;
     private javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JLabel subtittle;
-    public javax.swing.JLabel tittle;
     private javax.swing.JLabel titulito;
     private javax.swing.JLabel titulo;
     public javax.swing.JPanel videoDetalle;
     public javax.swing.JPanel videoPane;
     public javax.swing.JPanel videoPeces;
-    public javax.swing.JPanel visor;
     // End of variables declaration//GEN-END:variables
 
 }
