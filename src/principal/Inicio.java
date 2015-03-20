@@ -24,10 +24,8 @@ import objetos.PezVO;
  */
 public class Inicio extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Inicio
-     */
-    Ficha ficha = null;
+    
+//    Ficha ficha = null;
     Image Imagenes[] = null;
     String names[] = null;
     String scientistNames[] = null;
@@ -44,14 +42,14 @@ public class Inicio extends javax.swing.JFrame {
 
     public Inicio(ArrayList<PezVO> peces) throws IOException {
         initComponents();
-        comenzarFicha();
+//        comenzarFicha();
         llenarVectores(peces);
         cargarComponentes();
         hilo.start();
     }
 
     public void comenzarFicha() {
-        ficha = new Ficha(this, false);
+//        ficha = new Ficha(this, false);
 //        ficha.setPreferredSize(null);
 //        java.awt.GraphicsDevice[] devices = GraphicsEnvironment.getLocalGraphicsEnvironment().getScreenDevices();
 //        devices[ 1].setFullScreenWindow(ficha);
@@ -76,39 +74,32 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     public void cargarComponentes() {
-        Image foto = Imagenes[ contador].getScaledInstance(500, (int) ((buffer[contador].getHeight() * 500) / buffer[contador].getWidth()), Image.SCALE_DEFAULT);
+        Image foto = Imagenes[ contador].getScaledInstance(700, (int) ((buffer[contador].getHeight() * 700) / buffer[contador].getWidth()), Image.SCALE_DEFAULT);
         slider.setIcon(new ImageIcon(foto));
         nombre.setText(names[ contador]);
-        Image fotoTv = Imagenes[ contador].getScaledInstance(1050, (int) ((buffer[contador].getHeight() * 1050) / buffer[contador].getWidth()), Image.SCALE_DEFAULT);
-//        ficha.foto.setIcon(new ImageIcon(fotoTv));
-//        ficha.tittle.setText(names[ contador]);
-//        ficha.subtittle.setText(scientistNames[contador]);
     }
 
     public void iniciarInicio() {//inicio inactividad
         this.setContentPane(this.menu);
-        ficha.videoPane.removeAll();
-        ficha.VideoPrincipal("file:///c:/acuario/video/peces.mpg");
-        ficha.setContentPane(ficha.videoPane);
     }
 
     public void iniciarFicha() {
 //        ficha.setContentPane(ficha.datos);
-        try {
-//            ficha.cargaImagenes(ids[ contador]);
-            ficha.cargaNombre(ids[ contador]);
-            ficha.videoPeces.removeAll();
-            ficha.VideoInfo("c:/acuario/" + String.valueOf(ids[contador]) + "/videos/general.mpg");
-            ficha.reproducir();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try {
+////            ficha.cargaImagenes(ids[ contador]);
+////            ficha.cargaNombre(ids[ contador]);
+////            ficha.videoPeces.removeAll();
+////            ficha.VideoInfo("c:/acuario/" + String.valueOf(ids[contador]) + "/videos/general.mpg");
+////            ficha.reproducir();
+//
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+//        }
     }
 
     public void cerrarVideo() {
-        ficha.verVideo = false;
-        ficha.videoPane.removeAll();
+//        ficha.verVideo = false;
+//        ficha.videoPane.removeAll();
 //        ficha.VideoPrincipal("file:///c:/acuario/video/promo.mpg");
 //        ficha.reproducirPrincipal();
 //        this.setContentPane();
@@ -124,26 +115,25 @@ public class Inicio extends javax.swing.JFrame {
 //                
 //                ficha.reproducirPrincipal();
                 while (true) {//ciclo infinito
-                    System.out.println("ver video " + ficha.verVideo);
-                    if (ficha.verVideo == true) {
-                        if (ficha.player.getMediaTime().getSeconds() != 0) {
-
-                            System.out.println("tiempo del video " + ficha.tiempo);
-                            if (ficha.tiempo >= 90) {
-                                ficha.videoPane.removeAll();
-                                ficha.VideoPrincipal("file:///c:/acuario/video/peces.mpg");
-                                ficha.setContentPane(ficha.videoPane);
-                            }
-                            ficha.tiempo++;
-                        }
-                    } else {
-                        if (y <= 2) {
-                            System.out.println("die");
-                            ficha.tiempo = 0;
-                            ficha.videoPane.removeAll();
-//                            ficha.player.stop();
-                        }
-                    }
+//                     if (ficha.verVideo == true) {
+//                        if (ficha.player.getMediaTime().getSeconds() != 0) {
+//
+//                            System.out.println("tiempo del video " + ficha.tiempo);
+//                            if (ficha.tiempo >= 90) {
+//                                ficha.videoPane.removeAll();
+//                                ficha.VideoPrincipal("file:///c:/acuario/video/peces.mpg");
+//                                ficha.setContentPane(ficha.videoPane);
+//                            }
+//                            ficha.tiempo++;
+//                        }
+//                    } else {
+//                        if (y <= 2) {
+//                            System.out.println("die");
+//                            ficha.tiempo = 0;
+//                            ficha.videoPane.removeAll();
+////                            ficha.player.stop();
+//                        }
+//                    }
                     if (y == 360) {
                         controlInactividad = false;
                         if (controlSegunda) {
@@ -265,9 +255,6 @@ public class Inicio extends javax.swing.JFrame {
         mfondo.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoMenu.jpg")); // NOI18N
         mfondo.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         mfondo.setAlignmentY(0.0F);
-        mfondo.setMaximumSize(new java.awt.Dimension(1920, 1080));
-        mfondo.setMinimumSize(new java.awt.Dimension(1920, 1080));
-        mfondo.setPreferredSize(new java.awt.Dimension(1920, 1080));
         mfondo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 mfondoMouseClicked(evt);
@@ -281,8 +268,9 @@ public class Inicio extends javax.swing.JFrame {
 
         tactil.setAlignmentX(0.0F);
         tactil.setAlignmentY(0.0F);
-        tactil.setMaximumSize(new java.awt.Dimension(1366, 768));
-        tactil.setMinimumSize(new java.awt.Dimension(1366, 768));
+        tactil.setMaximumSize(new java.awt.Dimension(1920, 1080));
+        tactil.setMinimumSize(new java.awt.Dimension(1920, 1080));
+        tactil.setRequestFocusEnabled(false);
         tactil.setLayout(null);
 
         cerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/atras.png"))); // NOI18N
@@ -293,6 +281,9 @@ public class Inicio extends javax.swing.JFrame {
         cerrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         cerrar.setFocusPainted(false);
         cerrar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        cerrar.setMaximumSize(new java.awt.Dimension(140, 140));
+        cerrar.setMinimumSize(new java.awt.Dimension(140, 140));
+        cerrar.setPreferredSize(new java.awt.Dimension(140, 140));
         cerrar.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/atrasP.png"))); // NOI18N
         cerrar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -300,29 +291,32 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         tactil.add(cerrar);
-        cerrar.setBounds(20, 20, 100, 100);
+        cerrar.setBounds(20, 20, 140, 140);
 
         slider.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         slider.setAlignmentY(0.0F);
         slider.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        slider.setMaximumSize(new java.awt.Dimension(500, 350));
-        slider.setMinimumSize(new java.awt.Dimension(500, 350));
-        slider.setPreferredSize(new java.awt.Dimension(500, 350));
+        slider.setMaximumSize(new java.awt.Dimension(700, 490));
+        slider.setMinimumSize(new java.awt.Dimension(700, 490));
+        slider.setPreferredSize(new java.awt.Dimension(700, 490));
         slider.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 sliderMouseClicked(evt);
             }
         });
         tactil.add(slider);
-        slider.setBounds(433, 274, 500, 350);
+        slider.setBounds(610, 350, 700, 490);
 
         backslider.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         backslider.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bkpeces.png"))); // NOI18N
         backslider.setAlignmentY(0.0F);
         backslider.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         backslider.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        backslider.setMaximumSize(new java.awt.Dimension(768, 768));
+        backslider.setMinimumSize(new java.awt.Dimension(768, 768));
+        backslider.setPreferredSize(new java.awt.Dimension(768, 768));
         tactil.add(backslider);
-        backslider.setBounds(408, 174, 550, 550);
+        backslider.setBounds(576, 206, 768, 768);
 
         next.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/next.png"))); // NOI18N
         next.setAlignmentY(0.0F);
@@ -332,9 +326,9 @@ public class Inicio extends javax.swing.JFrame {
         next.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         next.setFocusPainted(false);
         next.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        next.setMaximumSize(new java.awt.Dimension(315, 380));
-        next.setMinimumSize(new java.awt.Dimension(315, 380));
-        next.setPreferredSize(new java.awt.Dimension(315, 380));
+        next.setMaximumSize(new java.awt.Dimension(440, 530));
+        next.setMinimumSize(new java.awt.Dimension(440, 530));
+        next.setPreferredSize(new java.awt.Dimension(440, 530));
         next.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nextP.png"))); // NOI18N
         next.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -342,7 +336,7 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         tactil.add(next);
-        next.setBounds(905, 260, 315, 380);
+        next.setBounds(1280, 330, 440, 530);
 
         prev.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/prev.png"))); // NOI18N
         prev.setAlignmentY(0.0F);
@@ -352,9 +346,9 @@ public class Inicio extends javax.swing.JFrame {
         prev.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         prev.setFocusPainted(false);
         prev.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        prev.setMaximumSize(new java.awt.Dimension(315, 380));
-        prev.setMinimumSize(new java.awt.Dimension(315, 380));
-        prev.setPreferredSize(new java.awt.Dimension(315, 380));
+        prev.setMaximumSize(new java.awt.Dimension(440, 530));
+        prev.setMinimumSize(new java.awt.Dimension(440, 530));
+        prev.setPreferredSize(new java.awt.Dimension(440, 530));
         prev.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/prevP.png"))); // NOI18N
         prev.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -362,9 +356,9 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         tactil.add(prev);
-        prev.setBounds(150, 260, 315, 380);
+        prev.setBounds(210, 330, 440, 530);
 
-        nombre.setFont(new java.awt.Font("Harabara", 0, 100)); // NOI18N
+        nombre.setFont(new java.awt.Font("Harabara", 0, 170)); // NOI18N
         nombre.setForeground(new java.awt.Color(255, 255, 255));
         nombre.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         nombre.setAlignmentY(0.0F);
@@ -379,25 +373,23 @@ public class Inicio extends javax.swing.JFrame {
             }
         });
         tactil.add(nombre);
-        nombre.setBounds(233, 20, 900, 100);
+        nombre.setBounds(310, 25, 1300, 150);
 
         fondo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fondo.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoPeces.jpg")); // NOI18N
         fondo.setAlignmentY(0.0F);
-        fondo.setMaximumSize(new java.awt.Dimension(1366, 768));
-        fondo.setMinimumSize(new java.awt.Dimension(1366, 768));
-        fondo.setPreferredSize(new java.awt.Dimension(1366, 768));
         tactil.add(fondo);
-        fondo.setBounds(0, 0, 1366, 768);
+        fondo.setBounds(0, 0, 1920, 1080);
 
         jLayeredPane1.add(tactil);
-        tactil.setBounds(0, 0, 1366, 768);
+        tactil.setBounds(0, 0, 1920, 1080);
 
         seleccion.setAlignmentX(0.0F);
         seleccion.setAlignmentY(0.0F);
-        seleccion.setMaximumSize(new java.awt.Dimension(1366, 768));
-        seleccion.setMinimumSize(new java.awt.Dimension(1366, 768));
-        seleccion.setPreferredSize(new java.awt.Dimension(1366, 768));
+        seleccion.setMaximumSize(new java.awt.Dimension(1920, 1080));
+        seleccion.setMinimumSize(new java.awt.Dimension(1920, 1080));
+        seleccion.setName(""); // NOI18N
+        seleccion.setPreferredSize(new java.awt.Dimension(1920, 1080));
         seleccion.setLayout(null);
 
         close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/atras.png"))); // NOI18N
@@ -616,14 +608,11 @@ public class Inicio extends javax.swing.JFrame {
         fseleccion.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         fseleccion.setIcon(new javax.swing.ImageIcon("C:\\acuario\\fondoPeces.jpg")); // NOI18N
         fseleccion.setAlignmentY(0.0F);
-        fseleccion.setMaximumSize(new java.awt.Dimension(1366, 768));
-        fseleccion.setMinimumSize(new java.awt.Dimension(1366, 768));
-        fseleccion.setPreferredSize(new java.awt.Dimension(1366, 768));
         seleccion.add(fseleccion);
-        fseleccion.setBounds(0, 0, 1366, 768);
+        fseleccion.setBounds(0, 0, 1920, 1080);
 
         jLayeredPane1.add(seleccion);
-        seleccion.setBounds(0, 0, 1366, 768);
+        seleccion.setBounds(0, 0, 1920, 1080);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -670,10 +659,10 @@ public class Inicio extends javax.swing.JFrame {
         y = 0;
         controlInactividad = true;
         if (controlSegunda) {
-            ficha.videoPane.removeAll();
-            ficha.VideoPrincipal("file:///c:/acuario/video/promo.mpg");///url video promociones
+//            ficha.videoPane.removeAll();
+//            ficha.VideoPrincipal("file:///c:/acuario/video/promo.mpg");///url video promociones
             // ficha.reproducirPrincipal();
-            ficha.setContentPane(ficha.videoPane);
+//            ficha.setContentPane(ficha.videoPane);
             controlSegunda = false;
         }
     }//GEN-LAST:event_videoMouseClicked
@@ -682,7 +671,7 @@ public class Inicio extends javax.swing.JFrame {
         // TODO add your handling code here:
         y = 0;
         controlInactividad = true;
-        ficha.verVideo = true;
+//        ficha.verVideo = true;
         this.setContentPane(this.tactil);
         cargarComponentes();
         if (!controlSegunda) {
@@ -763,13 +752,13 @@ public class Inicio extends javax.swing.JFrame {
                 iniciarFicha();
                 control = false;
             }
-            try {
-//            ficha.setContentPane(ficha.datos);
-                ficha.setContentPane(ficha.videoPeces);
-                ficha.getNombres(ids[contador]);
-            } catch (SQLException ex) {
-                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-            }
+//            try {
+////            ficha.setContentPane(ficha.datos);
+//                ficha.setContentPane(ficha.videoPeces);
+//                ficha.getNombres(ids[contador]);
+//            } catch (SQLException ex) {
+//                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+//            }
         }
 
     }//GEN-LAST:event_nombresMouseClicked
@@ -786,13 +775,13 @@ public class Inicio extends javax.swing.JFrame {
                 iniciarFicha();
                 control = false;
             }
-            try {
-//            ficha.setContentPane(ficha.datos);
-                ficha.setContentPane(ficha.videoPeces);
-                ficha.getForma(ids[contador]);
-            } catch (SQLException ex) {
-                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-            }
+//            try {
+////            ficha.setContentPane(ficha.datos);
+//                ficha.setContentPane(ficha.videoPeces);
+//                ficha.getForma(ids[contador]);
+//            } catch (SQLException ex) {
+//                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+//            }
         }
 
     }//GEN-LAST:event_biotopoMouseClicked
@@ -806,10 +795,10 @@ public class Inicio extends javax.swing.JFrame {
             controlSegunda = true;
 
         } else {
-            ficha.videoDetalle.removeAll();
-            ficha.VideoDetalle("file:///c:/acuario/" + String.valueOf(ids[contador]) + "/videos/vivo.mpg"); //vivo.mpg
-            control = true;
-            ficha.setContentPane(ficha.videoDetalle);
+//            ficha.videoDetalle.removeAll();
+//            ficha.VideoDetalle("file:///c:/acuario/" + String.valueOf(ids[contador]) + "/videos/vivo.mpg"); //vivo.mpg
+//            control = true;
+//            ficha.setContentPane(ficha.videoDetalle);
         }
     }//GEN-LAST:event_distribucionMouseClicked
 
@@ -821,10 +810,10 @@ public class Inicio extends javax.swing.JFrame {
             controlSegunda = true;
 
         } else {
-            ficha.videoDetalle.removeAll();
-            ficha.VideoDetalle("file:///c:/acuario/" + String.valueOf(ids[contador]) + "/videos/cuerpo.mpg");//cuerpo.mpg
-            control = true;
-            ficha.setContentPane(ficha.videoDetalle);
+//            ficha.videoDetalle.removeAll();
+//            ficha.VideoDetalle("file:///c:/acuario/" + String.valueOf(ids[contador]) + "/videos/cuerpo.mpg");//cuerpo.mpg
+//            control = true;
+//            ficha.setContentPane(ficha.videoDetalle);
         }
     }//GEN-LAST:event_formaMouseClicked
 
@@ -837,10 +826,10 @@ public class Inicio extends javax.swing.JFrame {
             controlSegunda = true;
 
         } else {
-            ficha.videoDetalle.removeAll();
-            ficha.VideoDetalle("file:///c:/acuario/" + String.valueOf(ids[contador]) + "/videos/medidas.mpg");//medidas.mpg
-            control = true;
-            ficha.setContentPane(ficha.videoDetalle);
+//            ficha.videoDetalle.removeAll();
+//            ficha.VideoDetalle("file:///c:/acuario/" + String.valueOf(ids[contador]) + "/videos/medidas.mpg");//medidas.mpg
+//            control = true;
+//            ficha.setContentPane(ficha.videoDetalle);
         }
     }//GEN-LAST:event_tamanoMouseClicked
 
@@ -853,10 +842,10 @@ public class Inicio extends javax.swing.JFrame {
             controlSegunda = true;
 
         } else {
-            ficha.videoDetalle.removeAll();
-            ficha.VideoDetalle("file:///c:/acuario/" + String.valueOf(ids[contador]) + "/videos/temperatura.mpg");//temperatura.mpg
-            control = true;
-            ficha.setContentPane(ficha.videoDetalle);
+//            ficha.videoDetalle.removeAll();
+//            ficha.VideoDetalle("file:///c:/acuario/" + String.valueOf(ids[contador]) + "/videos/temperatura.mpg");//temperatura.mpg
+//            control = true;
+//            ficha.setContentPane(ficha.videoDetalle);
         }
     }//GEN-LAST:event_temperaturaMouseClicked
 
@@ -872,13 +861,13 @@ public class Inicio extends javax.swing.JFrame {
                 iniciarFicha();
                 control = false;
             }
-            try {
-//            ficha.setContentPane(ficha.datos);
-                ficha.setContentPane(ficha.videoPeces);
-                ficha.getAlimentacion(ids[contador]);
-            } catch (SQLException ex) {
-                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-            }
+//            try {
+////            ficha.setContentPane(ficha.datos);
+//                ficha.setContentPane(ficha.videoPeces);
+//                ficha.getAlimentacion(ids[contador]);
+//            } catch (SQLException ex) {
+//                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+//            }
         }
     }//GEN-LAST:event_alimentacionMouseClicked
 
@@ -894,13 +883,13 @@ public class Inicio extends javax.swing.JFrame {
                 iniciarFicha();
                 control = false;
             }
-            try {
-//            ficha.setContentPane(ficha.datos);
-                ficha.setContentPane(ficha.videoPeces);
-                ficha.getComportamiento(ids[contador]);
-            } catch (SQLException ex) {
-                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-            }
+//            try {
+////            ficha.setContentPane(ficha.datos);
+//                ficha.setContentPane(ficha.videoPeces);
+//                ficha.getComportamiento(ids[contador]);
+//            } catch (SQLException ex) {
+//                Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+//            }
         }
     }//GEN-LAST:event_comportamientoMouseClicked
 
