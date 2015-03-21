@@ -841,10 +841,10 @@ public class Inicio extends javax.swing.JFrame {
         if (controlSegunda) {
             RemovePanel();
             try {
-                VideoDetalle("file:///c:/acuario/video/promo.mpg");///url video promociones
+                VideoPrincipal("file:///c:/acuario/video/promo.mpg");///url video promociones
             } catch (OutOfMemoryError e) {
                 System.gc();
-                VideoDetalle("file:///c:/acuario/video/promo.mpg");///url video promociones
+                VideoPrincipal("file:///c:/acuario/video/promo.mpg");///url video promociones
             }
 //             reproducirPrincipal();
             setContentPane(videoDetalle);
@@ -1280,7 +1280,7 @@ public class Inicio extends javax.swing.JFrame {
             tiempo = 0;
             verVideo = true;
             videoPane.add(home);
-            videoPane.add(fondo1);
+            videoPane.add(fondo2);
             System.out.println("time secunds " + player.getDuration().getSeconds());
 
         } catch (IOException | NoPlayerException | CannotRealizeException ex) {
