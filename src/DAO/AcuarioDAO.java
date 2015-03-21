@@ -32,7 +32,7 @@ public class AcuarioDAO {
         String p;
         try {
             stm = cn.getConnection().createStatement();
-            pstm = cn.getConnection().prepareStatement("SELECT pez_id FROM pez WHERE pez_estado = true");
+            pstm = cn.getConnection().prepareStatement("SELECT pez_id FROM pez WHERE pez_estado = true order by id ASC");
             res = pstm.executeQuery();
             while (res.next()) {
                 p = res.getString("pez_id");
@@ -55,7 +55,7 @@ public class AcuarioDAO {
         String p;
         try {
             stm = cn.getConnection().createStatement();
-            pstm = cn.getConnection().prepareStatement("SELECT pez_nombComun FROM pez WHERE pez_estado = true");
+            pstm = cn.getConnection().prepareStatement("SELECT pez_nombComun FROM pez WHERE pez_estado = true order by id ASC");
             res = pstm.executeQuery();
             while (res.next()) {
                 p = res.getString("pez_nombComun");

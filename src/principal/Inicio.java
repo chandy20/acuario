@@ -125,16 +125,16 @@ public class Inicio extends javax.swing.JFrame {
 
     public void iniciarFicha() {
 //        setContentPane(datos);
-//        try {
-////            cargaImagenes(ids[ contador]);
-////            cargaNombre(ids[ contador]);
-////            videoPeces.removeAll();
-////            VideoInfo("c:/acuario/" + String.valueOf(ids[contador]) + "/videos/general.mpg");
-////            reproducir();
-//
-//        } catch (SQLException ex) {
-//            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+//            cargaImagenes(ids[ contador]);
+            cargaNombre(ids[ contador]);
+            videoPeces.removeAll();
+            VideoInfo("c:/acuario/" + String.valueOf(ids[contador]) + "/videos/general.mpg");
+            reproducir();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void cerrarVideo() {
@@ -150,22 +150,22 @@ public class Inicio extends javax.swing.JFrame {
         @Override
         public void run() {
             try {
-                VideoPrincipal("file:///c:/acuario/video/peces.mpg");
+//                VideoPrincipal("file:///c:/acuario/video/peces.mpg");
 //                VideoInfo("file:///c:/acuario/video/agua_converted.mpg");
                 
 //                reproducirPrincipal();
                 while (true) {//ciclo infinito
                      if (verVideo == true) {
-                        if (player.getMediaTime().getSeconds() != 0) {
-
-                            System.out.println("tiempo del video " + tiempo);
-                            if (tiempo >= 90) {
-                                videoPane.removeAll();
-                                VideoPrincipal("file:///c:/acuario/video/peces.mpg");
-                                setContentPane(videoPane);
-                            }
-                            tiempo++;
-                        }
+//                        if (player.getMediaTime().getSeconds() != 0) {
+//
+//                            System.out.println("tiempo del video " + tiempo);
+//                            if (tiempo >= 90) {
+//                                videoPane.removeAll();
+//                                VideoPrincipal("file:///c:/acuario/video/peces.mpg");
+//                                setContentPane(videoPane);
+//                            }
+//                            tiempo++;
+//                        }
                     } else {
                         if (y <= 2) {
                             System.out.println("die");
@@ -690,22 +690,22 @@ public class Inicio extends javax.swing.JFrame {
         datos.setAlignmentY(0.0F);
         datos.setLayout(null);
 
-        atracito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/atras.png"))); // NOI18N
+        atracito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/atrasVideo.png"))); // NOI18N
         atracito.setAlignmentY(0.0F);
         atracito.setBorder(null);
         atracito.setBorderPainted(false);
         atracito.setContentAreaFilled(false);
         atracito.setFocusPainted(false);
-        atracito.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/atrasP.png"))); // NOI18N
+        atracito.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/atrasPideoP.png"))); // NOI18N
         atracito.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 atracitoMouseClicked(evt);
             }
         });
         datos.add(atracito);
-        atracito.setBounds(183, 33, 140, 140);
+        atracito.setBounds(190, -10, 140, 140);
 
-        homecito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/inicio.png"))); // NOI18N
+        homecito.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/inicioVideos.png"))); // NOI18N
         homecito.setAlignmentY(0.0F);
         homecito.setBorderPainted(false);
         homecito.setContentAreaFilled(false);
@@ -715,14 +715,19 @@ public class Inicio extends javax.swing.JFrame {
         homecito.setMaximumSize(new java.awt.Dimension(140, 140));
         homecito.setMinimumSize(new java.awt.Dimension(140, 140));
         homecito.setPreferredSize(new java.awt.Dimension(140, 140));
-        homecito.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/inicioP.png"))); // NOI18N
+        homecito.setPressedIcon(new javax.swing.ImageIcon(getClass().getResource("/images/inicioVideosP.png"))); // NOI18N
         homecito.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 homecitoMouseClicked(evt);
             }
         });
+        homecito.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                homecitoActionPerformed(evt);
+            }
+        });
         datos.add(homecito);
-        homecito.setBounds(33, 33, 140, 140);
+        homecito.setBounds(40, -10, 140, 140);
 
         titulo.setFont(new java.awt.Font("Harabara", 0, 60)); // NOI18N
         titulo.setForeground(new java.awt.Color(255, 255, 255));
@@ -817,10 +822,10 @@ public class Inicio extends javax.swing.JFrame {
         y = 0;
         controlInactividad = true;
         if (controlSegunda) {
-            videoPane.removeAll();
-            VideoPrincipal("file:///c:/acuario/video/promo.mpg");///url video promociones
-             reproducirPrincipal();
-            setContentPane(videoPane);
+            videoDetalle.removeAll();
+            VideoDetalle("file:///c:/acuario/video/promo.mpg");///url video promociones
+//             reproducirPrincipal();
+            setContentPane(videoDetalle);
             controlSegunda = false;
         }
     }//GEN-LAST:event_videoMouseClicked
@@ -1089,6 +1094,10 @@ public class Inicio extends javax.swing.JFrame {
         this.setContentPane(menu);
     }//GEN-LAST:event_homecitoMouseClicked
 
+    private void homecitoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_homecitoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_homecitoActionPerformed
+
     public void cargaNombre(int pez_id) throws SQLException {
         String nombre = aDAO.getPezName(pez_id);
         titulo.setText(nombre);
@@ -1121,7 +1130,6 @@ public class Inicio extends javax.swing.JFrame {
             this.titulito.setText("Nombre Común & Nombre Científico");
             this.info.setText(datos);
         }
-
     }
 
     public void getDistribucion(int pez_id) throws SQLException {
@@ -1212,6 +1220,7 @@ public class Inicio extends javax.swing.JFrame {
             tiempo = 0;
             verVideo = true;
             videoPane.add(home);
+            videoPane.add(fondo1);
             System.out.println("time secunds "+player.getDuration().getSeconds());
         } catch (IOException | NoPlayerException | CannotRealizeException ex) {
             Logger.getLogger(Ficha.class.getName()).log(Level.SEVERE, null, ex);
@@ -1250,13 +1259,17 @@ public class Inicio extends javax.swing.JFrame {
             videoPeces.add(info);
             videoPeces.add(barra);
             videoPeces.add(titulito);
-            videoPeces.add(fondo);
+            videoPeces.add(homecito);
+            videoPeces.add(atracito);
+            videoPeces.add(fondo1);
             tiempogeneral = player1.getDuration().getSeconds() + (0.8);
             controles1 = player1.getControlPanelComponent();
         } catch (IOException | NoPlayerException | CannotRealizeException ex) {
             Logger.getLogger(Ficha.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
 
     public void VideoDetalle(String direccion) {
         aux08032015 = direccion;
@@ -1276,8 +1289,8 @@ public class Inicio extends javax.swing.JFrame {
             player2 = f3.createRealizedPlayer(new MediaLocator(url));
             System.out.println("player: " + player1);
             video2 = player2.getVisualComponent();
-            video2.setSize(1920, 1080);
-            video2.setLocation(0, 0);
+            video2.setSize(1920, 980);
+            video2.setLocation(0, 100);
             video2.setVisible(true);
 
             if (video2 != null) {
@@ -1285,7 +1298,8 @@ public class Inicio extends javax.swing.JFrame {
             }
 //            tiempogeneral = player2.getDuration().getSeconds() + (0.8);
             controles2 = player2.getControlPanelComponent();
-
+            videoDetalle.add(homecito);
+            videoDetalle.add(fondo1);
             player2.start();
             videoDetalle.updateUI();
         } catch (IOException | NoPlayerException | CannotRealizeException ex) {
@@ -1296,6 +1310,7 @@ public class Inicio extends javax.swing.JFrame {
     public void VideoInfo(int width) {
         String direccion = aux08032015;
         File directorio = new File(direccion);
+        System.out.println("direccion "+ direccion);
         System.out.println("archivo " + directorio.exists());
 //        if (!directorio.exists()) {
 //            direccion = "file:///c:/acuario/defoult.mpg";
@@ -1328,7 +1343,7 @@ public class Inicio extends javax.swing.JFrame {
             lbl1.setBounds(20, 70, width, 10);
             lbl1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/linea_titulo.jpg"))); // NOI18N
             videoPeces.add(lbl1);
-            videoPeces.add(fondo);
+            videoPeces.add(fondo1);
             tiempogeneral = player1.getDuration().getSeconds() + (0.8);
             controles1 = player1.getControlPanelComponent();
         } catch (IOException | NoPlayerException | CannotRealizeException ex) {
