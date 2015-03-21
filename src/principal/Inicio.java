@@ -98,6 +98,7 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     public void llenarVectores(ArrayList<PezVO> peces) throws IOException {
+        System.gc();
         Imagenes = new Image[peces.size()];
         names = new String[peces.size()];
         ids = new int[peces.size()];
@@ -115,12 +116,14 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     public void cargarComponentes() {
+        System.gc();
         Image foto = Imagenes[ contador].getScaledInstance(700, (int) ((buffer[contador].getHeight() * 700) / buffer[contador].getWidth()), Image.SCALE_DEFAULT);
         slider.setIcon(new ImageIcon(foto));
         nombre.setText(names[ contador]);
     }
 
     public void iniciarInicio() {//inicio inactividad
+        System.gc();
         controlSegunda = false;
         RemovePanel();
         try {
@@ -135,6 +138,7 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     public void iniciarFicha() {
+        System.gc();
 //        setContentPane(datos);
         try {
 //            cargaImagenes(ids[ contador]);
@@ -155,6 +159,7 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     public void cerrarVideo() {
+        System.gc();
         verVideo = false;
         RemovePanel();
 //        VideoPrincipal("file:///c:/acuario/video/promo.mpg");
@@ -813,7 +818,8 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void sliderMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sliderMouseClicked
-        // TODO add your handling code here:
+        System.gc();
+// TODO add your handling code here:
         timep1 = System.currentTimeMillis();
         if (!controlInactividad) {
 
@@ -830,12 +836,14 @@ public class Inicio extends javax.swing.JFrame {
 
     private void nombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombreMouseClicked
         // TODO add your handling code here:
+        System.gc();
         sliderMouseClicked(evt);
     }//GEN-LAST:event_nombreMouseClicked
 
     private void videoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_videoMouseClicked
         // TODO add your handling code here:
 //        videoPane
+        System.gc();
         timep1 = System.currentTimeMillis();
         controlInactividad = true;
         if (controlSegunda) {
@@ -854,6 +862,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void pecesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pecesMouseClicked
         // TODO add your handling code here:
+        System.gc();
         timep1 = System.currentTimeMillis();
         controlInactividad = true;
         verVideo = true;
@@ -868,6 +877,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void prevMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_prevMouseClicked
         // TODO add your handling code here:
+        System.gc();
         timep1 = System.currentTimeMillis();
         if (!controlInactividad) {
 
@@ -884,6 +894,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void nextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nextMouseClicked
         // TODO add your handling code here:
+        System.gc();
         timep1 = System.currentTimeMillis();
         if (!controlInactividad) {
 
@@ -900,6 +911,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void cerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cerrarMouseClicked
         // TODO add your handling code here:
+        System.gc();
         timep1 = System.currentTimeMillis();
         if (!controlInactividad) {
 
@@ -912,6 +924,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         // TODO add your handling code here:
+        System.gc();
         timep1 = System.currentTimeMillis();
         if (!controlInactividad) {
             controlInactividad = true;
@@ -927,6 +940,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void nombresMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nombresMouseClicked
         // TODO add your handling code here:
+        System.gc();
         timep1 = System.currentTimeMillis();
         if (!controlInactividad) {
             controlInactividad = true;
@@ -951,6 +965,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void biotopoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_biotopoMouseClicked
         // TODO add your handling code here:
+        System.gc();
         timep1 = System.currentTimeMillis();
         if (!controlInactividad) {
 
@@ -976,6 +991,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void distribucionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_distribucionMouseClicked
         // TODO add your handling code here:
+        System.gc();
         timep1 = System.currentTimeMillis();
         if (!controlInactividad) {
 
@@ -998,6 +1014,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void formaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formaMouseClicked
         // TODO add your handling code here:
+        System.gc();
         timep1 = System.currentTimeMillis();
         if (!controlInactividad) {
             controlInactividad = true;
@@ -1019,6 +1036,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void tamanoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tamanoMouseClicked
         // TODO add your handling code here:
+        System.gc();
         timep1 = System.currentTimeMillis();
         if (!controlInactividad) {
 
@@ -1041,6 +1059,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void temperaturaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_temperaturaMouseClicked
         // TODO add your handling code here:
+        System.gc();
         timep1 = System.currentTimeMillis();
         if (!controlInactividad) {
 
@@ -1063,6 +1082,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void alimentacionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_alimentacionMouseClicked
         // TODO add your handling code here:
+        System.gc();
         timep1 = System.currentTimeMillis();
         if (!controlInactividad) {
 
@@ -1087,6 +1107,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void comportamientoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_comportamientoMouseClicked
         // TODO add your handling code here:
+        System.gc();
         timep1 = System.currentTimeMillis();
         if (!controlInactividad) {
 
@@ -1111,6 +1132,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void homeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homeMouseClicked
         // TODO add your handling code here:
+        System.gc();
         RemovePanel();
         setContentPane(menu);
         this.setContentPane(menu);
@@ -1119,6 +1141,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void mfondoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_mfondoMouseClicked
         // TODO add your handling code here:
+        System.gc();
         timep1 = System.currentTimeMillis();
         if (!controlInactividad) {
             cerrarVideo();
@@ -1130,6 +1153,7 @@ public class Inicio extends javax.swing.JFrame {
 
     private void bannerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bannerMouseClicked
         // TODO add your handling code here:
+        System.gc();
         timep1 = System.currentTimeMillis();
         if (!controlInactividad) {
             cerrarVideo();
@@ -1141,12 +1165,14 @@ public class Inicio extends javax.swing.JFrame {
 
     private void atracitoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_atracitoMouseClicked
         // TODO add your handling code here:
+        System.gc();
         RemovePanel();
         this.setContentPane(seleccion);
     }//GEN-LAST:event_atracitoMouseClicked
 
     private void homecitoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_homecitoMouseClicked
         // TODO add your handling code here:
+        System.gc();
         RemovePanel();
         this.setContentPane(menu);
     }//GEN-LAST:event_homecitoMouseClicked
@@ -1156,12 +1182,14 @@ public class Inicio extends javax.swing.JFrame {
     }//GEN-LAST:event_homecitoActionPerformed
 
     public void cargaNombre(int pez_id) throws SQLException {
+        System.gc();
         String nombre = aDAO.getPezName(pez_id);
         titulo.setText(nombre);
     }
 
     public void getNombres(int pez_id) throws SQLException {
 
+        System.gc();
         lista = aDAO.getDatosGenerales(pez_id, 1);
         for (PezVO pezVO : lista) {
             String nombreComun = pezVO.getPez_nombComun();
@@ -1190,10 +1218,12 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     public void getDistribucion(int pez_id) throws SQLException {
+        System.gc();
         lista = aDAO.getDatosGenerales(pez_id, 3);
     }
 
     public void getForma(int pez_id) throws SQLException {
+        System.gc();
         ArrayList<PezVO> lista1 = aDAO.getDatosGenerales(pez_id, 10);
         getDistribucion(pez_id);
         for (PezVO pezVO : lista1) {
@@ -1216,6 +1246,7 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     public void getAlimentacion(int pez_id) throws SQLException {
+        System.gc();
         lista = aDAO.getDatosGenerales(pez_id, 9);
         for (PezVO pezVO : lista) {
             String alimentos = pezVO.getPez_alimentacion();
@@ -1231,6 +1262,7 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     public void getComportamiento(int pez_id) throws SQLException {
+        System.gc();
         lista = aDAO.getDatosGenerales(pez_id, 10);
         for (PezVO pezVO : lista) {
             String curiosidades = pezVO.getPez_curiosidades();
@@ -1248,6 +1280,7 @@ public class Inicio extends javax.swing.JFrame {
     public void VideoPrincipal(String direccion) {
 //        JPanel panel = new JPanel();
 //        videoPane.setLayout(new BorderLayout());
+        System.gc();
         videoPane.setSize(1920, 1080);
 //        videoPane.setLocation(0, 0);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -1290,6 +1323,7 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     public void VideoInfo(String direccion) {
+        System.gc();
         aux08032015 = direccion;
 //        File directorio = new File(direccion);
 //        System.out.println("archivo " + directorio.exists());
@@ -1336,12 +1370,14 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     public void RemovePanel() {
+        System.gc();
         videoPane.removeAll();
         videoDetalle.removeAll();
         videoPeces.removeAll();
     }
 
     public void VideoDetalle(String direccion) {
+        System.gc();
         aux08032015 = direccion;
 //        File directorio = new File(direccion);
 //        System.out.println("archivo " + directorio.exists());
@@ -1384,6 +1420,7 @@ public class Inicio extends javax.swing.JFrame {
     }
 
     public void VideoInfo(int width) {
+        System.gc();
         String direccion = aux08032015;
         File directorio = new File(direccion);
         System.out.println("direccion " + direccion);
