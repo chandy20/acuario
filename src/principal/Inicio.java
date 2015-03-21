@@ -847,7 +847,7 @@ public class Inicio extends javax.swing.JFrame {
                 VideoPrincipal("file:///c:/acuario/video/promo.mpg");///url video promociones
             }
 //             reproducirPrincipal();
-            setContentPane(videoDetalle);
+            setContentPane(videoPane);
             controlSegunda = false;
         }
     }//GEN-LAST:event_videoMouseClicked
@@ -1279,7 +1279,7 @@ public class Inicio extends javax.swing.JFrame {
             videoPane.updateUI();
             tiempo = 0;
             verVideo = true;
-            videoPane.add(home);
+            videoPane.add(homecito);
             videoPane.add(fondo2);
             System.out.println("time secunds " + player.getDuration().getSeconds());
 
