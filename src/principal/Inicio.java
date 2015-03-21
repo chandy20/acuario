@@ -1228,11 +1228,13 @@ public class Inicio extends javax.swing.JFrame {
         getDistribucion(pez_id);
         for (PezVO pezVO : lista1) {
             String general = pezVO.getPez_generalidades();
-            String distribucion = pezVO.getPez_distribucion();
+            PezVO pez2VO = lista.get(0);
+            String distribucion = pez2VO.getPez_distribucion();
+            System.out.println("dist"+ distribucion);
             if (pezVO.getPez_generalidades() == null || general.equals("")) {
                 general = "No especificadas";
             }
-            if (pezVO.getPez_distribucion() == null || distribucion.equals("")) {
+            if (pez2VO.getPez_distribucion() == null || distribucion.equals("")) {
                 distribucion = "No especificado";
             }
             String datos = "<html><body><tr><td>"
@@ -1263,7 +1265,7 @@ public class Inicio extends javax.swing.JFrame {
 
     public void getComportamiento(int pez_id) throws SQLException {
         System.gc();
-        lista = aDAO.getDatosGenerales(pez_id, 10);
+        lista = aDAO.getDatosGenerales(pez_id, 11);
         for (PezVO pezVO : lista) {
             String curiosidades = pezVO.getPez_curiosidades();
             if (pezVO.getPez_curiosidades() == null || curiosidades.equals("")) {
