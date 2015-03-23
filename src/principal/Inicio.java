@@ -25,6 +25,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.media.CannotRealizeException;
+import javax.media.ControllerListener;
 import javax.media.Manager;
 import javax.media.MediaLocator;
 import javax.media.NoPlayerException;
@@ -55,13 +56,11 @@ public class Inicio extends javax.swing.JFrame {
     //variables de ficha
     public Player player;
     public Component videop;
-    public Component controles;
-    public Player player1;
-    public Component video1;
-    public Component controles1;
-    public Player player2;
-    public Component video2;
-    public Component controles2;
+//    public Component controles;
+//    public Player player1;
+//    public Component controles1;
+//    public Player player2;
+//    public Component controles2;
     public Time cero;
     public Time cero1;
     boolean verVideo = false;
@@ -179,18 +178,20 @@ public class Inicio extends javax.swing.JFrame {
                     timea = ((timep2 - timep1) / 1000);
 
                     System.out.println("y: " + timea);
-                    if (timea >= 1000) {
+                    if (timea >= 10) {
                         System.out.println("inicia inactividad control: " + controlInactividad + " control segunda:" + controlSegunda);
                         controlInactividad = false;
                         if (controlSegunda) {
                             System.out.println("INICIO DE INACTIVIDAD");
                             iniciarInicio();
                         }
-                        System.out.println("tiempo actual" + player.getMediaTime().getSeconds());
-                        if (player.getMediaTime().getSeconds() >= 29) {
-                            System.out.println("tiempo total de la inactividad " + player.getDuration().getSeconds() + " timepo actual " + player.getMediaTime().getSeconds());
-                            System.out.println("reincia video");
-                            iniciarInicio();
+                        if (player != null) {
+                            System.out.println("tiempo actual" + player.getDuration().getSeconds());
+                            if (player.getMediaTime().getSeconds() >= 45) {
+                                System.out.println("tiempo total de la inactividad " + player.getDuration().getSeconds() + " timepo actual " + player.getMediaTime().getSeconds());
+                                System.out.println("reincia video");
+                                iniciarInicio();
+                            }
                         }
                     }
                     hilo.sleep(1000);//que duerma un segundo
@@ -1006,7 +1007,7 @@ public class Inicio extends javax.swing.JFrame {
                 System.gc();
                 VideoDetalle("file:///c:/acuario/" + String.valueOf(ids[contador]) + "/videos/vivo.mpg"); //vivo.mpg
             }
-            
+
 //            control = true;
             setContentPane(videoDetalle);
         }
@@ -1028,7 +1029,7 @@ public class Inicio extends javax.swing.JFrame {
                 System.gc();
                 VideoDetalle("file:///c:/acuario/" + String.valueOf(ids[contador]) + "/videos/cuerpo.mpg");//cuerpo.mpg
             }
-            
+
 //            control = true;
             setContentPane(videoDetalle);
         }
@@ -1051,7 +1052,7 @@ public class Inicio extends javax.swing.JFrame {
                 System.gc();
                 VideoDetalle("file:///c:/acuario/" + String.valueOf(ids[contador]) + "/videos/medidas.mpg");//medidas.mpg
             }
-            
+
 //            control = true;
             setContentPane(videoDetalle);
         }
@@ -1074,7 +1075,7 @@ public class Inicio extends javax.swing.JFrame {
                 System.gc();
                 VideoDetalle("file:///c:/acuario/" + String.valueOf(ids[contador]) + "/videos/temperatura.mpg");//temperatura.mpg
             }
-            
+
 //            control = true;
             setContentPane(videoDetalle);
         }
@@ -1230,7 +1231,7 @@ public class Inicio extends javax.swing.JFrame {
             String general = pezVO.getPez_generalidades();
             PezVO pez2VO = lista.get(0);
             String distribucion = pez2VO.getPez_distribucion();
-            System.out.println("dist"+ distribucion);
+            System.out.println("dist" + distribucion);
             if (pezVO.getPez_generalidades() == null || general.equals("")) {
                 general = "No especificadas";
             }
@@ -1307,7 +1308,7 @@ public class Inicio extends javax.swing.JFrame {
                 videoPane.add("Center", videop);
             }
 //            video.repaint();
-            controles = player.getControlPanelComponent();
+//            controles = player.getControlPanelComponent();
             System.gc();
             player.start();
             cero = player.getMediaTime();
@@ -1316,6 +1317,7 @@ public class Inicio extends javax.swing.JFrame {
             verVideo = true;
             videoPane.add(homecito);
             videoPane.add(fondo2);
+
             System.out.println("time secunds " + player.getDuration().getSeconds());
 
         } catch (IOException | NoPlayerException | CannotRealizeException ex) {
@@ -1347,13 +1349,13 @@ public class Inicio extends javax.swing.JFrame {
         }
         try {
             player = f2.createRealizedPlayer(new MediaLocator(url));
-            video1 = player.getVisualComponent();
-            video1.setSize(1920, 540);
-            video1.setLocation(0, 540);
-            video1.setVisible(true);
+            videop = player.getVisualComponent();
+            videop.setSize(1920, 540);
+            videop.setLocation(0, 540);
+            videop.setVisible(true);
 
-            if (video1 != null) {
-                videoPeces.add("Center", video1);
+            if (videop != null) {
+                videoPeces.add("Center", videop);
             }
             videoPeces.add(titulo);
             videoPeces.add(info);
@@ -1373,6 +1375,14 @@ public class Inicio extends javax.swing.JFrame {
 
     public void RemovePanel() {
         System.gc();
+        if (player != null) {
+            //player.removeControllerListener();
+            player.stop();
+            player.close();
+//            player.deallocate();
+            remove(videop);
+            player = null;
+        }
         videoPane.removeAll();
         videoDetalle.removeAll();
         videoPeces.removeAll();
@@ -1398,16 +1408,16 @@ public class Inicio extends javax.swing.JFrame {
         try {
             player = f3.createRealizedPlayer(new MediaLocator(url));
 //            System.out.println("player: " + player1);
-            video2 = player.getVisualComponent();
-            video2.setSize(1920, 980);
-            video2.setLocation(0, 100);
-            video2.setVisible(true);
+            videop = player.getVisualComponent();
+            videop.setSize(1920, 980);
+            videop.setLocation(0, 100);
+            videop.setVisible(true);
 
-            if (video2 != null) {
-                videoDetalle.add("Center", video2);
+            if (videop != null) {
+                videoDetalle.add("Center", videop);
             }
 //            tiempogeneral = player2.getDuration().getSeconds() + (0.8);
-            controles2 = player.getControlPanelComponent();
+//            controles2 = player.getControlPanelComponent();
             videoDetalle.add(homecito);
             videoDetalle.add(atracito);
             videoDetalle.add(fondo2);
@@ -1446,13 +1456,13 @@ public class Inicio extends javax.swing.JFrame {
         try {
             player = f2.createRealizedPlayer(new MediaLocator(url));
             System.out.println("player: " + player);
-            video1 = player.getVisualComponent();
-            video1.setSize(1920, 540);
-            video1.setLocation(0, 540);
-            video1.setVisible(true);
+            videop = player.getVisualComponent();
+            videop.setSize(1920, 540);
+            videop.setLocation(0, 540);
+            videop.setVisible(true);
 
-            if (video1 != null) {
-                videoPeces.add("Center", video1);
+            if (videop != null) {
+                videoPeces.add("Center", videop);
             }
             videoPeces.add(titulo);
             videoPeces.add(info);
